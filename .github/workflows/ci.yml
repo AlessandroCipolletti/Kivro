@@ -1,0 +1,136 @@
+name: Verify
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.32.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm db:generate
+      - run: pnpm typecheck
+      - run: pnpm lint
+      - run: pnpm test
+      - run: pnpm build
+      - run: pnpm cloud:package
+      - run: pnpm test:cloud-artifacts
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cloud-linux
+          path: |
+            dist/kivro-api-*
+            dist/kivro-web-*
+          if-no-files-found: error
+          retention-days: 14
+      - run: pnpm coverage:audit
+  local-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.32.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm dev:setup
+      - run: pnpm test:integration:setup
+      - run: pnpm test:integration
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      KIVRO_BROWSER_CHANNEL: chromium
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.32.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm dev:setup
+      - run: pnpm test:e2e:web
+      - run: pnpm test:e2e:web:flows
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-failure-traces
+          path: |
+            test-results/
+            apps/web/test-results/
+          retention-days: 7
+      - if: always()
+        run: docker compose -f infrastructure/compose.yaml down
+  isolated-runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      KIVRO_BROWSER_CHANNEL: chromium
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.32.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: npm install --global --no-audit --no-fund openclaw@2026.8.2
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: sudo apt-get update
+      - run: sudo apt-get install --yes --no-install-recommends poppler-utils
+      - run: pnpm dev:setup
+      - run: pnpm dev:sandbox
+      - run: pnpm test:sandbox
+      - run: KIVRO_MEDIA_INTEGRATION=1 pnpm exec vitest run packages/openclaw-adapter/src/media.integration.test.ts --no-file-parallelism
+      - run: pnpm test:e2e:fixture
+      - run: pnpm test:e2e:faults
+      - run: pnpm test:e2e:media
+      - run: pnpm test:e2e:orchestration
+      - run: pnpm test:fresh-clone:runtime
+      - if: always()
+        run: docker compose -f infrastructure/compose.yaml down
+  worker-artifact:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.32.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm worker:package
+      - uses: actions/upload-artifact@v4
+        with:
+          name: worker-${{ matrix.os }}
+          path: dist/kivro-worker-*
+          if-no-files-found: error
+          retention-days: 14

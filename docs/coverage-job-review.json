@@ -1,0 +1,1024 @@
+[
+  {
+    "id": "JOB-0002",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/api/src/background.ts; packages/policy-engine/src/index.ts",
+    "tests": "packages/policy-engine/src/policy.test.ts :: requires validation before success and keeps terminal jobs terminal [JR-U1]; apps/api/test/pause-budget.integration.test.ts :: requires explicit existing-job confirmation without reopening a globally paused Worker [JR-D1]",
+    "notes": "Master section 9; full section read, catalogue fragment interpreted in context. PARTIAL_TRACE: equivalent states, CAS/idempotent transitions, timestamp/actor/source/attempt and job correlation are present. Named tests verify terminal validation and replayed resume/audit, not every transition edge, actor and reason. Master state names are recommended, not a requirement for identical enum spelling."
+  },
+  {
+    "id": "JOB-0009",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/policy.ts; apps/worker/src/capability-health.ts; apps/api/src/worker.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts :: never exposes host paths, secrets, Docker sockets or privileged execution [JR-U1]; apps/worker/src/security.test.ts :: requires stored capability-scoped resource grants and detects changed snapshots [JR-U1]",
+    "notes": "Master section 19; full section read, catalogue fragment interpreted in context. PARTIAL_ACCEPTANCE: security invariant suites exist and CI runs scoped tests/runtime probes; this atomic catalogue preamble inherits all listed Master19 invariants. JR-U1 assertion subset cannot certify SSH/browser/personal-config canaries, policy expansion and global dispatch together; global kill test is JR-A01. Do not use the preamble to blanket TESTED section19."
+  },
+  {
+    "id": "JOB-0011",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/policy.ts; apps/worker/src/capability-health.ts; apps/api/src/worker.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts :: never exposes host paths, secrets, Docker sockets or privileged execution [JR-U1]; apps/worker/src/security.test.ts :: requires stored capability-scoped resource grants and detects changed snapshots [JR-U1]",
+    "notes": "Master section 19; full section read, catalogue fragment interpreted in context. SOURCE_ONLY security invariant: reviewed container allowlist and host brokers implement the boundary. The named unit assertions are narrower than an adversarial actual-runtime proof of every personal filesystem/credential path. No full section or container-escape certification."
+  },
+  {
+    "id": "JOB-0013",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/policy.ts; apps/worker/src/capability-health.ts; apps/api/src/worker.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts :: never exposes host paths, secrets, Docker sockets or privileged execution [JR-U1]; apps/worker/src/security.test.ts :: requires stored capability-scoped resource grants and detects changed snapshots [JR-U1]",
+    "notes": "Master section 19; full section read, catalogue fragment interpreted in context. SOURCE_ONLY security invariant: reviewed container allowlist and host brokers implement the boundary. The named unit assertions are narrower than an adversarial actual-runtime proof of every personal filesystem/credential path. No full section or container-escape certification."
+  },
+  {
+    "id": "JOB-0014",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/policy.ts; apps/worker/src/capability-health.ts; apps/api/src/worker.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts :: never exposes host paths, secrets, Docker sockets or privileged execution [JR-U1]; apps/worker/src/security.test.ts :: requires stored capability-scoped resource grants and detects changed snapshots [JR-U1]",
+    "notes": "Master section 19; full section read, catalogue fragment interpreted in context. SOURCE_ONLY security invariant: reviewed container allowlist and host brokers implement the boundary. The named unit assertions are narrower than an adversarial actual-runtime proof of every personal filesystem/credential path. No full section or container-escape certification."
+  },
+  {
+    "id": "JOB-0016",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/policy.ts; apps/worker/src/capability-health.ts; apps/api/src/worker.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts :: never exposes host paths, secrets, Docker sockets or privileged execution [JR-U1]; apps/worker/src/security.test.ts :: requires stored capability-scoped resource grants and detects changed snapshots [JR-U1]",
+    "notes": "Master section 19; full section read, catalogue fragment interpreted in context. SOURCE_ONLY security invariant: reviewed container allowlist and host brokers implement the boundary. The named unit assertions are narrower than an adversarial actual-runtime proof of every personal filesystem/credential path. No full section or container-escape certification."
+  },
+  {
+    "id": "JOB-0021",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/policy.ts; apps/worker/src/capability-health.ts; apps/api/src/worker.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts :: never exposes host paths, secrets, Docker sockets or privileged execution [JR-U1]; apps/worker/src/security.test.ts :: requires stored capability-scoped resource grants and detects changed snapshots [JR-U1]",
+    "notes": "Master section 19; full section read, catalogue fragment interpreted in context. SOURCE_ONLY security invariant: reviewed container allowlist and host brokers implement the boundary. The named unit assertions are narrower than an adversarial actual-runtime proof of every personal filesystem/credential path. No full section or container-escape certification."
+  },
+  {
+    "id": "JOB-0023",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/policy.ts; apps/worker/src/capability-health.ts; apps/api/src/worker.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts :: never exposes host paths, secrets, Docker sockets or privileged execution [JR-U1]; apps/worker/src/security.test.ts :: requires stored capability-scoped resource grants and detects changed snapshots [JR-U1]",
+    "notes": "Master section 19; full section read, catalogue fragment interpreted in context. SOURCE_ONLY security invariant: reviewed container allowlist and host brokers implement the boundary. The named unit assertions are narrower than an adversarial actual-runtime proof of every personal filesystem/credential path. No full section or container-escape certification."
+  },
+  {
+    "id": "OBS-0001",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/inference.ts; apps/worker/src/research-usage.ts; packages/resource-broker/src/index.ts; apps/api/src/jobs.ts; apps/api/src/app.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/state.test.ts :: aborts held inference at the advertised 30s wall limit and durably reports TIMED_OUT, not provider failure [JR-U1]; apps/worker/src/security.test.ts :: reports startup blockers without leaking diagnostic content or weakening readiness [JR-U1]; apps/api/test/pause-budget.integration.test.ts :: requires explicit existing-job confirmation without reopening a globally paused Worker [JR-D1]",
+    "notes": "Master section 29; full section read, catalogue fragment interpreted in context. PARTIAL_TRACE: structured SQLite/DB events, job correlation, sanitized errors, inference receipts and redacted HTTP logging exist. Exact tests cover sanitized status/timeout codes and actor/attempt audit metadata only. Remaining acceptance: representative end-to-end secret/input non-leak assertions across resource, research, inference, command, cleanup and API sinks; no requirement to reproduce the illustrative timeline verbatim."
+  },
+  {
+    "id": "OBS-0004",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/operations.ts; apps/api/src/capacity-telemetry.ts; apps/api/src/problem-reports.ts; apps/worker/src/readiness.ts; apps/worker/src/state.ts",
+    "tests": "apps/api/test/capacity-telemetry.integration.test.ts; apps/api/test/operations.integration.test.ts; docs/OPERATIONS-STATUS.md :: parent-attributed 44/44 on 2026-10-06 13:31:02 CEST, bounded sampler/reporting only",
+    "notes": "Master section 35; full section read, catalogue fragment interpreted in context. CODE_GAP JR-01: cloud dispatch latency, offer acceptance rate, grouped failure causes and refund rate have no current reporting calculation/DTO. Job/worker snapshots, active runtime samples, ledger amounts, inference cost and report listings exist; queue median is not dispatch latency and accepted counts are not an acceptance rate. No dedicated local sandbox-creation-failure metric found. Exact implementation/acceptance limits in JOB-REVIEW."
+  },
+  {
+    "id": "JOB-0026",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/api/src/background.ts; apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/policy.ts; apps/worker/src/readiness.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/state.test.ts :: recovers an expired unfinished attempt as timeout without executing it again [JR-U1]; packages/openclaw-adapter/src/security.test.ts :: awaits acceptance callback and cleans up without execution through docker/adapter [JR-U1]; apps/api/test/containment.integration.test.ts :: retains a terminal reservation recovery marker across containment and background retries [JR-D1]",
+    "notes": "Master section 36; full section read, catalogue fragment interpreted in context. PARTIAL_ACCEPTANCE: bounded heartbeat recovery, fail-closed sandbox/resource policy, sanitized error, cleanup and payment release/manual financial quarantine exist. Mocked supervisor and real DB tests are separate; not a joined crash/disconnect/missing-secret/network-failure runtime matrix. Undelivered work is not assumed resumable."
+  },
+  {
+    "id": "JOB-0027",
+    "status": "TESTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/api/src/background.ts; apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/policy.ts; apps/worker/src/readiness.ts",
+    "tests": "apps/worker/src/runtime.test.ts :: recovers an expired unfinished attempt as timeout without executing it again [JR-U1]",
+    "notes": "Master section 36; full section read, catalogue fragment interpreted in context. ATOMIC_TEST: expired unfinished durable attempt is marked TIMED_OUT without adapter.execute; no assumption of resumable live result. Mock Docker/transport and real SQLite only; pending already-finalized result retries are a distinct supported case."
+  },
+  {
+    "id": "JOB-0028",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/api/src/background.ts; apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/policy.ts; apps/worker/src/readiness.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/state.test.ts :: recovers an expired unfinished attempt as timeout without executing it again [JR-U1]; packages/openclaw-adapter/src/security.test.ts :: awaits acceptance callback and cleans up without execution through docker/adapter [JR-U1]; apps/api/test/containment.integration.test.ts :: retains a terminal reservation recovery marker across containment and background retries [JR-D1]",
+    "notes": "Master section 36; full section read, catalogue fragment interpreted in context. PARTIAL_ACCEPTANCE: bounded heartbeat recovery, fail-closed sandbox/resource policy, sanitized error, cleanup and payment release/manual financial quarantine exist. Mocked supervisor and real DB tests are separate; not a joined crash/disconnect/missing-secret/network-failure runtime matrix. Undelivered work is not assumed resumable."
+  },
+  {
+    "id": "JOB-0029",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/api/src/background.ts; apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/policy.ts; apps/worker/src/readiness.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/state.test.ts :: recovers an expired unfinished attempt as timeout without executing it again [JR-U1]; packages/openclaw-adapter/src/security.test.ts :: awaits acceptance callback and cleans up without execution through docker/adapter [JR-U1]; apps/api/test/containment.integration.test.ts :: retains a terminal reservation recovery marker across containment and background retries [JR-D1]",
+    "notes": "Master section 36; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: catalogue fragment 'This invariant is critical' attaches to Sandbox unavailable = job does not run in full Master36, not an independent undefined feature. Adapter/runtime fail closed on creation/readiness failure with no host execution branch. Unit construction/prestart rejection is narrower than all sandbox-init failures."
+  },
+  {
+    "id": "JOB-0030",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/api/src/background.ts; apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/policy.ts; apps/worker/src/readiness.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/state.test.ts :: recovers an expired unfinished attempt as timeout without executing it again [JR-U1]; packages/openclaw-adapter/src/security.test.ts :: awaits acceptance callback and cleans up without execution through docker/adapter [JR-U1]; apps/api/test/containment.integration.test.ts :: retains a terminal reservation recovery marker across containment and background retries [JR-D1]",
+    "notes": "Master section 36; full section read, catalogue fragment interpreted in context. PARTIAL_ACCEPTANCE: bounded heartbeat recovery, fail-closed sandbox/resource policy, sanitized error, cleanup and payment release/manual financial quarantine exist. Mocked supervisor and real DB tests are separate; not a joined crash/disconnect/missing-secret/network-failure runtime matrix. Undelivered work is not assumed resumable."
+  },
+  {
+    "id": "JOB-0033",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/index.ts; packages/openclaw-adapter/src/files.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts :: collects only regular files below the result root and rejects links; never exposes host paths, secrets, Docker sockets or privileged execution [JR-U1]",
+    "notes": "Master section 60; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: unique attempt directories, read-only input/sanitized config mounts, private host metadata and output-only collection exist. Unit mount construction is not a fresh container write-canary run. Cleanup uses OS filesystem deletion, not a cryptographic SSD-erasure claim."
+  },
+  {
+    "id": "JOB-0034",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/index.ts; packages/openclaw-adapter/src/files.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts :: collects only regular files below the result root and rejects links; does not trust MIME, base64 length, path aliases or size claims [JR-U1]",
+    "notes": "Master section 60; full section read, catalogue fragment interpreted in context. ATOMIC_TEST: actual temporary filesystem collection returns only regular files inside result root, rejects symlinks and hardlinks to private sibling, with path/MIME/size validation. This proves collector boundary, not whole-host/container isolation."
+  },
+  {
+    "id": "JOB-0035",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/index.ts; packages/openclaw-adapter/src/files.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts :: collects only regular files below the result root and rejects links; never exposes host paths, secrets, Docker sockets or privileged execution [JR-U1]",
+    "notes": "Master section 60; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: unique attempt directories, read-only input/sanitized config mounts, private host metadata and output-only collection exist. Unit mount construction is not a fresh container write-canary run. Cleanup uses OS filesystem deletion, not a cryptographic SSD-erasure claim."
+  },
+  {
+    "id": "JOB-0037",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/index.ts; packages/openclaw-adapter/src/files.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/worker/src/runtime.ts :: finally cleanup source; docs/WORKER-STATUS.md :: cleanup limitations",
+    "notes": "Master section 60; full section read, catalogue fragment interpreted in context. SOURCE_ONLY documentation/code truthfulness: temporary directory removal is ordinary OS unlink/removal and retention, not cryptographic SSD erasure. No new wiping algorithm is required or claimed."
+  },
+  {
+    "id": "JOB-0043",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/api/src/background.ts; apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/openclaw-adapter/src/docker.ts; packages/contracts/src/payment-policy.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/state.test.ts :: cancels while paused with no resume or later timeout; keeps manual cancellation distinct and does not change it to timeout during cleanup [JR-U1]; apps/api/test/pause-budget.integration.test.ts :: snapshots configured policy on purchase and signs that exact value without buyer overrides [JR-D1]",
+    "notes": "Master section 69; full section read, catalogue fragment interpreted in context. SOURCE_ONLY combined cancellation/payment policy: buyer cancellation before start releases; seller/admin cancellation terminates undelivered execution and releases unless financial invariant requires manual hold. Validated delivery alone settles. Tests here verify paused local cancellation and prestart purchase cancellation, not every post-start cancellation race with real Docker and ledger together."
+  },
+  {
+    "id": "JOB-0045",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; apps/worker/src/http.ts; apps/worker/src/file-transfer.ts; packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/process.ts; packages/openclaw-adapter/src/timing.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/state.test.ts :: aborts held inference at the advertised 30s wall limit; does not start Docker when the budget expires during payload download; checks the absolute deadline before accepting a result [JR-U1]; packages/openclaw-adapter/src/security.test.ts :: removes the container without waiting for a stuck host frame; falls back only to the owned child PID when process-group signaling is denied [JR-U1]",
+    "notes": "Master section 70; full section read, catalogue fragment interpreted in context. PARTIAL_ACCEPTANCE, not an unbounded-runtime code claim: Docker startup calls have 20s bounds, file streams 60s, active deadline spans preparation/execution/upload, immutable cumulative pause budget bounds wall time; owned process groups and container cleanup exist. Missing named joined startup/upload stall and descendant cleanup assertions on the final promoted image. No demand for literal startupTimeout/uploadTimeout field names when equivalent bounds exist."
+  },
+  {
+    "id": "JOB-0046",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; apps/worker/src/http.ts; apps/worker/src/file-transfer.ts; packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/process.ts; packages/openclaw-adapter/src/timing.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/state.test.ts :: aborts held inference at the advertised 30s wall limit; does not start Docker when the budget expires during payload download; checks the absolute deadline before accepting a result [JR-U1]; packages/openclaw-adapter/src/security.test.ts :: removes the container without waiting for a stuck host frame; falls back only to the owned child PID when process-group signaling is denied [JR-U1]",
+    "notes": "Master section 70; full section read, catalogue fragment interpreted in context. PARTIAL_ACCEPTANCE, not an unbounded-runtime code claim: Docker startup calls have 20s bounds, file streams 60s, active deadline spans preparation/execution/upload, immutable cumulative pause budget bounds wall time; owned process groups and container cleanup exist. Missing named joined startup/upload stall and descendant cleanup assertions on the final promoted image. No demand for literal startupTimeout/uploadTimeout field names when equivalent bounds exist."
+  },
+  {
+    "id": "JOB-0049",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/billing.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts",
+    "tests": "docs/JOB-REVIEW.md :: JR-A01 test search; no named global dispatch regression found",
+    "notes": "Master section 78; full section read, catalogue fragment interpreted in context. ACCEPTANCE_GAP JR-A01: admin dispatch flag is persisted/audited and checked at purchase, offer and acceptance. Repository test search finds no assertion invoking the global toggle and proving those paths plus restoration. Explicit Master78 test requirement remains open; not evidence of missing switch implementation."
+  },
+  {
+    "id": "JOB-0051",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/capability-health.ts; apps/worker/src/readiness.ts; apps/worker/src/inference.ts; apps/worker/src/resource-config.ts; apps/worker/src/runtime.ts; apps/api/src/worker.ts",
+    "tests": "apps/worker/src/security.test.ts :: requires stored capability-scoped resource grants and detects changed snapshots; reports startup blockers without leaking diagnostic content or weakening readiness [JR-U1]; apps/worker/src/runtime.test.ts :: keeps the pause bound when readiness fails and refuses thaw after a late health check [JR-U1]",
+    "notes": "Master section 116; full section read, catalogue fragment interpreted in context. SOURCE_ONLY lightweight readiness family: signed immutable manifest/consent, dedicated inference, resource/service checks, cached proofs and fail-closed preaccept checks exist. Sampled tests do not enumerate every declared missing secret/service/resource through purchase to requeue/release. Such failure-matrix trace is acceptance work, not a newly absent readiness subsystem."
+  },
+  {
+    "id": "JOB-0052",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/capability-health.ts; apps/worker/src/readiness.ts; apps/worker/src/inference.ts; apps/worker/src/resource-config.ts; apps/worker/src/runtime.ts; apps/api/src/worker.ts",
+    "tests": "apps/worker/src/security.test.ts :: requires stored capability-scoped resource grants and detects changed snapshots; reports startup blockers without leaking diagnostic content or weakening readiness [JR-U1]; apps/worker/src/runtime.test.ts :: keeps the pause bound when readiness fails and refuses thaw after a late health check [JR-U1]",
+    "notes": "Master section 116; full section read, catalogue fragment interpreted in context. SOURCE_ONLY lightweight readiness family: signed immutable manifest/consent, dedicated inference, resource/service checks, cached proofs and fail-closed preaccept checks exist. Sampled tests do not enumerate every declared missing secret/service/resource through purchase to requeue/release. Such failure-matrix trace is acceptance work, not a newly absent readiness subsystem."
+  },
+  {
+    "id": "JOB-0053",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/capability-health.ts; apps/worker/src/readiness.ts; apps/worker/src/inference.ts; apps/worker/src/resource-config.ts; apps/worker/src/runtime.ts; apps/api/src/worker.ts",
+    "tests": "apps/worker/src/security.test.ts :: requires stored capability-scoped resource grants and detects changed snapshots; reports startup blockers without leaking diagnostic content or weakening readiness [JR-U1]; apps/worker/src/runtime.test.ts :: keeps the pause bound when readiness fails and refuses thaw after a late health check [JR-U1]",
+    "notes": "Master section 116; full section read, catalogue fragment interpreted in context. SOURCE_ONLY lightweight readiness family: signed immutable manifest/consent, dedicated inference, resource/service checks, cached proofs and fail-closed preaccept checks exist. Sampled tests do not enumerate every declared missing secret/service/resource through purchase to requeue/release. Such failure-matrix trace is acceptance work, not a newly absent readiness subsystem."
+  },
+  {
+    "id": "JOB-0054",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/capability-health.ts; apps/worker/src/readiness.ts; apps/worker/src/inference.ts; apps/worker/src/resource-config.ts; apps/worker/src/runtime.ts; apps/api/src/worker.ts",
+    "tests": "apps/worker/src/security.test.ts :: requires stored capability-scoped resource grants and detects changed snapshots; reports startup blockers without leaking diagnostic content or weakening readiness [JR-U1]; apps/worker/src/runtime.test.ts :: keeps the pause bound when readiness fails and refuses thaw after a late health check [JR-U1]",
+    "notes": "Master section 116; full section read, catalogue fragment interpreted in context. SOURCE_ONLY lightweight readiness family: signed immutable manifest/consent, dedicated inference, resource/service checks, cached proofs and fail-closed preaccept checks exist. Sampled tests do not enumerate every declared missing secret/service/resource through purchase to requeue/release. Such failure-matrix trace is acceptance work, not a newly absent readiness subsystem."
+  },
+  {
+    "id": "JOB-0055",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/capability-health.ts; apps/worker/src/readiness.ts; apps/worker/src/inference.ts; apps/worker/src/resource-config.ts; apps/worker/src/runtime.ts; apps/api/src/worker.ts",
+    "tests": "apps/worker/src/security.test.ts :: requires stored capability-scoped resource grants and detects changed snapshots; reports startup blockers without leaking diagnostic content or weakening readiness [JR-U1]; apps/worker/src/runtime.test.ts :: keeps the pause bound when readiness fails and refuses thaw after a late health check [JR-U1]",
+    "notes": "Master section 116; full section read, catalogue fragment interpreted in context. PARTIAL_ACCEPTANCE: local readiness rejects before cloud acceptance/execution, offer expiry recovers/requeues with existing reservation; authoritative API also rejects stale validation. Exact missing-secret/service-health rejection to DB requeue/release joined assertion not run. Existing component code is not missing."
+  },
+  {
+    "id": "JOB-0056",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/jobs.tsx; apps/web/src/components/job-result.tsx; apps/web/src/components/job-inputs.tsx; apps/api/src/jobs.ts; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/api/test/pause-budget.integration.test.ts :: keeps the historical input contract after publishing a different current version [JR-D1]; apps/web/e2e/results-ui.spec.ts :: source inspection only in this batch",
+    "notes": "Master section 127; full section read, catalogue fragment interpreted in context. CODE_GAP JR-03: My Jobs/detail render capability, pinned version, dates, price, state, inputs/results/files/review/report, but no seller identity is displayed. Current JobDTO carries sellerId for ownership, not a rendered seller name. Run again links to current capability review/quote, not an old-price charge. Favorite remains available on capability page. No claim of missing history subsystem."
+  },
+  {
+    "id": "JOB-0057",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/jobs.tsx; apps/web/src/components/job-result.tsx; apps/web/src/components/job-inputs.tsx; apps/api/src/jobs.ts; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/api/test/pause-budget.integration.test.ts :: keeps the historical input contract after publishing a different current version [JR-D1]; apps/web/e2e/results-ui.spec.ts :: source inspection only in this batch",
+    "notes": "Master section 127; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: authenticated My Jobs exposes history list and detail with filtering, result and original pinned contracts. Missing seller display belongs to aggregate JOB-0056/JR-03, not absence of the required history view."
+  },
+  {
+    "id": "JOB-0058",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/jobs.tsx; apps/web/src/components/job-result.tsx; apps/web/src/components/job-inputs.tsx; apps/api/src/jobs.ts; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/api/test/pause-budget.integration.test.ts :: keeps the historical input contract after publishing a different current version [JR-D1]; apps/web/e2e/results-ui.spec.ts :: source inspection only in this batch",
+    "notes": "Master section 127; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: Run again navigates to current capability review/quote and purchase endpoint, creates a new idempotency key and requires explicit current price/version/timing consent. No historical job-repurchase endpoint charges silently. Actual price/version-change -> click -> second DB purchase test not identified/run here."
+  },
+  {
+    "id": "JOB-0062",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/agent.ts; packages/marketplace-agent/src/orchestration.ts; apps/api/src/agent.ts; apps/web/src/components/agent.tsx",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: drafting, malformed approval and foreign ownership cannot purchase; blocks approval tampering after consent [JR-U1]; packages/marketplace-agent/test/agent.test.ts :: consent boundaries [JR-U1]",
+    "notes": "Master section 140; full section read, catalogue fragment interpreted in context. ATOMIC_TEST conditional Mode A: discovery/drafting cannot execute purchases; explicit complete-plan approval is required in Mode B. The full Master140 context prevents misreading this as per-step reconfirmation for an already-approved plan. Mock marketplace/executor boundary only."
+  },
+  {
+    "id": "JOB-0063",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/marketplace-agent/src/agent.ts; packages/marketplace-agent/src/orchestration.ts; apps/api/src/agent.ts; apps/web/src/components/agent.tsx",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts; packages/marketplace-agent/test/execution-security.test.ts :: drafting, malformed approval and foreign ownership cannot purchase; executes a three-job branched DAG at exactly the approved budget with one approval [JR-U1]; packages/marketplace-agent/test/agent.test.ts [JR-U1]",
+    "notes": "Master section 140; full section read, catalogue fragment interpreted in context. MVP_SCOPE: DISCOVERY/recommend-only cannot buy and approved-plan mode requires explicit approval. JOB-0062 is conditional on Mode A, not a requirement to reprompt before every approved-plan step. Delegated-budget Mode C is explicitly later/advanced. Preferred UI mode is source-reviewed, not separately browser-asserted here."
+  },
+  {
+    "id": "JOB-0065",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/marketplace-agent/src/orchestration.ts; apps/api/src/agent.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts; packages/marketplace-agent/test/execution-security.test.ts :: uses CAS to prevent concurrent first ticks from dispatching duplicate jobs; binds purchases to the current persisted revision and propagates a stale-revision rejection without buying [JR-U1]; apps/api/test/protocol.integration.test.ts :: refuses an old plan revision at the locked purchase boundary without reserving funds (source-reviewed; not rerun in this batch)",
+    "notes": "Master section 141; full section read, catalogue fragment interpreted in context. PARTIAL_TRACE: per-plan lock/exact revision plus beforeReserve sums prior committed purchases against approved ceiling; allowed per-job reservation strategy. Unit CAS and exact-budget branching pass, but a simultaneous distinct-step PostgreSQL aggregate-ceiling assertion is not part of this run. Do not present mocked executor concurrency as transactional money proof."
+  },
+  {
+    "id": "JOB-0073",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/app.ts; apps/api/src/jobs.ts; apps/api/src/webhooks.ts; apps/api/src/assets.ts",
+    "tests": "apps/api/test/operations-policy.integration.test.ts :: reuses buyer v1 scope and historical response contracts; queues a single owned signed webhook test and exposes terminal delivery failure (source-reviewed only)",
+    "notes": "Master section 336; full section read, catalogue fragment interpreted in context. MVP_SCOPE: scoped programmable purchase/status/assets and public completed/failed webhooks exist. Illustrative /v1/capabilities/video-ad/jobs spelling and MP4 example are not mandatory aliases; implementation uses versioned jobs endpoint with capabilityId. Joined API purchase -> real public webhook receiver -> download is not rerun here."
+  },
+  {
+    "id": "JOB-0074",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; packages/policy-engine/src/index.ts",
+    "tests": "packages/policy-engine/src/policy.test.ts :: never turns a sleeping or insecure worker online because its schedule is open [JR-U1]; apps/api/test/scheduling.integration.test.ts :: admits only the real ready device count even when configured concurrency is higher [JR-D1]",
+    "notes": "Master section 338; full section read, catalogue fragment interpreted in context. PARTIAL_TRACE: publication/access, fresh device/binding, manifest, inference proof, sandbox/security/pause/schedule and capacity gates exist. Named tests cover availability predicate and real-device slot bound, not all publication/visibility/health combinations across UI/quote/acceptance."
+  },
+  {
+    "id": "JOB-0080",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/api/src/background.ts; packages/policy-engine/src/index.ts; apps/api/src/job-containment.ts",
+    "tests": "packages/policy-engine/src/policy.test.ts :: never turns a sleeping or insecure worker online because its schedule is open [JR-U1]; apps/api/test/containment.integration.test.ts :: persists capability/worker/seller/buyer containment while only releasing the healthy reservation [JR-D1]",
+    "notes": "Master section 341; full section read, catalogue fragment interpreted in context. SOURCE_ONLY whole semantics: manual pause blocks new work without cancelling running work; security containment revokes/cancels separately. Exact tests cover predicate and security branch, not all manual-pause running-continuation paths."
+  },
+  {
+    "id": "JOB-0082",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/selling.tsx; apps/api/src/catalog.ts; apps/api/src/worker.ts; apps/api/src/billing.ts; apps/worker/src/index.ts",
+    "tests": "apps/worker/src/state.test.ts :: persists local pause, blocks replay, and prevents remote resume overriding local pause [JR-U1]; apps/web/e2e/seller-telemetry-ui.spec.ts (source-reviewed)",
+    "notes": "Master section 342; full section read, catalogue fragment interpreted in context. PARTIAL_TRACE: per-capability pause/resume, Pause all new jobs, CLI and platform toggle are implemented. Dashboard current per-capability running counts remain JR-04; actual global-toggle regression remains JR-A01. No combined all-controls acceptance claimed."
+  },
+  {
+    "id": "JOB-0085",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/api/src/background.ts; apps/worker/src/runtime.ts; apps/worker/src/state.ts",
+    "tests": "apps/worker/src/runtime.test.ts :: recovers an expired unfinished attempt as timeout without executing it again [JR-U1]; apps/api/test/background.integration.test.ts :: source-reviewed prior bounded-recovery receipt, not rerun here",
+    "notes": "Master section 352; full section read, catalogue fragment interpreted in context. PARTIAL_ACCEPTANCE: bounded reconnect grace, durable results/outbox, expiry release and no delivery before validation exist. Lost live sandbox attachment fails closed instead of claiming resume; temporary control-plane outage can reconcile safe persisted results. Full network partition -> local process -> DB release matrix is not this batch."
+  },
+  {
+    "id": "OBS-0007",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/selling.tsx; apps/web/src/lib/worker-health.ts; apps/api/src/worker.ts; apps/api/src/worker-health.ts",
+    "tests": "apps/web/tests/worker-health.test.ts :: never infers health from installed versions or the sandbox flag alone; gives explicit revocation, version policy and pause precedence over recorded readiness; preserves internal reason codes without inventing missing telemetry [JR-U2]",
+    "notes": "Master section 369; full section read, catalogue fragment interpreted in context. SOURCE_ONLY dedicated /selling/worker Health view exists with recorded readiness, checks, versions, last contact and transitions. READY/SECURITY_BLOCKED/UNKNOWN are equivalent explicit states, not a failure to use recommended spelling HEALTHY/SECURITY_WARNING. Unit tests prove presentation precedence, not a live connectivity dashboard scenario."
+  },
+  {
+    "id": "OBS-0008",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/selling.tsx; apps/web/src/lib/worker-health.ts; apps/api/src/worker.ts; apps/api/src/worker-health.ts",
+    "tests": "apps/web/tests/worker-health.test.ts :: never infers health from installed versions or the sandbox flag alone; gives explicit revocation, version policy and pause precedence over recorded readiness; preserves internal reason codes without inventing missing telemetry [JR-U2]",
+    "notes": "Master section 369; full section read, catalogue fragment interpreted in context. SOURCE_ONLY dedicated /selling/worker Health view exists with recorded readiness, checks, versions, last contact and transitions. READY/SECURITY_BLOCKED/UNKNOWN are equivalent explicit states, not a failure to use recommended spelling HEALTHY/SECURITY_WARNING. Unit tests prove presentation precedence, not a live connectivity dashboard scenario."
+  },
+  {
+    "id": "OBS-0009",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/selling.tsx; apps/web/src/lib/worker-health.ts; apps/api/src/worker.ts; apps/api/src/worker-health.ts",
+    "tests": "apps/web/tests/worker-health.test.ts :: never infers health from installed versions or the sandbox flag alone; gives explicit revocation, version policy and pause precedence over recorded readiness; preserves internal reason codes without inventing missing telemetry [JR-U2]",
+    "notes": "Master section 369; full section read, catalogue fragment interpreted in context. SOURCE_ONLY purpose clause: WorkerHealth exposes readiness/diagnostics rather than just usage counters; unknown state stays UNKNOWN and installed versions alone cannot imply ready. This is UX intent backed by source, not a separate invented feature."
+  },
+  {
+    "id": "OBS-0010",
+    "status": "TESTED",
+    "implementation": "apps/web/src/components/selling.tsx; apps/web/src/lib/worker-health.ts; apps/api/src/worker.ts; apps/api/src/worker-health.ts",
+    "tests": "apps/web/tests/worker-health.test.ts :: never infers health from installed versions or the sandbox flag alone; gives explicit revocation, version policy and pause precedence over recorded readiness; preserves internal reason codes without inventing missing telemetry [JR-U2]",
+    "notes": "Master section 369; full section read, catalogue fragment interpreted in context. ATOMIC_TEST presentation state precedence: recorded READY/OFFLINE, unknown telemetry, security/revocation and pause states are explicit. Tests prove no invented healthy state and correct precedence. Master's top-level labels are recommended; exact spellings need not match. Not actual heartbeat/network runtime proof."
+  },
+  {
+    "id": "JOB-0091",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/operations.ts; apps/web/src/components/operations.tsx; apps/web/src/components/selling.tsx",
+    "tests": "apps/api/test/operations.integration.test.ts; docs/OPERATIONS-STATUS.md :: parent-attributed 17 existing operations DB cases in 44/44 on 2026-10-06 13:31:02 CEST",
+    "notes": "Master section 375; full section read, catalogue fragment interpreted in context. CODE_GAP JR-02: failureRate counts all FAILED/TIMED_OUT outcomes, including no startedAt pre-execution waiting expiry. Cancellations are separate, but meaningful execution vs prestart/platform failure is not. Counts/last success/failure/active runtime and 1/7/30/90-day choices exist; do not infer correct failure semantics from aggregate suite pass."
+  },
+  {
+    "id": "JOB-0092",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/operations.ts; apps/web/src/components/operations.tsx; apps/web/src/components/selling.tsx",
+    "tests": "apps/api/test/operations.integration.test.ts; docs/OPERATIONS-STATUS.md :: parent-attributed 17 existing operations DB cases in 44/44 on 2026-10-06 13:31:02 CEST",
+    "notes": "Master section 375; full section read, catalogue fragment interpreted in context. MVP_SCOPE: 1/7/30/90-day choices exist; one default window is explicitly allowed in Master375. The 30-day default is not a missing mandatory 24-hour/7-day implementation. Reporting period validation has parent evidence, not a new auditor browser run."
+  },
+  {
+    "id": "JOB-0093",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/operations.ts; apps/web/src/components/operations.tsx; apps/web/src/components/selling.tsx",
+    "tests": "apps/api/test/operations.integration.test.ts; docs/OPERATIONS-STATUS.md :: parent-attributed 17 existing operations DB cases in 44/44 on 2026-10-06 13:31:02 CEST",
+    "notes": "Master section 375; full section read, catalogue fragment interpreted in context. CODE_GAP JR-02: jobs failedCount includes FAILED/TIMED_OUT without requiring startedAt or qualifying execution attempt; rate denominator is succeeded+failed. A waiting-only TIMED_OUT record therefore counts as execution failure. Cancelled count is separate, but prestart/meaningful-execution distinction is absent. Source counterexample, not a newly added DB reproducer."
+  },
+  {
+    "id": "OBS-0011",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/selling.tsx; apps/api/src/catalog.ts; apps/api/src/capacity-telemetry.ts; apps/web/src/components/availability-analytics.tsx",
+    "tests": "apps/web/e2e/seller-telemetry-ui.spec.ts; docs/JOB-REVIEW.md :: JR-04 source finding; no live per-capability metrics assertion",
+    "notes": "Master section 376; full section read, catalogue fragment interpreted in context. CODE_GAP JR-04: capability readiness/status/reason is separate from worker health, but current WorkerHealth capabilities list lacks last-success timestamp and current running/max plus queue/max. Catalog computes runningJobs/queueDepth but omits them from seller DTO; historical observed-duration analytics is not current load."
+  },
+  {
+    "id": "JOB-0095",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/state.ts; apps/web/src/components/selling.tsx; apps/api/src/worker.ts",
+    "tests": "apps/worker/src/state.test.ts :: persists local pause, blocks replay, and prevents remote resume overriding local pause [JR-U1]",
+    "notes": "Master section 382; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: durable local pause --all and one-confirmation web Pause all block new work; existing running work is separate. Immediate local-state test passes; actual web click -> pending offer denial is not newly run."
+  },
+  {
+    "id": "JOB-0096",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; apps/worker/src/index.ts; apps/api/src/worker.ts; apps/api/src/catalog.ts; apps/web/src/components/selling.tsx; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/state.test.ts :: persists local pause, blocks replay, and prevents remote resume overriding local pause; requires explicit one-job confirmation under global pause and leaves new acceptance blocked [JR-U1]; packages/marketplace-agent/test/orchestration.test.ts :: blocks PAUSED even with a contradictory canRunNow [JR-U1]",
+    "notes": "Master section 383; full section read, catalogue fragment interpreted in context. PARTIAL_ACCEPTANCE: durable local pause and cloud/device/capability gates, agent exclusion and queue wait limits exist. Full 9-step disconnected cloud/UI/REST/queue/reconnect sequence is not covered by these component assertions. Local safety does not wait for cloud success."
+  },
+  {
+    "id": "JOB-0101",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/selling.tsx; apps/api/src/worker.ts",
+    "tests": "apps/web/e2e/seller-telemetry-ui.spec.ts (source reviewed; no actual dispatch-toggle browser test in this batch)",
+    "notes": "Master section 385; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: one lightweight confirmation, running-work disclosure, durable cloud paused flag/command before acknowledgement, and dispatch/acceptance rechecks. No multi-step emergency confirmation. Joined web/real-worker acknowledgement acceptance not rerun."
+  },
+  {
+    "id": "JOB-0102",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/selling.tsx; apps/api/src/worker.ts",
+    "tests": "apps/web/e2e/seller-telemetry-ui.spec.ts (source reviewed; no actual dispatch-toggle browser test in this batch)",
+    "notes": "Master section 385; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: PauseAll uses a single lightweight confirmation, no multi-step wizard. It discloses that running jobs continue and queued/scheduled jobs wait. User experience source inspection, no global-toggle browser regression run."
+  },
+  {
+    "id": "JOB-0104",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/worker.ts; apps/worker/src/runtime.ts; apps/worker/src/state.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/state.test.ts :: persists local pause, blocks replay, and prevents remote resume overriding local pause [JR-U1]; apps/api/test/pause-budget.integration.test.ts :: requires explicit existing-job confirmation without reopening a globally paused Worker [JR-D1]",
+    "notes": "Master section 386; full section read, catalogue fragment interpreted in context. PARTIAL_ACCEPTANCE: cloud paused flag is not cleared by heartbeat; offers/acceptance check fresh flag and worker consumes commands before polling offers. Named tests do not reproduce web pause while physically offline followed by reconnect/no-first-offer race."
+  },
+  {
+    "id": "JOB-0110",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/api/src/background.ts; apps/api/src/catalog.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/api/test/pause-budget.integration.test.ts :: requires explicit existing-job confirmation without reopening a globally paused Worker [JR-D1]; packages/policy-engine/src/policy.test.ts :: distinguishes queued admission from immediate execution using the capacity bound [JR-U1]",
+    "notes": "Master section 389; full section read, catalogue fragment interpreted in context. SOURCE_ONLY whole queue policy: paused workers cannot take offers, paid queue remains bounded by waitDeadline then release; running work normally continues. DB assertion proves empty offers under global pause, not the complete pause-through-wait-expiry sequence."
+  },
+  {
+    "id": "JOB-0112",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/readiness.ts; apps/worker/src/runtime.ts; apps/worker/src/capability-health.ts; apps/api/src/catalog.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/state.test.ts :: keeps the pause bound when readiness fails and refuses thaw after a late health check; does not resume against changed sandbox consent; does not substitute a newly approved manifest [JR-U1]",
+    "notes": "Master section 390; full section read, catalogue fragment interpreted in context. SOURCE_ONLY full resume health path: readiness/consent/manifest/resources and blocking security are rechecked, not an unconditional ONLINE toggle. Named tests prove individual-job guarded thaw; no whole CLI/web resume-all outage matrix claimed."
+  },
+  {
+    "id": "JOB-0113",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/state.ts; apps/api/src/catalog.ts; apps/api/src/worker.ts; apps/web/src/components/selling.tsx",
+    "tests": "packages/policy-engine/src/policy.test.ts :: distinguishes queued admission from immediate execution using the capacity bound [JR-U1]; apps/worker/src/state.test.ts :: persists local pause, blocks replay, and prevents remote resume overriding local pause [JR-U1]",
+    "notes": "Master section 391; full section read, catalogue fragment interpreted in context. SOURCE_ONLY capability-specific CLI/web pause exists. Global pause still wins even when capability.paused is cleared; CLI refuses capability resume under global pause. Explicit one-already-running-job override in Master442 is not reopening the capability."
+  },
+  {
+    "id": "JOB-0114",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/state.ts; apps/api/src/catalog.ts; apps/api/src/worker.ts; apps/web/src/components/selling.tsx",
+    "tests": "packages/policy-engine/src/policy.test.ts :: distinguishes queued admission from immediate execution using the capacity bound [JR-U1]; apps/worker/src/state.test.ts :: persists local pause, blocks replay, and prevents remote resume overriding local pause [JR-U1]",
+    "notes": "Master section 391; full section read, catalogue fragment interpreted in context. SOURCE_ONLY capability-specific CLI/web pause exists. Global pause still wins even when capability.paused is cleared; CLI refuses capability resume under global pause. Explicit one-already-running-job override in Master442 is not reopening the capability."
+  },
+  {
+    "id": "JOB-0115",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/api/src/worker.ts; apps/web/src/components/selling.tsx",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/state.test.ts :: durable local pause/reopen, security block and global-pause override cases [JR-U1]; apps/api/test/pause-budget.integration.test.ts :: requires explicit existing-job confirmation without reopening a globally paused Worker [JR-D1]",
+    "notes": "Master section 394; full section read, catalogue fragment interpreted in context. PARTIAL_ACCEPTANCE: exact tested pieces are persistence across SQLite reopen, no remote clearing of local pause, agent PAUSED rejection, guarded per-job resume and no offers under cloud pause. Still no named actual computer reboot, offline web-pause/reconnect race, all-capability control sequence or live web disabled-Run plus real queue test. Required acceptance is not TODO=>absent code."
+  },
+  {
+    "id": "JOB-0116",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/api/src/worker.ts; apps/web/src/components/selling.tsx",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/state.test.ts :: durable local pause/reopen, security block and global-pause override cases [JR-U1]; apps/api/test/pause-budget.integration.test.ts :: requires explicit existing-job confirmation without reopening a globally paused Worker [JR-D1]",
+    "notes": "Master section 394; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: fresh global/local/capability pause gates offer dequeue and ACCEPTED; paused predicate forbids canQueue. Current named DB global-pause test has an already-paused active job, so its empty offers assertion is not alone proof of a separately queued job remaining unstarted. Add exact queued fixture acceptance, not missing dispatch code."
+  },
+  {
+    "id": "JOB-0117",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/api/src/worker.ts; apps/web/src/components/selling.tsx",
+    "tests": "apps/api/test/pause-budget.integration.test.ts :: cannot use global-pause confirmation to bypass a security revocation [JR-D1]; apps/worker/src/runtime.test.ts :: never lets the confirmed per-job override bypass a security block [JR-U1]; apps/worker/src/state.test.ts :: persists local pause, blocks replay, and prevents remote resume overriding local pause [JR-U1]",
+    "notes": "Master section 394; full section read, catalogue fragment interpreted in context. ATOMIC_TEST: local SECURITY block refuses resume and explicit per-job override cannot bypass revoked worker policy; no thaw/resume command on denial. Real DB plus mocked local-runtime assertions, not every anomaly detector."
+  },
+  {
+    "id": "JOB-0118",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/background.ts; apps/api/src/worker.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/api/test/scheduling.integration.test.ts; packages/policy-engine/src/policy.test.ts [JR-D1/JR-U1 adjacent only]",
+    "notes": "Master section 407; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: schedule handling branches only QUEUED/SCHEDULED and new acceptance; already RUNNING work is not killed solely for closing the window. Adjacent schedule/FIFO tests do not explicitly keep a real active render running across close."
+  },
+  {
+    "id": "JOB-0120",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/background.ts; apps/api/src/worker.ts; apps/web/src/components/selling.tsx; apps/web/src/components/jobs.tsx",
+    "tests": "packages/policy-engine/src/policy.test.ts :: keeps overnight windows on the seller wall clock [JR-U1]; apps/api/test/scheduling.integration.test.ts :: preserves an already-full execution queue, then fills its freed slot with the oldest due reservation [JR-D1]",
+    "notes": "Master section 408; full section read, catalogue fragment interpreted in context. MVP_SCOPE: Master408 first describes an alternative recommendation, then explicitly recommends starts only inside allowed windows for MVP. Current deterministic policy uses that stricter option: running continues, waiting rolls to next window or releases at wait bound. Optional later seller-selectable alternatives are not mandatory. Full window-close boundary acceptance remains source-only."
+  },
+  {
+    "id": "JOB-0121",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/background.ts; apps/api/src/worker.ts; apps/web/src/components/selling.tsx; apps/web/src/components/jobs.tsx",
+    "tests": "packages/policy-engine/src/policy.test.ts :: keeps overnight windows on the seller wall clock [JR-U1]; apps/api/test/scheduling.integration.test.ts :: preserves an already-full execution queue, then fills its freed slot with the oldest due reservation [JR-D1]",
+    "notes": "Master section 408; full section read, catalogue fragment interpreted in context. MVP_SCOPE correction: first recommendation in full Master408 is followed by an explicit MVP recommendation that jobs start only within allowed windows. Current strict deterministic policy is permitted; it is not mandatory to also let queued jobs start outside schedule."
+  },
+  {
+    "id": "JOB-0122",
+    "status": "DEFERRED",
+    "implementation": "apps/api/src/background.ts; apps/api/src/worker.ts; apps/web/src/components/selling.tsx; apps/web/src/components/jobs.tsx",
+    "tests": "packages/policy-engine/src/policy.test.ts :: keeps overnight windows on the seller wall clock [JR-U1]; apps/api/test/scheduling.integration.test.ts :: preserves an already-full execution queue, then fills its freed slot with the oldest due reservation [JR-D1]",
+    "notes": "Master section 408; full section read, catalogue fragment interpreted in context. FUTURE_EXPLICIT Master408: optional seller-selectable queue-policy alternative is described as 'later'. Current MVP already implements the stricter no-start-outside-window policy. Only additional selectable policy modes are deferred, not the required deterministic queue policy."
+  },
+  {
+    "id": "JOB-0124",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/background.ts; apps/api/src/worker.ts; apps/web/src/components/selling.tsx; apps/web/src/components/jobs.tsx",
+    "tests": "packages/policy-engine/src/policy.test.ts :: keeps overnight windows on the seller wall clock [JR-U1]; apps/api/test/scheduling.integration.test.ts :: preserves an already-full execution queue, then fills its freed slot with the oldest due reservation [JR-D1]",
+    "notes": "Master section 408; full section read, catalogue fragment interpreted in context. SOURCE_ONLY required MVP policy chosen explicitly: new/queued starts are schedule-gated; already-running work continues, waiting rolls or expires/releases. Full Master408 resolves the earlier alternative recommendation. Exact close-time regression is still acceptance work."
+  },
+  {
+    "id": "JOB-0126",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts",
+    "tests": "apps/api/test/scheduling.integration.test.ts :: serializes the last future-window reservation, rechecks quotes, and treats later windows independently; gives due reservations the last slots before NOW and records one durable rejection without financial effects [JR-D1]",
+    "notes": "Master section 409; full section read, catalogue fragment interpreted in context. PARTIAL_TRACE: advisory capacity lock, authoritative schedule/quote recheck and reserve within one serializable transaction implemented. Exact run proves concurrent last slot and stale/full quote rejection with no extra reserve; does not force the clock across a schedule close between quote, reservation and acceptance."
+  },
+  {
+    "id": "JOB-0127",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts",
+    "tests": "apps/api/test/scheduling.integration.test.ts :: serializes the last future-window reservation, rechecks quotes, and treats later windows independently; gives due reservations the last slots before NOW and records one durable rejection without financial effects [JR-D1]",
+    "notes": "Master section 409; full section read, catalogue fragment interpreted in context. PARTIAL_ACCEPTANCE: authoritative schedule and capacity are checked in purchase transaction and again before acceptance. JR-D1 proves last-slot/stale full-window quote rejection without extra funds. A clock advanced across schedule closure inside the purchase/acceptance race is not a named assertion in this run, so no blanket transactional-boundary TESTED."
+  },
+  {
+    "id": "JOB-0128",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts",
+    "tests": "apps/api/test/scheduling.integration.test.ts :: serializes the last future-window reservation, rechecks quotes, and treats later windows independently; gives due reservations the last slots before NOW and records one durable rejection without financial effects [JR-D1]",
+    "notes": "Master section 409; full section read, catalogue fragment interpreted in context. PARTIAL_ACCEPTANCE: authoritative schedule and capacity are checked in purchase transaction and again before acceptance. JR-D1 proves last-slot/stale full-window quote rejection without extra funds. A clock advanced across schedule closure inside the purchase/acceptance race is not a named assertion in this run, so no blanket transactional-boundary TESTED."
+  },
+  {
+    "id": "JOB-0129",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/catalog.ts; apps/api/src/background.ts; apps/api/src/worker.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts :: retains the original reservation promise when seller availability moves and notifies before full cancellation release (source-reviewed; prior parent-attributed receipt, not rerun here)",
+    "notes": "Master section 411; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: live schedule updates persist without worker restart; admission/acceptance reads current schedule and queued jobs can reschedule with original promise/event retained; running job branch does not recheck schedule. No exact running-job-at-edit case in this run."
+  },
+  {
+    "id": "JOB-0131",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/policy-engine/src/index.ts; apps/api/src/catalog.ts; apps/worker/src/index.ts; apps/web/src/components/selling.tsx",
+    "tests": "packages/policy-engine/src/policy.test.ts :: honors full-day closure even for an overnight window; replaces overnight spillover when the day has an explicit narrow override [JR-U1]; apps/web/tests/schedules.test.ts [JR-U2]",
+    "notes": "Master section 412; full section read, catalogue fragment interpreted in context. MVP_SCOPE: weekly schedule plus manual pause/resume is explicitly sufficient; date overrides also implemented. Available-for-next-two-hours/unavailable-until-tomorrow convenience controls are explicitly optional beyond MVP, not required missing code."
+  },
+  {
+    "id": "JOB-0134",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/catalog.ts; apps/api/src/auth.ts; apps/worker/src/runtime.ts; packages/openclaw-adapter/src/policy.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts :: rejects permissions the runtime cannot enforce [JR-U1]; apps/worker/src/security.test.ts :: never accepts model-selected providers, arbitrary tools, redirects or budget overruns [JR-U1]",
+    "notes": "Master section 422; full section read, catalogue fragment interpreted in context. SOURCE_ONLY control-plane boundary: authenticated seller routes change schedule/concurrency/pause; sandbox has no such tool/API credential. Unit tool-denial assertions support but do not simulate a natural-language buyer instruction through all real control-plane routes."
+  },
+  {
+    "id": "JOB-0136",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/jobs.tsx; apps/web/src/components/selling.tsx; apps/api/src/jobs.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/web/tests/job-pause.test.ts :: offers pause only for a seller's running execution, never accepted work [JR-U2]; apps/web/e2e/job-pause-ui.spec.ts :: seller pause and resume disclose one cumulative purchased budget without resetting prior usage (source-reviewed; UI HTTP fixture)",
+    "notes": "Master section 426; full section read, catalogue fragment interpreted in context. SOURCE_ONLY graphical seller per-job Pause exists on running lists/detail, with no CLI requirement. Unit gating passed; browser test has mocked job/control HTTP and cannot independently establish browser -> real Worker suspension."
+  },
+  {
+    "id": "JOB-0137",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/jobs.tsx; apps/web/src/components/selling.tsx; apps/api/src/jobs.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/web/tests/job-pause.test.ts :: offers pause only for a seller's running execution, never accepted work [JR-U2]; apps/web/e2e/job-pause-ui.spec.ts :: seller pause and resume disclose one cumulative purchased budget without resetting prior usage (source-reviewed; UI HTTP fixture)",
+    "notes": "Master section 426; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: seller can request per-job Pause from graphical JobControls on web running jobs/detail, not only CLI. End-to-end real Worker acknowledgement is a separate acceptance clause."
+  },
+  {
+    "id": "JOB-0140",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/jobs.tsx; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/worker/src/runtime.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/runtime.test.ts :: charges pause-request draining time and never acknowledges PAUSED after active expiry [JR-U1]; apps/web/e2e/job-pause-ui.spec.ts :: explicit Pause requested until fixture acknowledgement (source-reviewed); docs/WORKER-STATUS.md :: attributed timing-v2 candidate receipt",
+    "notes": "Master section 428; full section read, catalogue fragment interpreted in context. PARTIAL_ACCEPTANCE: cloud PAUSE_REQUESTED, Docker/broker drain, local persistence then acknowledgement; UI distinguishes pending from confirmed. Component tests are independent, candidate signed-API runtime evidence owner-attributed; default-image promotion/reapproval and joined real browser pause path not certified here."
+  },
+  {
+    "id": "JOB-0141",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/jobs.tsx; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/worker/src/runtime.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/runtime.test.ts :: charges pause-request draining time and never acknowledges PAUSED after active expiry [JR-U1]; apps/web/e2e/job-pause-ui.spec.ts :: explicit Pause requested until fixture acknowledgement (source-reviewed); docs/WORKER-STATUS.md :: attributed timing-v2 candidate receipt",
+    "notes": "Master section 428; full section read, catalogue fragment interpreted in context. SOURCE_ONLY plus existing UI fixture: PAUSE_REQUESTED renders 'waiting for worker', PAUSED renders confirmed pause; web never changes to confirmed solely on click. Existing job-pause-ui fixture asserts these messages, but browser not run independently here."
+  },
+  {
+    "id": "JOB-0143",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/jobs.tsx; apps/worker/src/index.ts; apps/worker/src/state.ts",
+    "tests": "apps/web/tests/job-pause.test.ts [JR-U2]; apps/worker/src/cli-controls.test.ts [JR-U1]",
+    "notes": "Master section 429; full section read, catalogue fragment interpreted in context. MVP_SCOPE: primary graphical web pause plus supplementary local CLI are present. A native local desktop application's Pause button is conditional on a future desktop UI; this section does not require inventing that application for current MVP."
+  },
+  {
+    "id": "JOB-0144",
+    "status": "DEFERRED",
+    "implementation": "apps/web/src/components/jobs.tsx; apps/worker/src/index.ts; apps/worker/src/state.ts",
+    "tests": "apps/web/tests/job-pause.test.ts [JR-U2]; apps/worker/src/cli-controls.test.ts [JR-U1]",
+    "notes": "Master section 429; full section read, catalogue fragment interpreted in context. FUTURE_EXPLICIT Master429: local graphical Pause is conditional on the future Worker desktop application. Existing primary web graphical control and supplementary authenticated local CLI meet current shape; no invented native desktop MVP requirement."
+  },
+  {
+    "id": "JOB-0145",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/jobs.tsx; apps/worker/src/index.ts; apps/worker/src/state.ts",
+    "tests": "apps/web/tests/job-pause.test.ts [JR-U2]; apps/worker/src/cli-controls.test.ts [JR-U1]",
+    "notes": "Master section 429; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: primary seller web lists/detail expose Pause; no CLI access required for that product path. Future native desktop control is separately conditional under Master429."
+  },
+  {
+    "id": "JOB-0147",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/state.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/state.test.ts :: enforces the bounded pause expiry without requiring cloud connectivity; persists local pause, blocks replay, and prevents remote resume overriding local pause [JR-U1]",
+    "notes": "Master section 430; full section read, catalogue fragment interpreted in context. SOURCE_ONLY offline local control: private local SQLite control queue and durable SQLite operate without API response; cloud outbox retries later. Named tests isolate cloud/adapter and prove local deadline/persistence, not an actual network-disconnected local UI click."
+  },
+  {
+    "id": "JOB-0148",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/state.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/state.test.ts :: enforces the bounded pause expiry without requiring cloud connectivity; persists local pause, blocks replay, and prevents remote resume overriding local pause [JR-U1]",
+    "notes": "Master section 430; full section read, catalogue fragment interpreted in context. SOURCE_ONLY offline local control: private local SQLite control queue and durable SQLite operate without API response; cloud outbox retries later. Named tests isolate cloud/adapter and prove local deadline/persistence, not an actual network-disconnected local UI click."
+  },
+  {
+    "id": "JOB-0150",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/process.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts :: removes the container without waiting for a stuck host frame [JR-U1]; apps/worker/src/runtime.test.ts :: charges pause-request draining time and never acknowledges PAUSED after active expiry [JR-U1]; docs/WORKER-STATUS.md :: timing-v2 candidate actual runtime receipt, owner-attributed",
+    "notes": "Master section 431; full section read, catalogue fragment interpreted in context. PARTIAL_ACCEPTANCE: suspends whole container, gates/drains host brokers and tracks owned process/container resources. Unit mocks are not proof of actual descendant quiescence. Exact pinned-runtime candidate evidence exists; final default promotion/reapproval is a separate local rollout gate, not a paid-provider prerequisite for this clause."
+  },
+  {
+    "id": "JOB-0151",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/process.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts :: removes the container without waiting for a stuck host frame [JR-U1]; apps/worker/src/runtime.test.ts :: charges pause-request draining time and never acknowledges PAUSED after active expiry [JR-U1]; docs/WORKER-STATUS.md :: timing-v2 candidate actual runtime receipt, owner-attributed",
+    "notes": "Master section 431; full section read, catalogue fragment interpreted in context. PARTIAL_ACCEPTANCE: suspends whole container, gates/drains host brokers and tracks owned process/container resources. Unit mocks are not proof of actual descendant quiescence. Exact pinned-runtime candidate evidence exists; final default promotion/reapproval is a separate local rollout gate, not a paid-provider prerequisite for this clause."
+  },
+  {
+    "id": "JOB-0153",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/process.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts :: removes the container without waiting for a stuck host frame [JR-U1]; apps/worker/src/runtime.test.ts :: charges pause-request draining time and never acknowledges PAUSED after active expiry [JR-U1]; docs/WORKER-STATUS.md :: timing-v2 candidate actual runtime receipt, owner-attributed",
+    "notes": "Master section 431; full section read, catalogue fragment interpreted in context. PARTIAL_ACCEPTANCE: this fragment introduces the next invariant in full Master431 (no uncontrolled work while PAUSED). Whole-container suspension plus broker drains implemented; JR-U1 mocks do not independently prove physical descendant/resource quiescence on final default image. Candidate owner runtime evidence is scoped, rollout separate."
+  },
+  {
+    "id": "JOB-0154",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/process.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts :: removes the container without waiting for a stuck host frame [JR-U1]; apps/worker/src/runtime.test.ts :: charges pause-request draining time and never acknowledges PAUSED after active expiry [JR-U1]; docs/WORKER-STATUS.md :: timing-v2 candidate actual runtime receipt, owner-attributed",
+    "notes": "Master section 431; full section read, catalogue fragment interpreted in context. PARTIAL_ACCEPTANCE: suspends whole container, gates/drains host brokers and tracks owned process/container resources. Unit mocks are not proof of actual descendant quiescence. Exact pinned-runtime candidate evidence exists; final default promotion/reapproval is a separate local rollout gate, not a paid-provider prerequisite for this clause."
+  },
+  {
+    "id": "JOB-0157",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; apps/web/src/components/jobs.tsx",
+    "tests": "apps/worker/src/runtime.test.ts :: charges pause-request draining time and never acknowledges PAUSED after active expiry [JR-U1]; apps/worker/src/security.test.ts :: denies network egress for private jobs and refuses paused tools [JR-U1]",
+    "notes": "Master section 432; full section read, catalogue fragment interpreted in context. SOURCE_ONLY truthful UI: Pause confirmation warns that existing provider requests may take time to stop and never promises reversal of billed inference. Billing policy reserves until validated delivery; external provider invoice reversibility is not invented."
+  },
+  {
+    "id": "JOB-0158",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; apps/web/src/components/jobs.tsx",
+    "tests": "apps/worker/src/runtime.test.ts :: charges pause-request draining time and never acknowledges PAUSED after active expiry [JR-U1]; apps/worker/src/security.test.ts :: denies network egress for private jobs and refuses paused tools [JR-U1]",
+    "notes": "Master section 432; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: pause prevents new broker calls immediately, waits bounded in-flight completion and acknowledges only after drains. UI warns existing requests can take time; no promise to reverse already-billed work. Actual remote provider cancellation/invoice outcome is unknown and is not required for a claim that new marketplace calls are blocked."
+  },
+  {
+    "id": "JOB-0160",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/runtime.ts; packages/openclaw-adapter/src/docker.ts; apps/api/src/jobs.ts; apps/web/src/lib/job-pause.ts; apps/web/src/components/data-processing.tsx",
+    "tests": "apps/api/test/pause-budget.integration.test.ts :: rejects pause before RUNNING without changing an accepted job, funds, or commands [JR-D1]; apps/web/tests/job-pause.test.ts :: offers pause only for a seller's running execution, never accepted work [JR-U2]",
+    "notes": "Master section 433; full section read, catalogue fragment interpreted in context. MVP_SCOPE: supported pinned Docker runtime advertises FULL_RESUME; only RUNNING is pausable, unsupported stages return explicit error, cancellation is distinct. Actual CPU/GPU utilization is not measured and paused memory need not be freed. Other runtime support levels are conditional, not a requirement to implement a checkpoint engine."
+  },
+  {
+    "id": "JOB-0161",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/runtime.ts; packages/openclaw-adapter/src/docker.ts; apps/api/src/jobs.ts; apps/web/src/lib/job-pause.ts; apps/web/src/components/data-processing.tsx",
+    "tests": "apps/api/test/pause-budget.integration.test.ts :: rejects pause before RUNNING without changing an accepted job, funds, or commands [JR-D1]; apps/web/tests/job-pause.test.ts :: offers pause only for a seller's running execution, never accepted work [JR-U2]",
+    "notes": "Master section 433; full section read, catalogue fragment interpreted in context. MVP_SCOPE: supported pinned Docker runtime advertises FULL_RESUME; only RUNNING is pausable, unsupported stages return explicit error, cancellation is distinct. Actual CPU/GPU utilization is not measured and paused memory need not be freed. Other runtime support levels are conditional, not a requirement to implement a checkpoint engine."
+  },
+  {
+    "id": "JOB-0162",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/runtime.ts; packages/openclaw-adapter/src/docker.ts; apps/api/src/jobs.ts; apps/web/src/lib/job-pause.ts; apps/web/src/components/data-processing.tsx",
+    "tests": "apps/api/test/pause-budget.integration.test.ts :: rejects pause before RUNNING without changing an accepted job, funds, or commands [JR-D1]; apps/web/tests/job-pause.test.ts :: offers pause only for a seller's running execution, never accepted work [JR-U2]",
+    "notes": "Master section 433; full section read, catalogue fragment interpreted in context. MVP_SCOPE: supported pinned Docker runtime advertises FULL_RESUME; only RUNNING is pausable, unsupported stages return explicit error, cancellation is distinct. Actual CPU/GPU utilization is not measured and paused memory need not be freed. Other runtime support levels are conditional, not a requirement to implement a checkpoint engine."
+  },
+  {
+    "id": "JOB-0165",
+    "status": "DEFERRED",
+    "implementation": "packages/contracts/src/index.ts; apps/api/src/jobs.ts; apps/api/src/catalog.ts; apps/web/src/components/data-processing.tsx; apps/web/src/components/jobs.tsx",
+    "tests": "apps/web/tests/job-pause.test.ts [JR-U2]; docs/WORKER-STATUS.md :: FULL_RESUME candidate limitations",
+    "notes": "Master section 434; full section read, catalogue fragment interpreted in context. CONDITIONAL_FUTURE: RESTART_STEP semantics apply only if a runtime declares that support level. Current pinned runtime advertises FULL_RESUME, not RESTART_STEP. Master435 explicitly permits checkpoint evolution after MVP; no checkpoint restart implementation is falsely claimed."
+  },
+  {
+    "id": "JOB-0166",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; apps/api/src/jobs.ts; apps/api/src/catalog.ts; apps/web/src/components/data-processing.tsx; apps/web/src/components/jobs.tsx",
+    "tests": "apps/web/tests/job-pause.test.ts [JR-U2]; docs/WORKER-STATUS.md :: FULL_RESUME candidate limitations",
+    "notes": "Master section 434; full section read, catalogue fragment interpreted in context. MVP_SCOPE: actual current runtime is FULL_RESUME; UI communicates support and cancellation separately. RESTART_STEP and NOT_SUPPORTED labels are schema/UI vocabulary, not advertised backends. Checkpoint restart semantics apply only if a runtime advertises RESTART_STEP; Master435 explicitly permits post-MVP evolution."
+  },
+  {
+    "id": "JOB-0167",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/state.ts; packages/marketplace-agent/src/orchestration.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/worker/src/state.test.ts :: persists confirmed pause time through RESUMING without resetting consumed execution time [JR-U1]; packages/marketplace-agent/test/orchestration.test.ts :: resumes purchased jobs using persisted IDs and stable idempotency keys [JR-U1]",
+    "notes": "Master section 435; full section read, catalogue fragment interpreted in context. MVP_SCOPE: durable attempt/outbox and plan-step state permit later checkpoint evolution. Full resumable container state is not durable step checkpointing, and crashed attachments fail closed. Intra-job checkpoint engine/examples are explicitly deferrable under Master435, not a currently claimed implementation."
+  },
+  {
+    "id": "JOB-0168",
+    "status": "DEFERRED",
+    "implementation": "apps/worker/src/state.ts; packages/marketplace-agent/src/orchestration.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/worker/src/state.test.ts :: persists confirmed pause time through RESUMING without resetting consumed execution time [JR-U1]; packages/marketplace-agent/test/orchestration.test.ts :: resumes purchased jobs using persisted IDs and stable idempotency keys [JR-U1]",
+    "notes": "Master section 435; full section read, catalogue fragment interpreted in context. FUTURE_EXPLICIT/CONDITIONAL Master435: intra-job durable-step checkpoints and RESTART_STEP example can evolve after MVP. Current job/plan persistence is not represented as that engine, and no runtime advertises RESTART_STEP. Required design extensibility remains tracked separately."
+  },
+  {
+    "id": "JOB-0169",
+    "status": "DEFERRED",
+    "implementation": "apps/worker/src/state.ts; packages/marketplace-agent/src/orchestration.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/worker/src/state.test.ts :: persists confirmed pause time through RESUMING without resetting consumed execution time [JR-U1]; packages/marketplace-agent/test/orchestration.test.ts :: resumes purchased jobs using persisted IDs and stable idempotency keys [JR-U1]",
+    "notes": "Master section 435; full section read, catalogue fragment interpreted in context. FUTURE_EXPLICIT/CONDITIONAL Master435: intra-job durable-step checkpoints and RESTART_STEP example can evolve after MVP. Current job/plan persistence is not represented as that engine, and no runtime advertises RESTART_STEP. Required design extensibility remains tracked separately."
+  },
+  {
+    "id": "JOB-0170",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/state.ts; packages/marketplace-agent/src/orchestration.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/worker/src/state.test.ts :: persists confirmed pause time through RESUMING without resetting consumed execution time [JR-U1]; packages/marketplace-agent/test/orchestration.test.ts :: resumes purchased jobs using persisted IDs and stable idempotency keys [JR-U1]",
+    "notes": "Master section 435; full section read, catalogue fragment interpreted in context. MVP_SCOPE: explicit Master435 post-MVP evolution permission is honored; durable attempt, outbox, job version and plan step records allow adding checkpoint state. Live container crash recovery does not fabricate a durable computational checkpoint."
+  },
+  {
+    "id": "JOB-0171",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/selling.tsx; apps/web/src/components/jobs.tsx; apps/web/src/components/job-result.tsx; apps/worker/src/results.ts",
+    "tests": "apps/web/tests/job-pause.test.ts [JR-U2]; apps/web/e2e/job-pause-ui.spec.ts; apps/web/e2e/results-ui.spec.ts (source-reviewed only)",
+    "notes": "Master section 436; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: active seller jobs and View/Pause controls, safe status/start/timeline/result are present. High-level detail fields are examples ('can show'), not a mandate for real GPU telemetry. Final output projection excludes provider reasoning; no comprehensive chain-of-thought non-leak browser assertion in this run."
+  },
+  {
+    "id": "JOB-0172",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/selling.tsx; apps/web/src/components/jobs.tsx; apps/web/src/components/job-result.tsx; apps/worker/src/results.ts",
+    "tests": "apps/web/tests/job-pause.test.ts [JR-U2]; apps/web/e2e/job-pause-ui.spec.ts; apps/web/e2e/results-ui.spec.ts (source-reviewed only)",
+    "notes": "Master section 436; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: SellerDashboard has Active jobs before capability list; RUNNING records link to detail and offer Pause via JobControls. Layout/source present, not a new real-runtime browser assertion."
+  },
+  {
+    "id": "JOB-0173",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/selling.tsx; apps/web/src/components/jobs.tsx; apps/web/src/components/job-result.tsx; apps/worker/src/results.ts",
+    "tests": "apps/web/tests/job-pause.test.ts [JR-U2]; apps/web/e2e/job-pause-ui.spec.ts; apps/web/e2e/results-ui.spec.ts (source-reviewed only)",
+    "notes": "Master section 436; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: provider response projection uses final assistant result rather than reasoning blocks; seller sees sanitized job events, operational state and valid outputs. Negative chain-of-thought disclosure across every provider/tool output is not asserted by this bounded run."
+  },
+  {
+    "id": "JOB-0178",
+    "status": "TESTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/api/src/background.ts; apps/api/src/job-timing.ts; packages/billing/src/index.ts",
+    "tests": "apps/api/test/pause-budget.integration.test.ts :: retains funds within the original budget, resumes once, and expires the combined second pause; commits expiry and release for resume-control/RUNNING/RESUMING/PAUSED/result without waiting for maintenance [JR-D1]",
+    "notes": "Master section 439; full section read, catalogue fragment interpreted in context. ATOMIC_TEST: actual isolated PostgreSQL proves RESERVED/no capture while pause valid; cumulative expiry creates one release and CANCEL, zero JOB_CAPTURE/SELLER_EARNING/PLATFORM_FEE, replay safe. Synthetic signed Worker events, not real Docker or Stripe; no broader payment-section promotion."
+  },
+  {
+    "id": "JOB-0181",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/web/src/components/jobs.tsx",
+    "tests": "apps/web/e2e/job-pause-ui.spec.ts :: source asserts schedule/security restrictions remain; apps/api/test/pause-budget.integration.test.ts [JR-D1 adjacent global-pause case only]",
+    "notes": "Master section 441; full section read, catalogue fragment interpreted in context. RECOMMENDATION: current API denies resume outside an open schedule, and UI explicitly says schedule restrictions still apply. Master441 recommends allowing one already-accepted job, not an unconditional mandate. Record this stricter product choice; do not misreport it as missing required MVP code. Global one-job override does not waive schedule/security."
+  },
+  {
+    "id": "JOB-0182",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/web/src/components/jobs.tsx",
+    "tests": "apps/web/e2e/job-pause-ui.spec.ts :: source asserts schedule/security restrictions remain; apps/api/test/pause-budget.integration.test.ts [JR-D1 adjacent global-pause case only]",
+    "notes": "Master section 441; full section read, catalogue fragment interpreted in context. RECOMMENDATION_ONLY: outside-window resume is recommended, not required. Current stricter API denies it and UI explicitly says schedule/security restrictions apply. Record the product decision; do not invent a mandatory permissive resume code gap."
+  },
+  {
+    "id": "JOB-0183",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/web/src/components/jobs.tsx",
+    "tests": "apps/web/e2e/job-pause-ui.spec.ts :: source asserts schedule/security restrictions remain; apps/api/test/pause-budget.integration.test.ts [JR-D1 adjacent global-pause case only]",
+    "notes": "Master section 441; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: resume confirmation distinguishes one existing job from reopening new jobs and explicitly retains schedule/security limits. Existing UI fixture asserts that text; no independent browser run here."
+  },
+  {
+    "id": "JOB-0187",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/job-containment.ts; apps/api/src/security-policy.ts; apps/worker/src/runtime.ts; apps/worker/src/state.ts",
+    "tests": "apps/api/test/containment.integration.test.ts :: persists capability/worker/seller-worker/seller/buyer containment, cancellation and audit while only releasing the healthy reservation [JR-D1]; apps/worker/src/runtime.test.ts :: never lets the confirmed per-job override bypass a security block [JR-U1]",
+    "notes": "Master section 443; full section read, catalogue fragment interpreted in context. MVP_SCOPE: security may pause or terminate; literal SECURITY_PAUSED is a possible state, not mandatory enum. Immutable executionRevokedAt and SECURITY block prevent unsafe resume; financial corruption cannot undo cancellation. No claim of a fully automated detector for every illustrative anomaly."
+  },
+  {
+    "id": "JOB-0190",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/worker/src/runtime.ts; apps/web/src/lib/job-pause.ts; packages/policy-engine/src/index.ts",
+    "tests": "apps/api/test/pause-budget.integration.test.ts :: rejects pause before RUNNING without changing an accepted job, funds, or commands [JR-D1]; apps/web/tests/job-pause.test.ts :: offers pause only for a seller's running execution, never accepted work [JR-U2]; apps/worker/src/runtime.test.ts :: does not expire an immutable result queued on time while its cloud acknowledgement is delayed [JR-U1]",
+    "notes": "Master section 444; full section read, catalogue fragment interpreted in context. MVP_SCOPE: deterministic RUNNING-only pause; upload/delivery/terminal stages are not pausable and return explicit error rather than silently cancel. Finalized output acknowledgement remains retryable. Example STARTING pausable is not a mandated state. Atomic already-finalized uploads are not interrupted by pause."
+  },
+  {
+    "id": "JOB-0191",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/worker/src/runtime.ts; apps/web/src/lib/job-pause.ts; packages/policy-engine/src/index.ts",
+    "tests": "apps/api/test/pause-budget.integration.test.ts :: rejects pause before RUNNING without changing an accepted job, funds, or commands [JR-D1]; apps/web/tests/job-pause.test.ts :: offers pause only for a seller's running execution, never accepted work [JR-U2]; apps/worker/src/runtime.test.ts :: does not expire an immutable result queued on time while its cloud acknowledgement is delayed [JR-U1]",
+    "notes": "Master section 444; full section read, catalogue fragment interpreted in context. SOURCE_ONLY deterministic upload policy: only RUNNING can enter pause; UPLOADING_RESULTS cannot, so upload is not silently converted into cancel. Atomic pending-result acknowledgement is durable. Missing upload-stage-specific API assertion is acceptance, not absent state rules."
+  },
+  {
+    "id": "JOB-0192",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/worker/src/runtime.ts; apps/web/src/lib/job-pause.ts; packages/policy-engine/src/index.ts",
+    "tests": "apps/api/test/pause-budget.integration.test.ts :: rejects pause before RUNNING without changing an accepted job, funds, or commands [JR-D1]; apps/web/tests/job-pause.test.ts :: offers pause only for a seller's running execution, never accepted work [JR-U2]; apps/worker/src/runtime.test.ts :: does not expire an immutable result queued on time while its cloud acknowledgement is delayed [JR-U1]",
+    "notes": "Master section 444; full section read, catalogue fragment interpreted in context. RECOMMENDATION_IMPLEMENTED: pause rejects during upload/finalized result stages instead of disrupting an atomic upload; the active timer remains bounded until upload completes. No special resumable multipart uploader is implied by Master444."
+  },
+  {
+    "id": "JOB-0193",
+    "status": "TESTED",
+    "implementation": "apps/api/src/jobs.ts; apps/worker/src/runtime.ts; apps/web/src/lib/job-pause.ts; packages/policy-engine/src/index.ts",
+    "tests": "apps/api/test/pause-budget.integration.test.ts :: rejects pause before RUNNING without changing an accepted job, funds, or commands [JR-D1]; apps/web/tests/job-pause.test.ts :: offers pause only for a seller's running execution, never accepted work [JR-U2]",
+    "notes": "Master section 444; full section read, catalogue fragment interpreted in context. ATOMIC_TEST: pausable stage is RUNNING only. UI predicate denies ACCEPTED/upload/terminal states and real API ACCEPTED pause returns409 with unchanged job/wallet/ledger/events and no command. Broader end-to-end upload cancellation is outside this atomic stage rule."
+  },
+  {
+    "id": "JOB-0195",
+    "status": "TESTED",
+    "implementation": "packages/policy-engine/src/index.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/worker/src/state.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/worker/src/runtime.test.ts :: keeps the pause bound when readiness fails and refuses thaw after a late health check; awaits cloud RUNNING acknowledgement before thaw and fails closed on resume rejection [JR-U1]",
+    "notes": "Master section 445; full section read, catalogue fragment interpreted in context. ATOMIC_TEST scoped recovery: failed readiness remains PAUSED and bounded; rejected RUNNING acknowledgement never thaws and ends CANCELLED; late readiness expires to TIMED_OUT. Real SQLite/fake clock with mocked Docker/transport, not process crash reattachment."
+  },
+  {
+    "id": "JOB-0196",
+    "status": "TESTED",
+    "implementation": "packages/policy-engine/src/index.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/worker/src/state.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/worker/src/state.test.ts :: persists confirmed pause time through RESUMING without resetting consumed execution time [JR-U1]",
+    "notes": "Master section 445; full section read, catalogue fragment interpreted in context. ATOMIC_TEST: durable enums PAUSE_REQUESTED/PAUSED/RESUMING/RUNNING, timestamps and cumulative duration survive DB close/reopen and duplicate transitions; pause is not merely a boolean. Does not promise resuming lost process/container attachments."
+  },
+  {
+    "id": "JOB-0200",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/auth.ts; apps/worker/src/state.ts; packages/openclaw-adapter/src/policy.ts",
+    "tests": "apps/api/test/pause-budget.integration.test.ts :: requires explicit existing-job confirmation without reopening a globally paused Worker [JR-D1]; apps/worker/src/cli-controls.test.ts :: explicit one-job resume argument validation [JR-U1]",
+    "notes": "Master section 447; full section read, catalogue fragment interpreted in context. SOURCE_ONLY full authority family: seller ownership or session admin controls API, private local SQLite command queue controls worker; API keys/buyer data lack seller control authority. Exact DB run tests buyer-vs-seller/global/security cases, not all authorized-admin/foreign-seller/local-filesystem authority permutations."
+  },
+  {
+    "id": "JOB-0201",
+    "status": "TESTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/auth.ts; apps/worker/src/state.ts; packages/openclaw-adapter/src/policy.ts",
+    "tests": "apps/api/test/pause-budget.integration.test.ts :: requires explicit existing-job confirmation without reopening a globally paused Worker [JR-D1]",
+    "notes": "Master section 447; full section read, catalogue fragment interpreted in context. ATOMIC_TEST: actual buyer session attempting seller resume with confirmGlobalPause receives403 and creates no command, whereas seller explicit resume succeeds once; distinct buyer prestart cancel remains available. Prompt/tool isolation is source-reviewed, not inferred solely from HTTP authority test."
+  },
+  {
+    "id": "JOB-0204",
+    "status": "TESTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/job-containment.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/api/test/pause-budget.integration.test.ts :: cannot use global-pause confirmation to bypass a security revocation [JR-D1]; apps/api/test/containment.integration.test.ts :: persists capability/worker/seller-worker/seller/buyer containment [JR-D1]; apps/worker/src/runtime.test.ts :: never lets the confirmed per-job override bypass a security block [JR-U1]",
+    "notes": "Master section 449; full section read, catalogue fragment interpreted in context. ATOMIC_TEST: real revoked worker cannot resume even with explicit global-pause confirmation; immutable execution revocation also blocks admin resume/result. Local SECURITY block cannot be bypassed. No claim all anomaly detectors are implemented."
+  },
+  {
+    "id": "JOB-0205",
+    "status": "TESTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/job-containment.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/api/test/pause-budget.integration.test.ts :: requires explicit existing-job confirmation without reopening a globally paused Worker [JR-D1]",
+    "notes": "Master section 449; full section read, catalogue fragment interpreted in context. ATOMIC_TEST: actual buyer session attempting seller resume with confirmGlobalPause receives403 and creates no command, whereas seller explicit resume succeeds once; distinct buyer prestart cancel remains available. Prompt/tool isolation is source-reviewed, not inferred solely from HTTP authority test."
+  },
+  {
+    "id": "JOB-0206",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/jobs.tsx; apps/web/src/components/selling.tsx; apps/worker/src/index.ts; apps/worker/src/state.ts; apps/worker/src/runtime.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/state.test.ts :: cancels while paused with no resume or later timeout; enforces the bounded pause expiry without requiring cloud connectivity [JR-U1]; apps/worker/src/cli-controls.test.ts [JR-U1]; docs/WORKER-STATUS.md :: actual candidate pause/cancel owner receipt",
+    "notes": "Master section 450; full section read, catalogue fragment interpreted in context. PARTIAL_ACCEPTANCE: web/CLI pause one, cancel one, pause capability/all, inspect jobs exist; host local control does not require cloud. 'Always'/'unstoppable' safety claims require actual promoted-image offline-control/descendant cleanup acceptance; mocked host tests and separate candidate receipt cannot certify all failure modes."
+  },
+  {
+    "id": "JOB-0207",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/jobs.tsx; apps/web/src/components/selling.tsx; apps/worker/src/index.ts; apps/worker/src/state.ts; apps/worker/src/runtime.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/state.test.ts :: cancels while paused with no resume or later timeout; enforces the bounded pause expiry without requiring cloud connectivity [JR-U1]; apps/worker/src/cli-controls.test.ts [JR-U1]; docs/WORKER-STATUS.md :: actual candidate pause/cancel owner receipt",
+    "notes": "Master section 450; full section read, catalogue fragment interpreted in context. PARTIAL_ACCEPTANCE: web/CLI pause one, cancel one, pause capability/all, inspect jobs exist; host local control does not require cloud. 'Always'/'unstoppable' safety claims require actual promoted-image offline-control/descendant cleanup acceptance; mocked host tests and separate candidate receipt cannot certify all failure modes."
+  },
+  {
+    "id": "JOB-0208",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/jobs.tsx; apps/web/src/components/selling.tsx; apps/worker/src/index.ts; apps/worker/src/state.ts; apps/worker/src/runtime.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/state.test.ts :: cancels while paused with no resume or later timeout; enforces the bounded pause expiry without requiring cloud connectivity [JR-U1]; apps/worker/src/cli-controls.test.ts [JR-U1]; docs/WORKER-STATUS.md :: actual candidate pause/cancel owner receipt",
+    "notes": "Master section 450; full section read, catalogue fragment interpreted in context. SOURCE_ONLY enumerated minimum controls all exist: web JobControls pause/cancel, seller capability/all pause and execution list/detail; CLI/local control provides equivalent critical actions. Their combined offline/reboot/real-runtime acceptance remains the aggregate JOB-0206, not a code absence."
+  },
+  {
+    "id": "JOB-0209",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/jobs.tsx; apps/web/src/components/selling.tsx; apps/worker/src/index.ts; apps/worker/src/state.ts; apps/worker/src/runtime.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/state.test.ts :: cancels while paused with no resume or later timeout; enforces the bounded pause expiry without requiring cloud connectivity [JR-U1]; apps/worker/src/cli-controls.test.ts [JR-U1]; docs/WORKER-STATUS.md :: actual candidate pause/cancel owner receipt",
+    "notes": "Master section 450; full section read, catalogue fragment interpreted in context. PARTIAL_ACCEPTANCE: web/CLI pause one, cancel one, pause capability/all, inspect jobs exist; host local control does not require cloud. 'Always'/'unstoppable' safety claims require actual promoted-image offline-control/descendant cleanup acceptance; mocked host tests and separate candidate receipt cannot certify all failure modes."
+  },
+  {
+    "id": "JOB-0210",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/jobs.tsx; apps/web/src/components/selling.tsx; apps/worker/src/index.ts; apps/worker/src/state.ts; apps/worker/src/runtime.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/state.test.ts :: cancels while paused with no resume or later timeout; enforces the bounded pause expiry without requiring cloud connectivity [JR-U1]; apps/worker/src/cli-controls.test.ts [JR-U1]; docs/WORKER-STATUS.md :: actual candidate pause/cancel owner receipt",
+    "notes": "Master section 450; full section read, catalogue fragment interpreted in context. PARTIAL_ACCEPTANCE: web/CLI pause one, cancel one, pause capability/all, inspect jobs exist; host local control does not require cloud. 'Always'/'unstoppable' safety claims require actual promoted-image offline-control/descendant cleanup acceptance; mocked host tests and separate candidate receipt cannot certify all failure modes."
+  },
+  {
+    "id": "JOB-0211",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/web/e2e/checkout-ui.spec.ts :: queued review obeys canQueue and requires quoted consent (source-reviewed, NOW queue fixture only); apps/web/tests/checkout.test.ts [JR-U2]",
+    "notes": "Master section 453; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: scheduled checkout labels future eligibility, expected processing and estimated result, reserved credits/cancel-before-start and estimate disclaimer. Current named UI fixture covers busy NOW queue, not an actual future-only purchase screen; no browser visual or full scheduling-flow claim."
+  },
+  {
+    "id": "JOB-0212",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/web/e2e/checkout-ui.spec.ts :: queued review obeys canQueue and requires quoted consent (source-reviewed, NOW queue fixture only); apps/web/tests/checkout.test.ts [JR-U2]",
+    "notes": "Master section 453; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: scheduled checkout labels future eligibility, expected processing and estimated result, reserved credits/cancel-before-start and estimate disclaimer. Current named UI fixture covers busy NOW queue, not an actual future-only purchase screen; no browser visual or full scheduling-flow claim."
+  },
+  {
+    "id": "JOB-0213",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/web/e2e/checkout-ui.spec.ts (source-reviewed NOW queue case only); apps/web/tests/checkout.test.ts [JR-U2]",
+    "notes": "Master section 454; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: earliest execution timestamp and processing duration are separately rendered; future eligibility is not described as immediate delivery. A six-hour future-wait browser assertion is not named/run here; this is trace acceptance, not absent implementation."
+  },
+  {
+    "id": "JOB-0214",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/web/e2e/checkout-ui.spec.ts (source-reviewed NOW queue case only); apps/web/tests/checkout.test.ts [JR-U2]",
+    "notes": "Master section 454; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: earliest execution timestamp and processing duration are separately rendered; future eligibility is not described as immediate delivery. A six-hour future-wait browser assertion is not named/run here; this is trace acceptance, not absent implementation."
+  },
+  {
+    "id": "JOB-0215",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/operations.ts; apps/api/src/capacity-telemetry.ts; apps/api/src/jobs.ts; apps/worker/src/state.ts",
+    "tests": "apps/api/test/capacity-telemetry.integration.test.ts :: median queue/execution pause exclusions; docs/OPERATIONS-STATUS.md :: parent-attributed 44/44 on 2026-10-06 13:31:02 CEST",
+    "notes": "Master section 455; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: active runtime begins at startedAt and subtracts confirmed pauses; queue metric starts at queuedAt, original future reservation time is not runtime. eligibleAt/queuedAt/startedAt/completedAt remain distinct. No measured CPU/GPU time or contracted SLA claimed; this auditor authored telemetry, parent independently reviewed its focused tests."
+  },
+  {
+    "id": "JOB-0216",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/operations.ts; apps/api/src/capacity-telemetry.ts; apps/api/src/jobs.ts; apps/worker/src/state.ts",
+    "tests": "apps/api/test/capacity-telemetry.integration.test.ts :: median queue/execution pause exclusions; docs/OPERATIONS-STATUS.md :: parent-attributed 44/44 on 2026-10-06 13:31:02 CEST",
+    "notes": "Master section 455; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: runtime math begins startedAt and excludes pauses; no reservation-createdAt duration is used as execution performance. Timestamp/median assertions were independently reviewed by parent in the 44-case operations receipt. Since this auditor authored reporting code, that receipt remains parent-attributed and no new self-certification is made."
+  },
+  {
+    "id": "JOB-0218",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/api/test/scheduling.integration.test.ts :: serializes the last future-window reservation, rechecks quotes, and treats later windows independently [JR-D1]; apps/web/tests/checkout.test.ts [JR-U2]",
+    "notes": "Master section 457; full section read, catalogue fragment interpreted in context. PARTIAL_TRACE: authoritative schedule/readiness/capacity/reservations affect quote and admission; advertised time is eligibility, not guaranteed slot. Exact DB test proves capacity recheck, not full future-window quote/queue-delay/display/fresh-worker matrix."
+  },
+  {
+    "id": "JOB-0219",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/api/test/scheduling.integration.test.ts :: serializes the last future-window reservation, rechecks quotes, and treats later windows independently [JR-D1]; apps/web/tests/checkout.test.ts [JR-U2]",
+    "notes": "Master section 457; full section read, catalogue fragment interpreted in context. PARTIAL_TRACE: authoritative schedule/readiness/capacity/reservations affect quote and admission; advertised time is eligibility, not guaranteed slot. Exact DB test proves capacity recheck, not full future-window quote/queue-delay/display/fresh-worker matrix."
+  },
+  {
+    "id": "JOB-0220",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/web/e2e/checkout-ui.spec.ts (source-reviewed, no future-window wording assertion in this run)",
+    "notes": "Master section 458; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: 'Eligible to start from'/'Earliest execution' and estimate disclaimer avoid guaranteed start phrasing. Stronger future SLA is optional; do not invent a guaranteed-slot requirement."
+  },
+  {
+    "id": "JOB-0221",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-detail.tsx; apps/api/src/catalog.ts; apps/api/src/agent.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: requires deadline completion including runtime; estimates the DAG critical path, not the sum of parallel runtimes [JR-U1]",
+    "notes": "Master section 459; full section read, catalogue fragment interpreted in context. MVP_SCOPE: estimated delivery is optional, shown with estimate language and processing/wait distinction. Catalog quote adds configured runtime to authoritative earliest start/queue estimate; no justified interval distribution exists, so no invented range required. No guarantee or calibrated real-provider accuracy proof."
+  },
+  {
+    "id": "JOB-0222",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-detail.tsx; apps/api/src/catalog.ts; apps/api/src/agent.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: requires deadline completion including runtime; estimates the DAG critical path, not the sum of parallel runtimes [JR-U1]",
+    "notes": "Master section 459; full section read, catalogue fragment interpreted in context. MVP_SCOPE: estimated delivery is optional, shown with estimate language and processing/wait distinction. Catalog quote adds configured runtime to authoritative earliest start/queue estimate; no justified interval distribution exists, so no invented range required. No guarantee or calibrated real-provider accuracy proof."
+  },
+  {
+    "id": "JOB-0227",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/api/src/background.ts; packages/billing/src/index.ts; apps/web/src/components/jobs.tsx",
+    "tests": "apps/api/test/protocol.integration.test.ts :: retains the original reservation promise when seller availability moves and notifies before full cancellation release (source-reviewed; prior parent-attributed run); apps/api/test/pause-budget.integration.test.ts :: snapshots configured policy on purchase and signs that exact value without buyer overrides [JR-D1 prestart NOW cancellation subset]",
+    "notes": "Master section 466; full section read, catalogue fragment interpreted in context. SOURCE_ONLY scheduled cancellation: buyer before startedAt can cancel and release once, no seller/platform earning; after start follows separate policy. Current independent subset proves prestart NOW cancellation, not scheduled cancellation; exact existing scheduled assertions identified without borrowing aggregate counts."
+  },
+  {
+    "id": "JOB-0231",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/background.ts; apps/api/src/worker.ts; apps/web/src/components/jobs.tsx",
+    "tests": "apps/api/test/protocol.integration.test.ts :: retains the original reservation promise when seller availability moves and notifies before full cancellation release (source-reviewed); apps/api/test/scheduling.integration.test.ts [JR-D1 adjacent FIFO tests]",
+    "notes": "Master section 473; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: running continues, queued work moves to next allowed window or releases when no window within waitDeadline; UI reads updated scheduledAt/history. Named scheduling DB run is FIFO/admission, not an exact running/queued window-overflow UI scenario."
+  },
+  {
+    "id": "JOB-0234",
+    "status": "TESTED",
+    "implementation": "apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/api/src/app.ts",
+    "tests": "apps/api/test/scheduling.integration.test.ts :: gives due reservations the last slots before NOW and records one durable rejection without financial effects; does not record capacity rejections for insufficient funds or retain a failed admission [JR-D1]",
+    "notes": "Master section 481; full section read, catalogue fragment interpreted in context. ATOMIC_TEST: immediate NOW admission returns409 when no executable/queue capacity without job/funds mutation; distinct402 leaves no queue event. NOW/SCHEDULED are equivalent explicit modes, not missing code because literal example IMMEDIATE_ONLY is absent."
+  },
+  {
+    "id": "JOB-0235",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/background.ts; apps/api/src/webhooks.ts",
+    "tests": "apps/api/test/operations-policy.integration.test.ts :: queues a single owned signed webhook test and exposes terminal delivery failure (source-reviewed; no network send in this batch)",
+    "notes": "Master section 482; full section read, catalogue fragment interpreted in context. MVP_SCOPE: completed and failed minimum public events plus scheduled/eligible/started/schedule_changed/expired are implemented with durable outbox/retry/signatures. Source test exercises webhook.test failure delivery, not each real lifecycle event end-to-end. Strongly-considered extra events are not separate mandatory blockers."
+  },
+  {
+    "id": "JOB-0236",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/jobs.tsx; apps/api/src/jobs.ts; apps/api/src/background.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts :: retains the original reservation promise when seller availability moves and notifies before full cancellation release (source-reviewed)",
+    "notes": "Master section 483; full section read, catalogue fragment interpreted in context. MVP_SCOPE: polled in-app job state/timeline and SCHEDULE_CHANGED event implement status updates; no requirement for a separate notification inbox. Email is explicitly future/recommended here and is not an MVP blocker, regardless of extra account-email implementation."
+  },
+  {
+    "id": "JOB-0237",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/jobs.tsx; apps/api/src/jobs.ts; apps/api/src/background.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts :: retains the original reservation promise when seller availability moves and notifies before full cancellation release (source-reviewed)",
+    "notes": "Master section 483; full section read, catalogue fragment interpreted in context. MVP_SCOPE: polled in-app job state/timeline and SCHEDULE_CHANGED event implement status updates; no requirement for a separate notification inbox. Email is explicitly future/recommended here and is not an MVP blocker, regardless of extra account-email implementation."
+  },
+  {
+    "id": "JOB-0240",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/selling.tsx; apps/api/src/worker.ts",
+    "tests": "apps/web/e2e/seller-telemetry-ui.spec.ts (source-reviewed; no scheduled-count pause-warning assertion found)",
+    "notes": "Master section 485; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: PauseAll queries seller jobs, counts SCHEDULED and warns they will not start and may release on waiting expiry; seller may confirm anyway. An actual scheduled-count warning/control assertion is still trace acceptance, not absent functionality."
+  },
+  {
+    "id": "JOB-0241",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/api/src/background.ts; packages/billing/src/index.ts; apps/web/src/components/capability-detail.tsx; apps/web/src/components/jobs.tsx",
+    "tests": "apps/api/test/scheduling.integration.test.ts :: promotes by acceptance order even when the recovery UUID page sees the newer reservation first; breaks equal acceptance timestamps by ID, never by price or input priority; serializes the last future-window reservation [JR-D1]; apps/api/test/protocol.integration.test.ts :: schedule-change original promise/full cancellation release (source-reviewed)",
+    "notes": "Master section 486; full section read, catalogue fragment interpreted in context. PARTIAL_TRACE full 10-clause fairness section: timing disclosure, authorization, reserve, runtime clock, change events, cancellation/wait/release and deterministic FIFO exist. Exact independent run proves listed admission/FIFO assertions only; real future checkout/cancel/change notification/browser and all timeout paths not jointly exercised."
+  },
+  {
+    "id": "JOB-0242",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/api/src/background.ts; packages/billing/src/index.ts; apps/web/src/components/capability-detail.tsx; apps/web/src/components/jobs.tsx",
+    "tests": "apps/api/test/scheduling.integration.test.ts :: promotes by acceptance order even when the recovery UUID page sees the newer reservation first; breaks equal acceptance timestamps by ID, never by price or input priority; serializes the last future-window reservation [JR-D1]; apps/api/test/protocol.integration.test.ts :: schedule-change original promise/full cancellation release (source-reviewed)",
+    "notes": "Master section 486; full section read, catalogue fragment interpreted in context. PARTIAL_TRACE full 10-clause fairness section: timing disclosure, authorization, reserve, runtime clock, change events, cancellation/wait/release and deterministic FIFO exist. Exact independent run proves listed admission/FIFO assertions only; real future checkout/cancel/change notification/browser and all timeout paths not jointly exercised."
+  },
+  {
+    "id": "JOB-0243",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/api/src/background.ts; packages/billing/src/index.ts; apps/web/src/components/capability-detail.tsx; apps/web/src/components/jobs.tsx",
+    "tests": "apps/api/test/scheduling.integration.test.ts :: promotes by acceptance order even when the recovery UUID page sees the newer reservation first; breaks equal acceptance timestamps by ID, never by price or input priority; serializes the last future-window reservation [JR-D1]; apps/api/test/protocol.integration.test.ts :: schedule-change original promise/full cancellation release (source-reviewed)",
+    "notes": "Master section 486; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: waitDeadline and no-window-before-bound failure call releaseJob for undelivered work; corruption produces a manual recovery hold rather than fabricated release. Exact scheduled never-starts release is not independently rerun in this batch; previous original-promise/cancel assertion is source-reviewed, not substituted for all expiry paths."
+  },
+  {
+    "id": "JOB-0244",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/web/tests/checkout.test.ts :: permits immediate and explicitly schedulable jobs independently [JR-U2]; apps/web/e2e/checkout-ui.spec.ts (NOW queue fixture, source-reviewed)",
+    "notes": "Master section 493; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: execution-mode toggle/review switches future-only service to Schedule with next eligibility, duration and estimated result; user explicitly approves timing. No actual future-only browser purchase run in this batch. 'Feels intentional' is UX intent, not an inventable machine pass."
+  },
+  {
+    "id": "JOB-0245",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/web/tests/checkout.test.ts :: permits immediate and explicitly schedulable jobs independently [JR-U2]; apps/web/e2e/checkout-ui.spec.ts (NOW queue fixture, source-reviewed)",
+    "notes": "Master section 493; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: execution-mode toggle/review switches future-only service to Schedule with next eligibility, duration and estimated result; user explicitly approves timing. No actual future-only browser purchase run in this batch. 'Feels intentional' is UX intent, not an inventable machine pass."
+  },
+  {
+    "id": "JOB-0246",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/web/tests/checkout.test.ts :: permits immediate and explicitly schedulable jobs independently [JR-U2]; apps/web/e2e/checkout-ui.spec.ts (NOW queue fixture, source-reviewed)",
+    "notes": "Master section 493; full section read, catalogue fragment interpreted in context. SOURCE_ONLY: execution-mode toggle/review switches future-only service to Schedule with next eligibility, duration and estimated result; user explicitly approves timing. No actual future-only browser purchase run in this batch. 'Feels intentional' is UX intent, not an inventable machine pass."
+  },
+  {
+    "id": "JOB-0248",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/agent.ts; packages/marketplace-agent/src/orchestration.ts; apps/api/src/agent.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: allows an explicit bounded busy queue but rejects unknown wait [JR-U1]; packages/marketplace-agent/test/agent.test.ts [JR-U1]",
+    "notes": "Master section 497; full section read, catalogue fragment interpreted in context. ATOMIC_TEST: timing.maxQueueWaitSeconds is configurable per authorized request/plan, checked against known wait; absent value defaults to zero. Master requires a configurable threshold, not a specific example five-minute default or a new environment variable."
+  },
+  {
+    "id": "JOB-0250",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/orchestration.ts; packages/marketplace-agent/src/agent.ts; apps/api/src/agent.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: blocks OFFLINE/PAUSED/SECURITY_BLOCKED/BUSY/SCHEDULED_OFFLINE even with contradictory canRunNow; allows an explicit bounded busy queue but rejects unknown wait; requires deadline completion including runtime [JR-U1]",
+    "notes": "Master section 506; full section read, catalogue fragment interpreted in context. ATOMIC_TEST timing predicate: mandatory default IMMEDIATE permits only ready/explicit bounded queue; optional DEADLINE rejects completion beyond deadline. EARLIEST_AVAILABLE_ALLOWED needs explicit consent. No live recommendation/inference or whole autonomous provider-run proof."
+  },
+  {
+    "id": "JOB-0251",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/orchestration.ts; packages/marketplace-agent/src/agent.ts; apps/api/src/agent.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: blocks OFFLINE/PAUSED/SECURITY_BLOCKED/BUSY/SCHEDULED_OFFLINE even with contradictory canRunNow; allows an explicit bounded busy queue but rejects unknown wait; requires deadline completion including runtime [JR-U1]",
+    "notes": "Master section 506; full section read, catalogue fragment interpreted in context. ATOMIC_TEST timing predicate: mandatory default IMMEDIATE permits only ready/explicit bounded queue; optional DEADLINE rejects completion beyond deadline. EARLIEST_AVAILABLE_ALLOWED needs explicit consent. No live recommendation/inference or whole autonomous provider-run proof."
+  },
+  {
+    "id": "JOB-0253",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: estimates the DAG critical path, not the sum of parallel runtimes; requires deadline completion including runtime [JR-U1]",
+    "notes": "Master section 515; full section read, catalogue fragment interpreted in context. ATOMIC_TEST estimate algorithm includes authoritative earliest start/queue wait and dependency critical path, not sum of parallel step runtimes. Does not establish prediction accuracy against real history/provider execution or human understandability."
+  },
+  {
+    "id": "JOB-0254",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: estimates the DAG critical path, not the sum of parallel runtimes; requires deadline completion including runtime [JR-U1]",
+    "notes": "Master section 515; full section read, catalogue fragment interpreted in context. RECOMMENDATION/SOURCE_ONLY: IMMEDIATE uses configurable bounded queue wait plus per-job runtime limits; estimate is critical path with start/wait, not fabricated short total. Human 'short and understandable' judgment is not proven by arithmetic unit tests. Overall user deadline/budget remains enforced."
+  }
+]

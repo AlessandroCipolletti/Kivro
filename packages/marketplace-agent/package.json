@@ -1,0 +1,9 @@
+{
+  "name": "@kivro/marketplace-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": { "test": "vitest run", "typecheck": "tsc --noEmit" },
+  "dependencies": { "@kivro/contracts": "workspace:*", "@kivro/research-broker": "workspace:*", "ajv": "^8.17.1", "zod": "^3.25.0" }
+}

@@ -1,0 +1,8 @@
+*
+!Dockerfile
+!runner.mjs
+!observations.mjs
+!timing.mjs
+!self-test.mjs
+!media-self-test.mjs
+!plugin/**

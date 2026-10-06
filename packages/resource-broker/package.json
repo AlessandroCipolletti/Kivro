@@ -1,0 +1,10 @@
+{
+  "name": "@kivro/resource-broker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": { "typecheck": "tsc --noEmit", "test": "vitest run --root ../.. packages/resource-broker" },
+  "dependencies": { "@kivro/contracts": "workspace:*", "ajv": "^8.17.1", "pg": "^8.16.3", "zod": "^3.25.76" },
+  "devDependencies": { "@types/pg": "^8.15.5" }
+}

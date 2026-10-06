@@ -1,0 +1,821 @@
+[
+  {
+    "id": "CAP-0001",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/database/prisma/schema.prisma; apps/api/src/jobs.ts; apps/api/src/catalog.ts; packages/billing/src/index.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts; apps/api/test/catalog.integration.test.ts",
+    "notes": "Master section 23. Suggested entities are represented by unified User/seller fields, WorkerDevice, immutable CapabilityVersion, WorkerBinding, version-pinned Job JSON plus Asset/AssetGrant, LedgerEntry and AuditEvent. Different table names/JSON normalization are not missing requirements. The prior 13:31 catalog19/protocol20 receipt is component evidence, not a test of every data-model clause or paid external acceptance."
+  },
+  {
+    "id": "AVL-0001",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; apps/api/src/catalog.ts; apps/api/src/jobs.ts; apps/api/src/scheduling.ts",
+    "tests": "apps/api/test/capacity.integration.test.ts; apps/api/test/scheduling.integration.test.ts; packages/policy-engine/src/policy.test.ts",
+    "notes": "Master section 26. Default concurrency is one; owner pause, exact ready-device capacity, bounded queues and offline denial exist. Multiple bindings extend rather than violate the minimum one-device MVP. Source and component tests support this aggregate, not physical laptop/failure acceptance. Scheduled purchase is separately explicit under451, not a promise of immediate dispatch."
+  },
+  {
+    "id": "AVL-0002",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/catalog.ts; apps/api/src/jobs.ts; packages/marketplace-agent/src/policy.ts",
+    "tests": "packages/policy-engine/src/policy.test.ts :: never turns a sleeping or insecure worker online because its schedule is open; apps/api/test/scheduling.integration.test.ts :: admits only the real ready device count even when configured concurrency is higher",
+    "notes": "Master section 26. Immediate purchase uses authoritative ready devices and rejects unavailable capacity before reservation; bounded future purchase carries a separate waiting deadline and quote. Source inspected plus policy replay14:16; no physical sleep or real-provider SLA acceptance claimed."
+  },
+  {
+    "id": "CAP-0002",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/catalog.ts; apps/api/src/capability-lifecycle.ts; packages/database/prisma/schema.prisma; apps/worker/src/capabilities.ts; apps/worker/src/imports.ts; security/sandbox/Dockerfile",
+    "tests": "apps/api/test/catalog.integration.test.ts :: models testing without fabricated success and preserves immutable published definitions; apps/worker/src/imports.test.ts :: invalidates changed resource/config/graph approval and revocation without mutating historical snapshots",
+    "notes": "Master section 32. Immutable execution definitions and skill/config hashes are recorded, and Worker validation records approved image/policy/inference proof plus an audit event. Master32 does not require bit-reproducible apt/npm rebuilds; no package-lock expansion is inferred. Remaining provenance boundary: validationProof is refreshed on WorkerBinding and publication does not pin a complete immutable per-published-version runtime attestation. Existing validation audits are evidence, but do not prove that exact publication-time attestation remains retrievable for the version lifetime. Parent owns any durable provenance design; current signed execution/version guards remain intact."
+  },
+  {
+    "id": "CAP-0003",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/catalog.ts; apps/api/src/capability-lifecycle.ts; packages/database/prisma/schema.prisma; apps/worker/src/capabilities.ts; apps/worker/src/imports.ts; security/sandbox/Dockerfile",
+    "tests": "apps/api/test/catalog.integration.test.ts :: models testing without fabricated success and preserves immutable published definitions; apps/worker/src/imports.test.ts :: invalidates changed resource/config/graph approval and revocation without mutating historical snapshots",
+    "notes": "Master section 32. Immutable execution definitions and skill/config hashes are recorded, and Worker validation records approved image/policy/inference proof plus an audit event. Master32 does not require bit-reproducible apt/npm rebuilds; no package-lock expansion is inferred. Remaining provenance boundary: validationProof is refreshed on WorkerBinding and publication does not pin a complete immutable per-published-version runtime attestation. Existing validation audits are evidence, but do not prove that exact publication-time attestation remains retrievable for the version lifetime. Parent owns any durable provenance design; current signed execution/version guards remain intact."
+  },
+  {
+    "id": "CAP-0004",
+    "status": "TESTED",
+    "implementation": "apps/api/src/catalog.ts; apps/api/src/capability-lifecycle.ts; packages/database/prisma/schema.prisma; apps/worker/src/capabilities.ts",
+    "tests": "apps/api/test/catalog.integration.test.ts :: models testing without fabricated success and preserves immutable published definitions; rechecks exact worker proof before rollback and preserves queued job version/price pins; packages/marketplace-agent/test/execution-security.test.ts :: does not silently buy a changed downstream %s or mint a new approval",
+    "notes": "Master section 32. Narrow immutability/no-silent-change clause. Actual persisted old versions reject mutation/deletion; queued jobs retain version and price pins, while agent definition/version drift stops downstream purchase. API receipt catalog19/protocol20 at13:31 and focused agent replay13:37. Does not certify lifetime retrieval of publication-time runtime attestation."
+  },
+  {
+    "id": "CAP-0005",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/api-version.ts; apps/api/src/catalog.ts; apps/api/src/jobs.ts; apps/api/src/auth.ts; packages/marketplace-agent/src/types.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts :: rejects $identity purchases with $balanceMinor cents without dispatch or financial side effects, then reserves 99 cents once funded; docs/BUYER-API.md",
+    "notes": "Master section 42. Earlier optional MCP/API sketch must be read with later mandatory REST sections319-324. Search/detail/run/job retrieval and scoped server-side purchase authority exist through REST, preserving external-agent architecture. A dedicated MCP server remains explicitly future scope under42, not a missing required MVP API. This review does not claim historical implementation ordering or external-agent acceptance was tested."
+  },
+  {
+    "id": "CAP-0006",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/api-version.ts; apps/api/src/catalog.ts; apps/api/src/jobs.ts; apps/api/src/auth.ts; packages/marketplace-agent/src/types.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts :: rejects $identity purchases with $balanceMinor cents without dispatch or financial side effects, then reserves 99 cents once funded; docs/BUYER-API.md",
+    "notes": "Master section 42. Earlier optional MCP/API sketch must be read with later mandatory REST sections319-324. Search/detail/run/job retrieval and scoped server-side purchase authority exist through REST, preserving external-agent architecture. A dedicated MCP server remains explicitly future scope under42, not a missing required MVP API. This review does not claim historical implementation ordering or external-agent acceptance was tested."
+  },
+  {
+    "id": "CAP-0007",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/api-version.ts; apps/api/src/catalog.ts; apps/api/src/jobs.ts; apps/api/src/auth.ts; packages/marketplace-agent/src/types.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts :: rejects $identity purchases with $balanceMinor cents without dispatch or financial side effects, then reserves 99 cents once funded; docs/BUYER-API.md",
+    "notes": "Master section 42. Earlier optional MCP/API sketch must be read with later mandatory REST sections319-324. Search/detail/run/job retrieval and scoped server-side purchase authority exist through REST, preserving external-agent architecture. A dedicated MCP server remains explicitly future scope under42, not a missing required MVP API. This review does not claim historical implementation ordering or external-agent acceptance was tested."
+  },
+  {
+    "id": "CAP-0008",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/capabilities.ts; packages/openclaw-adapter/src/policy.ts; apps/api/src/catalog.ts; packages/job-protocol/src/index.ts",
+    "tests": "apps/worker/src/imports.test.ts; apps/api/test/catalog.integration.test.ts",
+    "notes": "Master section 54. The immutable hashed local manifest includes permissions, limits, inference/resources, dependencies, skills, instructions and I/O. Cloud public projection is sanitized, signed offers bind exact capability version/manifest hash, and existing jobs retain their version. Component integration tests support this representation. Complete portable export/rebuild acceptance belongs32/114 and must not be treated as a missing54 hash/version implementation."
+  },
+  {
+    "id": "CAP-0009",
+    "status": "TESTED",
+    "implementation": "apps/api/src/catalog.ts; apps/api/src/capability-lifecycle.ts; packages/database/prisma/schema.prisma; apps/worker/src/capabilities.ts",
+    "tests": "apps/api/test/catalog.integration.test.ts :: models testing without fabricated success and preserves immutable published definitions; rechecks exact worker proof before rollback and preserves queued job version/price pins; packages/marketplace-agent/test/execution-security.test.ts :: does not silently buy a changed downstream %s or mint a new approval",
+    "notes": "Master section 54. Narrow immutability/no-silent-change clause. Actual persisted old versions reject mutation/deletion; queued jobs retain version and price pins, while agent definition/version drift stops downstream purchase. API receipt catalog19/protocol20 at13:31 and focused agent replay13:37. Does not certify lifetime retrieval of publication-time runtime attestation."
+  },
+  {
+    "id": "CAP-0014",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/catalog.ts; apps/api/src/capability-lifecycle.ts; packages/database/prisma/schema.prisma; apps/worker/src/validation.ts",
+    "tests": "apps/api/test/catalog.integration.test.ts :: requires review of the exact permission expansion diff and rejects stale draft publication; rechecks exact worker proof before rollback and preserves queued job version/price pins",
+    "notes": "Master section 74. Publication is a serializable owner/revision transaction rechecking exact manifest, current validation, dependency/runtime policy and permission-expansion review before activation. Seller test/security proof precedes that transaction; failures preserve the prior active version. Local synthetic validation/protocol tests are not independent live-provider or full security-release acceptance."
+  },
+  {
+    "id": "AGT-0001",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/web/src/components/capability-editor.tsx",
+    "tests": "apps/worker/src/imports.test.ts :: previews without importing, binds approved dependencies/content, and leaves personal content and metadata unchanged; apps/web/e2e/flows.spec.ts :: seller wizard saves exact named outputs, grants, DAG consent and overnight schedule",
+    "notes": "Master section 97. CLI approval says jobs run on this computer and inference configuration separately states seller costs; publication requires exact permission consent. Missing integrated first-publication explanation/acknowledgement covering the complete97 mental model: restricted OpenClaw, local/remote inference ownership and personal-session/workspace exclusion. Web wizard contains no such first-use screen. Existing permission consent is not evidence for that separate onboarding requirement."
+  },
+  {
+    "id": "AGT-0002",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/web/src/components/capability-editor.tsx",
+    "tests": "apps/worker/src/imports.test.ts :: previews without importing, binds approved dependencies/content, and leaves personal content and metadata unchanged; apps/web/e2e/flows.spec.ts :: seller wizard saves exact named outputs, grants, DAG consent and overnight schedule",
+    "notes": "Master section 97. CLI approval says jobs run on this computer and inference configuration separately states seller costs; publication requires exact permission consent. Missing integrated first-publication explanation/acknowledgement covering the complete97 mental model: restricted OpenClaw, local/remote inference ownership and personal-session/workspace exclusion. Web wizard contains no such first-use screen. Existing permission consent is not evidence for that separate onboarding requirement."
+  },
+  {
+    "id": "AGT-0003",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/capabilities.ts; apps/worker/src/imports.ts; apps/worker/src/resource-config.ts; packages/openclaw-adapter/src/policy.ts",
+    "tests": "apps/worker/src/imports.test.ts :: requires selected closure, selected targets, scoped grants and exact type bindings; requires every skill in the explicit transitive skill closure to be selected for capability execution; apps/web/tests/dependencies.test.ts :: requires consent throughout the selected prerequisite closure",
+    "notes": "Master section 97. Approved exact resource/tool/credential dependency closure is enforced rather than auto-selected. Focused replay13:37 passed. This atomic permission-scope proof does not close the missing full first-use explanation in97."
+  },
+  {
+    "id": "AGT-0004",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/web/src/components/capability-editor.tsx; apps/web/src/components/permissions.tsx",
+    "tests": "apps/worker/src/usage.test.ts :: records admitted attempts before transport and successful response tokens, never prompts, keys or endpoints",
+    "notes": "Master section 97. CLI inference review explicitly says seller pays; publishing states inference/local operating costs are separate, and public inference is labeled seller-provided. No UI statement claims platform-paid seller inference. This is source-inspected disclosure; exact comprehension/copy has no dedicated assertion. Pre-publication cost/margin estimation is still missing under101."
+  },
+  {
+    "id": "AGT-0006",
+    "status": "TESTED",
+    "implementation": "packages/contracts/src/index.ts; packages/policy-engine/src/index.ts; apps/worker/src/inference.ts; apps/api/src/catalog.ts",
+    "tests": "packages/policy-engine/src/policy.test.ts :: requires exact permission grants and an approved supported transitive graph; apps/worker/src/imports.test.ts :: requires fresh image/inference proofs and actual bounded read-only resource health",
+    "notes": "Master section 98. Publishability requires provider/model plus an approved required INFERENCE dependency and exact grants; Worker separately requires a configured dedicated credential and matching fresh proof. Unit replay13:37 passed. Live endpoint freshness between validation and purchase is a separate unresolved100/109 issue."
+  },
+  {
+    "id": "AGT-0008",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; packages/openclaw-adapter/src/policy.ts; apps/worker/src/inference.ts; apps/worker/src/anthropic.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts :: projects documented config names and workspace reference types without values, paths, includes or MCP connections; docs/OPENCLAW_COMPATIBILITY.md",
+    "notes": "Master section 98. Discovery reads the supported OpenClaw primary model metadata; generated isolated OpenClaw uses a bounded broker configuration with native Anthropic conversion and OpenAI-compatible transport. Unit fixtures cover the configured shapes; vendor/model live compatibility is an external acceptance gate, not proof of automatic detection of every local runtime."
+  },
+  {
+    "id": "AGT-0011",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/secrets.ts; apps/worker/src/inference.ts; apps/web/src/components/capability-editor.tsx",
+    "tests": "apps/worker/src/imports.test.ts :: requires explicit reviewed adaptation for native binary/environment requirements, without copying secrets or shell commands; docs/OPENCLAW_COMPATIBILITY.md",
+    "notes": "Master section 99. Dedicated credential-reference configuration and local secret stdin entry are the only supported path; personal credential reuse is not silently implemented. Worker-only references, per-job/day budgets and revocation are supported. Provider account-side key scopes cannot be guaranteed by Kivro; exact dedicated-key recommendation/wizard options and seller comprehension are not UI-tested."
+  },
+  {
+    "id": "AGT-0012",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/secrets.ts; apps/worker/src/inference.ts; apps/web/src/components/capability-editor.tsx",
+    "tests": "apps/worker/src/imports.test.ts :: requires explicit reviewed adaptation for native binary/environment requirements, without copying secrets or shell commands; docs/OPENCLAW_COMPATIBILITY.md",
+    "notes": "Master section 99. Dedicated credential-reference configuration and local secret stdin entry are the only supported path; personal credential reuse is not silently implemented. Worker-only references, per-job/day budgets and revocation are supported. Provider account-side key scopes cannot be guaranteed by Kivro; exact dedicated-key recommendation/wizard options and seller comprehension are not UI-tested."
+  },
+  {
+    "id": "AGT-0013",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/index.ts; apps/worker/src/secrets.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts :: discovers references without selecting, exposing secrets, running tools, or modifying personal files/metadata; projects documented config names and workspace reference types without values, paths, includes or MCP connections",
+    "notes": "Master section 99. Discovery projects safe reference names/types only, never resolves environment/includes/auth stores or returns provider/MCP secrets. Canary and byte/metadata immutability assertions passed13:37. Dedicated credentials must be supplied anew; redacted personal secrets are not reconstructed. No claim of inspecting a real user's personal credentials."
+  },
+  {
+    "id": "AGT-0014",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/index.ts; apps/worker/src/secrets.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts :: discovers references without selecting, exposing secrets, running tools, or modifying personal files/metadata; projects documented config names and workspace reference types without values, paths, includes or MCP connections",
+    "notes": "Master section 99. Discovery projects safe reference names/types only, never resolves environment/includes/auth stores or returns provider/MCP secrets. Canary and byte/metadata immutability assertions passed13:37. Dedicated credentials must be supplied anew; redacted personal secrets are not reconstructed. No claim of inspecting a real user's personal credentials."
+  },
+  {
+    "id": "AGT-0016",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/inference.ts; apps/worker/src/index.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts :: projects documented config names and workspace reference types without values, paths, includes or MCP connections",
+    "notes": "Master section 100. Confirmed code gap: scanRuntime exposes primary model and general config reference metadata, but no sanitized local-inference endpoint, availability, required process/service or known hardware-requirement record. Explicit manually configured loopback inference is supported and can be tested; that is not automatic discovery of supported local services. No unsafe secret/provider-config enumeration is requested as a fix."
+  },
+  {
+    "id": "AGT-0017",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/inference.ts; apps/worker/src/index.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts :: projects documented config names and workspace reference types without values, paths, includes or MCP connections",
+    "notes": "Master section 100. Confirmed code gap: scanRuntime exposes primary model and general config reference metadata, but no sanitized local-inference endpoint, availability, required process/service or known hardware-requirement record. Explicit manually configured loopback inference is supported and can be tested; that is not automatic discovery of supported local services. No unsafe secret/provider-config enumeration is requested as a fix."
+  },
+  {
+    "id": "AGT-0018",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/inference.ts; apps/worker/src/index.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts :: projects documented config names and workspace reference types without values, paths, includes or MCP connections",
+    "notes": "Master section 100. Confirmed code gap: scanRuntime exposes primary model and general config reference metadata, but no sanitized local-inference endpoint, availability, required process/service or known hardware-requirement record. Explicit manually configured loopback inference is supported and can be tested; that is not automatic discovery of supported local services. No unsafe secret/provider-config enumeration is requested as a fix."
+  },
+  {
+    "id": "AGT-0019",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/inference.ts :: inferenceReady; apps/worker/src/readiness.ts; apps/worker/src/runtime.ts; apps/worker/src/capability-health.ts; apps/worker/src/validation.ts",
+    "tests": "apps/worker/src/imports.test.ts :: requires fresh image/inference proofs and actual bounded read-only resource health; apps/api/test/protocol.integration.test.ts :: never lets a generic heartbeat clear missing or failed manifest validation",
+    "notes": "Master section 100. Confirmed code gap: inferenceReady checks secret/config and a cached test proof valid 24h, without probing local inference during periodic readiness. A stopped local model may remain advertised until the next request fails and deletes that proof. Resource broker health and real seller validation exist; supported dependency failure flags gate capability readiness, but proactive local inference failure detection and its pre-admission regression are missing. Unsupported dependency types fail closed rather than claiming health."
+  },
+  {
+    "id": "AGT-0021",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/capability-editor.tsx; apps/worker/src/inference.ts; apps/worker/src/usage.ts; apps/api/src/operations.ts",
+    "tests": "apps/worker/src/usage.test.ts :: records admitted attempts before transport and successful response tokens, never prompts, keys or endpoints; apps/web/e2e/earnings-economics-ui.spec.ts",
+    "notes": "Master section 101. Confirmed publishing UI gap: price/fee/seller proceeds and separate-cost disclosure exist, but no pre-publication inference-cost estimate, remote/local cost distinction or estimated seller margin. Worker max calls/tokens/per-job/day spend and post-job measured/unknown usage exist; post-job economics does not substitute for the101 publishing estimate. External pricing accuracy remains separate acceptance."
+  },
+  {
+    "id": "AGT-0025",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/observations.ts; apps/worker/src/validation.ts; apps/worker/src/index.ts; packages/openclaw-adapter/src/discovery.ts",
+    "tests": "apps/worker/src/observations.test.ts :: records only actual bounded metadata and labels loaded skills without claiming invocation; requires review of the exact report without silently changing the manifest or permissions; cannot grant observed undeclared dependencies by reviewing them",
+    "notes": "Master section 104. Focused replay13:37 verifies sanitized observations, bounded wrapper executable provenance, missing-binding recommendations and exact report review without auto-grants. Loaded skills explicitly remain LOADED_NOT_PROVEN_INVOKED. Static discovery is not portrayed as complete; no claim of arbitrary host executable discovery or every runtime skill invocation. Seller recommendation is CLI JSON, not a complete graphical wizard."
+  },
+  {
+    "id": "AGT-0026",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/observations.ts; apps/worker/src/validation.ts; apps/worker/src/index.ts; packages/openclaw-adapter/src/discovery.ts",
+    "tests": "apps/worker/src/observations.test.ts :: records only actual bounded metadata and labels loaded skills without claiming invocation; requires review of the exact report without silently changing the manifest or permissions; cannot grant observed undeclared dependencies by reviewing them",
+    "notes": "Master section 104. Focused replay13:37 verifies sanitized observations, bounded wrapper executable provenance, missing-binding recommendations and exact report review without auto-grants. Loaded skills explicitly remain LOADED_NOT_PROVEN_INVOKED. Static discovery is not portrayed as complete; no claim of arbitrary host executable discovery or every runtime skill invocation. Seller recommendation is CLI JSON, not a complete graphical wizard."
+  },
+  {
+    "id": "CAP-0022",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts :: DependencySchema; packages/openclaw-adapter/src/discovery.ts; apps/worker/src/observations.ts; apps/web/src/components/dependency-builder.tsx",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/observations.test.ts",
+    "notes": "Master section 105. Code/UI distinction remains: confidence currently encodes DECLARED/DETECTED/INFERRED provenance, not CONFIRMED/LIKELY/POSSIBLE/UNKNOWN uncertainty. Required/approved/hash-backed skills and honest observed-vs-loaded evidence exist, but the complete105 confidence presentation is missing. Example names such as company-research are illustrative, not required built-in skills."
+  },
+  {
+    "id": "CAP-0023",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts :: DependencySchema; packages/openclaw-adapter/src/discovery.ts; apps/worker/src/observations.ts; apps/web/src/components/dependency-builder.tsx",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/observations.test.ts",
+    "notes": "Master section 105. Code/UI distinction remains: confidence currently encodes DECLARED/DETECTED/INFERRED provenance, not CONFIRMED/LIKELY/POSSIBLE/UNKNOWN uncertainty. Required/approved/hash-backed skills and honest observed-vs-loaded evidence exist, but the complete105 confidence presentation is missing. Example names such as company-research are illustrative, not required built-in skills."
+  },
+  {
+    "id": "CAP-0024",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/observations.ts; apps/worker/src/tools.ts",
+    "tests": "apps/worker/src/observations.test.ts :: records only actual bounded metadata and labels loaded skills without claiming invocation",
+    "notes": "Master section 105. The illustrative observed-database clause maps to resources with HOST_BROKER_COMPLETED evidence from completed operations, separate from declarations and loaded skill metadata. Exact report shape/sanitization assertion passed13:37. This is typed observation evidence, not live PostgreSQL execution acceptance or proof of a graphical observed-confidence label."
+  },
+  {
+    "id": "CAP-0026",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; packages/openclaw-adapter/src/policy.ts; packages/policy-engine/src/index.ts; apps/web/src/lib/worker-policy.ts; apps/web/src/components/capability-editor.tsx",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts :: handles native JSON5 metadata and primaryEnv as review-required, never executable approval; apps/web/tests/dependencies.test.ts :: detects unresolved, duplicate and cyclic dependency graphs",
+    "notes": "Master section 108. Unsupported personal-browser/native plugins/executables cannot gain publishable grants; discovery exposes unsupported/review reasons and Web review blocks unsupported runtime contracts. A complete named imported-skill dependency-conflict UX is still part of the incomplete111 graphical import flow; section not asserted fully tested. Unsupported imports are not silently adapted or bypassed."
+  },
+  {
+    "id": "CAP-0027",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; packages/openclaw-adapter/src/policy.ts; packages/policy-engine/src/index.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts :: rejects unknown, duplicate and cyclic selections; unknown prerequisites cannot disappear; packages/policy-engine/src/policy.test.ts :: requires exact permission grants and an approved supported transitive graph",
+    "notes": "Master section 108. Narrow unsupported-dependency/no-bypass boundary: selectedDependencyClosure rejects unsupported nodes and missing prerequisites; approved supported transitive graph and reviewed tool allowlist are mandatory. Browser/personal-session tools are absent from supported tools and explicitly denied in generated runtime policy. Focused unit replay13:37; no fresh physical browser-escape test in this review."
+  },
+  {
+    "id": "CAP-0028",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; packages/openclaw-adapter/src/policy.ts; packages/policy-engine/src/index.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts :: rejects unknown, duplicate and cyclic selections; unknown prerequisites cannot disappear; packages/policy-engine/src/policy.test.ts :: requires exact permission grants and an approved supported transitive graph",
+    "notes": "Master section 108. Narrow unsupported-dependency/no-bypass boundary: selectedDependencyClosure rejects unsupported nodes and missing prerequisites; approved supported transitive graph and reviewed tool allowlist are mandatory. Browser/personal-session tools are absent from supported tools and explicitly denied in generated runtime policy. Focused unit replay13:37; no fresh physical browser-escape test in this review."
+  },
+  {
+    "id": "CAP-0029",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; packages/openclaw-adapter/src/policy.ts; packages/policy-engine/src/index.ts; apps/web/src/lib/worker-policy.ts; apps/web/src/components/capability-editor.tsx",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts :: handles native JSON5 metadata and primaryEnv as review-required, never executable approval; apps/web/tests/dependencies.test.ts :: detects unresolved, duplicate and cyclic dependency graphs",
+    "notes": "Master section 108. Unsupported personal-browser/native plugins/executables cannot gain publishable grants; discovery exposes unsupported/review reasons and Web review blocks unsupported runtime contracts. A complete named imported-skill dependency-conflict UX is still part of the incomplete111 graphical import flow; section not asserted fully tested. Unsupported imports are not silently adapted or bypassed."
+  },
+  {
+    "id": "CAP-0031",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; packages/openclaw-adapter/src/policy.ts; packages/policy-engine/src/index.ts; apps/web/src/lib/worker-policy.ts; apps/web/src/components/capability-editor.tsx",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts :: handles native JSON5 metadata and primaryEnv as review-required, never executable approval; apps/web/tests/dependencies.test.ts :: detects unresolved, duplicate and cyclic dependency graphs",
+    "notes": "Master section 108. Unsupported personal-browser/native plugins/executables cannot gain publishable grants; discovery exposes unsupported/review reasons and Web review blocks unsupported runtime contracts. A complete named imported-skill dependency-conflict UX is still part of the incomplete111 graphical import flow; section not asserted fully tested. Unsupported imports are not silently adapted or bypassed."
+  },
+  {
+    "id": "CAP-0032",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; packages/openclaw-adapter/src/policy.ts; packages/policy-engine/src/index.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts :: rejects unknown, duplicate and cyclic selections; unknown prerequisites cannot disappear; packages/policy-engine/src/policy.test.ts :: requires exact permission grants and an approved supported transitive graph",
+    "notes": "Master section 108. Narrow unsupported-dependency/no-bypass boundary: selectedDependencyClosure rejects unsupported nodes and missing prerequisites; approved supported transitive graph and reviewed tool allowlist are mandatory. Browser/personal-session tools are absent from supported tools and explicitly denied in generated runtime policy. Focused unit replay13:37; no fresh physical browser-escape test in this review."
+  },
+  {
+    "id": "AGT-0029",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/inference.ts :: inferenceReady; apps/worker/src/readiness.ts; apps/worker/src/runtime.ts; apps/worker/src/capability-health.ts; apps/worker/src/validation.ts",
+    "tests": "apps/worker/src/imports.test.ts :: requires fresh image/inference proofs and actual bounded read-only resource health; apps/api/test/protocol.integration.test.ts :: never lets a generic heartbeat clear missing or failed manifest validation",
+    "notes": "Master section 109. Confirmed code gap: inferenceReady checks secret/config and a cached test proof valid 24h, without probing local inference during periodic readiness. A stopped local model may remain advertised until the next request fails and deletes that proof. Resource broker health and real seller validation exist; supported dependency failure flags gate capability readiness, but proactive local inference failure detection and its pre-admission regression are missing. Unsupported dependency types fail closed rather than claiming health."
+  },
+  {
+    "id": "AGT-0032",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/inference.ts :: inferenceReady; apps/worker/src/readiness.ts; apps/worker/src/runtime.ts; apps/worker/src/capability-health.ts; apps/worker/src/validation.ts",
+    "tests": "apps/worker/src/imports.test.ts :: requires fresh image/inference proofs and actual bounded read-only resource health; apps/api/test/protocol.integration.test.ts :: never lets a generic heartbeat clear missing or failed manifest validation",
+    "notes": "Master section 109. Confirmed code gap: inferenceReady checks secret/config and a cached test proof valid 24h, without probing local inference during periodic readiness. A stopped local model may remain advertised until the next request fails and deletes that proof. Resource broker health and real seller validation exist; supported dependency failure flags gate capability readiness, but proactive local inference failure detection and its pre-admission regression are missing. Unsupported dependency types fail closed rather than claiming health."
+  },
+  {
+    "id": "CAP-0038",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/imports.ts; apps/worker/src/validation.ts; apps/web/src/components/capability-editor.tsx",
+    "tests": "apps/worker/src/imports.test.ts; apps/worker/src/observations.test.ts; apps/web/e2e/flows.spec.ts",
+    "notes": "Master section 111. CLI discovery/import/approval/health/representative test/observed report and Web definition/publication are real. Complete18-step integrated import wizard is absent: Web imports already authored JSON, does not scan/choose personal agents/workflows, wire observed-vs-declared review, or show pre-publication inference margin. Dedicated credentials, strict permissions and Connect/readiness gates must not be discounted, but they do not close the complete flow."
+  },
+  {
+    "id": "CAP-0039",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/web/src/components/capability-editor.tsx",
+    "tests": "apps/worker/src/imports.test.ts :: previews without importing, binds approved dependencies/content, and leaves personal content and metadata unchanged",
+    "notes": "Master section 111. Import and manifest approvals are explicit hashed approvals; the111 Step1 local-execution explanation with its own complete mental-model acknowledgement remains missing in the integrated onboarding, as97. Do not substitute tested exact permission consent for this distinct explanatory step."
+  },
+  {
+    "id": "CAP-0040",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts :: discovers references without selecting, exposing secrets, running tools, or modifying personal files/metadata",
+    "notes": "Master section 111. Exact read-only discovery clause verified with personal-file content, inode/mode/time snapshots and execution spy restricted to --version; unsafe links and malformed inputs rejected. Focused22-case discovery replay13:37. Real personal environment remains untouched; fixture evidence is not paid runtime acceptance."
+  },
+  {
+    "id": "CAP-0041",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/resource-config.ts; apps/worker/src/secrets.ts; packages/resource-broker/src/postgres.ts; apps/worker/src/connectors.ts",
+    "tests": "apps/worker/src/imports.test.ts :: requires fresh image/inference proofs and actual bounded read-only resource health; packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "Master section 111. Resource credentials are explicit local references; database role/transaction/resource checks and reviewed read-only connector operations exist. Dedicated DB role provisioning and live broker access belong resource-owner integration evidence; current focused tests do not claim they ran. No personal credential auto-copy. Graphical credential setup remains part of111 gap."
+  },
+  {
+    "id": "CAP-0042",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/inference.ts :: inferenceReady; apps/worker/src/readiness.ts; apps/worker/src/runtime.ts; apps/worker/src/capability-health.ts; apps/worker/src/validation.ts",
+    "tests": "apps/worker/src/imports.test.ts :: requires fresh image/inference proofs and actual bounded read-only resource health; apps/api/test/protocol.integration.test.ts :: never lets a generic heartbeat clear missing or failed manifest validation",
+    "notes": "Master section 111. Confirmed code gap: inferenceReady checks secret/config and a cached test proof valid 24h, without probing local inference during periodic readiness. A stopped local model may remain advertised until the next request fails and deletes that proof. Resource broker health and real seller validation exist; supported dependency failure flags gate capability readiness, but proactive local inference failure detection and its pre-admission regression are missing. Unsupported dependency types fail closed rather than claiming health."
+  },
+  {
+    "id": "CAP-0047",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/capabilities.ts; apps/worker/src/imports.ts; apps/web/src/lib/worker-manifest.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "apps/worker/src/imports.test.ts; apps/web/tests/dependencies.test.ts :: exports the exact dependency snapshot for canonical worker hashing",
+    "notes": "Master section 114. Hash-bound manifest/dependency/permission/I/O/skills/instructions and local resource references are stored and exported, with isolated runtime assembly. The complete dependency-aware portable package including pricing, runtime config and tests as an inspectable reproducible bundle is not present; Web export is a manifest, not the whole114 example package. Layout names are illustrative, but complete reproducibility remains unproven."
+  },
+  {
+    "id": "CAP-0048",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/lib/worker-manifest.ts; apps/worker/src/secrets.ts; apps/worker/src/imports.ts; packages/openclaw-adapter/src/policy.ts",
+    "tests": "apps/worker/src/imports.test.ts :: requires explicit reviewed adaptation for native binary/environment requirements, without copying secrets or shell commands; apps/web/tests/dependencies.test.ts :: exports the exact dependency snapshot for canonical worker hashing",
+    "notes": "Master section 114. Generated manifest/import data use credential references; secret store and host inference/resource brokers retain values outside runtime package. Source explicitly warns against secrets in seller instructions, but arbitrary seller-authored instruction text is not a universal secret-detection boundary. Do not claim complete portable package export or arbitrary-secret content scanning."
+  },
+  {
+    "id": "AGT-0034",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/inference.ts; apps/worker/src/runtime.ts; apps/api/src/worker.ts; apps/api/src/jobs.ts; packages/billing/src/index.ts",
+    "tests": "apps/worker/src/inference.test.ts :: redacts provider status %s, retains reservation and never retries; apps/api/test/protocol.integration.test.ts :: releases pre-execution cancellation and recovers an expired offer without another charge",
+    "notes": "Master section 117. Native/compatible inference errors become explicit seller-side failures and cloud failJob releases buyer reservation; successful settlement requires validated delivery. Unit transport/status tests and prior protocol receipt cover components, not a fresh API-key-revocation/quota/local-service outage through real external providers. No claim that conservative seller inference spend reservation equals a buyer charge."
+  },
+  {
+    "id": "CAP-0050",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/observations.ts; apps/worker/src/validation.ts; apps/worker/src/index.ts; packages/openclaw-adapter/src/discovery.ts",
+    "tests": "apps/worker/src/observations.test.ts :: records only actual bounded metadata and labels loaded skills without claiming invocation; requires review of the exact report without silently changing the manifest or permissions; cannot grant observed undeclared dependencies by reviewing them",
+    "notes": "Master section 118. Focused replay13:37 verifies sanitized observations, bounded wrapper executable provenance, missing-binding recommendations and exact report review without auto-grants. Loaded skills explicitly remain LOADED_NOT_PROVEN_INVOKED. Static discovery is not portrayed as complete; no claim of arbitrary host executable discovery or every runtime skill invocation. Seller recommendation is CLI JSON, not a complete graphical wizard."
+  },
+  {
+    "id": "CAP-0051",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/observations.ts; apps/worker/src/validation.ts; apps/worker/src/index.ts; packages/openclaw-adapter/src/discovery.ts",
+    "tests": "apps/worker/src/observations.test.ts :: records only actual bounded metadata and labels loaded skills without claiming invocation; requires review of the exact report without silently changing the manifest or permissions; cannot grant observed undeclared dependencies by reviewing them",
+    "notes": "Master section 118. Focused replay13:37 verifies sanitized observations, bounded wrapper executable provenance, missing-binding recommendations and exact report review without auto-grants. Loaded skills explicitly remain LOADED_NOT_PROVEN_INVOKED. Static discovery is not portrayed as complete; no claim of arbitrary host executable discovery or every runtime skill invocation. Seller recommendation is CLI JSON, not a complete graphical wizard."
+  },
+  {
+    "id": "CAP-0055",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/marketplace-agent/src/public-discovery.ts; packages/marketplace-agent/src/agent.ts; apps/api/src/catalog.ts",
+    "tests": "packages/marketplace-agent/test/public-discovery.test.ts; packages/marketplace-agent/test/agent.test.ts :: sends only public whitelisted records to platform inference",
+    "notes": "Master section 156. Current public version DTO plus transient normalized discovery content include public description, contracts, examples, price, rating/completions and availability. Search excludes internal configuration; model context is deliberately smaller than the full public DTO. Public-discovery18/agent11 replay14:16 proves selective public projection, not semantic quality with a paid provider or every example field in156."
+  },
+  {
+    "id": "CAP-0060",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts; apps/api/src/config.ts; apps/api/src/assets.ts; apps/api/src/jobs.ts; packages/openclaw-adapter/src/policy.ts; apps/web/src/lib/worker-policy.ts",
+    "tests": "apps/web/tests/worker-policy.test.ts :: catches input/output file restrictions exceeding the worker limit; packages/marketplace-agent/test/contract-matching.test.ts",
+    "notes": "Master section 219. Seller limits cannot raise the effective API/runtime ceiling and file compatibility checks are implemented. Confirmed configuration gap: only upload size has an API environment setting; contract absolute byte maxima and the supported runtime file ceiling remain separate source constants.219 explicitly asks absolute values to remain configuration, not scattered constants. Raising accepted schema limits alone would be unsafe."
+  },
+  {
+    "id": "CAP-0062",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts; apps/api/src/config.ts; apps/api/src/assets.ts; apps/api/src/jobs.ts; packages/openclaw-adapter/src/policy.ts; apps/web/src/lib/worker-policy.ts",
+    "tests": "apps/web/tests/worker-policy.test.ts :: catches input/output file restrictions exceeding the worker limit; packages/marketplace-agent/test/contract-matching.test.ts",
+    "notes": "Master section 219. Seller limits cannot raise the effective API/runtime ceiling and file compatibility checks are implemented. Confirmed configuration gap: only upload size has an API environment setting; contract absolute byte maxima and the supported runtime file ceiling remain separate source constants.219 explicitly asks absolute values to remain configuration, not scattered constants. Raising accepted schema limits alone would be unsafe."
+  },
+  {
+    "id": "CAP-0064",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/research-broker/src/connectors.ts; apps/worker/src/connectors.ts; packages/research-broker/src/egress.ts",
+    "tests": "packages/research-broker/test/broker.test.ts :: requires approved connector, exact domain, strict arguments and explicit private-data grant; does not expose endpoint/method/header overrides in a typed connector",
+    "notes": "Master section 247. Typed declared connectors are bound to an approved HTTPS endpoint/domain and operation schema, with no model-selected endpoint/header/method override. The two named tests assert this narrow allowlist boundary in source. They were not rerun in this trace while broker owner integrates downloads, so this row is not promoted to TESTED. No live connector/vendor credentials or research download acceptance claimed."
+  },
+  {
+    "id": "CAP-0066",
+    "status": "TESTED",
+    "implementation": "apps/api/src/capability-lifecycle.ts; apps/api/src/catalog.ts; apps/web/src/lib/dependencies.ts; apps/worker/src/capabilities.ts",
+    "tests": "apps/api/test/catalog.integration.test.ts :: requires review of the exact permission expansion diff and rejects stale draft publication; apps/api/test/catalog.unit.test.ts :: highlights resource, network, credential, dependency and runtime grant expansion",
+    "notes": "Master section 272. Internet mode/domain/tool expansion is included in immutable version diff and exact seller review before activation. Catalog-unit7 replay14:16 and earlier catalog19 integration receipt support this atomic rule. New research-download grant fields are being integrated by Worker owner; this row is not acceptance for that separate download implementation."
+  },
+  {
+    "id": "AVL-0004",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/catalog.ts; apps/web/src/components/marketplace.tsx; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/api/test/catalog.integration.test.ts :: keeps visibility separate from runtime state and enforces explicit private grants; apps/api/test/scheduling.integration.test.ts :: preserves security, pause, schedule and offline precedence over shared-device load",
+    "notes": "Master section 337. Public visibility does not imply current purchasability. Public availability and buyer cards/detail represent ONLINE/BUSY/OFFLINE/PAUSED plus security/schedule states. Integration/component coverage exists; all rendered status combinations were not replayed as browser acceptance here."
+  },
+  {
+    "id": "AVL-0005",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/ui.tsx; apps/web/src/components/marketplace.tsx; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/web/e2e/flows.spec.ts :: real catalog, detail, mobile brand and buyer upload",
+    "notes": "Master section 337. Buyer cards and checkout display public availability through human status labels. Source inspected; existing generic detail/browser checks are related, not an assertion of every337 status. Saved agent rationale raw status wording remains a distinct492 gap."
+  },
+  {
+    "id": "AVL-0006",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/catalog.ts; apps/api/src/jobs.ts; packages/marketplace-agent/src/policy.ts; apps/web/src/lib/checkout.ts",
+    "tests": "packages/policy-engine/src/policy.test.ts :: never turns a sleeping or insecure worker online because its schedule is open; apps/web/tests/checkout.test.ts",
+    "notes": "Master section 340. OFFLINE is inspectable but not immediate/scheduled admission: only schedule-closed with a known future window is explicitly schedulable. API and agent deny hard offline; checkout availability is false. Local inference outage detection freshness is separately incomplete under100, even though an authoritative OFFLINE state is enforced."
+  },
+  {
+    "id": "AVL-0009",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/policy.ts :: eligibleAt/rankCandidates; packages/marketplace-agent/src/agent.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: chooses an available alternative to an unavailable best match; packages/marketplace-agent/test/agent.test.ts :: continues scanning after unavailable top search results",
+    "notes": "Master section 340. Deterministic eligibility excludes OFFLINE before autonomous ranking and dispatch. Waiting consent does not convert hard offline into a reservation. Focused replay14:16; no claim that model prose is a source of truth."
+  },
+  {
+    "id": "AVL-0010",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/readiness.ts; apps/worker/src/inference.ts; apps/api/src/catalog.ts; apps/api/src/background.ts",
+    "tests": "apps/worker/src/runtime.test.ts :: recovers an expired unfinished attempt as timeout without executing it again; packages/policy-engine/src/policy.test.ts :: never turns a sleeping or insecure worker online because its schedule is open",
+    "notes": "Master section 347. Heartbeat TTL, persisted recovery and exact dependency/version readiness gate reconnect. Full347 remains partial: local inference readiness uses a cached24h minimal-inference proof, so a stopped service may not be detected before a new request. Unit restart/deadline evidence is not a physical lid-close/Wi-Fi/reboot matrix. No automatic OS power changes."
+  },
+  {
+    "id": "AVL-0011",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/readiness.ts; apps/worker/src/inference.ts; apps/api/src/catalog.ts; apps/api/src/background.ts",
+    "tests": "apps/worker/src/runtime.test.ts :: recovers an expired unfinished attempt as timeout without executing it again; packages/policy-engine/src/policy.test.ts :: never turns a sleeping or insecure worker online because its schedule is open",
+    "notes": "Master section 347. Heartbeat TTL, persisted recovery and exact dependency/version readiness gate reconnect. Full347 remains partial: local inference readiness uses a cached24h minimal-inference proof, so a stopped service may not be detected before a new request. Unit restart/deadline evidence is not a physical lid-close/Wi-Fi/reboot matrix. No automatic OS power changes."
+  },
+  {
+    "id": "AVL-0017",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/marketplace-agent/src/policy.ts; packages/marketplace-agent/src/agent.ts; apps/api/src/catalog.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: chooses an available alternative to an unavailable best match; allows an explicit bounded busy queue but rejects unknown wait; packages/marketplace-agent/test/agent.test.ts :: requires explicit queue bounds at chat and never promotes a busy queue to future scheduling",
+    "notes": "Master section 350. Structured current availability, deterministic timing filter and explicit known queue tolerance precede ranking. Whole-section evidence is component-level; actual provider ranking quality is not established. Zero-wait/immediate policy never grants future scheduling."
+  },
+  {
+    "id": "AVL-0018",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/policy.ts; packages/marketplace-agent/src/agent.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: chooses an available alternative to an unavailable best match; revalidates authoritative availability and price before any purchase; packages/marketplace-agent/test/agent.test.ts :: sends only public whitelisted records to platform inference",
+    "notes": "Master section 350. Availability comes from structured catalog fields and is rechecked against authoritative records. Returned model IDs are restricted to eligible candidates, and a model cannot create admission authority. Unit replay14:16 verifies the narrow no-model-authority rule; natural-language statement accuracy from live providers remains separate."
+  },
+  {
+    "id": "CAP-0088",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/catalog.ts; apps/api/src/auth.ts; apps/api/src/scheduling.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts :: atomically admits only available capacity and promotes scheduled jobs after eligibility; apps/api/test/scheduling.integration.test.ts :: reports shared-device occupancy publicly and rejects zero-queue purchases without reserving funds",
+    "notes": "Master section 351. Session and scoped-key purchases enter the same serialized admission path and receive structured availability errors before reserve. Protocol20 receipt14:10 proves selected capacity/payment cases, not all351 error-code branches. Exact status aliases can differ from illustrative names without changing policy."
+  },
+  {
+    "id": "CAP-0089",
+    "status": "TESTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/scheduling.ts; packages/billing/src/index.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts :: atomically admits only available capacity and promotes scheduled jobs after eligibility",
+    "notes": "Master section 351. Three concurrent zero-queue purchases admit one; denied requests do not reserve extra funds or create paid jobs. Fresh protocol20 PASS14:10:51. Broader shared-device/window checks have separate scheduling integration evidence; this is not real Stripe settlement acceptance."
+  },
+  {
+    "id": "CAP-0090",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/catalog.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/api/src/background.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts; apps/api/test/scheduling.integration.test.ts; apps/api/test/capacity.integration.test.ts; apps/worker/src/runtime.test.ts",
+    "notes": "Master section 355. Do not promote the fifteen-clause355 aggregate from one successful DAG or protocol run. Capacity, financial denial, heartbeat/validation and recovery have named tests. A two-capability required-dependency failure isolation acceptance and physical reconnect matrix were not established in this review; cached inference proof also leaves the100 outage detection gap."
+  },
+  {
+    "id": "CAP-0092",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/catalog.ts; packages/policy-engine/src/index.ts",
+    "tests": "apps/api/test/scheduling.integration.test.ts :: preserves security, pause, schedule and offline precedence over shared-device load; packages/policy-engine/src/policy.test.ts",
+    "notes": "Master section 355. PAUSED yields noRun/noQueue and the shared purchase guard rejects it before reserve. Existing cited integration asserts public paused state, not a dedicated paid PAUSED purchase/no-ledger regression; source implementation should not be promoted to atomic TESTED from that narrower assertion."
+  },
+  {
+    "id": "CAP-0094",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/runtime.ts :: publishableCapabilities/refreshCapabilityHealth; apps/worker/src/capability-health.ts; apps/api/src/catalog.ts",
+    "tests": "apps/worker/src/imports.test.ts :: invalidates changed resource/config/graph approval and revocation without mutating historical snapshots; apps/api/test/worker-warnings.integration.test.ts :: observes changed capability validation even when the scalar health marker stays unchanged",
+    "notes": "Master section 355. Resource/consent health is tracked per capability version and affects its binding; global inference/sandbox failures correctly affect all dependent jobs. No exact two-capability one-resource-failure integration assertion was located. Source implementation plus adjacent tests is not the full355 isolation acceptance."
+  },
+  {
+    "id": "CAP-0102",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-detail.tsx; apps/web/src/components/capability-examples.tsx; apps/api/src/example-assets.ts",
+    "tests": "apps/web/tests/examples.test.ts; apps/api/test/catalog.integration.test.ts :: publishes executed scalar examples only from the sellers own matching settled work",
+    "notes": "Master section 362. Detail has overview/price/rating/contracts, separate public examples with inputs and results, permissions and verified reviews before checkout. The recommended layout is realized through tabs, not literal headings/order. Example helper5 replay14:16 establishes public-only rendering references; this review did not rerun the browser detail flow."
+  },
+  {
+    "id": "CAP-0103",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-detail.tsx; apps/web/src/components/capability-examples.tsx; apps/api/src/example-assets.ts",
+    "tests": "apps/web/tests/examples.test.ts; apps/api/test/catalog.integration.test.ts :: publishes executed scalar examples only from the sellers own matching settled work",
+    "notes": "Master section 362. Detail has overview/price/rating/contracts, separate public examples with inputs and results, permissions and verified reviews before checkout. The recommended layout is realized through tabs, not literal headings/order. Example helper5 replay14:16 establishes public-only rendering references; this review did not rerun the browser detail flow."
+  },
+  {
+    "id": "CAP-0111",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/worker.ts :: GET /api/seller/workers; apps/web/src/components/worker-health-history.tsx; apps/web/src/lib/worker-health.ts",
+    "tests": "apps/web/tests/worker-health.test.ts; apps/web/tests/worker-warnings.test.ts",
+    "notes": "Master section 371. Installed, supported and minimum versions are now supplied and rendered; earlier absence is no longer current. Confirmed remaining371 gap: no nonblocking comparison/Update recommended state for installed version behind supported but still above minimum. Security-blocking version policy exists separately. Latest means platform-tested supported release, not latest upstream."
+  },
+  {
+    "id": "CAP-0112",
+    "status": "TESTED",
+    "implementation": "apps/api/src/security-policy.ts; apps/api/src/catalog.ts; apps/api/src/worker.ts; apps/web/src/components/worker-health-history.tsx",
+    "tests": "apps/api/test/catalog.integration.test.ts :: applies operator runtime and category policy to public availability and version readiness; apps/web/tests/worker-health.test.ts :: gives explicit revocation, version policy and pause precedence over recorded readiness",
+    "notes": "Master section 371. Below-minimum runtime policy blocks new paid work regardless of fresh heartbeat; UI gives security-blocked/version-policy warning and update/revalidate instruction. Earlier catalog integration and health3 replay14:16 cover this narrow security precedence, not the missing optional recommendation indicator."
+  },
+  {
+    "id": "AVL-0022",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts :: ScheduleSchema; packages/policy-engine/src/index.ts; apps/web/src/components/schedule-editor.tsx; apps/api/src/catalog.ts",
+    "tests": "apps/web/tests/schedules.test.ts :: serializes a real overnight exception under the schedule policy and manual pause wins; packages/policy-engine/src/policy.test.ts :: keeps overnight windows on the seller wall clock",
+    "notes": "Master section 398. ALWAYS/WEEKLY/MANUAL plus owner pause implement the schedule modes, weekly intervals, timezone and explicit overnight ranges. Manual pause overrides opening. Focused policy44/schedule4 replay14:16; full UI accessibility/usability of every mode was not replayed."
+  },
+  {
+    "id": "AVL-0023",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/schedule-editor.tsx; apps/web/src/lib/schedules.ts; packages/policy-engine/src/index.ts",
+    "tests": "apps/web/e2e/flows.spec.ts :: seller wizard saves exact named outputs, grants, DAG consent and overnight schedule; apps/web/tests/schedules.test.ts :: serializes a real overnight exception under the schedule policy and manual pause wins",
+    "notes": "Master section 398. Seller enters start/end directly, end-before-start is accepted as overnight and preview explicitly labels next day. Unit overnight/exception behavior passed14:16; named browser scenario is source-attributed, not rerun during this trace. Effective dated seven-day preview remains separate418 gap."
+  },
+  {
+    "id": "AVL-0033",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/marketplace.tsx; apps/web/src/components/capability-detail.tsx; apps/web/src/lib/checkout.ts; apps/api/src/jobs.ts",
+    "tests": "apps/web/tests/checkout.test.ts; apps/api/test/catalog.integration.test.ts :: keeps future services discoverable while filtering now, today and schedulable in the buyer timezone",
+    "notes": "Master section 404. Schedule-closed listings remain discoverable with a next time. NOW admission is denied;451 supersedes the earlier blanket no-purchase simplification with a separately quoted/confirmed SCHEDULED action. Notify-me is explicitly future scope, not a missing mandatory control. No claim of a fresh browser/DB end-to-end schedule-closed rejection."
+  },
+  {
+    "id": "AVL-0035",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/marketplace-agent/src/policy.ts; packages/marketplace-agent/src/agent.ts; apps/api/src/catalog.ts; packages/policy-engine/src/index.ts",
+    "tests": "packages/marketplace-agent/test/agent.test.ts :: offers future choices without inferring scheduling consent or relaxing hard constraints; packages/marketplace-agent/test/orchestration.test.ts :: requires deadline completion including runtime",
+    "notes": "Master section 405. API computes nextAvailableAt from seller schedule; immediate agent filtering excludes future-only candidates, while explicit non-immediate consent permits compatible later alternatives. Unit replay14:16. Future quotes still revalidate at purchase and cannot be invented from public prose."
+  },
+  {
+    "id": "AVL-0037",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts :: createJob; apps/api/src/catalog.ts; packages/policy-engine/src/index.ts",
+    "tests": "packages/policy-engine/src/policy.test.ts; apps/api/test/scheduling.integration.test.ts :: preserves security, pause, schedule and offline precedence over shared-device load",
+    "notes": "Master section 406. NOW rejects SCHEDULED_OFFLINE before job/fund creation and returns authoritative status/reason. Separate future reservation follows451. Named tests verify policy/status, but no exact API schedule-closed request plus zero-ledger assertion was located in this review; aggregate remains source-implemented rather than TESTED."
+  },
+  {
+    "id": "AVL-0042",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/database/prisma/schema.prisma :: Capability.schedule; packages/contracts/src/index.ts :: ScheduleSchema; apps/api/src/catalog.ts; apps/web/src/components/schedule-editor.tsx",
+    "tests": "apps/web/tests/schedules.test.ts; packages/policy-engine/src/policy.test.ts",
+    "notes": "Master section 413. Per-capability schedules are the explicitly permitted MVP choice. The suggested Worker default/inheritance is future convenience under the full413 text, not a required missing MVP feature. Seller edits the actual capability schedule; the effective date-range preview remains418, not proof that Worker inheritance is mandatory."
+  },
+  {
+    "id": "AVL-0043",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/database/prisma/schema.prisma :: Capability.schedule; packages/contracts/src/index.ts :: ScheduleSchema; apps/api/src/catalog.ts; apps/web/src/components/schedule-editor.tsx",
+    "tests": "apps/web/tests/schedules.test.ts; packages/policy-engine/src/policy.test.ts",
+    "notes": "Master section 413. Per-capability schedules are the explicitly permitted MVP choice. The suggested Worker default/inheritance is future convenience under the full413 text, not a required missing MVP feature. Seller edits the actual capability schedule; the effective date-range preview remains418, not proof that Worker inheritance is mandatory."
+  },
+  {
+    "id": "AVL-0045",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/policy-engine/src/index.ts :: evaluateAvailability; apps/api/src/catalog.ts",
+    "tests": "packages/policy-engine/src/policy.test.ts :: never turns a sleeping or insecure worker online because its schedule is open",
+    "notes": "Master section 415. Atomic core415 invariant tested14:16: an open schedule cannot make a heartbeat-offline or unready Worker ONLINE. This is deterministic state evidence, not physically closing a laptop lid. OS overnight guidance is optional/future; code does not change seller power settings. Aggregate status remains IMPLEMENTED: the cited tests certify only the described sub-behaviors, not every clause of the section."
+  },
+  {
+    "id": "AVL-0047",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/service.ts; apps/worker/src/index.ts; packages/policy-engine/src/index.ts",
+    "tests": "apps/worker/src/service.test.ts; apps/worker/src/cli-controls.test.ts",
+    "notes": "Master section 415. Source inspection found only explicitly requested user service installation/controls, no automatic pmset/system power mutation. Absence of such a feature is consistent with the prohibition; no blanket host-system audit or physical power-management assertion is claimed."
+  },
+  {
+    "id": "AVL-0049",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/schedule-editor.tsx; packages/policy-engine/src/index.ts :: schedulePreview",
+    "tests": "apps/web/tests/schedules.test.ts; packages/policy-engine/src/policy.test.ts",
+    "notes": "Master section 418. Confirmed UI gap: seller preview shows recurring weekly rows/timezone and overnight next-day text, but not current effective status, the next dated window start/end, or the next seven dated days with exceptions. A schedulePreview helper exists but is not wired to the editor. Weekly serialization/DST tests do not prove418 preview."
+  },
+  {
+    "id": "AVL-0050",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/schedule-editor.tsx; packages/policy-engine/src/index.ts :: schedulePreview",
+    "tests": "apps/web/tests/schedules.test.ts; packages/policy-engine/src/policy.test.ts",
+    "notes": "Master section 418. Confirmed UI gap: seller preview shows recurring weekly rows/timezone and overnight next-day text, but not current effective status, the next dated window start/end, or the next seven dated days with exceptions. A schedulePreview helper exists but is not wired to the editor. Weekly serialization/DST tests do not prove418 preview."
+  },
+  {
+    "id": "AVL-0054",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/policy-engine/src/index.ts; apps/api/src/catalog.ts; apps/api/src/jobs.ts; apps/api/src/scheduling.ts; apps/web/src/components/schedule-editor.tsx",
+    "tests": "packages/policy-engine/src/policy.test.ts; apps/web/tests/schedules.test.ts; apps/api/test/protocol.integration.test.ts; apps/api/test/scheduling.integration.test.ts",
+    "notes": "Master section 424. Twenty-clause424 acceptance is not a single tested behavior. Overnight/DST, modes, manual/security precedence and scheduled promotion have component evidence; exact NOW-closed no-reservation, prompt schedule-tampering and running-job-survives-close scenarios were not all located as dedicated acceptance tests. Missing418 preview is a separate implementation gap; no blanket schedule certification."
+  },
+  {
+    "id": "AVL-0055",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/schedule-editor.tsx; packages/contracts/src/index.ts; apps/api/src/catalog.ts",
+    "tests": "packages/policy-engine/src/policy.test.ts; apps/api/test/protocol.integration.test.ts :: atomically admits only available capacity and promotes scheduled jobs after eligibility",
+    "notes": "Master section 424. The seller mode selector exposes ALWAYS and serializes the shared schedule into create/update. API fixtures use ALWAYS successfully. No dedicated browser assertion selecting/saving that exact option was replayed; keep narrower than TESTED UI acceptance."
+  },
+  {
+    "id": "AVL-0056",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/web/src/components/capability-detail.tsx; apps/web/src/lib/checkout.ts; packages/policy-engine/src/index.ts",
+    "tests": "apps/web/tests/checkout.test.ts; apps/api/test/scheduling.integration.test.ts :: preserves security, pause, schedule and offline precedence over shared-device load",
+    "notes": "Master section 424. Outside schedule cannot use NOW; checkout switches to a separate schedule quote and explicit approval when a future window exists.424 must be read with451, which permits scheduled purchase. Source and partial status/checkout tests are present, but the exact schedule-closed API request with no reserve/job/ledger side effects is not certified by them."
+  },
+  {
+    "id": "AVL-0057",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/web/src/components/capability-detail.tsx; apps/web/src/lib/checkout.ts; packages/policy-engine/src/index.ts",
+    "tests": "apps/web/tests/checkout.test.ts; apps/api/test/scheduling.integration.test.ts :: preserves security, pause, schedule and offline precedence over shared-device load",
+    "notes": "Master section 424. Outside schedule cannot use NOW; checkout switches to a separate schedule quote and explicit approval when a future window exists.424 must be read with451, which permits scheduled purchase. Source and partial status/checkout tests are present, but the exact schedule-closed API request with no reserve/job/ledger side effects is not certified by them."
+  },
+  {
+    "id": "AVL-0058",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts :: CreateJobSchema/createJob; apps/api/src/catalog.ts :: seller schedule route; packages/contracts/src/index.ts",
+    "tests": "packages/marketplace-agent/test/agent.test.ts :: exposes strict chat constraints without accepting a body-supplied identity; apps/api/test/capacity.integration.test.ts",
+    "notes": "Master section 424. Strict job body has no seller schedule/capacity mutation fields; input is validated against frozen contract and owner-only schedule route is separate. Buyer prompt remains data. No exact adversarial job-input/prompt attempt with unchanged persisted schedule assertion located; adjacent strict-schema tests do not substitute for this424 acceptance."
+  },
+  {
+    "id": "AVL-0059",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/scheduling.ts; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/api/test/protocol.integration.test.ts :: atomically admits only available capacity and promotes scheduled jobs after eligibility; apps/api/test/scheduling.integration.test.ts :: serializes the last future-window reservation, rechecks quotes, and treats later windows independently",
+    "notes": "Master section 451. Explicit SCHEDULED mode, authoritative future window/capacity, bounded reservation and distinct checkout action implement451. Local protocol20 receipt14:10 covers real persistence/promotion, not buyer comprehension or every schedule-closed browser path."
+  },
+  {
+    "id": "AVL-0060",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/scheduling.ts :: scheduledAdmission",
+    "tests": "apps/api/test/scheduling.integration.test.ts :: serializes the last future-window reservation, rechecks quotes, and treats later windows independently",
+    "notes": "Master section 451. A future valid window can be quoted and bought with SCHEDULED even when current weekly hours are closed, subject to ready Worker, finite maxScheduled/window capacity and maxWait. Exact integration source asserts competing reservations and stale quote rejection; not rerun in this trace, so no fresh TESTED claim."
+  },
+  {
+    "id": "AVL-0061",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-detail.tsx :: Checkout; apps/web/src/lib/checkout.ts",
+    "tests": "apps/web/tests/checkout.test.ts :: permits immediate and explicitly schedulable jobs independently",
+    "notes": "Master section 451. Checkout shows earliest execution/result, reservation explanation, explicit timing acknowledgement and final Schedule rather than Run for future jobs. Generic initial Review job text is followed by distinct scheduled confirmation. Source inspected; comprehension and actual rendered confirmation wording were not independently browser-tested here."
+  },
+  {
+    "id": "AVL-0063",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-detail.tsx :: Checkout; apps/web/src/lib/checkout.ts",
+    "tests": "apps/web/tests/checkout.test.ts :: permits immediate and explicitly schedulable jobs independently",
+    "notes": "Master section 452. Checkout shows earliest execution/result, reservation explanation, explicit timing acknowledgement and final Schedule rather than Run for future jobs. Generic initial Review job text is followed by distinct scheduled confirmation. Source inspected; comprehension and actual rendered confirmation wording were not independently browser-tested here."
+  },
+  {
+    "id": "AVL-0064",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts :: JobStateSchema; apps/api/src/jobs.ts; apps/api/src/scheduling.ts; apps/api/src/background.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts :: atomically admits only available capacity and promotes scheduled jobs after eligibility; retains the original reservation promise when seller availability moves and notifies before full cancellation release",
+    "notes": "Master section 463. SCHEDULED is distinct from QUEUED, with originalScheduledAt/eligibleAt/queuedAt preserved. Fresh protocol20 PASS14:10 verifies no pre-eligible Worker offer, promotion, durable dates and cancellation release. Conceptual intermediate states may consolidate per463. This row certifies that specific state distinction, not every recovery branch. Aggregate status remains IMPLEMENTED: the cited tests certify only the described sub-behaviors, not every clause of the section."
+  },
+  {
+    "id": "AVL-0066",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/background.ts; apps/api/src/scheduling.ts; apps/web/src/components/jobs.tsx; apps/api/src/jobs.ts :: jobDto",
+    "tests": "apps/api/test/scheduling.integration.test.ts :: keeps due zero-queue reservations scheduled while their device is occupied elsewhere; apps/api/test/background.integration.test.ts :: processes active deadlines behind 251 older future reservations and advances the waiting cursor",
+    "notes": "Master section 469. Backend keeps an eligible reservation pending when no device can run, and waitDeadline bounds release/timeout. Confirmed presentation gap: buyer job view says generic Waiting for provider availability, but DTO/view does not distinguish currently-offline-at-window or display its waitDeadline. Adjacent busy-device/deadline tests are not the exact offline-at-open acceptance."
+  },
+  {
+    "id": "CAP-0114",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts :: POST /api/capabilities/:id/quote; apps/api/src/agent.ts :: quoteAgentCapability; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/api/test/protocol.integration.test.ts :: repairs persisted plans without losing completed work or budget and polls beyond twenty waiting plans; apps/api/test/scheduling.integration.test.ts",
+    "notes": "Master section 474. Backend quotes bind ID/version, price snapshot, NOW/SCHEDULED, earliest start/delivery and expiry. Checkout uses returned times rather than computing a promise.14:10 repair fixture now projects public quote into exact internal AgentQuote rather than leaking priceSnapshot; that strictness regression is not a full browser checkout proof."
+  },
+  {
+    "id": "AVL-0070",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts :: createJob/quote; apps/web/src/components/capability-detail.tsx; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: rejects expired quotes; revalidates authoritative availability and price before any purchase; apps/api/test/scheduling.integration.test.ts :: serializes the last future-window reservation, rechecks quotes, and treats later windows independently",
+    "notes": "Master section 475. Five-minute quote expiry and purchase-time price/version/schedule/capacity/payment checks fail before reserve; UI expiry requires refresh and fresh checkbox approval. Unit replay14:16 covers agent expiry; full server materially-changed quote/browser confirmation matrix not rerun."
+  },
+  {
+    "id": "AVL-0071",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/orchestration.ts; apps/api/src/jobs.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: rejects expired quotes; revalidates authoritative availability and price before any purchase; packages/marketplace-agent/test/execution-security.test.ts :: stops before downstream purchase when the approved downstream price changes",
+    "notes": "Master section 475. Expired quotes/current availability or price drift cannot reach the purchase callback, with no implicit requote/approval. Agent unit replay14:16 and earlier execution-security replay support this atomic guard. Server also revalidates inside its admission transaction; this is not all REST quote branches or real-card capture acceptance."
+  },
+  {
+    "id": "AVL-0072",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/marketplace.tsx :: CapabilityCard; apps/web/src/components/ui.tsx :: Status",
+    "tests": "apps/web/e2e/flows.spec.ts",
+    "notes": "Master section 477. Cards display Available now/Available later with a dated next time, Provider offline, Paused, price and duration from public DTOs. These implement the semantic examples without exact copy/layout identity. No fresh screenshot/status-matrix browser replay; agent rationale raw enum text is a separate492 gap."
+  },
+  {
+    "id": "AVL-0073",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-detail.tsx :: Checkout; apps/web/src/lib/checkout.ts",
+    "tests": "apps/web/tests/checkout.test.ts",
+    "notes": "Master section 478. Shared checkout helper gates immediate/queue/future availability; final command is Run now, Join queue or Schedule, and unavailable state disables submission. The2 helper tests passed14:16. They do not assert every rendered final button label or authoritative purchase race, so full478 stays IMPLEMENTED."
+  },
+  {
+    "id": "AGT-0098",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/marketplace-agent/src/orchestration.ts; packages/marketplace-agent/src/types.ts; apps/api/src/agent.ts; apps/api/src/jobs.ts; apps/api/src/background.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: maps an upstream result after success and never before; fails dependent steps without purchasing them after upstream failure; apps/api/test/protocol.integration.test.ts :: repairs persisted plans without losing completed work or budget and polls beyond twenty waiting plans",
+    "notes": "Master section 480. Draft dependency steps remain PLANNED until prerequisites succeed; submitted steps remain RUNNING while API reports PENDING, including scheduled jobs. Single-capability scheduled purchases are bounded by API maxWait. Multi-step future chains are conservatively subject to quote expiry/fresh approval, not transparent requote. No live-provider scheduled DAG acceptance was run;480 explicitly permits immediate-only MVP orchestration."
+  },
+  {
+    "id": "AGT-0099",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/orchestration.ts :: tick; apps/api/src/agent.ts :: PurchaseExecutor/getJob",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: maps an upstream result after success and never before; resumes purchased jobs using persisted IDs and stable idempotency keys; apps/api/test/protocol.integration.test.ts :: repairs persisted plans without losing completed work or budget and polls beyond twenty waiting plans",
+    "notes": "Master section 480. Explicit dependency waiting and pending purchased-job states survive persistence/repeated ticks without duplicate dispatch. Unit25 replay14:16 and actual protocol20 PASS14:10 include pagination beyond twenty waiting plans. Does not claim future-window wait UI or live scheduled multi-provider completion."
+  },
+  {
+    "id": "AGT-0100",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/marketplace-agent/src/orchestration.ts; apps/api/src/jobs.ts; apps/api/src/background.ts; apps/api/src/config.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: fails dependent steps without purchasing them after upstream failure; apps/api/test/background.integration.test.ts :: processes active deadlines behind 251 older future reservations and advances the waiting cursor",
+    "notes": "Master section 480. Downstream purchase occurs only after required upstream success; future jobs have finite maxWait/waitDeadline and independent deadline recovery, with expired quotes stopping new purchase. A library caller must supply the same bounded executor contract. Components have tests; no combined scheduled-downstream-expiry ledger acceptance was run in this trace."
+  },
+  {
+    "id": "AVL-0075",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/policy.ts :: eligibleAt/rankCandidates; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: chooses an available alternative to an unavailable best match; requires deadline completion including runtime; packages/marketplace-agent/test/agent.test.ts :: offers future choices without inferring scheduling consent or relaxing hard constraints",
+    "notes": "Master section 488. Immediate filter and deadline-inclusive runtime reject providers outside the selected timing policy before ranking/purchase. Explicit alternative presentation is not consent to future purchase. Focused replay14:16 proves this atomic policy, not provider quality."
+  },
+  {
+    "id": "AVL-0076",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/marketplace.tsx; apps/web/src/components/capability-detail.tsx; packages/marketplace-agent/src/agent.ts; packages/marketplace-agent/src/policy.ts",
+    "tests": "packages/marketplace-agent/test/agent.test.ts :: offers future choices without inferring scheduling consent or relaxing hard constraints; packages/marketplace-agent/test/orchestration.test.ts :: chooses an available alternative to an unavailable best match",
+    "notes": "Master section 488. Human marketplace retains visible future services and explicit scheduling; autonomous mode filters incompatible timing before ranking. Both consume current API availability. Components tested14:16; cross-mode rendered UX was not independently replayed."
+  },
+  {
+    "id": "AVL-0077",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/ui.tsx; apps/web/src/components/marketplace.tsx; apps/web/src/components/agent-recommendation.tsx; packages/marketplace-agent/src/policy.ts :: describeRecommendation",
+    "tests": "packages/marketplace-agent/test/recommendations.test.ts :: returns and persists versioned public explanations as historical snapshots, including without inference; apps/web/tests/agent-recommendations.test.ts",
+    "notes": "Master section 492. Confirmed partial UI gap: main cards/checkout map machine states to Available now/Available later/Provider offline, but saved recommendation timing.label interpolates the raw availability.status and RecommendationRationale renders it verbatim. Future recommendations therefore expose SCHEDULED_OFFLINE. Snapshot factuality tests do not establish human-readable492 language."
+  },
+  {
+    "id": "AVL-0078",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/ui.tsx; apps/web/src/components/marketplace.tsx; apps/web/src/components/agent-recommendation.tsx; packages/marketplace-agent/src/policy.ts :: describeRecommendation",
+    "tests": "packages/marketplace-agent/test/recommendations.test.ts :: returns and persists versioned public explanations as historical snapshots, including without inference; apps/web/tests/agent-recommendations.test.ts",
+    "notes": "Master section 492. Confirmed partial UI gap: main cards/checkout map machine states to Available now/Available later/Provider offline, but saved recommendation timing.label interpolates the raw availability.status and RecommendationRationale renders it verbatim. Future recommendations therefore expose SCHEDULED_OFFLINE. Snapshot factuality tests do not establish human-readable492 language."
+  },
+  {
+    "id": "AVL-0080",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/policy.ts :: rankCandidates/eligibleAt; packages/marketplace-agent/src/agent.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: chooses an available alternative to an unavailable best match; packages/marketplace-agent/test/agent.test.ts :: continues scanning after unavailable top search results",
+    "notes": "Master section 495. A future-only best-rated record loses eligibility before autonomous ranking; the currently available compatible record remains. Broader human discovery may retain both. Deterministic tests replay14:16 without credentials;495 example does not require a live vendor to prove this hard boundary."
+  },
+  {
+    "id": "AVL-0081",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/policy.ts :: rankCandidates/eligibleAt; packages/marketplace-agent/src/agent.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: chooses an available alternative to an unavailable best match; packages/marketplace-agent/test/agent.test.ts :: continues scanning after unavailable top search results",
+    "notes": "Master section 495. A future-only best-rated record loses eligibility before autonomous ranking; the currently available compatible record remains. Broader human discovery may retain both. Deterministic tests replay14:16 without credentials;495 example does not require a live vendor to prove this hard boundary."
+  },
+  {
+    "id": "AVL-0083",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/policy.ts :: eligibleAt/executionModeFor; packages/marketplace-agent/src/types.ts :: TimingPolicySchema",
+    "tests": "packages/marketplace-agent/test/repair.test.ts :: honors canQueue and a known wait bound while purchasing in NOW mode; packages/marketplace-agent/test/agent.test.ts :: requires explicit queue bounds at chat and never promotes a busy queue to future scheduling",
+    "notes": "Master section 496. BUSY admission requires canQueue and a finite nonnegative estimate within explicit maxQueueWaitSeconds; unknown/over-limit wait is rejected. A bounded queue is NOW, not implicit future scheduling. Agent/repair replay14:16 passes; API computes the estimate, and must keep that source current."
+  },
+  {
+    "id": "AVL-0088",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/orchestration.ts :: execute; apps/api/src/agent.ts :: beforeReserve",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: revalidates authoritative availability and price before any purchase; packages/marketplace-agent/test/execution-security.test.ts :: binds purchases to the current persisted revision and propagates a stale-revision rejection without buying",
+    "notes": "Master section 502. A model-selected ID does not authorize spend. Library live checks, exact hash/version/revision and API admission transaction are required. Unit replay14:16 plus earlier execution-security evidence cover selected drift races, not a formal proof of all transactional interleavings."
+  },
+  {
+    "id": "AVL-0089",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts :: createJob; apps/api/src/agent.ts :: PurchaseExecutor/beforeReserve; apps/api/src/catalog.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts :: atomically admits only available capacity and promotes scheduled jobs after eligibility; apps/api/test/scheduling.integration.test.ts :: gives due reservations the last slots before NOW and records one durable rejection without financial effects",
+    "notes": "Master section 502. Purchase queries authoritative availability inside serialized capacity/buyer-policy transaction before reserve; agent callback also locks and checks exact plan revision/hash. Protocol20 PASS14:10 plus parent independent20/capacity32 PASS14:16:35 are receipts, not every502 stale-schedule race. No hidden reapproval/reselection in financial callback."
+  },
+  {
+    "id": "AVL-0091",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts :: AvailabilitySchema; apps/api/src/catalog.ts :: capabilityDto; packages/marketplace-agent/src/agent.ts :: publicCandidate",
+    "tests": "packages/marketplace-agent/test/agent.test.ts :: sends only public whitelisted records to platform inference; packages/marketplace-agent/test/recommendations.test.ts",
+    "notes": "Master section 503. Public DTO and model hints include status, canRunNow/canQueue, estimatedQueueWaitSeconds and nextAvailableAt plus duration. These are equivalent to503 illustrative names, with no inference from description. Structured response/browser validation exists; source inspected and component replay14:16, not a dedicated assertion of every timing property."
+  },
+  {
+    "id": "AVL-0092",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/policy.ts; packages/marketplace-agent/src/agent.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: blocks %s even with a contradictory canRunNow; chooses an available alternative to an unavailable best match; rejects unavailable middle steps and incompatible mappings; packages/marketplace-agent/test/agent.test.ts :: provider failure and invalid plans have zero purchase side effects",
+    "notes": "Master section 503. Hard timing eligibility is code, not a prompt preference. Contradictory flags, future-only/unavailable middle steps and invalid model plans cannot override it or purchase. Named adversarial cases replay14:16. Public prose remains untrusted and model factual quality is a separate acceptance boundary."
+  },
+  {
+    "id": "AVL-0094",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/policy.ts; packages/marketplace-agent/src/agent.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: blocks %s even with a contradictory canRunNow; chooses an available alternative to an unavailable best match; rejects unavailable middle steps and incompatible mappings; packages/marketplace-agent/test/agent.test.ts :: provider failure and invalid plans have zero purchase side effects",
+    "notes": "Master section 504. Hard timing eligibility is code, not a prompt preference. Contradictory flags, future-only/unavailable middle steps and invalid model plans cannot override it or purchase. Named adversarial cases replay14:16. Public prose remains untrusted and model factual quality is a separate acceptance boundary."
+  },
+  {
+    "id": "AVL-0095",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/policy.ts; packages/marketplace-agent/src/agent.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: blocks %s even with a contradictory canRunNow; chooses an available alternative to an unavailable best match; rejects unavailable middle steps and incompatible mappings; packages/marketplace-agent/test/agent.test.ts :: provider failure and invalid plans have zero purchase side effects",
+    "notes": "Master section 504. Hard timing eligibility is code, not a prompt preference. Contradictory flags, future-only/unavailable middle steps and invalid model plans cannot override it or purchase. Named adversarial cases replay14:16. Public prose remains untrusted and model factual quality is a separate acceptance boundary."
+  },
+  {
+    "id": "AVL-0096",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/policy.ts; packages/marketplace-agent/src/agent.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: blocks %s even with a contradictory canRunNow; chooses an available alternative to an unavailable best match; rejects unavailable middle steps and incompatible mappings; packages/marketplace-agent/test/agent.test.ts :: provider failure and invalid plans have zero purchase side effects",
+    "notes": "Master section 504. Hard timing eligibility is code, not a prompt preference. Contradictory flags, future-only/unavailable middle steps and invalid model plans cannot override it or purchase. Named adversarial cases replay14:16. Public prose remains untrusted and model factual quality is a separate acceptance boundary."
+  },
+  {
+    "id": "CAP-0120",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/policy.ts :: candidateViolation; packages/marketplace-agent/src/agent.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts :: never trades permission, rating or price constraints for availability; packages/marketplace-agent/test/recommendations.test.ts :: never promotes preferences past visibility, seller, budget, rating, runtime, output, dependency or network constraints; packages/marketplace-agent/test/agent.test.ts :: offers future choices without inferring scheduling consent or relaxing hard constraints",
+    "notes": "Master section 509. Available-now does not override noNetwork or other hard constraints. Preferred IDs/model selection cannot bypass these checks; absent valid immediate choices, the agent returns conflict/explicit alternatives rather than buying. Focused replay14:16. Sandbox network NONE is not a claim that seller inference is local."
+  }
+]

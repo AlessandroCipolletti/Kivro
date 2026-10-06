@@ -1,0 +1,736 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum JobState {
+  CREATED
+  PAYMENT_RESERVED
+  SCHEDULED
+  QUEUED
+  OFFERED
+  ACCEPTED
+  RUNNING
+  PAUSE_REQUESTED
+  PAUSED
+  RESUMING
+  UPLOADING_RESULTS
+  VALIDATING_RESULTS
+  SUCCEEDED
+  FAILED
+  CANCELLED
+  TIMED_OUT
+}
+
+enum PaymentState {
+  RESERVED
+  SETTLED
+  RELEASED
+  REFUNDED
+}
+
+enum Visibility {
+  DRAFT
+  PRIVATE
+  UNLISTED
+  PUBLIC
+}
+
+model User {
+  id                       String   @id @default(uuid()) @db.Uuid
+  email                    String   @unique
+  emailVerifiedAt          DateTime?
+  termsAcceptedVersion     String?
+  termsAcceptedHash        String?
+  termsAcceptedAt          DateTime?
+  name                     String
+  passwordHash             String
+  isAdmin                  Boolean  @default(false)
+  suspendedAt              DateTime?
+  bio                      String?
+  stripeCustomerId         String?  @unique
+  stripeConnectedAccountId String?  @unique
+  connectStatus            String   @default("NOT_STARTED")
+  payoutsEnabled           Boolean  @default(false)
+  createdAt                DateTime @default(now())
+  updatedAt                DateTime @updatedAt
+  wallet                   Wallet?
+  sessions                 Session[]
+  authActions              AuthAction[]
+  apiKeys                  ApiKey[]
+  capabilities             Capability[]
+  workers                  WorkerDevice[]
+  purchases                Job[]    @relation("BuyerJobs")
+  sales                    Job[]    @relation("SellerJobs")
+  assets                   Asset[]
+  assetUploads             AssetUpload[]
+  favorites                Favorite[]
+  reviews                  Review[]
+  webhooks                 WebhookEndpoint[]
+  problemReports           ProblemReport[]
+  payouts                  PayoutRecord[]
+  exampleAssets            CapabilityExampleAsset[]
+}
+
+model Session {
+  id        String   @id @default(uuid()) @db.Uuid
+  tokenHash String   @unique
+  userId    String   @db.Uuid
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([expiresAt])
+}
+
+model AuthAction {
+  id                    String   @id @default(uuid()) @db.Uuid
+  userId                String   @db.Uuid
+  kind                  String
+  tokenHash             String   @unique
+  issuedEmail           String
+  credentialFingerprint String
+  expiresAt             DateTime
+  consumedAt            DateTime?
+  createdAt             DateTime @default(now())
+  user                  User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  email                 AccountEmail?
+  @@index([userId, kind, createdAt])
+  @@index([expiresAt])
+}
+
+model AccountEmail {
+  id               String   @id @default(uuid()) @db.Uuid
+  actionId         String   @unique @db.Uuid
+  payloadEncrypted String?
+  attempts         Int      @default(0)
+  nextAttemptAt    DateTime @default(now())
+  leaseId          String?  @db.Uuid
+  deliveredAt      DateTime?
+  lastError        String?
+  createdAt        DateTime @default(now())
+  action           AuthAction @relation(fields: [actionId], references: [id], onDelete: Cascade)
+  @@index([nextAttemptAt])
+}
+
+model ApiKey {
+  id         String   @id @default(uuid()) @db.Uuid
+  userId     String   @db.Uuid
+  name       String
+  prefix     String
+  secretHash String   @unique
+  scopes     String[]
+  expiresAt  DateTime?
+  revokedAt  DateTime?
+  lastUsedAt DateTime?
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId])
+}
+
+model Wallet {
+  userId         String @id @db.Uuid
+  currency       String @default("USD")
+  availableMinor Int    @default(0)
+  reservedMinor  Int    @default(0)
+  spentMinor     Int    @default(0)
+  earnedMinor    Int    @default(0)
+  user           User   @relation(fields: [userId], references: [id])
+}
+
+model LedgerEntry {
+  id             String   @id @default(uuid()) @db.Uuid
+  operationKey   String   @unique
+  transactionId  String   @db.Uuid
+  userId         String?  @db.Uuid
+  jobId          String?  @db.Uuid
+  type           String
+  currency       String   @default("USD")
+  amountMinor    Int
+  availableDelta Int      @default(0)
+  reservedDelta  Int      @default(0)
+  spentDelta     Int      @default(0)
+  earnedDelta    Int      @default(0)
+  metadata       Json     @default("{}")
+  createdAt      DateTime @default(now())
+  @@index([userId, createdAt])
+  @@index([jobId])
+  @@index([transactionId])
+}
+
+model IdempotencyRecord {
+  id          String   @id @default(uuid()) @db.Uuid
+  userId      String   @db.Uuid
+  endpoint    String
+  key         String
+  fingerprint String
+  response    Json?
+  createdAt   DateTime @default(now())
+  @@unique([userId, endpoint, key])
+}
+
+model Capability {
+  id                String     @id @default(uuid()) @db.Uuid
+  sellerId          String     @db.Uuid
+  slug              String     @unique
+  visibility        Visibility @default(DRAFT)
+  currentVersionId  String?    @unique @db.Uuid
+  draftVersionId    String?    @unique @db.Uuid
+  paused            Boolean    @default(false)
+  securityBlocked   Boolean    @default(false)
+  schedule          Json
+  concurrency       Int        @default(1)
+  maxQueue          Int        @default(3)
+  maxScheduled      Int        @default(20)
+  lifecycleRevision Int        @default(0)
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+  seller            User       @relation(fields: [sellerId], references: [id])
+  versions          CapabilityVersion[] @relation("CapabilityVersions")
+  currentVersion    CapabilityVersion?  @relation("CurrentVersion", fields: [currentVersionId], references: [id])
+  draftVersion      CapabilityVersion?  @relation("DraftVersion", fields: [draftVersionId], references: [id])
+  grants            CapabilityGrant[]
+  favorites         Favorite[]
+  reviews           Review[]
+  jobs              Job[]
+  problemReports    ProblemReport[]
+  exampleAssets     CapabilityExampleAsset[]
+  @@index([sellerId])
+}
+
+model CapabilityVersion {
+  id                       String    @id @default(uuid()) @db.Uuid
+  lifecycle                CapabilityVersionLifecycle?
+  capabilityId             String    @db.Uuid
+  version                  Int
+  title                    String
+  summary                  String
+  description              String
+  category                 String
+  tags                     String[]
+  priceTierId              String
+  ioContract               Json
+  permissions              Json
+  dependencies             Json
+  internalInstructions     String
+  manifestHash             String
+  examples                 Json      @default("[]")
+  estimatedDurationSeconds Int       @default(60)
+  consentAt                DateTime?
+  testPassedAt             DateTime?
+  publishedAt              DateTime?
+  publicationEvidence      Json?
+  createdAt                DateTime  @default(now())
+  capability               Capability @relation("CapabilityVersions", fields: [capabilityId], references: [id])
+  currentOf                Capability? @relation("CurrentVersion")
+  draftOf                  Capability? @relation("DraftVersion")
+  jobs                     Job[]
+  bindings                 WorkerBinding[]
+  @@unique([capabilityId, version])
+}
+
+model CapabilityVersionLifecycle {
+  versionId        String   @id @db.Uuid
+  retiredAt        DateTime?
+  testingStartedAt DateTime?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  version          CapabilityVersion @relation(fields: [versionId], references: [id], onDelete: Cascade)
+}
+
+model CapabilityGrant {
+  capabilityId String @db.Uuid
+  userId       String @db.Uuid
+  capability   Capability @relation(fields: [capabilityId], references: [id], onDelete: Cascade)
+  @@id([capabilityId, userId])
+}
+
+model Favorite {
+  userId       String @db.Uuid
+  capabilityId String @db.Uuid
+  createdAt    DateTime @default(now())
+  user         User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  capability   Capability @relation(fields: [capabilityId], references: [id], onDelete: Cascade)
+  @@id([userId, capabilityId])
+}
+
+model Review {
+  id           String @id @default(uuid()) @db.Uuid
+  jobId        String @unique @db.Uuid
+  userId       String @db.Uuid
+  capabilityId String @db.Uuid
+  rating       Int
+  comment      String
+  createdAt    DateTime @default(now())
+  user         User @relation(fields: [userId], references: [id])
+  capability   Capability @relation(fields: [capabilityId], references: [id])
+  job          Job @relation(fields: [jobId], references: [id])
+}
+
+model WorkerDevice {
+  id              String @id @default(uuid()) @db.Uuid
+  sellerId        String @db.Uuid
+  publicKey       String @unique
+  name            String
+  version         String
+  openclawVersion String?
+  sandboxReady    Boolean @default(false)
+  paused          Boolean @default(false)
+  localPaused     Boolean @default(false)
+  revokedAt       DateTime?
+  lastSeenAt      DateTime?
+  health          Json @default("{}")
+  healthStatus    String @default("UNKNOWN")
+  runningJobIds   String[]
+  createdAt       DateTime @default(now())
+  seller          User @relation(fields: [sellerId], references: [id])
+  bindings        WorkerBinding[]
+  commands        WorkerCommand[]
+  attempts        JobAttempt[]
+  assetUploads    AssetUpload[]
+  @@index([sellerId])
+}
+
+model WorkerBinding {
+  workerId            String @db.Uuid
+  capabilityVersionId String @db.Uuid
+  healthy             Boolean @default(false)
+  validationStatus    String @default("PENDING")
+  validatedManifestHash String?
+  validatedAt         DateTime?
+  validationProof     Json?
+  worker              WorkerDevice @relation(fields: [workerId], references: [id])
+  version             CapabilityVersion @relation(fields: [capabilityVersionId], references: [id])
+  @@id([workerId, capabilityVersionId])
+}
+
+model PairingCode {
+  id        String @id @default(uuid()) @db.Uuid
+  codeHash  String @unique
+  sellerId  String @db.Uuid
+  expiresAt DateTime
+  usedAt    DateTime?
+}
+
+model WorkerNonce {
+  workerId  String @db.Uuid
+  nonce     String @db.Uuid
+  expiresAt DateTime
+  @@id([workerId, nonce])
+  @@index([expiresAt])
+}
+
+model WorkerCommand {
+  id          String @id @default(uuid()) @db.Uuid
+  workerId    String @db.Uuid
+  jobId       String? @db.Uuid
+  type        String
+  createdAt   DateTime @default(now())
+  deliveredAt DateTime?
+  ackedAt     DateTime?
+  resumeWhilePaused Boolean @default(false)
+  worker      WorkerDevice @relation(fields: [workerId], references: [id])
+  @@index([workerId, ackedAt])
+}
+
+model Job {
+  id                  String @id @default(uuid()) @db.Uuid
+  buyerId             String @db.Uuid
+  sellerId            String @db.Uuid
+  sellerNameSnapshot  String?
+  capabilityId        String @db.Uuid
+  capabilityVersionId String @db.Uuid
+  state               JobState @default(CREATED)
+  paymentState        PaymentState @default(RESERVED)
+  input               Json
+  output              Json?
+  priceSnapshot       Json
+  financialBreakdown  Json @default("{}")
+  currency            String @default("USD")
+  buyerPriceMinor     Int
+  platformFeeMinor    Int
+  sellerNetMinor      Int
+  executionMode       String
+  scheduledAt         DateTime?
+  originalScheduledAt DateTime?
+  eligibleAt          DateTime?
+  queuedAt            DateTime?
+  contentDeletedAt    DateTime?
+  executionRevokedAt  DateTime?
+  contentRetentionDays Int @default(30)
+  waitDeadline        DateTime
+  startedAt           DateTime?
+  completedAt         DateTime?
+  pausedAt            DateTime?
+  pausedDurationMs    Int @default(0)
+  maxPauseMs          Int @default(900000)
+  activeAttemptId     String? @unique @db.Uuid
+  error               String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  buyer               User @relation("BuyerJobs", fields: [buyerId], references: [id])
+  seller              User @relation("SellerJobs", fields: [sellerId], references: [id])
+  capability          Capability @relation(fields: [capabilityId], references: [id])
+  version             CapabilityVersion @relation(fields: [capabilityVersionId], references: [id])
+  attempts            JobAttempt[] @relation("JobAttempts")
+  activeAttempt       JobAttempt? @relation("ActiveAttempt", fields: [activeAttemptId], references: [id])
+  events              JobEvent[]
+  review              Review?
+  assets              Asset[]
+  assetGrants         AssetGrant[]
+  assetUploads        AssetUpload[]
+  problemReports      ProblemReport[]
+  @@index([buyerId, createdAt])
+  @@index([sellerId, createdAt])
+  @@index([state, scheduledAt])
+  @@index([capabilityId, state])
+}
+
+model ProblemReport {
+  id           String @id @default(uuid()) @db.Uuid
+  reporterId   String @db.Uuid
+  jobId        String? @db.Uuid
+  capabilityId String? @db.Uuid
+  category     String
+  description  String
+  status       String @default("OPEN")
+  resolution   String?
+  revision     Int @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  reporter     User @relation(fields: [reporterId], references: [id])
+  job          Job? @relation(fields: [jobId], references: [id])
+  capability   Capability? @relation(fields: [capabilityId], references: [id])
+  @@index([reporterId, createdAt])
+  @@index([status, createdAt])
+}
+
+model JobAttempt {
+  id             String @id @default(uuid()) @db.Uuid
+  jobId          String @db.Uuid
+  workerId       String @db.Uuid
+  state          String @default("OFFERED")
+  expiresAt      DateTime
+  nonce          String @unique @db.Uuid
+  resultHash     String?
+  usageReceipt   Json?
+  usageReportedAt DateTime?
+  createdAt      DateTime @default(now())
+  acceptedAt     DateTime?
+  finishedAt     DateTime?
+  job            Job @relation("JobAttempts", fields: [jobId], references: [id])
+  activeFor      Job? @relation("ActiveAttempt")
+  worker         WorkerDevice @relation(fields: [workerId], references: [id])
+  assetUploads   AssetUpload[]
+  @@index([workerId, state])
+}
+
+model JobEvent {
+  id        String @id @default(uuid()) @db.Uuid
+  jobId     String @db.Uuid
+  type      String
+  message   String
+  metadata  Json @default("{}")
+  createdAt DateTime @default(now())
+  job       Job @relation(fields: [jobId], references: [id])
+  @@index([jobId, createdAt])
+}
+
+model ScheduleQuote {
+  id                  String @id @default(uuid()) @db.Uuid
+  buyerId             String @db.Uuid
+  capabilityId        String @db.Uuid
+  capabilityVersionId String @db.Uuid
+  executionMode       String
+  priceSnapshot       Json
+  earliestStartAt     DateTime
+  estimatedDeliveryAt DateTime
+  expiresAt           DateTime
+  createdAt           DateTime @default(now())
+}
+
+model Asset {
+  id         String @id @default(uuid()) @db.Uuid
+  ownerId    String @db.Uuid
+  jobId      String? @db.Uuid
+  attemptId  String? @db.Uuid
+  kind       String @default("INPUT")
+  filename   String
+  mimeType   String
+  sizeBytes  Int
+  sha256     String
+  exampleCopies CapabilityExampleAsset[]
+  objectKey  String @unique
+  scanStatus String @default("PENDING")
+  expiresAt  DateTime
+  deletedAt  DateTime?
+  createdAt  DateTime @default(now())
+  owner      User @relation(fields: [ownerId], references: [id])
+  job        Job? @relation(fields: [jobId], references: [id])
+  grants     AssetGrant[]
+  upload     AssetUpload?
+  publication PendingObject?
+  @@index([ownerId, createdAt])
+  @@index([expiresAt])
+}
+
+model AssetUpload {
+  id               String   @id @default(uuid()) @db.Uuid
+  ownerId          String   @db.Uuid
+  workerId         String?  @db.Uuid
+  jobId            String?  @db.Uuid
+  attemptId        String?  @db.Uuid
+  assetId          String?  @unique @db.Uuid
+  kind             String
+  filename         String
+  mimeType         String
+  sizeBytes        Int
+  sha256           String
+  objectKey        String   @unique
+  expiresAt        DateTime
+  leaseId          String?  @db.Uuid
+  leaseExpiresAt   DateTime?
+  stagingDeletedAt DateTime?
+  createdAt        DateTime @default(now())
+  owner            User @relation(fields: [ownerId], references: [id])
+  worker           WorkerDevice? @relation(fields: [workerId], references: [id])
+  job              Job? @relation(fields: [jobId], references: [id])
+  attempt          JobAttempt? @relation(fields: [attemptId], references: [id])
+  asset            Asset? @relation(fields: [assetId], references: [id])
+  @@index([ownerId, expiresAt])
+  @@index([expiresAt, stagingDeletedAt])
+}
+
+model CapabilityExampleAsset {
+  id               String @id @default(uuid()) @db.Uuid
+  capabilityId     String @db.Uuid
+  ownerId          String @db.Uuid
+  sourceAssetId    String? @db.Uuid
+  filename         String
+  mimeType         String
+  sizeBytes        Int
+  sha256           String
+  objectKey        String @unique
+  scanStatus       String
+  reusableTemplate Boolean @default(false)
+  approvedAt       DateTime @default(now())
+  createdAt        DateTime @default(now())
+  revokedAt        DateTime?
+  deletedAt        DateTime?
+  capability Capability @relation(fields: [capabilityId], references: [id])
+  owner User @relation(fields: [ownerId], references: [id])
+  sourceAsset Asset? @relation(fields: [sourceAssetId], references: [id], onDelete: SetNull)
+  publication PendingObject?
+  @@index([capabilityId, revokedAt])
+}
+
+model PendingObject {
+  id               String @id @default(uuid()) @db.Uuid
+  objectKey        String @unique
+  // No owner FK: an abandoned private object must survive account removal for cleanup.
+  ownerId          String @db.Uuid
+  createdAt        DateTime @default(now())
+  expiresAt        DateTime
+  cleanupStartedAt DateTime?
+  committedAt      DateTime?
+  deletedAt        DateTime?
+  assetId          String? @unique @db.Uuid
+  exampleAssetId   String? @unique @db.Uuid
+  asset            Asset? @relation(fields: [assetId], references: [id], onDelete: Cascade)
+  exampleAsset     CapabilityExampleAsset? @relation(fields: [exampleAssetId], references: [id], onDelete: Cascade)
+  @@index([committedAt, deletedAt, expiresAt])
+}
+
+model AssetGrant {
+  assetId   String @db.Uuid
+  jobId     String @db.Uuid
+  expiresAt DateTime
+  asset     Asset @relation(fields: [assetId], references: [id])
+  job       Job @relation(fields: [jobId], references: [id])
+  @@id([assetId, jobId])
+}
+
+model AuditEvent {
+  id        String @id @default(uuid()) @db.Uuid
+  actorId   String? @db.Uuid
+  sellerId  String? @db.Uuid
+  jobId     String? @db.Uuid
+  workerId  String? @db.Uuid
+  type      String
+  metadata  Json @default("{}")
+  createdAt DateTime @default(now())
+  @@index([sellerId, createdAt])
+  @@index([jobId])
+}
+
+model PlatformSetting {
+  key       String @id
+  value     Json
+  updatedAt DateTime @updatedAt
+}
+
+model AbuseBucket {
+  key         String @id
+  hits        Int @default(0)
+  amountMinor Int @default(0)
+  currency    String @default("USD")
+  expiresAt   DateTime
+  @@index([expiresAt])
+}
+
+model BillingEvent {
+  id          String @id
+  type        String
+  livemode    Boolean @default(false)
+  outcome     String @default("PROCESSED")
+  providerReference String?
+  payload     Json?
+  processedAt DateTime? @default(now())
+  @@index([providerReference, outcome])
+}
+
+model Topup {
+  id              String @id @default(uuid()) @db.Uuid
+  userId          String @db.Uuid
+  idempotencyKey  String
+  amountMinor     Int
+  currency        String @default("USD")
+  livemode        Boolean @default(false)
+  refundedMinor   Int @default(0)
+  refundAppliedMinor Int @default(0)
+  refundDebtMinor Int @default(0)
+  disputedAt      DateTime?
+  stripeSessionId String? @unique
+  paymentIntentId String? @unique
+  checkoutUrl     String?
+  state           String @default("PENDING")
+  createdAt       DateTime @default(now())
+  disputes        PaymentDispute[]
+  @@unique([userId, idempotencyKey])
+}
+
+model PaymentDispute {
+  id                       String @id
+  paymentIntentId          String
+  topupId                  String? @db.Uuid
+  livemode                 Boolean
+  amountMinor              Int
+  currency                 String
+  status                   String
+  lastEventCreated         Int
+  lastEventId              String
+  closedStatus             String?
+  closedEventCreated       Int?
+  withdrawnEventCreated    Int?
+  reinstatedEventCreated   Int?
+  reviewRequired           Boolean @default(false)
+  createdAt                DateTime @default(now())
+  updatedAt                DateTime @updatedAt
+  topup                    Topup? @relation(fields: [topupId], references: [id])
+  @@index([paymentIntentId, livemode])
+  @@index([topupId])
+}
+
+model SellerTransfer {
+  id              String @id @default(uuid()) @db.Uuid
+  jobId           String @unique @db.Uuid
+  sellerId        String @db.Uuid
+  amountMinor     Int
+  currency        String @default("USD")
+  state           String @default("PENDING")
+  stripeTransferId String? @unique
+  destinationAccountId String?
+  startedAt       DateTime?
+  reversalId      String?
+  attempts        Int @default(0)
+  nextAttemptAt   DateTime @default(now())
+  lastError       String?
+  createdAt       DateTime @default(now())
+}
+
+model PayoutRecord {
+  id                String @id @default(uuid()) @db.Uuid
+  sellerId          String @db.Uuid
+  stripeAccountId   String
+  stripePayoutId    String
+  livemode          Boolean
+  amountMinor       Int
+  currency          String
+  status            String
+  providerCreatedAt DateTime
+  arrivalDate       DateTime
+  paidAt            DateTime?
+  failureCode       String?
+  lastSyncedAt      DateTime
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  seller            User @relation(fields: [sellerId], references: [id])
+  @@unique([livemode, stripeAccountId, stripePayoutId])
+  @@index([sellerId, livemode, status])
+  @@index([sellerId, providerCreatedAt])
+}
+
+model WebhookEndpoint {
+  id              String @id @default(uuid()) @db.Uuid
+  userId          String @db.Uuid
+  url             String
+  secretEncrypted String
+  events          String[]
+  enabled         Boolean @default(true)
+  failureCount    Int @default(0)
+  lastSuccessAt   DateTime?
+  lastFailureAt   DateTime?
+  createdAt       DateTime @default(now())
+  user            User @relation(fields: [userId], references: [id])
+  deliveries      WebhookDelivery[]
+}
+
+model OutboxEvent {
+  id          String @id @default(uuid()) @db.Uuid
+  userId      String @db.Uuid
+  type        String
+  payload     Json
+  processedAt DateTime?
+  createdAt   DateTime @default(now())
+  @@index([processedAt, createdAt])
+}
+
+model WebhookDelivery {
+  id            String @id @default(uuid()) @db.Uuid
+  endpointId    String @db.Uuid
+  eventId       String @db.Uuid
+  payload       Json
+  attempts      Int @default(0)
+  nextAttemptAt DateTime @default(now())
+  deliveredAt   DateTime?
+  failedAt      DateTime?
+  lastStatus    Int?
+  lastError     String?
+  endpoint      WebhookEndpoint @relation(fields: [endpointId], references: [id])
+  @@unique([endpointId, eventId])
+  @@index([deliveredAt, nextAttemptAt])
+}
+
+model AgentConversation {
+  id        String @id @default(uuid()) @db.Uuid
+  userId    String @db.Uuid
+  messages  Json @default("[]")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([userId, updatedAt])
+}
+
+model AgentPlan {
+  id             String @id @default(uuid()) @db.Uuid
+  userId         String @db.Uuid
+  conversationId String? @db.Uuid
+  plan           Json
+  state          String @default("PROPOSED")
+  jobIds         String[]
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  @@index([userId])
+}

@@ -1,0 +1,14 @@
+node_modules/
+.next/
+dist/
+.env
+.env.*.local
+.kivro/
+.local/
+coverage/
+test-results/
+playwright-report/
+apps/web/verification/
+*.log
+*.tsbuildinfo
+.DS_Store

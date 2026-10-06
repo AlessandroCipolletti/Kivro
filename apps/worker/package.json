@@ -1,0 +1,27 @@
+{
+  "name": "@kivro/worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "start": "node --import tsx src/index.ts start"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "dependencies": {
+    "@kivro/contracts": "workspace:*",
+    "@kivro/crypto": "workspace:*",
+    "@kivro/job-protocol": "workspace:*",
+    "@kivro/openclaw-adapter": "workspace:*",
+    "@kivro/policy-engine": "workspace:*",
+    "@kivro/research-broker": "workspace:*",
+    "@kivro/resource-broker": "workspace:*",
+    "tsx": "4.23.15",
+    "zod": "^3.25.76"
+  }
+}

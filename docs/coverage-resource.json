@@ -1,0 +1,219 @@
+[
+  {
+    "id": "SEC-0004",
+    "status": "TESTED",
+    "implementation": "packages/resource-broker/test/fixture.sql",
+    "tests": "packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "FIXTURE SCOPE, not marketplace end-to-end: the executed SQL creates a dedicated nonprivileged reader with SELECT only on resource_fixture.table_a. Real PostgreSQL at localhost:55432 denied table_b, DML, DDL, TEMP, COPY and server-file access, including after disabling the session's default read-only setting. Production seller account provisioning is not implemented by this package. Evidence: KIVRO_INTEGRATION=1 pnpm exec vitest run packages/resource-broker passed 56 tests, including 19 real PostgreSQL execution/health tests, on 2026-10-06. Health regressions create and remove isolated synthetic roles/tables without changing the base fixture's credentials or ACLs."
+  },
+  {
+    "id": "SEC-0005",
+    "status": "TESTED",
+    "implementation": "packages/resource-broker/src/postgres.ts",
+    "tests": "packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "BROKER SCOPE: assertReadOnlyRole refuses superuser/admin credentials, privileged role attributes, role memberships, database CREATE/TEMPORARY, table ownership/writes and schema CREATE. The real integration test refuses the local administrator despite an approved query. This is runtime enforcement for this database broker, not a claim about all worker secret consumers or seller onboarding."
+  },
+  {
+    "id": "SEC-0007",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/resource-broker/src/index.ts",
+    "tests": "packages/resource-broker/test/broker.test.ts",
+    "notes": "PACKAGE PARTIAL: the host-only secretResolver is called only after resource, operation, manifest, dependency, input and budget authorization. Unit tests verify denied operations and invalid input never resolve credentials; cancellation prevents later connection setup. Global worker process environments, inference secrets and sandbox transport are outside this package's tests, so the process-wide secret-scoping invariant is not claimed complete."
+  },
+  {
+    "id": "SEC-0008",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/resource-broker/src/index.ts",
+    "tests": "packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "PACKAGE PARTIAL: stable broker errors omit driver/resolver diagnostics; result envelopes contain data and approved abstract metadata; a real DB row containing the resolved credential is rejected. Audit callbacks omit inputs, outputs, credentials and paths. This does not verify every worker prompt, log, public manifest, cloud response or transformed/encoded secret outside the broker boundary."
+  },
+  {
+    "id": "SEC-0009",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/resource-broker/src/postgres.ts",
+    "tests": "packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "SECTION PARTIAL, section 14: production pg operations use fixed allowlisted identifiers, named prepared parameters, BEGIN READ ONLY, role/ACL checks, bounded rows/encoded bytes and timeouts. Real A/B access, write denial, privilege rejection, locked-query timeout and cancellation passed. Package evidence does not establish complete seller provisioning, capability readiness, sandbox-to-host transport or paid-job end-to-end acceptance."
+  },
+  {
+    "id": "SEC-0011",
+    "status": "TESTED",
+    "implementation": "packages/resource-broker/src/postgres.ts",
+    "tests": "packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "BROKER SCOPE: dedicated least-privilege credentials are enforced rather than merely recommended; unsafe roles are refused before private SELECT execution. The executed fixture demonstrates a separate SELECT-only reader and refuses an administrator. Seller UI guidance and automatic provisioning of external seller databases are not part of this package."
+  },
+  {
+    "id": "SEC-0012",
+    "status": "TESTED",
+    "implementation": "packages/resource-broker/src/policy.ts",
+    "tests": "packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "BROKER SCOPE: compileResources validates every query table and selected/filter/order column against the immutable resource allowlist; callers cannot supply SQL or identifiers. broker.test.ts rejects a table_b configuration outside that list. Real integration allows table_a and separately proves table_b denial by PostgreSQL ACLs even when explicitly named in a test broker configuration. No arbitrary joins, functions, views, partition traversal or raw SQL are exposed."
+  },
+  {
+    "id": "SEC-0013",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/resource-broker/src/index.ts",
+    "tests": "packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "PACKAGE PARTIAL: the password is resolved on the host and supplied only to pg.Client; result metadata never includes connection configuration, and direct credential echoes are rejected. Real result/error tests passed. This suite does not inspect every byte of an actual OpenClaw/Docker frame exchange, host environment or inference prompt, so the complete agent-never-receives-password invariant needs worker-level evidence."
+  },
+  {
+    "id": "JOB-0012",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/resource-broker/src/files.ts",
+    "tests": "packages/resource-broker/test/broker.test.ts",
+    "notes": "PACKAGE PARTIAL: file operations accept only an approved selectionId; absolute/canonical containment, ancestor/final symlinks, owner/mode, regular-file identity, single hardlink, descriptor metadata and SHA-256 checks prevent arbitrary-path reads through this broker. Real filesystem tests cover unselected paths, traversal, hardlinks, symlinks and changed content. This is not proof of every sandbox filesystem/mount boundary or output-upload path."
+  },
+  {
+    "id": "SEC-0041",
+    "status": "TESTED",
+    "implementation": "packages/resource-broker/test/fixture.sql",
+    "tests": "packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "FULL NARROW EXPERIMENT E EVIDENCE: the synthetic fixture has two real tables. Named broker queries read table_a; actual PostgreSQL permissions reject table_b; write attempts are independently denied. The fixture was loaded and tested at localhost:55432 on 2026-10-06. This establishes the private-data experiment at the broker/database boundary, not a full marketplace or OpenClaw paid execution."
+  },
+  {
+    "id": "SEC-0055",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/resource-broker/src/index.ts",
+    "tests": "packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "SECTION PARTIAL, section 71: LocalResourceBroker.execute exposes approved named database operations and immutable file selections with deterministic authorization, JSON schemas, per-job budgets and sanitized audit/result metadata. The package is implemented and both real database and filesystem tests passed. Full narrow-tool transport, persisted consent, audit retention and job lifecycle acceptance need worker-level tests; the package suite alone does not complete the architectural section."
+  },
+  {
+    "id": "SEC-0056",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/resource-broker/src/index.ts",
+    "tests": "packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "PACKAGE PARTIAL: raw credentials are absent from the request/result interface; a host-side resolver supplies only the selected database password to pg, and direct credential-bearing output fails validation. Real PostgreSQL evidence exists. Complete credential isolation across the worker bridge, sandbox process environment and other resource types is not established by these tests."
+  },
+  {
+    "id": "IO-0037",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/resource-broker/test/fixture.sql",
+    "tests": "packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "SECTION PARTIAL, section 90: implements and executes the second synthetic private-database fixture with actual pg connections and permissions. Does not implement or verify the canonical Document Analyzer discovery/import/upload/inference/result/payment flow, nor run the private-database fixture through the entire paid marketplace and Docker bridge."
+  },
+  {
+    "id": "CAP-0018",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/resource-broker/src/policy.ts",
+    "tests": "packages/resource-broker/test/broker.test.ts",
+    "notes": "SECTION PARTIAL, section 102: assertClosure follows dependsOn edges from the resource, requires an approved credential descendant for DATABASE, checks all required nodes, and rejects missing children, duplicate IDs and cycles. Runtime dependency-graph enforcement is tested. Discovery, persisted published capability graphs and the seller selection UI are not implemented by this package."
+  },
+  {
+    "id": "CAP-0020",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/resource-broker/src/policy.ts",
+    "tests": "packages/resource-broker/test/broker.test.ts",
+    "notes": "PACKAGE PARTIAL: constructor authorization fails when the resource root omits its required credential child or references an absent dependency. Unit tests also deny unapproved, unhealthy and unsupported closure nodes. Worker READY/NOT_READY transitions and seller-facing missing-child explanations are outside this package and are not covered by these tests."
+  },
+  {
+    "id": "UI-0007",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/resource-broker/src/policy.ts",
+    "tests": "packages/resource-broker/test/broker.test.ts",
+    "notes": "PACKAGE PARTIAL: resource access requires an explicit manifest resource grant, approved dependency resource grant, approved credential closure and an operation/configuration-hash grant. None is inferred from buyer input. Tests deny missing or altered grants. This implements the enforcement prerequisite only; the UI's explicit consent presentation and network-destination approvals are not implemented here."
+  },
+  {
+    "id": "UI-0014",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/resource-broker/src/policy.ts",
+    "tests": "packages/resource-broker/test/broker.test.ts",
+    "notes": "PACKAGE PARTIAL: assertClosure checks all dependencies marked required as well as the selected resource's descendants before resource execution. Tests exercise failed closure nodes and unresolved edges. The source requirement is a publication prerequisite; this runtime check does not independently prove the publication wizard or API rejects incomplete capabilities."
+  },
+  {
+    "id": "AGT-0028",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/resource-broker/src/index.ts",
+    "tests": "packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "SECTION PARTIAL, section 109: LocalResourceBroker.checkHealth now verifies every granted DB operation and approved file selection before execution, with fresh authentication, read-only role/schema/table/column checks, PREPARE without EXECUTE, existing file identity/hash/schema checks, one sequential DB connection and a fixed five-second total deadline. Real credential/ACL/schema drift and no-application-row-read tests passed; unit tests verify cancellation, concurrency, file coverage and independent job budgets. Inference/MCP/executable health, worker scheduling/readiness persistence and full end-to-end state transitions are outside this package's verification, so the complete section remains partial."
+  },
+  {
+    "id": "AGT-0030",
+    "status": "TESTED",
+    "implementation": "packages/resource-broker/src/postgres.ts",
+    "tests": "packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "BROKER HEALTH REQUIREMENT TESTED: checkHealth freshly authenticates and validates every granted named operation, not only previously used resource IDs, in BEGIN READ ONLY. It checks schema USAGE, SELECT-only table/column access, relation/type safety and referenced-column existence, then PREPARE/DEALLOCATE checks SQL operators without executing application queries or accepting buyer inputs. Real tests pass initial health then revoke SELECT on the second operation, rotate the password, add UPDATE, revoke schema USAGE and rename a column; each subsequent probe fails. An RLS function that raises on row access permits health but fails real execution, proving health does not read application rows. Fixed deadline/concurrency and lock/cancellation tests passed. This establishes the package health API; host READY publication, representative output validation and paid-job end-to-end behavior remain separate evidence."
+  },
+  {
+    "id": "AGT-0031",
+    "status": "TESTED",
+    "implementation": "packages/resource-broker/src/postgres.ts",
+    "tests": "packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "FULL NARROW READ-ONLY PROOF: real PostgreSQL rejects reader INSERT/UPDATE/DELETE/TRUNCATE/DDL/COPY and server-file access with SQLSTATE 42501 even after default_transaction_read_only is disabled. A separate administrator BEGIN READ ONLY transaction rejects UPDATE with SQLSTATE 25006. Both execution and checkHealth verify transaction_read_only and role/table/column privilege safety; a new health regression grants UPDATE after initial successful approval/probe and verifies the next probe refuses readiness. These are executed database safety proofs, not mocks or a claim that worker readiness consumes the API automatically."
+  },
+  {
+    "id": "CAP-0033",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/resource-broker/src/index.ts",
+    "tests": "packages/resource-broker/test/broker.test.ts",
+    "notes": "SECTION PARTIAL, section 110: constructor-owned cloned/frozen permission, dependency and resource snapshots are hash-bound to the supplied approval; every request must match the pinned snapshots. Caller mutation and changed configuration/dependency tests pass. Durable capability version records, health invalidation and REVALIDATION_REQUIRED transitions belong to the host and are not implemented here."
+  },
+  {
+    "id": "CAP-0034",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/resource-broker/src/index.ts",
+    "tests": "packages/resource-broker/test/broker.test.ts",
+    "notes": "PACKAGE PARTIAL: a ResourceApproval carries capabilityVersionId and the full dependency snapshot, which the broker retains immutably in memory. Tests show later caller mutation cannot change the active approval. Persisting that graph with the published capability version, restoring it after restart and verifying the signed worker offer are host responsibilities, not supplied by this in-memory broker."
+  },
+  {
+    "id": "CAP-0036",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/resource-broker/src/index.ts",
+    "tests": "packages/resource-broker/test/broker.test.ts",
+    "notes": "PACKAGE PARTIAL: changed permission/dependency snapshots and resource configuration hashes cannot execute through an existing approval. checkHealth also revalidates live authentication, read-only ACLs and every granted operation's schema on each call; real password/SELECT/write/schema drift after initial approval now fails before execution. Host readiness scheduling, durable REVALIDATION_REQUIRED state and integration of health failures into dispatch still require worker-level evidence. Runtime authorization remains in place because health is only a point-in-time check."
+  },
+  {
+    "id": "CAP-0044",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/resource-broker/src/index.ts",
+    "tests": "packages/resource-broker/test/broker.test.ts",
+    "notes": "SECTION PARTIAL, section 113: undeclared resources/operations, changed snapshots and unresolved dependency closure fail closed with stable ResourceBrokerError codes; sanitized audit callbacks describe outcome and abstract IDs without private data. Callback generation is implemented, but durable security-event storage, job POLICY_VIOLATION mapping and seller reapproval workflows are host responsibilities."
+  },
+  {
+    "id": "CAP-0045",
+    "status": "TESTED",
+    "implementation": "packages/resource-broker/src/index.ts",
+    "tests": "packages/resource-broker/test/broker.test.ts",
+    "notes": "BROKER SCOPE: execute cannot add permissions, resources, operations or dependency nodes; configuration and approval snapshots are cloned/frozen and mismatching requests are denied before secret access. Unit tests cover missing operation grants, added resources, removed dependencies and mutation after construction. No automatic grant expansion exists in this package."
+  },
+  {
+    "id": "CAP-0046",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/resource-broker/src/index.ts",
+    "tests": "packages/resource-broker/test/broker.test.ts",
+    "notes": "PACKAGE PARTIAL: buyer operation input is schema-validated JSON and cannot change the pinned dependency graph; caller-provided snapshots must hash-match the trusted approval. Unit tests reject graph mutations and arbitrary SQL/path arguments. The stronger worker-wide guarantee additionally depends on signed-offer verification and host-owned frame identity/snapshot routing, which this package suite does not execute end-to-end."
+  },
+  {
+    "id": "PRD-0219",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/resource-broker/src/policy.ts",
+    "tests": "packages/resource-broker/test/broker.test.ts",
+    "notes": "PACKAGE PARTIAL: this resource boundary requires explicit capability grants, an approved dependency closure and immutable operation/configuration hashes for database/file access. Read-only worker inspection confirms the former direct LOCAL_FILE input copy has been removed and resource tools call the broker. Tests here do not independently prove every alternate host/LAN/sandbox access route is unavailable."
+  },
+  {
+    "id": "PRD-0245",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/resource-broker/src/index.ts",
+    "tests": "packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "SECTION PARTIAL, section 261: private resource grants are distinct from network permission, and all resource results carry SELLER_PRIVATE plus untrusted:true. Both real DB results and file unit tests verify that metadata. Latest worker source includes SELLER_PRIVATE in egress authorization for resource-bearing jobs, but no mixed private-resource/research/connector end-to-end test was run by this package owner."
+  },
+  {
+    "id": "PRD-0246",
+    "status": "TESTED",
+    "implementation": "packages/resource-broker/src/postgres.ts",
+    "tests": "packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "BROKER SCOPE: real named parameterized SELECT operations expose only fixed allowed tables/columns and scalar filters in read-only transactions. SQL injection remains a parameter; raw SQL and write operation names are denied. Row, full-response byte, time and schema checks are tested. This satisfies the narrow read-only database-operation behavior without claiming the combined research workflow."
+  },
+  {
+    "id": "PRD-0247",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/resource-broker/src/index.ts",
+    "tests": "packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "PACKAGE PARTIAL: untrusted SELLER_PRIVATE metadata is attached to database/file outputs and cannot be supplied or cleared by operation input. That is the resource-side prerequisite for egress denial. Actual research/connector destinations and information-flow authorization are outside this package; mixed-flow exfiltration prevention is not established by these tests."
+  },
+  {
+    "id": "PRD-0248",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/resource-broker/src/index.ts",
+    "tests": "packages/resource-broker/test/broker.test.ts",
+    "notes": "SECTION PARTIAL, section 262: typed bounded output, private taint and sanitized result/audit metadata implement the local-resource contribution to data-flow control. This package has no generic HTTP/request-body operation. Research GET/HEAD rules, dedicated connector schemas, persistent host taint and combined private-to-public egress enforcement require evidence from their own owners; this row does not certify the whole section."
+  }
+]

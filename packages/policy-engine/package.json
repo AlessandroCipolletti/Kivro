@@ -1,0 +1,9 @@
+{
+  "name": "@kivro/policy-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts", "./schedule": "./src/schedule.ts" },
+  "scripts": { "typecheck": "tsc --noEmit" },
+  "dependencies": { "@kivro/contracts": "workspace:*", "@js-temporal/polyfill": "^0.5.1", "ipaddr.js": "^2.2.0" }
+}

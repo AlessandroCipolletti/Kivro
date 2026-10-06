@@ -1,0 +1,1 @@
+{"name":"@kivro/billing","version":"0.1.0","private":true,"type":"module","exports":"./src/index.ts","scripts":{"typecheck":"tsc --noEmit"},"dependencies":{"@kivro/database":"workspace:*","stripe":"18.0.0"},"devDependencies":{"@types/node":"^22.18.0","typescript":"^5.9.3"}}

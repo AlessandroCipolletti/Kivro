@@ -1,0 +1,30 @@
+import { test, expect } from "@playwright/test";
+import { JobDTOSchema, PRICE_TIERS } from "@kivro/contracts";
+import { noOverflow, uiFixtureSession } from "./ui-fixtures";
+
+test("job list and detail use the historical seller name and keep legacy identity explicit", async ({ page }, info) => {
+  const user = await uiFixtureSession(page), now = new Date().toISOString(), sellerId = crypto.randomUUID();
+  const job = JobDTOSchema.parse({ id: crypto.randomUUID(), capabilityId: crypto.randomUUID(), capabilityVersionId: crypto.randomUUID(), capabilityTitle: "Purchased seller identity", buyerId: user.id, sellerId, sellerName: "Historical seller <b>name</b>", state: "CANCELLED", paymentState: "RELEASED", input: {}, output: null, priceSnapshot: PRICE_TIERS[0], createdAt: now, updatedAt: now, scheduledAt: null, startedAt: null, completedAt: now, error: null, events: [] });
+  const legacy = JobDTOSchema.parse({ ...job, id: crypto.randomUUID(), sellerId: crypto.randomUUID(), sellerName: null, capabilityTitle: "Legacy seller identity" });
+  let currentCatalogReads = 0;
+  await page.route("**/api/capabilities*", route => { currentCatalogReads++; return route.fulfill({ json: [] }); });
+  await page.route("**/api/jobs", route => route.fulfill({ json: [job, legacy] }));
+  await page.route(`**/api/jobs/${job.id}`, route => route.fulfill({ json: job }));
+  await page.route(`**/api/jobs/${legacy.id}`, route => route.fulfill({ json: legacy }));
+  for (const item of [job, legacy]) await page.route(`**/api/jobs/${item.id}/review`, route => route.fulfill({ json: { jobId: item.id, capabilityId: item.capabilityId, capabilityVersionId: item.capabilityVersionId, capabilityVersionNumber: 1, sellerId: item.sellerId, eligible: false, canEdit: false, reason: "JOB_NOT_SUCCEEDED", review: null, policy: { editWindowDays: 7, editDeadlineAt: null } } }));
+  expect((await page.goto("/jobs"))?.status()).toBe(200);
+  const first = page.locator(".job-row").filter({ hasText: "Purchased seller identity" }), old = page.locator(".job-row").filter({ hasText: "Legacy seller identity" });
+  await expect(first.locator(".job-seller")).toContainText(job.sellerName!); await expect(first.locator(".job-seller b")).toHaveCount(0);
+  await expect(old.locator(".job-seller")).toContainText(`Seller ${legacy.sellerId}`); await expect(old.locator(".job-seller")).toContainText("Name at purchase not recorded");
+  await page.getByLabel("Search jobs").fill("Historical seller"); await expect(page.locator(".job-row")).toHaveCount(1);
+  await page.getByLabel("Search jobs").clear(); await noOverflow(page);
+  await page.screenshot({ path: `apps/web/verification/job-seller-list-fixture-${info.project.name}.png`, fullPage: true });
+  await first.getByRole("link", { name: "View Purchased seller identity", exact: true }).click();
+  await expect(page.locator(".metadata-list").getByText("Seller at purchase", { exact: true })).toBeVisible();
+  await expect(page.locator(".job-seller>a")).toHaveText(job.sellerName!); await expect(page.locator(".job-seller>a")).toHaveAttribute("href", `/sellers/${sellerId}`);
+  await noOverflow(page);
+  await page.screenshot({ path: `apps/web/verification/job-seller-detail-fixture-${info.project.name}.png`, fullPage: true });
+  expect((await page.goto(`/jobs/${legacy.id}`))?.status()).toBe(200);
+  await expect(page.locator(".job-seller")).toContainText("Name at purchase not recorded");
+  expect(currentCatalogReads).toBe(0);
+});

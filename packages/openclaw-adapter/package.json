@@ -1,0 +1,6 @@
+{
+  "name": "@kivro/openclaw-adapter", "version": "0.1.0", "private": true, "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": { "typecheck": "tsc --noEmit" },
+  "dependencies": { "@kivro/contracts": "workspace:*", "@kivro/crypto": "workspace:*", "@kivro/policy-engine": "workspace:*", "@kivro/storage": "workspace:*", "json5": "^2.2.3", "yaml": "^2.8.1", "zod": "^3.25.76" }
+}

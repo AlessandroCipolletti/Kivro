@@ -1,0 +1,13 @@
+{
+  "id": "kivro-broker", "name": "Kivro Restricted Tools", "version": "0.1.0",
+  "activation": { "onStartup": false },
+  "contracts": { "tools": ["research_search", "research_fetch", "research_download", "resource_read", "resource_query", "connector_call", "blender_render", "ffmpeg_transcode"] },
+  "toolMetadata": { "research_search": { "optional": true }, "research_fetch": { "optional": true }, "research_download": { "optional": true }, "resource_read": { "optional": true }, "resource_query": { "optional": true }, "connector_call": { "optional": true }, "blender_render": { "optional": true }, "ffmpeg_transcode": { "optional": true } },
+  "configSchema": { "type": "object", "additionalProperties": false, "properties": {
+    "reviewedResearch": { "type": "object", "additionalProperties": false, "required": ["searchSourceIds", "fetchSourceIds"], "properties": {
+      "searchSourceIds": { "type": "array", "maxItems": 5, "uniqueItems": true, "items": { "type": "string", "pattern": "^[a-z][a-z0-9_-]{0,63}$" } },
+      "fetchSourceIds": { "type": "array", "maxItems": 5, "uniqueItems": true, "items": { "type": "string", "pattern": "^[a-z][a-z0-9_-]{0,63}$" } },
+      "downloadSourceIds": { "type": "array", "maxItems": 5, "uniqueItems": true, "items": { "type": "string", "pattern": "^[a-z][a-z0-9_-]{0,63}$" } }
+    } }
+  } }
+}

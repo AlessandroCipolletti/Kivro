@@ -1,0 +1,9 @@
+{
+  "name": "@kivro/contracts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts", "./server": "./src/server.ts", "./responses": "./src/responses.ts", "./seller-test": "./src/seller-test.ts", "./publication-evidence": "./src/publication-evidence.ts", "./file-limits": "./src/file-limits.ts" },
+  "scripts": { "typecheck": "tsc --noEmit" },
+  "dependencies": { "zod": "^3.25.76", "ajv": "^8.17.1", "ajv-formats": "^3.0.1", "@noble/hashes": "^1.8.0" }
+}

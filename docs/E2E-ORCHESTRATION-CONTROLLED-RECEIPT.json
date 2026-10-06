@@ -1,0 +1,246 @@
+{
+  "verificationContext": {
+    "kind": "CONTROLLED_LOCAL_ORCHESTRATION_RERUN",
+    "date": "2026-10-06",
+    "schema": "public",
+    "appliedMigrations": 19,
+    "latestMigration": "20261006001800_execution_containment",
+    "pendingObjectsMigrationApplied": true,
+    "executionContainmentMigrationApplied": true,
+    "freshApiAndPrismaProcess": true,
+    "command": "node --import tsx scripts/e2e-orchestration-fixture.ts --run",
+    "processExitCode": 0,
+    "parentConfirmedMainReconcilerStoppedBeforeRun": true,
+    "parentReconfirmedMainStayedOffDuringRun": true,
+    "mainPort4000NoListenerBeforeAndAfterRun": true,
+    "fixtureApiBackgroundEnabled": false,
+    "executionDriver": "fixture calls to production ctx.tickPlans",
+    "isolationBasis": "Explicit parent process-stop handoff, port checks and refusal of foreign approved/running plans; not an isolated database schema or cross-process lock.",
+    "mainApiRestartedByFixture": false,
+    "imagesBuiltByFixture": false,
+    "paidCredentialsUsed": false
+  },
+  "receipt": {
+    "kind": "DETERMINISTIC_LOCAL_ORCHESTRATION_FIXTURE",
+    "fixtureId": "c4db5210-131e-44f5-af79-f7a6124b7bf8",
+    "at": "2026-10-06T10:23:46.833Z",
+    "realProviderAcceptance": false,
+    "paymentMode": "fake",
+    "malwareScan": "DEVELOPMENT_ONLY",
+    "backgroundReconciliationTested": false,
+    "planner": "real-agent-chat-and-provider-adapter-with-loopback-inference-transport",
+    "browserTested": false,
+    "planId": "1db8ca51-19cd-440f-a641-ae6bfb020c61",
+    "conversationId": "a14e69f7-b319-4f13-a372-f7da70335c0b",
+    "buyerId": "0c763d32-03b4-438b-a2f1-75628a7d91a3",
+    "sellerIds": [
+      "3adc879e-a056-4bad-8eb3-d07c8364922d",
+      "ba361080-fc96-428b-a492-ff01a1d7362c"
+    ],
+    "workerIds": [
+      "0faecce8-04f4-4a6d-a6ef-e002f7297090",
+      "34308442-d669-4ddb-a5b2-884b2f2d53e8"
+    ],
+    "capabilityIds": [
+      "6b1b99df-d8e3-465a-9feb-6b865a7459db",
+      "cac0cebd-83f5-4066-a473-dbfca3bf4250",
+      "2ad891a8-8349-440e-abc3-18c581b3bf1f",
+      "b5f17017-cd4f-4c88-847a-5b7ab39616c0"
+    ],
+    "imageIds": [
+      "sha256:96dd4f5334bf57fea81af17192864ae57e0f520aa492afb8591ad7fd7077ae52",
+      "sha256:96dd4f5334bf57fea81af17192864ae57e0f520aa492afb8591ad7fd7077ae52"
+    ],
+    "ratingFloor": 4.5,
+    "warmupJobs": [
+      "05000525-bf37-4adf-90f0-e55e409e73e0",
+      "544dd952-ed15-4680-b096-acc941a7c80d",
+      "009ec69f-7415-46a9-a67f-59c21a3574d3",
+      "b0faf607-b7fe-45a0-8ede-2b2fea31b27d"
+    ],
+    "planJobs": [
+      {
+        "jobId": "495894ad-f12e-46ec-8bc0-f2c8369a5451",
+        "sellerId": "3adc879e-a056-4bad-8eb3-d07c8364922d",
+        "capabilityVersionId": "0ca37d2b-c521-41b4-802f-09ccc655d94d",
+        "attemptId": "b3cca48c-141c-45e7-8f30-23cbb62b2718",
+        "buyerPriceMinor": 99,
+        "sellerNetMinor": 80,
+        "platformFeeMinor": 19,
+        "captures": 1,
+        "earnings": 1,
+        "fees": 1
+      },
+      {
+        "jobId": "7214db30-a295-48a8-bd52-d6ce26d8264a",
+        "sellerId": "ba361080-fc96-428b-a492-ff01a1d7362c",
+        "capabilityVersionId": "fcdc64b9-0a95-4c4a-a6bc-6eea80bd22dc",
+        "attemptId": "2076311f-e74a-428f-a6c7-7cc101dc7122",
+        "buyerPriceMinor": 99,
+        "sellerNetMinor": 80,
+        "platformFeeMinor": 19,
+        "captures": 1,
+        "earnings": 1,
+        "fees": 1
+      },
+      {
+        "jobId": "9f2a9883-1196-42aa-88bf-642d0fa7d7c2",
+        "sellerId": "3adc879e-a056-4bad-8eb3-d07c8364922d",
+        "capabilityVersionId": "73818d46-e4db-4327-91a5-e4b9863fc884",
+        "attemptId": "1ec68380-0ee0-4b77-a742-add90e7809f2",
+        "buyerPriceMinor": 99,
+        "sellerNetMinor": 80,
+        "platformFeeMinor": 19,
+        "captures": 1,
+        "earnings": 1,
+        "fees": 1
+      },
+      {
+        "jobId": "5a7ab8ce-8241-4c95-94da-40826ee7b3d9",
+        "sellerId": "ba361080-fc96-428b-a492-ff01a1d7362c",
+        "capabilityVersionId": "79d7b95c-6660-4b3a-8066-1cd298683750",
+        "attemptId": "b7d46986-7fe4-413b-8533-9f7f53204379",
+        "buyerPriceMinor": 99,
+        "sellerNetMinor": 80,
+        "platformFeeMinor": 19,
+        "captures": 1,
+        "earnings": 1,
+        "fees": 1
+      }
+    ],
+    "explicitApproval": {
+      "userId": "0c763d32-03b4-438b-a2f1-75628a7d91a3",
+      "approvedAt": "2026-10-06T10:22:37.812Z",
+      "planHash": "4252b61769887b147158298094ce832fed0ea94711232b53f17cc59c42f76942"
+    },
+    "maximumBudgetMinor": 1500,
+    "actualPlanCostMinor": 396,
+    "walletReservedAfterMinor": 0,
+    "unspentAuthorizationMinor": 1104,
+    "reservationModel": "per-job reservation; unused authorization was never debited",
+    "dependencyFilesActuallyRead": 3,
+    "pdf": {
+      "id": "657d0a79-199c-4447-b23b-bbb2dcf880e3",
+      "sha256": "e7dcadb99f19755579c632f0f6f72b23d181c2577b31b216800c83d92d096eab",
+      "sizeBytes": 1007,
+      "popplerParsed": true,
+      "popplerRendered": true,
+      "renderedSha256": "18c6087ad71ef8fc3c71e9b2d4c78748869cf0148f64146a7939d834e7397971"
+    },
+    "synthesisId": "70bbea62-45ba-4d83-9fd6-6d603823400e",
+    "provenance": [
+      {
+        "stepId": "66018fa4-1347-418b-b2e3-e50e9c902407",
+        "jobId": "495894ad-f12e-46ec-8bc0-f2c8369a5451",
+        "capabilityId": "6b1b99df-d8e3-465a-9feb-6b865a7459db",
+        "capabilityVersionId": "0ca37d2b-c521-41b4-802f-09ccc655d94d",
+        "outputHash": "2d573763929698d2b826be7890e4c728bab8f3d8d88fcf7a95c8728c51a8092c",
+        "hasText": true,
+        "hasJson": false,
+        "fieldKeys": [
+          "document",
+          "summary"
+        ],
+        "assets": [
+          {
+            "id": "408d9f28-6887-4e01-b9f5-8001515d5ef0",
+            "filename": "research.txt",
+            "mimeType": "text/plain",
+            "sizeBytes": 102,
+            "sha256": "6a479870d5a4c37fe09fea3b2160a46c639f46b5bac81b79fada4217d750f60c"
+          }
+        ]
+      },
+      {
+        "stepId": "b2b91510-7352-4189-bb00-31ab08b076ee",
+        "jobId": "7214db30-a295-48a8-bd52-d6ce26d8264a",
+        "capabilityId": "cac0cebd-83f5-4066-a473-dbfca3bf4250",
+        "capabilityVersionId": "fcdc64b9-0a95-4c4a-a6bc-6eea80bd22dc",
+        "outputHash": "82fd679c01eb0e291271492038d2ff323a8017e5e96a8324433084c08fedbd18",
+        "hasText": true,
+        "hasJson": false,
+        "fieldKeys": [
+          "document",
+          "summary"
+        ],
+        "assets": [
+          {
+            "id": "c2beec95-5579-4fa8-8ade-caf584b230fd",
+            "filename": "research.txt",
+            "mimeType": "text/plain",
+            "sizeBytes": 101,
+            "sha256": "aec89329417e4d0cdedcac6d3461594267b5652af1fd1c5c3fe4b41a93c33e12"
+          }
+        ]
+      },
+      {
+        "stepId": "f6b2de1b-d7d2-4f41-b463-b90bbf5fd36e",
+        "jobId": "9f2a9883-1196-42aa-88bf-642d0fa7d7c2",
+        "capabilityId": "2ad891a8-8349-440e-abc3-18c581b3bf1f",
+        "capabilityVersionId": "73818d46-e4db-4327-91a5-e4b9863fc884",
+        "outputHash": "956012daed92548d31b235a47dfb8f7fd3031d753442c1a5564b60171136dec2",
+        "hasText": true,
+        "hasJson": false,
+        "fieldKeys": [
+          "document",
+          "summary"
+        ],
+        "assets": [
+          {
+            "id": "84ce7e8f-a047-407b-87e3-aca86edd892c",
+            "filename": "research.txt",
+            "mimeType": "text/plain",
+            "sizeBytes": 102,
+            "sha256": "fa12060dc1592c3f99c7197ffa75a506c03a7bf00e01f0abd99a50881b264b3d"
+          }
+        ]
+      },
+      {
+        "stepId": "f62407c3-7817-49f0-bdf1-d61af78242e7",
+        "jobId": "5a7ab8ce-8241-4c95-94da-40826ee7b3d9",
+        "capabilityId": "b5f17017-cd4f-4c88-847a-5b7ab39616c0",
+        "capabilityVersionId": "79d7b95c-6660-4b3a-8066-1cd298683750",
+        "outputHash": "38a27288f9c2019c869f8b75ebf6601a7db0457b73cf8b25878589eb6bb780d7",
+        "hasText": true,
+        "hasJson": false,
+        "fieldKeys": [
+          "document",
+          "summary"
+        ],
+        "assets": [
+          {
+            "id": "657d0a79-199c-4447-b23b-bbb2dcf880e3",
+            "filename": "comparison.pdf",
+            "mimeType": "application/pdf",
+            "sizeBytes": 1007,
+            "sha256": "e7dcadb99f19755579c632f0f6f72b23d181c2577b31b216800c83d92d096eab"
+          }
+        ]
+      }
+    ],
+    "reviewIds": [
+      "980a2f0c-8271-4763-b99e-2cb9942512ce",
+      "370e7bfb-68fc-4b8a-b739-8b4719d3ab52",
+      "60c960c0-d866-42d1-886e-0a798f62983d",
+      "cc23b62d-72ec-4bda-9ee7-d3be7ca82911"
+    ],
+    "resultReplayChecked": true,
+    "repeatedReconciliationChecked": true,
+    "providerRequests": 50,
+    "platformRequests": 3,
+    "passed": true,
+    "cleanup": "capabilities-paused-workers-revoked-sessions-logged-out-temp-state-removed-financial-history-preserved"
+  },
+  "postRunReadOnlyAudit": {
+    "jobs": 8,
+    "allJobsSucceededAndSettled": true,
+    "remainingFixtureContainers": 0,
+    "publicationJournalRows": 8,
+    "committedPublicationRows": 8,
+    "uncommittedUndeletedPublications": 0,
+    "reservedMinor": 0,
+    "workersPausedRevokedAndNotReady": true,
+    "capabilitiesPaused": true,
+    "remainingSyntheticSessions": 0
+  }
+}

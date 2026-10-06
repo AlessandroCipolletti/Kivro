@@ -1,0 +1,1297 @@
+[
+  {
+    "id": "PRD-0001",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/imports.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/web/src/components/marketplace.tsx",
+    "tests": "scripts/e2e-fixture.ts; apps/worker/src/imports.test.ts; tests/integration/worker-protocol.test.ts",
+    "notes": "Master section 1, read in full. Distinct seller-owned Worker, outbound signed protocol, selective read-only import, structured purchase and isolated execution exist. Aggregate product acceptance still requires the current-source runtime/browser regression and dedicated-provider/Stripe acceptance; supported import is not arbitrary personal-runtime cloning. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0002",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/imports.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/web/src/components/marketplace.tsx",
+    "tests": "scripts/e2e-fixture.ts; apps/worker/src/imports.test.ts; tests/integration/worker-protocol.test.ts",
+    "notes": "Master section 1, read in full. Distinct seller-owned Worker, outbound signed protocol, selective read-only import, structured purchase and isolated execution exist. Aggregate product acceptance still requires the current-source runtime/browser regression and dedicated-provider/Stripe acceptance; supported import is not arbitrary personal-runtime cloning. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0003",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/imports.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/web/src/components/marketplace.tsx",
+    "tests": "scripts/e2e-fixture.ts; apps/worker/src/imports.test.ts; tests/integration/worker-protocol.test.ts",
+    "notes": "Master section 1, read in full. Distinct seller-owned Worker, outbound signed protocol, selective read-only import, structured purchase and isolated execution exist. Aggregate product acceptance still requires the current-source runtime/browser regression and dedicated-provider/Stripe acceptance; supported import is not arbitrary personal-runtime cloning. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0004",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/imports.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/web/src/components/marketplace.tsx",
+    "tests": "scripts/e2e-fixture.ts; apps/worker/src/imports.test.ts; tests/integration/worker-protocol.test.ts",
+    "notes": "Master section 1, read in full. Distinct seller-owned Worker, outbound signed protocol, selective read-only import, structured purchase and isolated execution exist. Aggregate product acceptance still requires the current-source runtime/browser regression and dedicated-provider/Stripe acceptance; supported import is not arbitrary personal-runtime cloning. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0005",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/imports.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/web/src/components/marketplace.tsx",
+    "tests": "scripts/e2e-fixture.ts; apps/worker/src/imports.test.ts; tests/integration/worker-protocol.test.ts",
+    "notes": "Master section 1, read in full. Distinct seller-owned Worker, outbound signed protocol, selective read-only import, structured purchase and isolated execution exist. Aggregate product acceptance still requires the current-source runtime/browser regression and dedicated-provider/Stripe acceptance; supported import is not arbitrary personal-runtime cloning. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0006",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/imports.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/web/src/components/marketplace.tsx",
+    "tests": "scripts/e2e-fixture.ts; apps/worker/src/imports.test.ts; tests/integration/worker-protocol.test.ts",
+    "notes": "Master section 1, read in full. Distinct seller-owned Worker, outbound signed protocol, selective read-only import, structured purchase and isolated execution exist. Aggregate product acceptance still requires the current-source runtime/browser regression and dedicated-provider/Stripe acceptance; supported import is not arbitrary personal-runtime cloning. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0007",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/imports.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/web/src/components/marketplace.tsx",
+    "tests": "scripts/e2e-fixture.ts; apps/worker/src/imports.test.ts; tests/integration/worker-protocol.test.ts",
+    "notes": "Master section 1, read in full. Distinct seller-owned Worker, outbound signed protocol, selective read-only import, structured purchase and isolated execution exist. Aggregate product acceptance still requires the current-source runtime/browser regression and dedicated-provider/Stripe acceptance; supported import is not arbitrary personal-runtime cloning. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0008",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/imports.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/web/src/components/marketplace.tsx",
+    "tests": "scripts/e2e-fixture.ts; apps/worker/src/imports.test.ts; tests/integration/worker-protocol.test.ts",
+    "notes": "Master section 3, read in full. Distinct seller-owned Worker, outbound signed protocol, selective read-only import, structured purchase and isolated execution exist. Aggregate product acceptance still requires the current-source runtime/browser regression and dedicated-provider/Stripe acceptance; supported import is not arbitrary personal-runtime cloning. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0009",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/imports.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/web/src/components/marketplace.tsx",
+    "tests": "scripts/e2e-fixture.ts; apps/worker/src/imports.test.ts; tests/integration/worker-protocol.test.ts",
+    "notes": "Master section 3, read in full. Distinct seller-owned Worker, outbound signed protocol, selective read-only import, structured purchase and isolated execution exist. Aggregate product acceptance still requires the current-source runtime/browser regression and dedicated-provider/Stripe acceptance; supported import is not arbitrary personal-runtime cloning. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0010",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/imports.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/web/src/components/marketplace.tsx",
+    "tests": "scripts/e2e-fixture.ts; apps/worker/src/imports.test.ts; tests/integration/worker-protocol.test.ts",
+    "notes": "Master section 3, read in full. Distinct seller-owned Worker, outbound signed protocol, selective read-only import, structured purchase and isolated execution exist. Aggregate product acceptance still requires the current-source runtime/browser regression and dedicated-provider/Stripe acceptance; supported import is not arbitrary personal-runtime cloning. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0011",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/imports.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/web/src/components/marketplace.tsx",
+    "tests": "scripts/e2e-fixture.ts; apps/worker/src/imports.test.ts; tests/integration/worker-protocol.test.ts",
+    "notes": "Master section 3, read in full. Distinct seller-owned Worker, outbound signed protocol, selective read-only import, structured purchase and isolated execution exist. Aggregate product acceptance still requires the current-source runtime/browser regression and dedicated-provider/Stripe acceptance; supported import is not arbitrary personal-runtime cloning. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0012",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/imports.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/web/src/components/marketplace.tsx",
+    "tests": "scripts/e2e-fixture.ts; apps/worker/src/imports.test.ts; tests/integration/worker-protocol.test.ts",
+    "notes": "Master section 3, read in full. Distinct seller-owned Worker, outbound signed protocol, selective read-only import, structured purchase and isolated execution exist. Aggregate product acceptance still requires the current-source runtime/browser regression and dedicated-provider/Stripe acceptance; supported import is not arbitrary personal-runtime cloning. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0013",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/imports.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/web/src/components/marketplace.tsx",
+    "tests": "scripts/e2e-fixture.ts; apps/worker/src/imports.test.ts; tests/integration/worker-protocol.test.ts",
+    "notes": "Master section 4, read in full. Distinct seller-owned Worker, outbound signed protocol, selective read-only import, structured purchase and isolated execution exist. Aggregate product acceptance still requires the current-source runtime/browser regression and dedicated-provider/Stripe acceptance; supported import is not arbitrary personal-runtime cloning. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0014",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/imports.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/web/src/components/marketplace.tsx",
+    "tests": "scripts/e2e-fixture.ts; apps/worker/src/imports.test.ts; tests/integration/worker-protocol.test.ts",
+    "notes": "Master section 4, read in full. Distinct seller-owned Worker, outbound signed protocol, selective read-only import, structured purchase and isolated execution exist. Aggregate product acceptance still requires the current-source runtime/browser regression and dedicated-provider/Stripe acceptance; supported import is not arbitrary personal-runtime cloning. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0015",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/imports.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/web/src/components/marketplace.tsx",
+    "tests": "scripts/e2e-fixture.ts; apps/worker/src/imports.test.ts; tests/integration/worker-protocol.test.ts",
+    "notes": "Master section 4, read in full. Distinct seller-owned Worker, outbound signed protocol, selective read-only import, structured purchase and isolated execution exist. Aggregate product acceptance still requires the current-source runtime/browser regression and dedicated-provider/Stripe acceptance; supported import is not arbitrary personal-runtime cloning. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0016",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/imports.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/web/src/components/marketplace.tsx",
+    "tests": "scripts/e2e-fixture.ts; apps/worker/src/imports.test.ts; tests/integration/worker-protocol.test.ts",
+    "notes": "Master section 5, read in full. Distinct seller-owned Worker, outbound signed protocol, selective read-only import, structured purchase and isolated execution exist. Aggregate product acceptance still requires the current-source runtime/browser regression and dedicated-provider/Stripe acceptance; supported import is not arbitrary personal-runtime cloning. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0017",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/imports.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/web/src/components/marketplace.tsx",
+    "tests": "scripts/e2e-fixture.ts; apps/worker/src/imports.test.ts; tests/integration/worker-protocol.test.ts",
+    "notes": "Master section 5, read in full. Distinct seller-owned Worker, outbound signed protocol, selective read-only import, structured purchase and isolated execution exist. Aggregate product acceptance still requires the current-source runtime/browser regression and dedicated-provider/Stripe acceptance; supported import is not arbitrary personal-runtime cloning. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0018",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/imports.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/web/src/components/marketplace.tsx",
+    "tests": "scripts/e2e-fixture.ts; apps/worker/src/imports.test.ts; tests/integration/worker-protocol.test.ts",
+    "notes": "Master section 5, read in full. Distinct seller-owned Worker, outbound signed protocol, selective read-only import, structured purchase and isolated execution exist. Aggregate product acceptance still requires the current-source runtime/browser regression and dedicated-provider/Stripe acceptance; supported import is not arbitrary personal-runtime cloning. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0019",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/imports.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/web/src/components/marketplace.tsx",
+    "tests": "scripts/e2e-fixture.ts; apps/worker/src/imports.test.ts; tests/integration/worker-protocol.test.ts",
+    "notes": "Master section 5, read in full. Distinct seller-owned Worker, outbound signed protocol, selective read-only import, structured purchase and isolated execution exist. Aggregate product acceptance still requires the current-source runtime/browser regression and dedicated-provider/Stripe acceptance; supported import is not arbitrary personal-runtime cloning. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0020",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/imports.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/web/src/components/marketplace.tsx",
+    "tests": "scripts/e2e-fixture.ts; apps/worker/src/imports.test.ts; tests/integration/worker-protocol.test.ts",
+    "notes": "Master section 5, read in full. Distinct seller-owned Worker, outbound signed protocol, selective read-only import, structured purchase and isolated execution exist. Aggregate product acceptance still requires the current-source runtime/browser regression and dedicated-provider/Stripe acceptance; supported import is not arbitrary personal-runtime cloning. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0021",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/imports.ts; apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/web/src/components/marketplace.tsx",
+    "tests": "scripts/e2e-fixture.ts; apps/worker/src/imports.test.ts; tests/integration/worker-protocol.test.ts",
+    "notes": "Master section 5, read in full. Distinct seller-owned Worker, outbound signed protocol, selective read-only import, structured purchase and isolated execution exist. Aggregate product acceptance still requires the current-source runtime/browser regression and dedicated-provider/Stripe acceptance; supported import is not arbitrary personal-runtime cloning. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0022",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts; packages/contracts/src/server.ts; packages/openclaw-adapter/src/index.ts; apps/web/src/components/contract-form.tsx",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Master section 8, read in full. Structured typed fields, semantic descriptions, output contracts and delimited untrusted buyer data are implemented. Prompt wording is not an isolation guarantee; hard Worker tool/resource boundaries remain authoritative. Source trace does not prove resistance to every prompt injection. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0023",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/contracts/src/server.ts; packages/openclaw-adapter/src/index.ts; apps/web/src/components/contract-form.tsx",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Master section 8, read in full. Structured typed fields, semantic descriptions, output contracts and delimited untrusted buyer data are implemented. Prompt wording is not an isolation guarantee; hard Worker tool/resource boundaries remain authoritative. Source trace does not prove resistance to every prompt injection. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0025",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/contracts/src/server.ts; packages/openclaw-adapter/src/index.ts; apps/web/src/components/contract-form.tsx",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Master section 8, read in full. Structured typed fields, semantic descriptions, output contracts and delimited untrusted buyer data are implemented. Prompt wording is not an isolation guarantee; hard Worker tool/resource boundaries remain authoritative. Source trace does not prove resistance to every prompt injection. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0026",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/contracts/src/server.ts; packages/openclaw-adapter/src/index.ts; apps/web/src/components/contract-form.tsx",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Master section 8, read in full. Structured typed fields, semantic descriptions, output contracts and delimited untrusted buyer data are implemented. Prompt wording is not an isolation guarantee; hard Worker tool/resource boundaries remain authoritative. Source trace does not prove resistance to every prompt injection. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0027",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/contracts/src/server.ts; packages/openclaw-adapter/src/index.ts; apps/web/src/components/contract-form.tsx",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Master section 8, read in full. Structured typed fields, semantic descriptions, output contracts and delimited untrusted buyer data are implemented. Prompt wording is not an isolation guarantee; hard Worker tool/resource boundaries remain authoritative. Source trace does not prove resistance to every prompt injection. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0028",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/contracts/src/server.ts; packages/openclaw-adapter/src/index.ts; apps/web/src/components/contract-form.tsx",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Master section 8, read in full. Structured typed fields, semantic descriptions, output contracts and delimited untrusted buyer data are implemented. Prompt wording is not an isolation guarantee; hard Worker tool/resource boundaries remain authoritative. Source trace does not prove resistance to every prompt injection. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0029",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/contracts/src/server.ts; packages/openclaw-adapter/src/index.ts; apps/web/src/components/contract-form.tsx",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Master section 8, read in full. Structured typed fields, semantic descriptions, output contracts and delimited untrusted buyer data are implemented. Prompt wording is not an isolation guarantee; hard Worker tool/resource boundaries remain authoritative. Source trace does not prove resistance to every prompt injection. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0030",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/contracts/src/server.ts; packages/openclaw-adapter/src/index.ts; apps/web/src/components/contract-form.tsx",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Master section 8, read in full. Structured typed fields, semantic descriptions, output contracts and delimited untrusted buyer data are implemented. Prompt wording is not an isolation guarantee; hard Worker tool/resource boundaries remain authoritative. Source trace does not prove resistance to every prompt injection. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0031",
+    "status": "IN_PROGRESS",
+    "implementation": "docs/DATA-HANDLING.md; docs/INCIDENT_RESPONSE.md; apps/worker/src/secrets.ts; apps/worker/src/capabilities.ts; packages/openclaw-adapter/src/docker.ts; apps/api/src/security-policy.ts",
+    "tests": "apps/worker/src/security.test.ts; packages/openclaw-adapter/src/security.test.ts; apps/api/test/security-policy.test.ts",
+    "notes": "Master section 18, read in full. Reviewed separate credentials, immutable consented manifests, pinning, deny-by-default sandbox and operator policy. Seller-owned hardware can observe authorized plaintext; no cryptographic confidentiality or escape-proof claim. Explicit consolidated threat-model documentation is being added; external security review remains independent. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0032",
+    "status": "IMPLEMENTED",
+    "implementation": "docs/DATA-HANDLING.md; docs/INCIDENT_RESPONSE.md; apps/worker/src/secrets.ts; apps/worker/src/capabilities.ts; packages/openclaw-adapter/src/docker.ts; apps/api/src/security-policy.ts",
+    "tests": "apps/worker/src/security.test.ts; packages/openclaw-adapter/src/security.test.ts; apps/api/test/security-policy.test.ts",
+    "notes": "Master section 18, read in full. Reviewed separate credentials, immutable consented manifests, pinning, deny-by-default sandbox and operator policy. Seller-owned hardware can observe authorized plaintext; no cryptographic confidentiality or escape-proof claim. Explicit consolidated threat-model documentation is being added; external security review remains independent. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0033",
+    "status": "IMPLEMENTED",
+    "implementation": "docs/DATA-HANDLING.md; docs/INCIDENT_RESPONSE.md; apps/worker/src/secrets.ts; apps/worker/src/capabilities.ts; packages/openclaw-adapter/src/docker.ts; apps/api/src/security-policy.ts",
+    "tests": "apps/worker/src/security.test.ts; packages/openclaw-adapter/src/security.test.ts; apps/api/test/security-policy.test.ts",
+    "notes": "Master section 18, read in full. Reviewed separate credentials, immutable consented manifests, pinning, deny-by-default sandbox and operator policy. Seller-owned hardware can observe authorized plaintext; no cryptographic confidentiality or escape-proof claim. Explicit consolidated threat-model documentation is being added; external security review remains independent. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0034",
+    "status": "IMPLEMENTED",
+    "implementation": "docs/DATA-HANDLING.md; docs/INCIDENT_RESPONSE.md; apps/worker/src/secrets.ts; apps/worker/src/capabilities.ts; packages/openclaw-adapter/src/docker.ts; apps/api/src/security-policy.ts",
+    "tests": "apps/worker/src/security.test.ts; packages/openclaw-adapter/src/security.test.ts; apps/api/test/security-policy.test.ts",
+    "notes": "Master section 18, read in full. Reviewed separate credentials, immutable consented manifests, pinning, deny-by-default sandbox and operator policy. Seller-owned hardware can observe authorized plaintext; no cryptographic confidentiality or escape-proof claim. Explicit consolidated threat-model documentation is being added; external security review remains independent. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0035",
+    "status": "IMPLEMENTED",
+    "implementation": "docs/DATA-HANDLING.md; docs/INCIDENT_RESPONSE.md; apps/worker/src/secrets.ts; apps/worker/src/capabilities.ts; packages/openclaw-adapter/src/docker.ts; apps/api/src/security-policy.ts",
+    "tests": "apps/worker/src/security.test.ts; packages/openclaw-adapter/src/security.test.ts; apps/api/test/security-policy.test.ts",
+    "notes": "Master section 18, read in full. Reviewed separate credentials, immutable consented manifests, pinning, deny-by-default sandbox and operator policy. Seller-owned hardware can observe authorized plaintext; no cryptographic confidentiality or escape-proof claim. Explicit consolidated threat-model documentation is being added; external security review remains independent. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0036",
+    "status": "IMPLEMENTED",
+    "implementation": "docs/DATA-HANDLING.md; docs/INCIDENT_RESPONSE.md; apps/worker/src/secrets.ts; apps/worker/src/capabilities.ts; packages/openclaw-adapter/src/docker.ts; apps/api/src/security-policy.ts",
+    "tests": "apps/worker/src/security.test.ts; packages/openclaw-adapter/src/security.test.ts; apps/api/test/security-policy.test.ts",
+    "notes": "Master section 18, read in full. Reviewed separate credentials, immutable consented manifests, pinning, deny-by-default sandbox and operator policy. Seller-owned hardware can observe authorized plaintext; no cryptographic confidentiality or escape-proof claim. Explicit consolidated threat-model documentation is being added; external security review remains independent. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0037",
+    "status": "IMPLEMENTED",
+    "implementation": "docs/DATA-HANDLING.md; docs/INCIDENT_RESPONSE.md; apps/worker/src/secrets.ts; apps/worker/src/capabilities.ts; packages/openclaw-adapter/src/docker.ts; apps/api/src/security-policy.ts",
+    "tests": "apps/worker/src/security.test.ts; packages/openclaw-adapter/src/security.test.ts; apps/api/test/security-policy.test.ts",
+    "notes": "Master section 18, read in full. Reviewed separate credentials, immutable consented manifests, pinning, deny-by-default sandbox and operator policy. Seller-owned hardware can observe authorized plaintext; no cryptographic confidentiality or escape-proof claim. Explicit consolidated threat-model documentation is being added; external security review remains independent. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0038",
+    "status": "IMPLEMENTED",
+    "implementation": "docs/DATA-HANDLING.md; docs/INCIDENT_RESPONSE.md; apps/worker/src/secrets.ts; apps/worker/src/capabilities.ts; packages/openclaw-adapter/src/docker.ts; apps/api/src/security-policy.ts",
+    "tests": "apps/worker/src/security.test.ts; packages/openclaw-adapter/src/security.test.ts; apps/api/test/security-policy.test.ts",
+    "notes": "Master section 18, read in full. Reviewed separate credentials, immutable consented manifests, pinning, deny-by-default sandbox and operator policy. Seller-owned hardware can observe authorized plaintext; no cryptographic confidentiality or escape-proof claim. Explicit consolidated threat-model documentation is being added; external security review remains independent. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0039",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/inference.ts; apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/api/src/operations.ts",
+    "tests": "apps/worker/src/inference.test.ts; apps/worker/src/usage.test.ts; apps/api/test/operations.test.ts",
+    "notes": "Master section 25, read in full. Per-job calls/tokens/reserved USD and durable daily token/USD budgets exist, with conservative failed-call charges and honest unpriced-cost reporting. PR-A01: explicit local daily job-count limit is not yet implemented. Do not confuse existing dailyUsdLimit with an absent daily spend guard or provider invoices. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0040",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/inference.ts; apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/api/src/operations.ts",
+    "tests": "apps/worker/src/inference.test.ts; apps/worker/src/usage.test.ts; apps/api/test/operations.test.ts",
+    "notes": "Master section 25, read in full. Per-job calls/tokens/reserved USD and durable daily token/USD budgets exist, with conservative failed-call charges and honest unpriced-cost reporting. PR-A01: explicit local daily job-count limit is not yet implemented. Do not confuse existing dailyUsdLimit with an absent daily spend guard or provider invoices. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0041",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/inference.ts; apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/api/src/operations.ts",
+    "tests": "apps/worker/src/inference.test.ts; apps/worker/src/usage.test.ts; apps/api/test/operations.test.ts",
+    "notes": "Master section 25, read in full. Per-job calls/tokens/reserved USD and durable daily token/USD budgets exist, with conservative failed-call charges and honest unpriced-cost reporting. PR-A01: explicit local daily job-count limit is not yet implemented. Do not confuse existing dailyUsdLimit with an absent daily spend guard or provider invoices. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0042",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/inference.ts; apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/api/src/operations.ts",
+    "tests": "apps/worker/src/inference.test.ts; apps/worker/src/usage.test.ts; apps/api/test/operations.test.ts",
+    "notes": "Master section 25, read in full. Per-job calls/tokens/reserved USD and durable daily token/USD budgets exist, with conservative failed-call charges and honest unpriced-cost reporting. PR-A01: explicit local daily job-count limit is not yet implemented. Do not confuse existing dailyUsdLimit with an absent daily spend guard or provider invoices. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0043",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/capability-detail.tsx; apps/web/src/components/marketplace.tsx; apps/web/src/components/permissions.tsx; apps/web/src/components/data-processing.tsx; apps/api/src/catalog.ts",
+    "tests": "apps/web/tests/public-permissions.test.ts; apps/web/tests/checkout.test.ts; apps/web/tests/results.test.ts",
+    "notes": "Master section 28, read in full. Cards, contract forms, prices, result display and seller-machine/provider/storage disclosures exist. Public metadata is projected separately from private dependencies. Newly expanded permission taxonomy and strict DTOs need the latest integrated browser rerun; no security certification is advertised. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0044",
+    "status": "IN_PROGRESS",
+    "implementation": "docs/DATA-HANDLING.md; apps/web/src/components/data-processing.tsx; apps/api/src/catalog.ts; apps/api/src/background.ts",
+    "tests": "apps/web/tests/payment-disclosure.test.ts; apps/api/test/background.integration.test.ts",
+    "notes": "Master section 37, read in full. Retention and seller-controlled processing/provider boundaries are disclosed. Provider/model and approved external-resource categories are declarations, not a guarantee against a malicious seller; production processors, backups and agreements require operator review. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0045",
+    "status": "IMPLEMENTED",
+    "implementation": "docs/DATA-HANDLING.md; apps/web/src/components/data-processing.tsx; apps/api/src/catalog.ts; apps/api/src/background.ts",
+    "tests": "apps/web/tests/payment-disclosure.test.ts; apps/api/test/background.integration.test.ts",
+    "notes": "Master section 37, read in full. Retention and seller-controlled processing/provider boundaries are disclosed. Provider/model and approved external-resource categories are declarations, not a guarantee against a malicious seller; production processors, backups and agreements require operator review. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0046",
+    "status": "IMPLEMENTED",
+    "implementation": "docs/DATA-HANDLING.md; apps/web/src/components/data-processing.tsx; apps/api/src/catalog.ts; apps/api/src/background.ts",
+    "tests": "apps/web/tests/payment-disclosure.test.ts; apps/api/test/background.integration.test.ts",
+    "notes": "Master section 37, read in full. Retention and seller-controlled processing/provider boundaries are disclosed. Provider/model and approved external-resource categories are declarations, not a guarantee against a malicious seller; production processors, backups and agreements require operator review. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0047",
+    "status": "BLOCKED",
+    "implementation": "docs/DATA-HANDLING.md; docs/INTEGRATION.md; docs/BILLING-STATUS.md; packages/contracts/src/payment-policy.ts",
+    "tests": "packages/contracts/src/payment-policy.test.ts; packages/billing/src/stripe-provider.integration.test.ts",
+    "notes": "Master section 38, read in full. External acceptance, not a software shortcut: legal/tax/Connect topology approval and real private-alpha demand or provider billing evidence cannot be manufactured locally. Fixed seller entitlement is implemented; no production tax policy or paid demand is asserted. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0048",
+    "status": "IN_PROGRESS",
+    "implementation": "docs/ARCHITECTURE.md; docs/LOCAL-VERIFICATION.md; apps/api/src/jobs.ts; apps/worker/src/runtime.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "scripts/e2e-fixture.ts; scripts/e2e-orchestration-fixture.ts; scripts/fresh-clone-check.ts",
+    "notes": "Master section 39, read in full. Whole-product/roadmap aggregate spans multiple owners and external acceptance. Existing controlled runtime, billing, DAG and fresh-source fixtures are evidence only for their recorded versions and assertions. Current source has new response, admission, download and UI changes pending final integrated replay. Do not promote this aggregate from a package test count. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0049",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/app.ts; apps/api/src/jobs.ts; apps/api/src/catalog.ts; apps/api/src/worker.ts; packages/contracts/src/responses.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts; apps/api/test/response-validation.test.ts",
+    "notes": "Master section 41, read in full. Equivalent authenticated REST routes and a separate signed Worker protocol implement the API sketch; examples do not require identical route spelling. Universal response contracts are registered and enforced; latest protocol replay independently passed 20 cases at 2026-10-06 14:16:35 CEST. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0051",
+    "status": "IN_PROGRESS",
+    "implementation": "docs/ARCHITECTURE.md; docs/LOCAL-VERIFICATION.md; apps/api/src/jobs.ts; apps/worker/src/runtime.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "scripts/e2e-fixture.ts; scripts/e2e-orchestration-fixture.ts; scripts/fresh-clone-check.ts",
+    "notes": "Master section 45, read in full. Whole-product/roadmap aggregate spans multiple owners and external acceptance. Existing controlled runtime, billing, DAG and fresh-source fixtures are evidence only for their recorded versions and assertions. Current source has new response, admission, download and UI changes pending final integrated replay. Do not promote this aggregate from a package test count. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0052",
+    "status": "IMPLEMENTED",
+    "implementation": "docs/ARCHITECTURE.md; docs/LOCAL-VERIFICATION.md; apps/api/src/jobs.ts; apps/worker/src/runtime.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "scripts/e2e-fixture.ts; scripts/e2e-orchestration-fixture.ts; scripts/fresh-clone-check.ts",
+    "notes": "Master section 45, read in full. Whole-product/roadmap aggregate spans multiple owners and external acceptance. Existing controlled runtime, billing, DAG and fresh-source fixtures are evidence only for their recorded versions and assertions. Current source has new response, admission, download and UI changes pending final integrated replay. Do not promote this aggregate from a package test count. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0053",
+    "status": "IMPLEMENTED",
+    "implementation": "docs/ARCHITECTURE.md; docs/LOCAL-VERIFICATION.md; apps/api/src/jobs.ts; apps/worker/src/runtime.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "scripts/e2e-fixture.ts; scripts/e2e-orchestration-fixture.ts; scripts/fresh-clone-check.ts",
+    "notes": "Master section 45, read in full. Whole-product/roadmap aggregate spans multiple owners and external acceptance. Existing controlled runtime, billing, DAG and fresh-source fixtures are evidence only for their recorded versions and assertions. Current source has new response, admission, download and UI changes pending final integrated replay. Do not promote this aggregate from a package test count. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0054",
+    "status": "BLOCKED",
+    "implementation": "docs/DATA-HANDLING.md; docs/INTEGRATION.md; docs/BILLING-STATUS.md; packages/contracts/src/payment-policy.ts",
+    "tests": "packages/contracts/src/payment-policy.test.ts; packages/billing/src/stripe-provider.integration.test.ts",
+    "notes": "Master section 46, read in full. External acceptance, not a software shortcut: legal/tax/Connect topology approval and real private-alpha demand or provider billing evidence cannot be manufactured locally. Fixed seller entitlement is implemented; no production tax policy or paid demand is asserted. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0055",
+    "status": "BLOCKED",
+    "implementation": "docs/DATA-HANDLING.md; docs/INTEGRATION.md; docs/BILLING-STATUS.md; packages/contracts/src/payment-policy.ts",
+    "tests": "packages/contracts/src/payment-policy.test.ts; packages/billing/src/stripe-provider.integration.test.ts",
+    "notes": "Master section 46, read in full. External acceptance, not a software shortcut: legal/tax/Connect topology approval and real private-alpha demand or provider billing evidence cannot be manufactured locally. Fixed seller entitlement is implemented; no production tax policy or paid demand is asserted. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0056",
+    "status": "BLOCKED",
+    "implementation": "docs/DATA-HANDLING.md; docs/INTEGRATION.md; docs/BILLING-STATUS.md; packages/contracts/src/payment-policy.ts",
+    "tests": "packages/contracts/src/payment-policy.test.ts; packages/billing/src/stripe-provider.integration.test.ts",
+    "notes": "Master section 46, read in full. External acceptance, not a software shortcut: legal/tax/Connect topology approval and real private-alpha demand or provider billing evidence cannot be manufactured locally. Fixed seller entitlement is implemented; no production tax policy or paid demand is asserted. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0057",
+    "status": "DEFERRED",
+    "implementation": "docs/REMAINING-REQUIREMENTS.md",
+    "tests": "-",
+    "notes": "Master section 47, read in full. Explicit post-MVP stages in Master47: external MCP purchasing, hosted workers, royalties, other runtimes, controlled hosted browsers and hardware economy. Later mandatory marketplace-agent/REST primitives are implemented separately; this deferral does not apply to them. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0058",
+    "status": "DEFERRED",
+    "implementation": "docs/REMAINING-REQUIREMENTS.md",
+    "tests": "-",
+    "notes": "Master section 47, read in full. Explicit post-MVP stages in Master47: external MCP purchasing, hosted workers, royalties, other runtimes, controlled hosted browsers and hardware economy. Later mandatory marketplace-agent/REST primitives are implemented separately; this deferral does not apply to them. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0059",
+    "status": "DEFERRED",
+    "implementation": "docs/REMAINING-REQUIREMENTS.md",
+    "tests": "-",
+    "notes": "Master section 47, read in full. Explicit post-MVP stages in Master47: external MCP purchasing, hosted workers, royalties, other runtimes, controlled hosted browsers and hardware economy. Later mandatory marketplace-agent/REST primitives are implemented separately; this deferral does not apply to them. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0060",
+    "status": "DEFERRED",
+    "implementation": "docs/REMAINING-REQUIREMENTS.md",
+    "tests": "-",
+    "notes": "Master section 47, read in full. Explicit post-MVP stages in Master47: external MCP purchasing, hosted workers, royalties, other runtimes, controlled hosted browsers and hardware economy. Later mandatory marketplace-agent/REST primitives are implemented separately; this deferral does not apply to them. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0061",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/background.ts; apps/worker/src/runtime.ts; apps/worker/src/state.ts; docs/DATA-HANDLING.md",
+    "tests": "apps/api/test/background.integration.test.ts; apps/worker/src/state.test.ts; apps/worker/src/runtime.test.ts",
+    "notes": "Master section 65, read in full. Configurable asset/job-content expiry and temporary Worker cleanup are implemented; durable pending-result delivery and financial/security history are explicitly distinct. Defaults in Master65 are examples, not mandated exact day counts; production retention approval is external. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0062",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/background.ts; apps/worker/src/runtime.ts; apps/worker/src/state.ts; docs/DATA-HANDLING.md",
+    "tests": "apps/api/test/background.integration.test.ts; apps/worker/src/state.test.ts; apps/worker/src/runtime.test.ts",
+    "notes": "Master section 65, read in full. Configurable asset/job-content expiry and temporary Worker cleanup are implemented; durable pending-result delivery and financial/security history are explicitly distinct. Defaults in Master65 are examples, not mandated exact day counts; production retention approval is external. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0063",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/capability-detail.tsx; apps/web/src/components/marketplace.tsx; apps/web/src/components/permissions.tsx; apps/web/src/components/data-processing.tsx; apps/api/src/catalog.ts",
+    "tests": "apps/web/tests/public-permissions.test.ts; apps/web/tests/checkout.test.ts; apps/web/tests/results.test.ts",
+    "notes": "Master section 76, read in full. Cards, contract forms, prices, result display and seller-machine/provider/storage disclosures exist. Public metadata is projected separately from private dependencies. Newly expanded permission taxonomy and strict DTOs need the latest integrated browser rerun; no security certification is advertised. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0064",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-detail.tsx; apps/web/src/components/marketplace.tsx; apps/web/src/components/permissions.tsx; apps/web/src/components/data-processing.tsx; apps/api/src/catalog.ts",
+    "tests": "apps/web/tests/public-permissions.test.ts; apps/web/tests/checkout.test.ts; apps/web/tests/results.test.ts",
+    "notes": "Master section 76, read in full. Cards, contract forms, prices, result display and seller-machine/provider/storage disclosures exist. Public metadata is projected separately from private dependencies. Newly expanded permission taxonomy and strict DTOs need the latest integrated browser rerun; no security certification is advertised. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0065",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-detail.tsx; apps/web/src/components/marketplace.tsx; apps/web/src/components/permissions.tsx; apps/web/src/components/data-processing.tsx; apps/api/src/catalog.ts",
+    "tests": "apps/web/tests/public-permissions.test.ts; apps/web/tests/checkout.test.ts; apps/web/tests/results.test.ts",
+    "notes": "Master section 76, read in full. Cards, contract forms, prices, result display and seller-machine/provider/storage disclosures exist. Public metadata is projected separately from private dependencies. Newly expanded permission taxonomy and strict DTOs need the latest integrated browser rerun; no security certification is advertised. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0069",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/catalog-page.ts; apps/api/src/catalog-reviews.ts; apps/api/src/accounts.ts; apps/web/src/components/marketplace.tsx; apps/web/src/components/reviews.tsx",
+    "tests": "apps/api/test/catalog.integration.test.ts; packages/marketplace-agent/test/public-discovery.test.ts; apps/web/tests/reviews.test.ts",
+    "notes": "Master section 85, read in full. Simple filtered/paginated discovery and verified marketplace reviews are implemented. Master159/162 subsequently explicitly require natural-language discovery, so Master85's earlier prohibition is not used to remove that feature. Capability-specific reputation exists without claiming an advanced recommender. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0072",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/catalog-page.ts; apps/api/src/catalog-reviews.ts; apps/api/src/accounts.ts; apps/web/src/components/marketplace.tsx; apps/web/src/components/reviews.tsx",
+    "tests": "apps/api/test/catalog.integration.test.ts; packages/marketplace-agent/test/public-discovery.test.ts; apps/web/tests/reviews.test.ts",
+    "notes": "Master section 86, read in full. Simple filtered/paginated discovery and verified marketplace reviews are implemented. Master159/162 subsequently explicitly require natural-language discovery, so Master85's earlier prohibition is not used to remove that feature. Capability-specific reputation exists without claiming an advanced recommender. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0073",
+    "status": "IN_PROGRESS",
+    "implementation": "docs/ARCHITECTURE.md; docs/LOCAL-VERIFICATION.md; apps/api/src/jobs.ts; apps/worker/src/runtime.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "scripts/e2e-fixture.ts; scripts/e2e-orchestration-fixture.ts; scripts/fresh-clone-check.ts",
+    "notes": "Master section 95, read in full. Whole-product/roadmap aggregate spans multiple owners and external acceptance. Existing controlled runtime, billing, DAG and fresh-source fixtures are evidence only for their recorded versions and assertions. Current source has new response, admission, download and UI changes pending final integrated replay. Do not promote this aggregate from a package test count. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0075",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/web/src/components/dependency-builder.tsx",
+    "tests": "apps/worker/src/imports.test.ts; apps/web/tests/dependencies.test.ts",
+    "notes": "Master section 96, read in full. Discovery does not grant execution authority. Selected dependency closure, content-bound consent and local readiness are implemented; optional recommendations are not automatic approvals. Full graphical local-import workflow is not proven by backend/CLI tests. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0079",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/web/src/components/dependency-builder.tsx",
+    "tests": "apps/worker/src/imports.test.ts; apps/web/tests/dependencies.test.ts",
+    "notes": "Master section 96, read in full. Discovery does not grant execution authority. Selected dependency closure, content-bound consent and local readiness are implemented; optional recommendations are not automatic approvals. Full graphical local-import workflow is not proven by backend/CLI tests. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0081",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/web/src/components/dependency-builder.tsx",
+    "tests": "apps/worker/src/imports.test.ts; apps/web/tests/dependencies.test.ts",
+    "notes": "Master section 119, read in full. Discovery does not grant execution authority. Selected dependency closure, content-bound consent and local readiness are implemented; optional recommendations are not automatic approvals. Full graphical local-import workflow is not proven by backend/CLI tests. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0082",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/web/src/components/dependency-builder.tsx",
+    "tests": "apps/worker/src/imports.test.ts; apps/web/tests/dependencies.test.ts",
+    "notes": "Master section 119, read in full. Discovery does not grant execution authority. Selected dependency closure, content-bound consent and local readiness are implemented; optional recommendations are not automatic approvals. Full graphical local-import workflow is not proven by backend/CLI tests. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0085",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/accounts.ts; apps/web/src/components/shell.tsx; packages/billing/src/ledger.ts; apps/web/src/components/wallet.tsx; apps/web/src/components/selling.tsx",
+    "tests": "apps/api/test/accounts.integration.test.ts; apps/api/test/billing.integration.test.ts",
+    "notes": "Master section 120, read in full. One account serves both buyer and seller. Buyer use requires no local Worker; seller activation adds local prerequisites. Buyer credits and seller earnings remain separate ledger concepts and are not silently netted. Navigation labels are recommendations, not fixed strings. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0086",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/accounts.ts; apps/web/src/components/shell.tsx; packages/billing/src/ledger.ts; apps/web/src/components/wallet.tsx; apps/web/src/components/selling.tsx",
+    "tests": "apps/api/test/accounts.integration.test.ts; apps/api/test/billing.integration.test.ts",
+    "notes": "Master section 120, read in full. One account serves both buyer and seller. Buyer use requires no local Worker; seller activation adds local prerequisites. Buyer credits and seller earnings remain separate ledger concepts and are not silently netted. Navigation labels are recommendations, not fixed strings. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0087",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/accounts.ts; apps/web/src/components/shell.tsx; packages/billing/src/ledger.ts; apps/web/src/components/wallet.tsx; apps/web/src/components/selling.tsx",
+    "tests": "apps/api/test/accounts.integration.test.ts; apps/api/test/billing.integration.test.ts",
+    "notes": "Master section 120, read in full. One account serves both buyer and seller. Buyer use requires no local Worker; seller activation adds local prerequisites. Buyer credits and seller earnings remain separate ledger concepts and are not silently netted. Navigation labels are recommendations, not fixed strings. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0088",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/accounts.ts; apps/web/src/components/shell.tsx; packages/billing/src/ledger.ts; apps/web/src/components/wallet.tsx; apps/web/src/components/selling.tsx",
+    "tests": "apps/api/test/accounts.integration.test.ts; apps/api/test/billing.integration.test.ts",
+    "notes": "Master section 121, read in full. One account serves both buyer and seller. Buyer use requires no local Worker; seller activation adds local prerequisites. Buyer credits and seller earnings remain separate ledger concepts and are not silently netted. Navigation labels are recommendations, not fixed strings. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0089",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/accounts.ts; apps/web/src/components/shell.tsx; packages/billing/src/ledger.ts; apps/web/src/components/wallet.tsx; apps/web/src/components/selling.tsx",
+    "tests": "apps/api/test/accounts.integration.test.ts; apps/api/test/billing.integration.test.ts",
+    "notes": "Master section 121, read in full. One account serves both buyer and seller. Buyer use requires no local Worker; seller activation adds local prerequisites. Buyer credits and seller earnings remain separate ledger concepts and are not silently netted. Navigation labels are recommendations, not fixed strings. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0090",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/marketplace.tsx; apps/web/src/components/agent.tsx; apps/api/src/catalog-page.ts; packages/marketplace-agent/src/agent.ts",
+    "tests": "packages/marketplace-agent/test/public-discovery.test.ts; packages/marketplace-agent/test/agent.test.ts",
+    "notes": "Master section 122, read in full. Classic browsing/search/favorites/history coexist with bounded natural-language discovery and explicit plan authorization. Categories are not the sole matching input. Optional uncontrolled autonomous purchasing/negotiation/runtime installation are not enabled; latest file-aware matching browser integration is pending. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0091",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/marketplace.tsx; apps/web/src/components/agent.tsx; apps/api/src/catalog-page.ts; packages/marketplace-agent/src/agent.ts",
+    "tests": "packages/marketplace-agent/test/public-discovery.test.ts; packages/marketplace-agent/test/agent.test.ts",
+    "notes": "Master section 122, read in full. Classic browsing/search/favorites/history coexist with bounded natural-language discovery and explicit plan authorization. Categories are not the sole matching input. Optional uncontrolled autonomous purchasing/negotiation/runtime installation are not enabled; latest file-aware matching browser integration is pending. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0092",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/capability-detail.tsx; apps/web/src/components/marketplace.tsx; apps/web/src/components/permissions.tsx; apps/web/src/components/data-processing.tsx; apps/api/src/catalog.ts",
+    "tests": "apps/web/tests/public-permissions.test.ts; apps/web/tests/checkout.test.ts; apps/web/tests/results.test.ts",
+    "notes": "Master section 123, read in full. Cards, contract forms, prices, result display and seller-machine/provider/storage disclosures exist. Public metadata is projected separately from private dependencies. Newly expanded permission taxonomy and strict DTOs need the latest integrated browser rerun; no security certification is advertised. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0093",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-detail.tsx; apps/web/src/components/marketplace.tsx; apps/web/src/components/permissions.tsx; apps/web/src/components/data-processing.tsx; apps/api/src/catalog.ts",
+    "tests": "apps/web/tests/public-permissions.test.ts; apps/web/tests/checkout.test.ts; apps/web/tests/results.test.ts",
+    "notes": "Master section 123, read in full. Cards, contract forms, prices, result display and seller-machine/provider/storage disclosures exist. Public metadata is projected separately from private dependencies. Newly expanded permission taxonomy and strict DTOs need the latest integrated browser rerun; no security certification is advertised. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0095",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/capability-detail.tsx; apps/web/src/components/marketplace.tsx; apps/web/src/components/permissions.tsx; apps/web/src/components/data-processing.tsx; apps/api/src/catalog.ts",
+    "tests": "apps/web/tests/public-permissions.test.ts; apps/web/tests/checkout.test.ts; apps/web/tests/results.test.ts",
+    "notes": "Master section 124, read in full. Cards, contract forms, prices, result display and seller-machine/provider/storage disclosures exist. Public metadata is projected separately from private dependencies. Newly expanded permission taxonomy and strict DTOs need the latest integrated browser rerun; no security certification is advertised. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0096",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-detail.tsx; apps/web/src/components/marketplace.tsx; apps/web/src/components/permissions.tsx; apps/web/src/components/data-processing.tsx; apps/api/src/catalog.ts",
+    "tests": "apps/web/tests/public-permissions.test.ts; apps/web/tests/checkout.test.ts; apps/web/tests/results.test.ts",
+    "notes": "Master section 124, read in full. Cards, contract forms, prices, result display and seller-machine/provider/storage disclosures exist. Public metadata is projected separately from private dependencies. Newly expanded permission taxonomy and strict DTOs need the latest integrated browser rerun; no security certification is advertised. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0098",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/catalog-page.ts; apps/api/src/catalog-reviews.ts; apps/api/src/accounts.ts; apps/web/src/components/marketplace.tsx; apps/web/src/components/reviews.tsx",
+    "tests": "apps/api/test/catalog.integration.test.ts; packages/marketplace-agent/test/public-discovery.test.ts; apps/web/tests/reviews.test.ts",
+    "notes": "Master section 125, read in full. Simple filtered/paginated discovery and verified marketplace reviews are implemented. Master159/162 subsequently explicitly require natural-language discovery, so Master85's earlier prohibition is not used to remove that feature. Capability-specific reputation exists without claiming an advanced recommender. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0141",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/accounts.ts; apps/web/src/components/shell.tsx; packages/billing/src/ledger.ts; apps/web/src/components/wallet.tsx; apps/web/src/components/selling.tsx",
+    "tests": "apps/api/test/accounts.integration.test.ts; apps/api/test/billing.integration.test.ts",
+    "notes": "Master section 152, read in full. One account serves both buyer and seller. Buyer use requires no local Worker; seller activation adds local prerequisites. Buyer credits and seller earnings remain separate ledger concepts and are not silently netted. Navigation labels are recommendations, not fixed strings. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0143",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/catalog-page.ts; apps/api/src/catalog-reviews.ts; apps/api/src/accounts.ts; apps/web/src/components/marketplace.tsx; apps/web/src/components/reviews.tsx",
+    "tests": "apps/api/test/catalog.integration.test.ts; packages/marketplace-agent/test/public-discovery.test.ts; apps/web/tests/reviews.test.ts",
+    "notes": "Master section 153, read in full. Simple filtered/paginated discovery and verified marketplace reviews are implemented. Master159/162 subsequently explicitly require natural-language discovery, so Master85's earlier prohibition is not used to remove that feature. Capability-specific reputation exists without claiming an advanced recommender. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0144",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/marketplace.tsx; apps/web/src/components/agent.tsx; apps/api/src/catalog-page.ts; packages/marketplace-agent/src/agent.ts",
+    "tests": "packages/marketplace-agent/test/public-discovery.test.ts; packages/marketplace-agent/test/agent.test.ts",
+    "notes": "Master section 154, read in full. Classic browsing/search/favorites/history coexist with bounded natural-language discovery and explicit plan authorization. Categories are not the sole matching input. Optional uncontrolled autonomous purchasing/negotiation/runtime installation are not enabled; latest file-aware matching browser integration is pending. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0145",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/marketplace.tsx; apps/web/src/components/agent.tsx; apps/api/src/catalog-page.ts; packages/marketplace-agent/src/agent.ts",
+    "tests": "packages/marketplace-agent/test/public-discovery.test.ts; packages/marketplace-agent/test/agent.test.ts",
+    "notes": "Master section 154, read in full. Classic browsing/search/favorites/history coexist with bounded natural-language discovery and explicit plan authorization. Categories are not the sole matching input. Optional uncontrolled autonomous purchasing/negotiation/runtime installation are not enabled; latest file-aware matching browser integration is pending. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0149",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/marketplace.tsx; apps/web/src/components/agent.tsx; apps/api/src/catalog-page.ts; packages/marketplace-agent/src/agent.ts",
+    "tests": "packages/marketplace-agent/test/public-discovery.test.ts; packages/marketplace-agent/test/agent.test.ts",
+    "notes": "Master section 159, read in full. Classic browsing/search/favorites/history coexist with bounded natural-language discovery and explicit plan authorization. Categories are not the sole matching input. Optional uncontrolled autonomous purchasing/negotiation/runtime installation are not enabled; latest file-aware matching browser integration is pending. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0150",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/marketplace.tsx; apps/web/src/components/agent.tsx; apps/api/src/catalog-page.ts; packages/marketplace-agent/src/agent.ts",
+    "tests": "packages/marketplace-agent/test/public-discovery.test.ts; packages/marketplace-agent/test/agent.test.ts",
+    "notes": "Master section 159, read in full. Classic browsing/search/favorites/history coexist with bounded natural-language discovery and explicit plan authorization. Categories are not the sole matching input. Optional uncontrolled autonomous purchasing/negotiation/runtime installation are not enabled; latest file-aware matching browser integration is pending. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0151",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/marketplace.tsx; apps/web/src/components/agent.tsx; apps/api/src/catalog-page.ts; packages/marketplace-agent/src/agent.ts",
+    "tests": "packages/marketplace-agent/test/public-discovery.test.ts; packages/marketplace-agent/test/agent.test.ts",
+    "notes": "Master section 159, read in full. Classic browsing/search/favorites/history coexist with bounded natural-language discovery and explicit plan authorization. Categories are not the sole matching input. Optional uncontrolled autonomous purchasing/negotiation/runtime installation are not enabled; latest file-aware matching browser integration is pending. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0155",
+    "status": "IN_PROGRESS",
+    "implementation": "docs/ARCHITECTURE.md; docs/LOCAL-VERIFICATION.md; apps/api/src/jobs.ts; apps/worker/src/runtime.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "scripts/e2e-fixture.ts; scripts/e2e-orchestration-fixture.ts; scripts/fresh-clone-check.ts",
+    "notes": "Master section 161, read in full. Whole-product/roadmap aggregate spans multiple owners and external acceptance. Existing controlled runtime, billing, DAG and fresh-source fixtures are evidence only for their recorded versions and assertions. Current source has new response, admission, download and UI changes pending final integrated replay. Do not promote this aggregate from a package test count. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0156",
+    "status": "IMPLEMENTED",
+    "implementation": "docs/ARCHITECTURE.md; docs/LOCAL-VERIFICATION.md; apps/api/src/jobs.ts; apps/worker/src/runtime.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "scripts/e2e-fixture.ts; scripts/e2e-orchestration-fixture.ts; scripts/fresh-clone-check.ts",
+    "notes": "Master section 161, read in full. Whole-product/roadmap aggregate spans multiple owners and external acceptance. Existing controlled runtime, billing, DAG and fresh-source fixtures are evidence only for their recorded versions and assertions. Current source has new response, admission, download and UI changes pending final integrated replay. Do not promote this aggregate from a package test count. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0157",
+    "status": "IN_PROGRESS",
+    "implementation": "docs/ARCHITECTURE.md; docs/LOCAL-VERIFICATION.md; apps/api/src/jobs.ts; apps/worker/src/runtime.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "scripts/e2e-fixture.ts; scripts/e2e-orchestration-fixture.ts; scripts/fresh-clone-check.ts",
+    "notes": "Master section 162, read in full. Whole-product/roadmap aggregate spans multiple owners and external acceptance. Existing controlled runtime, billing, DAG and fresh-source fixtures are evidence only for their recorded versions and assertions. Current source has new response, admission, download and UI changes pending final integrated replay. Do not promote this aggregate from a package test count. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0158",
+    "status": "IMPLEMENTED",
+    "implementation": "docs/ARCHITECTURE.md; docs/LOCAL-VERIFICATION.md; apps/api/src/jobs.ts; apps/worker/src/runtime.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "scripts/e2e-fixture.ts; scripts/e2e-orchestration-fixture.ts; scripts/fresh-clone-check.ts",
+    "notes": "Master section 162, read in full. Whole-product/roadmap aggregate spans multiple owners and external acceptance. Existing controlled runtime, billing, DAG and fresh-source fixtures are evidence only for their recorded versions and assertions. Current source has new response, admission, download and UI changes pending final integrated replay. Do not promote this aggregate from a package test count. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0185",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts; packages/contracts/src/server.ts; packages/openclaw-adapter/src/index.ts; apps/web/src/components/contract-form.tsx",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Master section 200, read in full. Structured typed fields, semantic descriptions, output contracts and delimited untrusted buyer data are implemented. Prompt wording is not an isolation guarantee; hard Worker tool/resource boundaries remain authoritative. Source trace does not prove resistance to every prompt injection. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0190",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts; packages/marketplace-agent/test/contract-matching.test.ts",
+    "notes": "Master section 224, read in full. Semantic metadata is separate from structural MIME/file validation. SR03 added conservative known-role compatibility in frozen mappings and selected-file matching. Owner reports 266 scoped cases, but that is not independent live-provider/browser acceptance. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0191",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts; packages/marketplace-agent/test/contract-matching.test.ts",
+    "notes": "Master section 224, read in full. Semantic metadata is separate from structural MIME/file validation. SR03 added conservative known-role compatibility in frozen mappings and selected-file matching. Owner reports 266 scoped cases, but that is not independent live-provider/browser acceptance. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0192",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/capability-detail.tsx; apps/web/src/components/marketplace.tsx; apps/web/src/components/permissions.tsx; apps/web/src/components/data-processing.tsx; apps/api/src/catalog.ts",
+    "tests": "apps/web/tests/public-permissions.test.ts; apps/web/tests/checkout.test.ts; apps/web/tests/results.test.ts",
+    "notes": "Master section 227, read in full. Cards, contract forms, prices, result display and seller-machine/provider/storage disclosures exist. Public metadata is projected separately from private dependencies. Newly expanded permission taxonomy and strict DTOs need the latest integrated browser rerun; no security certification is advertised. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0193",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-detail.tsx; apps/web/src/components/marketplace.tsx; apps/web/src/components/permissions.tsx; apps/web/src/components/data-processing.tsx; apps/api/src/catalog.ts",
+    "tests": "apps/web/tests/public-permissions.test.ts; apps/web/tests/checkout.test.ts; apps/web/tests/results.test.ts",
+    "notes": "Master section 227, read in full. Cards, contract forms, prices, result display and seller-machine/provider/storage disclosures exist. Public metadata is projected separately from private dependencies. Newly expanded permission taxonomy and strict DTOs need the latest integrated browser rerun; no security certification is advertised. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0194",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-detail.tsx; apps/web/src/components/marketplace.tsx; apps/web/src/components/permissions.tsx; apps/web/src/components/data-processing.tsx; apps/api/src/catalog.ts",
+    "tests": "apps/web/tests/public-permissions.test.ts; apps/web/tests/checkout.test.ts; apps/web/tests/results.test.ts",
+    "notes": "Master section 227, read in full. Cards, contract forms, prices, result display and seller-machine/provider/storage disclosures exist. Public metadata is projected separately from private dependencies. Newly expanded permission taxonomy and strict DTOs need the latest integrated browser rerun; no security certification is advertised. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0195",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-detail.tsx; apps/web/src/components/marketplace.tsx; apps/web/src/components/permissions.tsx; apps/web/src/components/data-processing.tsx; apps/api/src/catalog.ts",
+    "tests": "apps/web/tests/public-permissions.test.ts; apps/web/tests/checkout.test.ts; apps/web/tests/results.test.ts",
+    "notes": "Master section 227, read in full. Cards, contract forms, prices, result display and seller-machine/provider/storage disclosures exist. Public metadata is projected separately from private dependencies. Newly expanded permission taxonomy and strict DTOs need the latest integrated browser rerun; no security certification is advertised. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0197",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/capability-editor.tsx; apps/worker/src/validation.ts; apps/worker/src/index.ts",
+    "tests": "apps/web/tests/forms.test.ts; apps/worker/src/security.test.ts",
+    "notes": "Master section 229, read in full. PR-A02: buyer preview renders the form, and explicit local capability test accepts a version plus input file. The preview currently disables uploads and has no direct export/run bridge to that local test. This is a concrete workflow gap, not absence of isolated seller-test execution. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0202",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts; packages/contracts/src/server.ts; packages/openclaw-adapter/src/index.ts; apps/web/src/components/contract-form.tsx",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Master section 236, read in full. Structured typed fields, semantic descriptions, output contracts and delimited untrusted buyer data are implemented. Prompt wording is not an isolation guarantee; hard Worker tool/resource boundaries remain authoritative. Source trace does not prove resistance to every prompt injection. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0237",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/research-limits.tsx; apps/web/src/components/permissions.tsx; apps/worker/src/research-config.ts; packages/contracts/src/research-downloads.ts",
+    "tests": "apps/web/tests/research-limits.test.ts; apps/worker/src/research-downloads.test.ts",
+    "notes": "Master section 257, read in full. Explicit research/domain permissions are implemented; SR06 adds separately consented bounded public file downloads. Do not represent READ_HTTPS alone as arbitrary download authority or enable side effects. SR06/UI integration and actual binary-download acceptance are in progress. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0239",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/capability-detail.tsx; apps/web/src/components/marketplace.tsx; apps/web/src/components/permissions.tsx; apps/web/src/components/data-processing.tsx; apps/api/src/catalog.ts",
+    "tests": "apps/web/tests/public-permissions.test.ts; apps/web/tests/checkout.test.ts; apps/web/tests/results.test.ts",
+    "notes": "Master section 258, read in full. Cards, contract forms, prices, result display and seller-machine/provider/storage disclosures exist. Public metadata is projected separately from private dependencies. Newly expanded permission taxonomy and strict DTOs need the latest integrated browser rerun; no security certification is advertised. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0277",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts; packages/billing/src/ledger.ts; apps/api/src/jobs.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/billing/src/ledger.test.ts; apps/api/test/protocol.integration.test.ts; apps/api/test/ledger-provenance.integration.test.ts",
+    "notes": "Master section 278, read in full. Authoritative integer USD tier table, exact fee/net snapshots, versioned quotes and immutable balanced ledger entries implement fixed-tier economics. No dynamic percentage fee or seller-entered arbitrary amount is authoritative. Full pricing acceptance includes UI and provider reconciliation, which narrower unit assertions do not certify. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0278",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/billing/src/ledger.ts; apps/api/src/jobs.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/billing/src/ledger.test.ts; apps/api/test/protocol.integration.test.ts; apps/api/test/ledger-provenance.integration.test.ts",
+    "notes": "Master section 278, read in full. Authoritative integer USD tier table, exact fee/net snapshots, versioned quotes and immutable balanced ledger entries implement fixed-tier economics. No dynamic percentage fee or seller-entered arbitrary amount is authoritative. Full pricing acceptance includes UI and provider reconciliation, which narrower unit assertions do not certify. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0279",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/billing/src/ledger.ts; apps/api/src/jobs.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/billing/src/ledger.test.ts; apps/api/test/protocol.integration.test.ts; apps/api/test/ledger-provenance.integration.test.ts",
+    "notes": "Master section 278, read in full. Authoritative integer USD tier table, exact fee/net snapshots, versioned quotes and immutable balanced ledger entries implement fixed-tier economics. No dynamic percentage fee or seller-entered arbitrary amount is authoritative. Full pricing acceptance includes UI and provider reconciliation, which narrower unit assertions do not certify. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0281",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-editor.tsx; apps/web/src/components/selling.tsx; apps/web/src/components/billing.tsx; apps/web/src/components/operations.tsx; packages/contracts/src/payment-policy.ts",
+    "tests": "apps/web/tests/checkout.test.ts; apps/web/tests/payment-disclosure.test.ts; apps/web/tests/operations.test.ts",
+    "notes": "Master section 279, read in full. Buyer surfaces show retail job prices; seller surfaces show exact tier fee/net and distinguish external inference costs, estimates and unavailable provider invoices. Reserved demand is not settled earnings. Production terminology/tax obligations need separate operator review. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0282",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-editor.tsx; apps/web/src/components/selling.tsx; apps/web/src/components/billing.tsx; apps/web/src/components/operations.tsx; packages/contracts/src/payment-policy.ts",
+    "tests": "apps/web/tests/checkout.test.ts; apps/web/tests/payment-disclosure.test.ts; apps/web/tests/operations.test.ts",
+    "notes": "Master section 279, read in full. Buyer surfaces show retail job prices; seller surfaces show exact tier fee/net and distinguish external inference costs, estimates and unavailable provider invoices. Reserved demand is not settled earnings. Production terminology/tax obligations need separate operator review. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0283",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-editor.tsx; apps/web/src/components/selling.tsx; apps/web/src/components/billing.tsx; apps/web/src/components/operations.tsx; packages/contracts/src/payment-policy.ts",
+    "tests": "apps/web/tests/checkout.test.ts; apps/web/tests/payment-disclosure.test.ts; apps/web/tests/operations.test.ts",
+    "notes": "Master section 279, read in full. Buyer surfaces show retail job prices; seller surfaces show exact tier fee/net and distinguish external inference costs, estimates and unavailable provider invoices. Reserved demand is not settled earnings. Production terminology/tax obligations need separate operator review. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0285",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-editor.tsx; apps/web/src/components/selling.tsx; apps/web/src/components/billing.tsx; apps/web/src/components/operations.tsx; packages/contracts/src/payment-policy.ts",
+    "tests": "apps/web/tests/checkout.test.ts; apps/web/tests/payment-disclosure.test.ts; apps/web/tests/operations.test.ts",
+    "notes": "Master section 280, read in full. Buyer surfaces show retail job prices; seller surfaces show exact tier fee/net and distinguish external inference costs, estimates and unavailable provider invoices. Reserved demand is not settled earnings. Production terminology/tax obligations need separate operator review. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0286",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-editor.tsx; apps/web/src/components/selling.tsx; apps/web/src/components/billing.tsx; apps/web/src/components/operations.tsx; packages/contracts/src/payment-policy.ts",
+    "tests": "apps/web/tests/checkout.test.ts; apps/web/tests/payment-disclosure.test.ts; apps/web/tests/operations.test.ts",
+    "notes": "Master section 280, read in full. Buyer surfaces show retail job prices; seller surfaces show exact tier fee/net and distinguish external inference costs, estimates and unavailable provider invoices. Reserved demand is not settled earnings. Production terminology/tax obligations need separate operator review. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0287",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts; packages/billing/src/ledger.ts; apps/api/src/jobs.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/billing/src/ledger.test.ts; apps/api/test/protocol.integration.test.ts; apps/api/test/ledger-provenance.integration.test.ts",
+    "notes": "Master section 281, read in full. Authoritative integer USD tier table, exact fee/net snapshots, versioned quotes and immutable balanced ledger entries implement fixed-tier economics. No dynamic percentage fee or seller-entered arbitrary amount is authoritative. Full pricing acceptance includes UI and provider reconciliation, which narrower unit assertions do not certify. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0288",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/billing/src/ledger.ts; apps/api/src/jobs.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/billing/src/ledger.test.ts; apps/api/test/protocol.integration.test.ts; apps/api/test/ledger-provenance.integration.test.ts",
+    "notes": "Master section 281, read in full. Authoritative integer USD tier table, exact fee/net snapshots, versioned quotes and immutable balanced ledger entries implement fixed-tier economics. No dynamic percentage fee or seller-entered arbitrary amount is authoritative. Full pricing acceptance includes UI and provider reconciliation, which narrower unit assertions do not certify. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0289",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/billing/src/ledger.ts; apps/api/src/jobs.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/billing/src/ledger.test.ts; apps/api/test/protocol.integration.test.ts; apps/api/test/ledger-provenance.integration.test.ts",
+    "notes": "Master section 281, read in full. Authoritative integer USD tier table, exact fee/net snapshots, versioned quotes and immutable balanced ledger entries implement fixed-tier economics. No dynamic percentage fee or seller-entered arbitrary amount is authoritative. Full pricing acceptance includes UI and provider reconciliation, which narrower unit assertions do not certify. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0292",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts; packages/billing/src/ledger.ts; apps/api/src/jobs.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/billing/src/ledger.test.ts; apps/api/test/protocol.integration.test.ts; apps/api/test/ledger-provenance.integration.test.ts",
+    "notes": "Master section 284, read in full. Authoritative integer USD tier table, exact fee/net snapshots, versioned quotes and immutable balanced ledger entries implement fixed-tier economics. No dynamic percentage fee or seller-entered arbitrary amount is authoritative. Full pricing acceptance includes UI and provider reconciliation, which narrower unit assertions do not certify. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0294",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-editor.tsx; apps/web/src/components/selling.tsx; apps/web/src/components/billing.tsx; apps/web/src/components/operations.tsx; packages/contracts/src/payment-policy.ts",
+    "tests": "apps/web/tests/checkout.test.ts; apps/web/tests/payment-disclosure.test.ts; apps/web/tests/operations.test.ts",
+    "notes": "Master section 285, read in full. Buyer surfaces show retail job prices; seller surfaces show exact tier fee/net and distinguish external inference costs, estimates and unavailable provider invoices. Reserved demand is not settled earnings. Production terminology/tax obligations need separate operator review. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0295",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/capability-editor.tsx; apps/web/src/components/selling.tsx; apps/web/src/components/billing.tsx; apps/web/src/components/operations.tsx; packages/contracts/src/payment-policy.ts",
+    "tests": "apps/web/tests/checkout.test.ts; apps/web/tests/payment-disclosure.test.ts; apps/web/tests/operations.test.ts",
+    "notes": "Master section 286, read in full. Buyer surfaces show retail job prices; seller surfaces show exact tier fee/net and distinguish external inference costs, estimates and unavailable provider invoices. Reserved demand is not settled earnings. Production terminology/tax obligations need separate operator review. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0299",
+    "status": "BLOCKED",
+    "implementation": "docs/DATA-HANDLING.md; docs/INTEGRATION.md; docs/BILLING-STATUS.md; packages/contracts/src/payment-policy.ts",
+    "tests": "packages/contracts/src/payment-policy.test.ts; packages/billing/src/stripe-provider.integration.test.ts",
+    "notes": "Master section 287, read in full. External acceptance, not a software shortcut: legal/tax/Connect topology approval and real private-alpha demand or provider billing evidence cannot be manufactured locally. Fixed seller entitlement is implemented; no production tax policy or paid demand is asserted. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0300",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts; packages/billing/src/ledger.ts; apps/api/src/jobs.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/billing/src/ledger.test.ts; apps/api/test/protocol.integration.test.ts; apps/api/test/ledger-provenance.integration.test.ts",
+    "notes": "Master section 291, read in full. Authoritative integer USD tier table, exact fee/net snapshots, versioned quotes and immutable balanced ledger entries implement fixed-tier economics. No dynamic percentage fee or seller-entered arbitrary amount is authoritative. Full pricing acceptance includes UI and provider reconciliation, which narrower unit assertions do not certify. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0301",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/billing/src/ledger.ts; apps/api/src/jobs.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/billing/src/ledger.test.ts; apps/api/test/protocol.integration.test.ts; apps/api/test/ledger-provenance.integration.test.ts",
+    "notes": "Master section 291, read in full. Authoritative integer USD tier table, exact fee/net snapshots, versioned quotes and immutable balanced ledger entries implement fixed-tier economics. No dynamic percentage fee or seller-entered arbitrary amount is authoritative. Full pricing acceptance includes UI and provider reconciliation, which narrower unit assertions do not certify. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0302",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts; packages/billing/src/ledger.ts; apps/api/src/jobs.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/billing/src/ledger.test.ts; apps/api/test/protocol.integration.test.ts; apps/api/test/ledger-provenance.integration.test.ts",
+    "notes": "Master section 292, read in full. Authoritative integer USD tier table, exact fee/net snapshots, versioned quotes and immutable balanced ledger entries implement fixed-tier economics. No dynamic percentage fee or seller-entered arbitrary amount is authoritative. Full pricing acceptance includes UI and provider reconciliation, which narrower unit assertions do not certify. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0303",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/billing/src/ledger.ts; apps/api/src/jobs.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/billing/src/ledger.test.ts; apps/api/test/protocol.integration.test.ts; apps/api/test/ledger-provenance.integration.test.ts",
+    "notes": "Master section 292, read in full. Authoritative integer USD tier table, exact fee/net snapshots, versioned quotes and immutable balanced ledger entries implement fixed-tier economics. No dynamic percentage fee or seller-entered arbitrary amount is authoritative. Full pricing acceptance includes UI and provider reconciliation, which narrower unit assertions do not certify. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0304",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/capability-editor.tsx; apps/web/src/components/selling.tsx; apps/web/src/components/billing.tsx; apps/web/src/components/operations.tsx; packages/contracts/src/payment-policy.ts",
+    "tests": "apps/web/tests/checkout.test.ts; apps/web/tests/payment-disclosure.test.ts; apps/web/tests/operations.test.ts",
+    "notes": "Master section 294, read in full. Buyer surfaces show retail job prices; seller surfaces show exact tier fee/net and distinguish external inference costs, estimates and unavailable provider invoices. Reserved demand is not settled earnings. Production terminology/tax obligations need separate operator review. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0305",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-editor.tsx; apps/web/src/components/selling.tsx; apps/web/src/components/billing.tsx; apps/web/src/components/operations.tsx; packages/contracts/src/payment-policy.ts",
+    "tests": "apps/web/tests/checkout.test.ts; apps/web/tests/payment-disclosure.test.ts; apps/web/tests/operations.test.ts",
+    "notes": "Master section 294, read in full. Buyer surfaces show retail job prices; seller surfaces show exact tier fee/net and distinguish external inference costs, estimates and unavailable provider invoices. Reserved demand is not settled earnings. Production terminology/tax obligations need separate operator review. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0306",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/capability-editor.tsx; apps/web/src/components/selling.tsx; apps/web/src/components/billing.tsx; apps/web/src/components/operations.tsx; packages/contracts/src/payment-policy.ts",
+    "tests": "apps/web/tests/checkout.test.ts; apps/web/tests/payment-disclosure.test.ts; apps/web/tests/operations.test.ts",
+    "notes": "Master section 295, read in full. Buyer surfaces show retail job prices; seller surfaces show exact tier fee/net and distinguish external inference costs, estimates and unavailable provider invoices. Reserved demand is not settled earnings. Production terminology/tax obligations need separate operator review. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0307",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-editor.tsx; apps/web/src/components/selling.tsx; apps/web/src/components/billing.tsx; apps/web/src/components/operations.tsx; packages/contracts/src/payment-policy.ts",
+    "tests": "apps/web/tests/checkout.test.ts; apps/web/tests/payment-disclosure.test.ts; apps/web/tests/operations.test.ts",
+    "notes": "Master section 295, read in full. Buyer surfaces show retail job prices; seller surfaces show exact tier fee/net and distinguish external inference costs, estimates and unavailable provider invoices. Reserved demand is not settled earnings. Production terminology/tax obligations need separate operator review. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0308",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts; packages/billing/src/ledger.ts; apps/api/src/jobs.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/billing/src/ledger.test.ts; apps/api/test/protocol.integration.test.ts; apps/api/test/ledger-provenance.integration.test.ts",
+    "notes": "Master section 297, read in full. Authoritative integer USD tier table, exact fee/net snapshots, versioned quotes and immutable balanced ledger entries implement fixed-tier economics. No dynamic percentage fee or seller-entered arbitrary amount is authoritative. Full pricing acceptance includes UI and provider reconciliation, which narrower unit assertions do not certify. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0309",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/billing/src/ledger.ts; apps/api/src/jobs.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/billing/src/ledger.test.ts; apps/api/test/protocol.integration.test.ts; apps/api/test/ledger-provenance.integration.test.ts",
+    "notes": "Master section 297, read in full. Authoritative integer USD tier table, exact fee/net snapshots, versioned quotes and immutable balanced ledger entries implement fixed-tier economics. No dynamic percentage fee or seller-entered arbitrary amount is authoritative. Full pricing acceptance includes UI and provider reconciliation, which narrower unit assertions do not certify. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0310",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/billing/src/ledger.ts; apps/api/src/jobs.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/billing/src/ledger.test.ts; apps/api/test/protocol.integration.test.ts; apps/api/test/ledger-provenance.integration.test.ts",
+    "notes": "Master section 297, read in full. Authoritative integer USD tier table, exact fee/net snapshots, versioned quotes and immutable balanced ledger entries implement fixed-tier economics. No dynamic percentage fee or seller-entered arbitrary amount is authoritative. Full pricing acceptance includes UI and provider reconciliation, which narrower unit assertions do not certify. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0311",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/billing/src/ledger.ts; apps/api/src/jobs.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/billing/src/ledger.test.ts; apps/api/test/protocol.integration.test.ts; apps/api/test/ledger-provenance.integration.test.ts",
+    "notes": "Master section 297, read in full. Authoritative integer USD tier table, exact fee/net snapshots, versioned quotes and immutable balanced ledger entries implement fixed-tier economics. No dynamic percentage fee or seller-entered arbitrary amount is authoritative. Full pricing acceptance includes UI and provider reconciliation, which narrower unit assertions do not certify. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0312",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/billing/src/ledger.ts; apps/api/src/jobs.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/billing/src/ledger.test.ts; apps/api/test/protocol.integration.test.ts; apps/api/test/ledger-provenance.integration.test.ts",
+    "notes": "Master section 297, read in full. Authoritative integer USD tier table, exact fee/net snapshots, versioned quotes and immutable balanced ledger entries implement fixed-tier economics. No dynamic percentage fee or seller-entered arbitrary amount is authoritative. Full pricing acceptance includes UI and provider reconciliation, which narrower unit assertions do not certify. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0313",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts; packages/billing/src/ledger.ts; apps/api/src/jobs.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/billing/src/ledger.test.ts; apps/api/test/protocol.integration.test.ts; apps/api/test/ledger-provenance.integration.test.ts",
+    "notes": "Master section 298, read in full. Authoritative integer USD tier table, exact fee/net snapshots, versioned quotes and immutable balanced ledger entries implement fixed-tier economics. No dynamic percentage fee or seller-entered arbitrary amount is authoritative. Full pricing acceptance includes UI and provider reconciliation, which narrower unit assertions do not certify. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0314",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/billing/src/ledger.ts; apps/api/src/jobs.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/billing/src/ledger.test.ts; apps/api/test/protocol.integration.test.ts; apps/api/test/ledger-provenance.integration.test.ts",
+    "notes": "Master section 298, read in full. Authoritative integer USD tier table, exact fee/net snapshots, versioned quotes and immutable balanced ledger entries implement fixed-tier economics. No dynamic percentage fee or seller-entered arbitrary amount is authoritative. Full pricing acceptance includes UI and provider reconciliation, which narrower unit assertions do not certify. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0315",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/billing/src/ledger.ts; apps/api/src/jobs.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/billing/src/ledger.test.ts; apps/api/test/protocol.integration.test.ts; apps/api/test/ledger-provenance.integration.test.ts",
+    "notes": "Master section 298, read in full. Authoritative integer USD tier table, exact fee/net snapshots, versioned quotes and immutable balanced ledger entries implement fixed-tier economics. No dynamic percentage fee or seller-entered arbitrary amount is authoritative. Full pricing acceptance includes UI and provider reconciliation, which narrower unit assertions do not certify. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0319",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/catalog-page.ts; apps/api/src/catalog.ts; packages/marketplace-agent/src/public-discovery.ts; apps/api/src/config.ts",
+    "tests": "apps/api/test/catalog.integration.test.ts; packages/marketplace-agent/test/public-discovery.test.ts; apps/api/test/config.test.ts",
+    "notes": "Master section 315, read in full. UNLISTED supply is excluded from default public/agent discovery but can be accessed directly under policy. PRIVATE requires grants. Development fake payments are explicitly gated and production cannot silently use free test purchases. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0322",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/catalog-page.ts; apps/api/src/catalog.ts; packages/marketplace-agent/src/public-discovery.ts; apps/api/src/config.ts",
+    "tests": "apps/api/test/catalog.integration.test.ts; packages/marketplace-agent/test/public-discovery.test.ts; apps/api/test/config.test.ts",
+    "notes": "Master section 318, read in full. UNLISTED supply is excluded from default public/agent discovery but can be accessed directly under policy. PRIVATE requires grants. Development fake payments are explicitly gated and production cannot silently use free test purchases. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0331",
+    "status": "IN_PROGRESS",
+    "implementation": "docs/ARCHITECTURE.md; docs/LOCAL-VERIFICATION.md; apps/api/src/jobs.ts; apps/worker/src/runtime.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "scripts/e2e-fixture.ts; scripts/e2e-orchestration-fixture.ts; scripts/fresh-clone-check.ts",
+    "notes": "Master section 356, read in full. Whole-product/roadmap aggregate spans multiple owners and external acceptance. Existing controlled runtime, billing, DAG and fresh-source fixtures are evidence only for their recorded versions and assertions. Current source has new response, admission, download and UI changes pending final integrated replay. Do not promote this aggregate from a package test count. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0332",
+    "status": "IMPLEMENTED",
+    "implementation": "docs/ARCHITECTURE.md; docs/LOCAL-VERIFICATION.md; apps/api/src/jobs.ts; apps/worker/src/runtime.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "scripts/e2e-fixture.ts; scripts/e2e-orchestration-fixture.ts; scripts/fresh-clone-check.ts",
+    "notes": "Master section 356, read in full. Whole-product/roadmap aggregate spans multiple owners and external acceptance. Existing controlled runtime, billing, DAG and fresh-source fixtures are evidence only for their recorded versions and assertions. Current source has new response, admission, download and UI changes pending final integrated replay. Do not promote this aggregate from a package test count. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0333",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/capability-examples.tsx; apps/api/src/example-assets.ts; packages/marketplace-agent/src/public-discovery.ts",
+    "tests": "apps/api/test/example-assets.integration.test.ts; packages/marketplace-agent/test/public-discovery.test.ts",
+    "notes": "Master section 360, read in full. Approved example metadata and independently published files are projected safely; original seller paths and raw large file bytes are not sent as ordinary discovery context. Formal contracts remain authoritative over examples. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0340",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/capability-examples.tsx; apps/api/src/example-assets.ts; packages/marketplace-agent/src/public-discovery.ts",
+    "tests": "apps/api/test/example-assets.integration.test.ts; packages/marketplace-agent/test/public-discovery.test.ts",
+    "notes": "Master section 366, read in full. Approved example metadata and independently published files are projected safely; original seller paths and raw large file bytes are not sent as ordinary discovery context. Formal contracts remain authoritative over examples. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0341",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-examples.tsx; apps/api/src/example-assets.ts; packages/marketplace-agent/src/public-discovery.ts",
+    "tests": "apps/api/test/example-assets.integration.test.ts; packages/marketplace-agent/test/public-discovery.test.ts",
+    "notes": "Master section 366, read in full. Approved example metadata and independently published files are projected safely; original seller paths and raw large file bytes are not sent as ordinary discovery context. Formal contracts remain authoritative over examples. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0342",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/index.ts; apps/api/src/worker.ts; apps/api/src/jobs.ts; apps/web/src/components/selling.tsx; apps/web/src/components/jobs.tsx",
+    "tests": "apps/worker/src/cli-controls.test.ts; apps/api/test/pause-budget.integration.test.ts; apps/web/tests/job-pause.test.ts",
+    "notes": "Master section 392, read in full. Local offline-capable and authenticated web pause controls exist; source/audit, bounded pause, explicit resume and sanitized buyer status are retained. JR01-04 and SR04 close specific health/reporting gaps; complete newest Worker/UI coupling still needs integration evidence. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0345",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/index.ts; apps/api/src/worker.ts; apps/api/src/jobs.ts; apps/web/src/components/selling.tsx; apps/web/src/components/jobs.tsx",
+    "tests": "apps/worker/src/cli-controls.test.ts; apps/api/test/pause-budget.integration.test.ts; apps/web/tests/job-pause.test.ts",
+    "notes": "Master section 395, read in full. Local offline-capable and authenticated web pause controls exist; source/audit, bounded pause, explicit resume and sanitized buyer status are retained. JR01-04 and SR04 close specific health/reporting gaps; complete newest Worker/UI coupling still needs integration evidence. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0346",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/index.ts; apps/api/src/worker.ts; apps/api/src/jobs.ts; apps/web/src/components/selling.tsx; apps/web/src/components/jobs.tsx",
+    "tests": "apps/worker/src/cli-controls.test.ts; apps/api/test/pause-budget.integration.test.ts; apps/web/tests/job-pause.test.ts",
+    "notes": "Master section 395, read in full. Local offline-capable and authenticated web pause controls exist; source/audit, bounded pause, explicit resume and sanitized buyer status are retained. JR01-04 and SR04 close specific health/reporting gaps; complete newest Worker/UI coupling still needs integration evidence. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0347",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/index.ts; apps/api/src/worker.ts; apps/api/src/jobs.ts; apps/web/src/components/selling.tsx; apps/web/src/components/jobs.tsx",
+    "tests": "apps/worker/src/cli-controls.test.ts; apps/api/test/pause-budget.integration.test.ts; apps/web/tests/job-pause.test.ts",
+    "notes": "Master section 395, read in full. Local offline-capable and authenticated web pause controls exist; source/audit, bounded pause, explicit resume and sanitized buyer status are retained. JR01-04 and SR04 close specific health/reporting gaps; complete newest Worker/UI coupling still needs integration evidence. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0348",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/index.ts; apps/api/src/worker.ts; apps/api/src/jobs.ts; apps/web/src/components/selling.tsx; apps/web/src/components/jobs.tsx",
+    "tests": "apps/worker/src/cli-controls.test.ts; apps/api/test/pause-budget.integration.test.ts; apps/web/tests/job-pause.test.ts",
+    "notes": "Master section 395, read in full. Local offline-capable and authenticated web pause controls exist; source/audit, bounded pause, explicit resume and sanitized buyer status are retained. JR01-04 and SR04 close specific health/reporting gaps; complete newest Worker/UI coupling still needs integration evidence. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0349",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/policy-engine/src/index.ts; apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/web/src/components/schedule-editor.tsx; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/api/test/scheduling.integration.test.ts; packages/policy-engine/src/policy.test.ts; apps/web/tests/schedules.test.ts",
+    "notes": "Master section 396, read in full. Recurring seller-timezone schedules, canonical timestamps and buyer-local display are implemented without automatic OS wake. Paid admission checks independent visibility/pause/device/readiness/capacity layers; pending shared-device reservations are being hardened separately, so the full admission hierarchy is not yet certified. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0351",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/policy-engine/src/index.ts; apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/web/src/components/schedule-editor.tsx; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/api/test/scheduling.integration.test.ts; packages/policy-engine/src/policy.test.ts; apps/web/tests/schedules.test.ts",
+    "notes": "Master section 414, read in full. Recurring seller-timezone schedules, canonical timestamps and buyer-local display are implemented without automatic OS wake. Paid admission checks independent visibility/pause/device/readiness/capacity layers; pending shared-device reservations are being hardened separately, so the full admission hierarchy is not yet certified. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0352",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/policy-engine/src/index.ts; apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/web/src/components/schedule-editor.tsx; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/api/test/scheduling.integration.test.ts; packages/policy-engine/src/policy.test.ts; apps/web/tests/schedules.test.ts",
+    "notes": "Master section 414, read in full. Recurring seller-timezone schedules, canonical timestamps and buyer-local display are implemented without automatic OS wake. Paid admission checks independent visibility/pause/device/readiness/capacity layers; pending shared-device reservations are being hardened separately, so the full admission hierarchy is not yet certified. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0353",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/policy-engine/src/index.ts; apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/web/src/components/schedule-editor.tsx; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/api/test/scheduling.integration.test.ts; packages/policy-engine/src/policy.test.ts; apps/web/tests/schedules.test.ts",
+    "notes": "Master section 416, read in full. Recurring seller-timezone schedules, canonical timestamps and buyer-local display are implemented without automatic OS wake. Paid admission checks independent visibility/pause/device/readiness/capacity layers; pending shared-device reservations are being hardened separately, so the full admission hierarchy is not yet certified. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0354",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/policy-engine/src/index.ts; apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/web/src/components/schedule-editor.tsx; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/api/test/scheduling.integration.test.ts; packages/policy-engine/src/policy.test.ts; apps/web/tests/schedules.test.ts",
+    "notes": "Master section 416, read in full. Recurring seller-timezone schedules, canonical timestamps and buyer-local display are implemented without automatic OS wake. Paid admission checks independent visibility/pause/device/readiness/capacity layers; pending shared-device reservations are being hardened separately, so the full admission hierarchy is not yet certified. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0355",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/policy-engine/src/index.ts; apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/web/src/components/schedule-editor.tsx; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/api/test/scheduling.integration.test.ts; packages/policy-engine/src/policy.test.ts; apps/web/tests/schedules.test.ts",
+    "notes": "Master section 416, read in full. Recurring seller-timezone schedules, canonical timestamps and buyer-local display are implemented without automatic OS wake. Paid admission checks independent visibility/pause/device/readiness/capacity layers; pending shared-device reservations are being hardened separately, so the full admission hierarchy is not yet certified. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0356",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/policy-engine/src/index.ts; apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/web/src/components/schedule-editor.tsx; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/api/test/scheduling.integration.test.ts; packages/policy-engine/src/policy.test.ts; apps/web/tests/schedules.test.ts",
+    "notes": "Master section 419, read in full. Recurring seller-timezone schedules, canonical timestamps and buyer-local display are implemented without automatic OS wake. Paid admission checks independent visibility/pause/device/readiness/capacity layers; pending shared-device reservations are being hardened separately, so the full admission hierarchy is not yet certified. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0357",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/policy-engine/src/index.ts; apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/web/src/components/schedule-editor.tsx; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/api/test/scheduling.integration.test.ts; packages/policy-engine/src/policy.test.ts; apps/web/tests/schedules.test.ts",
+    "notes": "Master section 419, read in full. Recurring seller-timezone schedules, canonical timestamps and buyer-local display are implemented without automatic OS wake. Paid admission checks independent visibility/pause/device/readiness/capacity layers; pending shared-device reservations are being hardened separately, so the full admission hierarchy is not yet certified. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0358",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/policy-engine/src/index.ts; apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/web/src/components/schedule-editor.tsx; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/api/test/scheduling.integration.test.ts; packages/policy-engine/src/policy.test.ts; apps/web/tests/schedules.test.ts",
+    "notes": "Master section 419, read in full. Recurring seller-timezone schedules, canonical timestamps and buyer-local display are implemented without automatic OS wake. Paid admission checks independent visibility/pause/device/readiness/capacity layers; pending shared-device reservations are being hardened separately, so the full admission hierarchy is not yet certified. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0360",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/policy-engine/src/index.ts; apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/web/src/components/schedule-editor.tsx; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/api/test/scheduling.integration.test.ts; packages/policy-engine/src/policy.test.ts; apps/web/tests/schedules.test.ts",
+    "notes": "Master section 425, read in full. Recurring seller-timezone schedules, canonical timestamps and buyer-local display are implemented without automatic OS wake. Paid admission checks independent visibility/pause/device/readiness/capacity layers; pending shared-device reservations are being hardened separately, so the full admission hierarchy is not yet certified. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0361",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/policy-engine/src/index.ts; apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/web/src/components/schedule-editor.tsx; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/api/test/scheduling.integration.test.ts; packages/policy-engine/src/policy.test.ts; apps/web/tests/schedules.test.ts",
+    "notes": "Master section 425, read in full. Recurring seller-timezone schedules, canonical timestamps and buyer-local display are implemented without automatic OS wake. Paid admission checks independent visibility/pause/device/readiness/capacity layers; pending shared-device reservations are being hardened separately, so the full admission hierarchy is not yet certified. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0362",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/policy-engine/src/index.ts; apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/web/src/components/schedule-editor.tsx; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/api/test/scheduling.integration.test.ts; packages/policy-engine/src/policy.test.ts; apps/web/tests/schedules.test.ts",
+    "notes": "Master section 425, read in full. Recurring seller-timezone schedules, canonical timestamps and buyer-local display are implemented without automatic OS wake. Paid admission checks independent visibility/pause/device/readiness/capacity layers; pending shared-device reservations are being hardened separately, so the full admission hierarchy is not yet certified. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0363",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/policy-engine/src/index.ts; apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/web/src/components/schedule-editor.tsx; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/api/test/scheduling.integration.test.ts; packages/policy-engine/src/policy.test.ts; apps/web/tests/schedules.test.ts",
+    "notes": "Master section 425, read in full. Recurring seller-timezone schedules, canonical timestamps and buyer-local display are implemented without automatic OS wake. Paid admission checks independent visibility/pause/device/readiness/capacity layers; pending shared-device reservations are being hardened separately, so the full admission hierarchy is not yet certified. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0364",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/policy-engine/src/index.ts; apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/web/src/components/schedule-editor.tsx; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/api/test/scheduling.integration.test.ts; packages/policy-engine/src/policy.test.ts; apps/web/tests/schedules.test.ts",
+    "notes": "Master section 425, read in full. Recurring seller-timezone schedules, canonical timestamps and buyer-local display are implemented without automatic OS wake. Paid admission checks independent visibility/pause/device/readiness/capacity layers; pending shared-device reservations are being hardened separately, so the full admission hierarchy is not yet certified. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0365",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/index.ts; apps/api/src/worker.ts; apps/api/src/jobs.ts; apps/web/src/components/selling.tsx; apps/web/src/components/jobs.tsx",
+    "tests": "apps/worker/src/cli-controls.test.ts; apps/api/test/pause-budget.integration.test.ts; apps/web/tests/job-pause.test.ts",
+    "notes": "Master section 437, read in full. Local offline-capable and authenticated web pause controls exist; source/audit, bounded pause, explicit resume and sanitized buyer status are retained. JR01-04 and SR04 close specific health/reporting gaps; complete newest Worker/UI coupling still needs integration evidence. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0366",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/index.ts; apps/api/src/worker.ts; apps/api/src/jobs.ts; apps/web/src/components/selling.tsx; apps/web/src/components/jobs.tsx",
+    "tests": "apps/worker/src/cli-controls.test.ts; apps/api/test/pause-budget.integration.test.ts; apps/web/tests/job-pause.test.ts",
+    "notes": "Master section 437, read in full. Local offline-capable and authenticated web pause controls exist; source/audit, bounded pause, explicit resume and sanitized buyer status are retained. JR01-04 and SR04 close specific health/reporting gaps; complete newest Worker/UI coupling still needs integration evidence. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0367",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/index.ts; apps/api/src/worker.ts; apps/api/src/jobs.ts; apps/web/src/components/selling.tsx; apps/web/src/components/jobs.tsx",
+    "tests": "apps/worker/src/cli-controls.test.ts; apps/api/test/pause-budget.integration.test.ts; apps/web/tests/job-pause.test.ts",
+    "notes": "Master section 437, read in full. Local offline-capable and authenticated web pause controls exist; source/audit, bounded pause, explicit resume and sanitized buyer status are retained. JR01-04 and SR04 close specific health/reporting gaps; complete newest Worker/UI coupling still needs integration evidence. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0368",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/scheduling.ts; apps/api/src/background.ts; apps/api/src/jobs.ts; packages/billing/src/ledger.ts",
+    "tests": "apps/api/test/scheduling.integration.test.ts; apps/api/test/background.integration.test.ts; apps/api/test/protocol.integration.test.ts",
+    "notes": "Master section 462, read in full. Scheduled jobs reserve rather than settle credits. Eligibility is recomputed under bounded wait/buyer terms; current input/version/funds checks remain before execution. Expiry/cancellation release funds, schedule edits alone cannot create seller earnings. Buyer updates use persisted in-app status, not an invented email requirement. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0369",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/scheduling.ts; apps/api/src/background.ts; apps/api/src/jobs.ts; packages/billing/src/ledger.ts",
+    "tests": "apps/api/test/scheduling.integration.test.ts; apps/api/test/background.integration.test.ts; apps/api/test/protocol.integration.test.ts",
+    "notes": "Master section 462, read in full. Scheduled jobs reserve rather than settle credits. Eligibility is recomputed under bounded wait/buyer terms; current input/version/funds checks remain before execution. Expiry/cancellation release funds, schedule edits alone cannot create seller earnings. Buyer updates use persisted in-app status, not an invented email requirement. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0370",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/scheduling.ts; apps/api/src/background.ts; apps/api/src/jobs.ts; packages/billing/src/ledger.ts",
+    "tests": "apps/api/test/scheduling.integration.test.ts; apps/api/test/background.integration.test.ts; apps/api/test/protocol.integration.test.ts",
+    "notes": "Master section 467, read in full. Scheduled jobs reserve rather than settle credits. Eligibility is recomputed under bounded wait/buyer terms; current input/version/funds checks remain before execution. Expiry/cancellation release funds, schedule edits alone cannot create seller earnings. Buyer updates use persisted in-app status, not an invented email requirement. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0372",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/scheduling.ts; apps/api/src/background.ts; apps/api/src/jobs.ts; packages/billing/src/ledger.ts",
+    "tests": "apps/api/test/scheduling.integration.test.ts; apps/api/test/background.integration.test.ts; apps/api/test/protocol.integration.test.ts",
+    "notes": "Master section 468, read in full. Scheduled jobs reserve rather than settle credits. Eligibility is recomputed under bounded wait/buyer terms; current input/version/funds checks remain before execution. Expiry/cancellation release funds, schedule edits alone cannot create seller earnings. Buyer updates use persisted in-app status, not an invented email requirement. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0373",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/scheduling.ts; apps/api/src/background.ts; apps/api/src/jobs.ts; packages/billing/src/ledger.ts",
+    "tests": "apps/api/test/scheduling.integration.test.ts; apps/api/test/background.integration.test.ts; apps/api/test/protocol.integration.test.ts",
+    "notes": "Master section 468, read in full. Scheduled jobs reserve rather than settle credits. Eligibility is recomputed under bounded wait/buyer terms; current input/version/funds checks remain before execution. Expiry/cancellation release funds, schedule edits alone cannot create seller earnings. Buyer updates use persisted in-app status, not an invented email requirement. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0374",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/scheduling.ts; apps/api/src/background.ts; apps/api/src/jobs.ts; packages/billing/src/ledger.ts",
+    "tests": "apps/api/test/scheduling.integration.test.ts; apps/api/test/background.integration.test.ts; apps/api/test/protocol.integration.test.ts",
+    "notes": "Master section 470, read in full. Scheduled jobs reserve rather than settle credits. Eligibility is recomputed under bounded wait/buyer terms; current input/version/funds checks remain before execution. Expiry/cancellation release funds, schedule edits alone cannot create seller earnings. Buyer updates use persisted in-app status, not an invented email requirement. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0375",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/scheduling.ts; apps/api/src/background.ts; apps/api/src/jobs.ts; packages/billing/src/ledger.ts",
+    "tests": "apps/api/test/scheduling.integration.test.ts; apps/api/test/background.integration.test.ts; apps/api/test/protocol.integration.test.ts",
+    "notes": "Master section 470, read in full. Scheduled jobs reserve rather than settle credits. Eligibility is recomputed under bounded wait/buyer terms; current input/version/funds checks remain before execution. Expiry/cancellation release funds, schedule edits alone cannot create seller earnings. Buyer updates use persisted in-app status, not an invented email requirement. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0376",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/policy-engine/src/index.ts; apps/api/src/scheduling.ts; apps/api/src/catalog.ts; apps/web/src/components/schedule-editor.tsx; apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/api/test/scheduling.integration.test.ts; packages/policy-engine/src/policy.test.ts; apps/web/tests/schedules.test.ts",
+    "notes": "Master section 476, read in full. Recurring seller-timezone schedules, canonical timestamps and buyer-local display are implemented without automatic OS wake. Paid admission checks independent visibility/pause/device/readiness/capacity layers; pending shared-device reservations are being hardened separately, so the full admission hierarchy is not yet certified. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0377",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/marketplace-agent/src/orchestration.ts; apps/web/src/components/agent.tsx; apps/web/src/components/agent-recommendation.tsx",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts; apps/web/tests/plans.test.ts; apps/web/tests/agent-recommendations.test.ts",
+    "notes": "Master section 479, read in full. Plan timing, explicit future-scheduling permission and deadlines are structured/validated, not unrestricted LLM decisions. Approval views include estimates; runtime conditions remain rechecked. Newly expanded strict-response and attachment UI need current browser acceptance. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0378",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/marketplace-agent/src/orchestration.ts; apps/web/src/components/agent.tsx; apps/web/src/components/agent-recommendation.tsx",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts; apps/web/tests/plans.test.ts; apps/web/tests/agent-recommendations.test.ts",
+    "notes": "Master section 479, read in full. Plan timing, explicit future-scheduling permission and deadlines are structured/validated, not unrestricted LLM decisions. Approval views include estimates; runtime conditions remain rechecked. Newly expanded strict-response and attachment UI need current browser acceptance. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0379",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/operations.ts; packages/contracts/src/response-operations.ts; apps/web/src/components/operations.tsx",
+    "tests": "apps/api/test/operations.integration.test.ts; apps/web/tests/operations.test.ts",
+    "notes": "Master section 484, read in full. Scheduled groups expose jobs, workload estimate, reserved buyer value and estimated seller earnings separately from settled finance. Aggregation is scoped and bounded with truncation evidence, not a claim of guaranteed provider availability or profit. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0380",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/operations.ts; packages/contracts/src/response-operations.ts; apps/web/src/components/operations.tsx",
+    "tests": "apps/api/test/operations.integration.test.ts; apps/web/tests/operations.test.ts",
+    "notes": "Master section 484, read in full. Scheduled groups expose jobs, workload estimate, reserved buyer value and estimated seller earnings separately from settled finance. Aggregation is scoped and bounded with truncation evidence, not a claim of guaranteed provider availability or profit. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0381",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/operations.ts; packages/contracts/src/response-operations.ts; apps/web/src/components/operations.tsx",
+    "tests": "apps/api/test/operations.integration.test.ts; apps/web/tests/operations.test.ts",
+    "notes": "Master section 484, read in full. Scheduled groups expose jobs, workload estimate, reserved buyer value and estimated seller earnings separately from settled finance. Aggregation is scoped and bounded with truncation evidence, not a claim of guaranteed provider availability or profit. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0382",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/catalog-page.ts; apps/web/src/components/marketplace.tsx; apps/web/src/components/capability-detail.tsx; apps/web/src/components/agent-constraints.tsx",
+    "tests": "apps/api/test/catalog.integration.test.ts; apps/web/tests/schedules.test.ts; packages/marketplace-agent/test/public-discovery.test.ts",
+    "notes": "Master section 487, read in full. Manual browsing retains scheduled/offline supply and differentiates run/queue/schedule. Human now/later comparisons do not grant autonomous-agent permission to wait or spend. Latest integrated browser verification remains separate from source inspection. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0383",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/catalog-page.ts; apps/web/src/components/marketplace.tsx; apps/web/src/components/capability-detail.tsx; apps/web/src/components/agent-constraints.tsx",
+    "tests": "apps/api/test/catalog.integration.test.ts; apps/web/tests/schedules.test.ts; packages/marketplace-agent/test/public-discovery.test.ts",
+    "notes": "Master section 487, read in full. Manual browsing retains scheduled/offline supply and differentiates run/queue/schedule. Human now/later comparisons do not grant autonomous-agent permission to wait or spend. Latest integrated browser verification remains separate from source inspection. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0384",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/catalog-page.ts; apps/web/src/components/marketplace.tsx; apps/web/src/components/capability-detail.tsx; apps/web/src/components/agent-constraints.tsx",
+    "tests": "apps/api/test/catalog.integration.test.ts; apps/web/tests/schedules.test.ts; packages/marketplace-agent/test/public-discovery.test.ts",
+    "notes": "Master section 489, read in full. Manual browsing retains scheduled/offline supply and differentiates run/queue/schedule. Human now/later comparisons do not grant autonomous-agent permission to wait or spend. Latest integrated browser verification remains separate from source inspection. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0385",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/catalog-page.ts; apps/web/src/components/marketplace.tsx; apps/web/src/components/capability-detail.tsx; apps/web/src/components/agent-constraints.tsx",
+    "tests": "apps/api/test/catalog.integration.test.ts; apps/web/tests/schedules.test.ts; packages/marketplace-agent/test/public-discovery.test.ts",
+    "notes": "Master section 489, read in full. Manual browsing retains scheduled/offline supply and differentiates run/queue/schedule. Human now/later comparisons do not grant autonomous-agent permission to wait or spend. Latest integrated browser verification remains separate from source inspection. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0386",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/catalog-page.ts; apps/web/src/components/marketplace.tsx; apps/web/src/components/capability-detail.tsx; apps/web/src/components/agent-constraints.tsx",
+    "tests": "apps/api/test/catalog.integration.test.ts; apps/web/tests/schedules.test.ts; packages/marketplace-agent/test/public-discovery.test.ts",
+    "notes": "Master section 489, read in full. Manual browsing retains scheduled/offline supply and differentiates run/queue/schedule. Human now/later comparisons do not grant autonomous-agent permission to wait or spend. Latest integrated browser verification remains separate from source inspection. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0387",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/catalog-page.ts; apps/web/src/components/marketplace.tsx; apps/web/src/components/capability-detail.tsx; apps/web/src/components/agent-constraints.tsx",
+    "tests": "apps/api/test/catalog.integration.test.ts; apps/web/tests/schedules.test.ts; packages/marketplace-agent/test/public-discovery.test.ts",
+    "notes": "Master section 489, read in full. Manual browsing retains scheduled/offline supply and differentiates run/queue/schedule. Human now/later comparisons do not grant autonomous-agent permission to wait or spend. Latest integrated browser verification remains separate from source inspection. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0399",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/catalog-page.ts; apps/web/src/components/marketplace.tsx; apps/web/src/components/capability-detail.tsx; apps/web/src/components/agent-constraints.tsx",
+    "tests": "apps/api/test/catalog.integration.test.ts; apps/web/tests/schedules.test.ts; packages/marketplace-agent/test/public-discovery.test.ts",
+    "notes": "Master section 511, read in full. Manual browsing retains scheduled/offline supply and differentiates run/queue/schedule. Human now/later comparisons do not grant autonomous-agent permission to wait or spend. Latest integrated browser verification remains separate from source inspection. This row is a source trace, not an independent new acceptance receipt."
+  },
+  {
+    "id": "PRD-0401",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/marketplace-agent/src/orchestration.ts; apps/web/src/components/agent.tsx; apps/web/src/components/agent-recommendation.tsx",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts; apps/web/tests/plans.test.ts; apps/web/tests/agent-recommendations.test.ts",
+    "notes": "Master section 513, read in full. Plan timing, explicit future-scheduling permission and deadlines are structured/validated, not unrestricted LLM decisions. Approval views include estimates; runtime conditions remain rechecked. Newly expanded strict-response and attachment UI need current browser acceptance. This row is a source trace, not an independent new acceptance receipt."
+  }
+]

@@ -1,0 +1,765 @@
+[
+  {
+    "id": "PAY-0001",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/billing/src/stripe.ts; packages/billing/src/ledger.ts; apps/api/src/billing.ts; apps/api/src/disputes.ts; apps/api/src/background.ts; packages/database/prisma/schema.prisma",
+    "tests": "apps/api/test/billing-containment.integration.test.ts; apps/api/test/billing.integration.test.ts; apps/api/test/disputes.integration.test.ts; apps/api/test/payouts.integration.test.ts; apps/api/test/payment-methods.integration.test.ts; tests/integration/ledger.test.ts",
+    "notes": "SECTION PARTIAL, entire Master 24. Prepaid reservation/settlement, hosted saved methods/receipts, dispute holds and payouts have bounded evidence. R08-F2/F3 adds exact job provenance and monotonic debt collection. R01-F1 now implements canonical Checkout/topup/refund/dispute/completed-transfer recovery with 29 real-SDK loopback HTTP/PostgreSQL cases in the 155-test receipt. Section 24.27 explicitly puts direct-card authorization after private beta; it is not a current-beta blocker. Actual Stripe/Connect/browser operational acceptance and legal review remain unperformed. Map 24.20 semantics to existing records rather than demand a duplicate table name; no bounded receipt certifies all 27 subsections."
+  },
+  {
+    "id": "PAY-0002",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/worker.ts; packages/billing/src/ledger.ts; packages/billing/src/stripe.ts; apps/api/src/billing.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts; apps/api/test/billing-containment.integration.test.ts; apps/api/test/billing.integration.test.ts; apps/api/test/payouts.integration.test.ts",
+    "notes": "Master 24 opening guarantee expands to eight obligations, not just the catalog lead-in. Atomic reservation, validated delivery, fee entries, cancellation, replay and provider-hosted onboarding exist. 'withholds buyer payload until acceptance, blocks replay, validates files and settles once' covers one protocol path; the 53 tests add hold isolation. Complete insufficient-funds, all failure policies, real Connect/KYC and external financial effects are not jointly proved."
+  },
+  {
+    "id": "PAY-0003",
+    "status": "TESTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/worker.ts; packages/billing/src/ledger.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts; tests/integration/ledger.test.ts",
+    "notes": "Master 24 guarantee 1, selected prepaid alternative. Protocol 'rejects $identity purchases with $balanceMinor cents without dispatch or financial side effects, then reserves 99 cents once funded' covers session/API-key balances 0 and 98 against price 99, HTTP 402, no persisted job/reserve/offer, unchanged capacity, then one funded reservation and signed paymentSecured offer. All 20 protocol cases passed in the 139-test R08 receipt; no direct-card acceptance claimed."
+  },
+  {
+    "id": "PAY-0004",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/worker.ts; apps/worker/src/runtime.ts; packages/billing/src/ledger.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts; scripts/e2e-media-fixture.ts",
+    "notes": "Master 24 guarantee 2. Paid offers are built only from committed RESERVED jobs; accepted payload and actual Worker execution use the signed paymentSecured offer. The deterministic media fixture ran through that path. No dedicated adversarial end-to-end execution attempt with unsecured payment was found; this does not certify every seller compute-cost scenario."
+  },
+  {
+    "id": "PAY-0005",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/billing/src/ledger.ts; packages/billing/src/stripe.ts; apps/api/src/billing.ts; apps/api/src/background.ts; apps/api/src/worker.ts",
+    "tests": "apps/api/test/billing-containment.integration.test.ts; apps/api/test/billing.integration.test.ts; apps/api/test/payouts.integration.test.ts; apps/api/test/payment-methods.integration.test.ts; tests/integration/ledger.test.ts; apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 24 guarantee 6, aggregate retries across buyer charges, provider webhooks and Worker messages. Named tests cover cumulative refund replay, uncertain transfer recovery, default/remove/setup replay, payout deduplication and one seller earning after repeated results. Database-trigger restart/retry tests preserve containment. Actual provider charge/transfer duplication acceptance and exhaustive cross-boundary failure combinations are not proved."
+  },
+  {
+    "id": "PAY-0006",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/billing/src/stripe.ts; packages/billing/package.json; apps/api/src/app.ts; apps/api/src/config.ts",
+    "tests": "apps/api/test/security.test.ts",
+    "notes": "Master 24 provider recommendation. StripeBilling uses the installed Stripe SDK; createApp selects it for stripe mode and production configuration rejects fake mode. 'never silently enables fake payments or development auth' tests the configuration boundary, not a real Stripe transaction. Provider selection is source-confirmed."
+  },
+  {
+    "id": "PAY-0007",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/database/prisma/schema.prisma; packages/billing/src/stripe.ts; apps/api/src/billing.ts",
+    "tests": "apps/api/test/payment-methods.integration.test.ts; apps/api/test/payouts.integration.test.ts",
+    "notes": "Master 24.1 separates buyer and seller roles. User has distinct stripeCustomerId and stripeConnectedAccountId; saved-card operations use ownedCustomer, payout reads use ownedConnectedAccount, and onboarding is separate. Ownership tests exercise each independently; there is no dedicated complete buyer-versus-seller configuration acceptance test."
+  },
+  {
+    "id": "PAY-0008",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/billing/src/stripe.ts; apps/api/src/billing.ts; apps/api/src/catalog.ts; apps/api/src/worker.ts",
+    "tests": "apps/api/test/billing.integration.test.ts; apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 24.1 requires a transfer/payout-capable Connect seller. connect creates an Express account requesting transfers; account.updated controls READY from current transfers capability, payouts_enabled and disabled_reason. Publication/admission/acceptance gate on readiness. Synthetic status tests exist, but actual connected-account onboarding, requirements and bank payout eligibility have not been verified with Stripe."
+  },
+  {
+    "id": "PAY-0009",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/billing/src/stripe.ts; apps/api/src/billing.ts; apps/web/src/components/selling.tsx",
+    "tests": "apps/api/test/payouts.integration.test.ts; packages/billing/src/stripe-payouts.test.ts",
+    "notes": "Master 24.1 delegates KYC/business verification and payout destination collection to Stripe. connect uses an account_onboarding link, with no marketplace bank/KYC collection endpoint; seller UI redirects there. Payout ownership/projection tests are not an actual hosted identity-verification flow. Provider credentials and an operator-reviewed Connect setup are needed for that acceptance."
+  },
+  {
+    "id": "PAY-0010",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/billing/src/stripe.ts; packages/database/prisma/schema.prisma; apps/api/src/billing.ts; apps/web/src/components/selling.tsx",
+    "tests": "packages/billing/src/stripe-payouts.test.ts; apps/api/test/payouts.integration.test.ts",
+    "notes": "Master 24.1 forbids marketplace collection of seller bank credentials. Hosted Connect is the only onboarding path; payoutProjection excludes destinations and sensitive messages, and 'requires owner sessions and paginates without foreign, cross-mode or sensitive fields' verifies public projection. Complete negative bank-field ingress/storage auditing across all account endpoints was not performed; source-confirmed, not blanket secrecy acceptance."
+  },
+  {
+    "id": "PAY-0011",
+    "status": "TESTED",
+    "implementation": "apps/api/src/catalog.ts; apps/api/src/worker.ts; apps/api/src/billing.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts; apps/api/test/catalog.integration.test.ts; apps/api/test/billing.integration.test.ts",
+    "notes": "Master 24.1 paid publication/admission readiness gate. Named assertion 'rechecks current Connect status and the exact validated binding at acceptance' rejects a now-ineligible seller; catalog rollback tests reject SELLER_PAYMENT_NOT_READY; signed account.updated ordering prevents an old event restoring READY. This certifies the API gate with synthetic Connect state, not real KYC completion."
+  },
+  {
+    "id": "PAY-0012",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/billing/src/stripe.ts; packages/billing/src/ledger.ts; apps/api/src/billing.ts; apps/api/src/background.ts",
+    "tests": "apps/api/test/billing.integration.test.ts; apps/api/test/payouts.integration.test.ts; tests/integration/ledger.test.ts",
+    "notes": "Master 24.2 conceptual topology: buyer pays platform, validated settlement creates seller payable, later transfer moves only seller share and platform retains fee. Checkout is platform-scoped and transfer creation is delayed through SellerTransfer. Ledger and uncertain-transfer tests prove local portions. Real separate-charges/transfers acceptance and merchant-of-record/liability configuration are not verified."
+  },
+  {
+    "id": "PAY-0013",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/billing/src/stripe.ts; packages/billing/src/ledger.ts; packages/contracts/src/index.ts",
+    "tests": "packages/billing/src/ledger.test.ts; packages/contracts/src/contracts.test.ts; apps/api/test/billing.integration.test.ts",
+    "notes": "Master 24.2 prohibits application_fee_amount for separate charges/transfers. Source checkout/transfer code does not set that field; transfer receives the persisted sellerNetMinor and the ledger retains platformFeeMinor. Canonical tier/equation tests pass. No dedicated SDK parameter assertion combines the absence of application_fee_amount with the entire external transfer-math flow."
+  },
+  {
+    "id": "PAY-0014",
+    "status": "BLOCKED",
+    "implementation": "docs/BILLING-STATUS.md; apps/api/src/account-terms.ts",
+    "tests": "",
+    "notes": "Master 24.2 explicitly requires merchant-of-record, liability, tax and Connect configuration review before public launch. No signed-off jurisdiction/business review is present. This is an external legal/business approval prerequisite, not something synthetic payment tests can establish. Code and production terms must subsequently reflect the approved decision."
+  },
+  {
+    "id": "PAY-0015",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/wallet.tsx; apps/web/src/components/capability-detail.tsx; apps/web/src/components/selling.tsx; docs/BILLING-STATUS.md",
+    "tests": "",
+    "notes": "Master 24.3 terminology. Inspected payment UI and implementation docs use credits, reservation, settlement, transfers and payouts rather than describing the product as Stripe escrow. Source/text review supports the prohibition. No automated complete published-copy audit or legal escrow-product determination was run."
+  },
+  {
+    "id": "PAY-0016",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/billing/src/stripe.ts; apps/api/src/jobs.ts; apps/api/src/background.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 24.3 finite card-authorization windows applies to the direct-card alternative. Existing jobs use prepaid credits and bounded wait deadlines, not card holds. Manual capture and authorization-expiry lifecycle are absent. Sections 24.25 P5 and 24.27 explicitly sequence that alternative after working credits/private beta. IN_PROGRESS tracks that later architecture, not a current private-beta defect or merely missing credentials; credit timeout tests do not prove card-window handling."
+  },
+  {
+    "id": "PAY-0017",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/background.ts; packages/billing/src/stripe.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 24.3 scheduler compatibility with card authorization windows belongs to the later direct-payment alternative. Scheduling checks marketplace availability and maxWaitMs for prepaid jobs; no provider authorization deadline/capture-window predicate exists. Existing scheduled-credit tests cover the chosen private-beta flow. IN_PROGRESS records future architecture per 24.25 P5/24.27, not a new MVP mandate."
+  },
+  {
+    "id": "PAY-0018",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/worker.ts; packages/billing/src/ledger.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 24.4 seller sees work only after internal reservation. createJob commits reserveJob before QUEUED/SCHEDULED; offers select RESERVED and private payload requires acceptance. 'withholds buyer payload until acceptance, blocks replay, validates files and settles once' is positive/acceptance evidence. An explicit failed-reservation/no-visible-offer assertion was not found, so this sidecar conservatively does not promote the full literal guarantee."
+  },
+  {
+    "id": "PAY-0019",
+    "status": "TESTED",
+    "implementation": "packages/contracts/src/index.ts",
+    "tests": "packages/contracts/src/contracts.test.ts",
+    "notes": "Master 24.4 'Illustrative numbers only' is contextual: the $20/$2/80-20 example is not the commercial price table. 'preserves the explicit fee table and immutable snapshots' asserts all nine authoritative section-282 triples, including 99/19/80. The example has not been hardcoded as a different pricing rule; PAY-0081-0083 remain owned by coverage-shared.json."
+  },
+  {
+    "id": "PAY-0020",
+    "status": "BLOCKED",
+    "implementation": "docs/BILLING-STATUS.md; apps/api/src/account-terms.ts",
+    "tests": "",
+    "notes": "Master 24.4 explicitly requires jurisdictional legal/accounting confirmation for stored credits, refunds, expiry and unspent balances before public launch. Development terms explicitly disclaim being commercial terms. No reviewed final policy or signoff is available; ledger correctness does not discharge this external obligation."
+  },
+  {
+    "id": "PAY-0021",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/billing/src/stripe.ts; apps/api/src/jobs.ts; apps/api/src/billing.ts; packages/database/prisma/schema.prisma",
+    "tests": "apps/api/test/billing.integration.test.ts",
+    "notes": "Master 24.5 describes the alternative/direct architecture. Job-bound manual-capture PaymentIntent creation, authorization, delivery capture, failure cancellation and expiry recovery are absent. The deferral is EXPLICIT, not inferred: 24.25 P5 says after credits work and 24.27 says then add direct per-job authorization/capture after the private-beta credits flow. IN_PROGRESS tracks future architecture; absence is not a current private-beta blocker. Credit tests do not prove this future branch."
+  },
+  {
+    "id": "PAY-0022",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/billing/src/stripe.ts; apps/web/src/components/capability-detail.tsx",
+    "tests": "packages/billing/src/stripe-methods.test.ts; apps/api/test/payment-methods.integration.test.ts",
+    "notes": "Master 24.5 'Buyer authenticates if required' belongs to the later direct-job PaymentIntent flow, not hosted card setup. Setup/credit Checkout exist; job-bound requires_action/authentication/resume is absent. Saved-method tests are not job SCA/3DS acceptance. IN_PROGRESS is future architecture under explicit 24.25 P5/24.27 sequencing, not a current private-beta requirement."
+  },
+  {
+    "id": "PAY-0023",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/worker.ts; packages/billing/src/stripe.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 24.5 'Only now dispatch job' follows PaymentIntent requires_capture in the alternative flow. Current dispatch uses prepaid reservation; no direct-card authorization branch exists. Do not use credit tests to certify that future branch. Sections 24.25 P5/24.27 explicitly place it after the chosen private-beta credits flow; IN_PROGRESS is not an MVP blocker."
+  },
+  {
+    "id": "PAY-0024",
+    "status": "TESTED",
+    "implementation": "packages/billing/src/stripe.ts; apps/api/src/billing.ts; apps/web/src/components/billing.tsx",
+    "tests": "packages/billing/src/stripe-methods.test.ts; apps/api/test/payment-methods.integration.test.ts",
+    "notes": "Master 24.6 explicit future/off-session consent. 'requires explicit current consent, a key and a strict body before creating hosted setup' rejects missing/false/obsolete consent; 'persists consent before Stripe and replays one setup without creating credit or duplicate audit' verifies durable versioned consent before provider I/O. Unit 'uses hosted setup, explicit reuse consent, stable expiry and no payment/charge fields' checks provider parameters. Actual browser/3DS acceptance is separate and unrun."
+  },
+  {
+    "id": "PAY-0025",
+    "status": "TESTED",
+    "implementation": "packages/billing/src/stripe.ts; apps/api/src/billing.ts; packages/database/prisma/schema.prisma",
+    "tests": "packages/billing/src/stripe-methods.test.ts; apps/api/test/payment-methods.integration.test.ts",
+    "notes": "Master 24.6 store only Stripe identifiers for reusable payment credentials, never PAN/CVC/raw bank data. Hosted setup accepts no raw card fields; 'rejects cross-customer removal/default, missing methods and raw payment fields' rejects injected fields. 'persists consent before Stripe and replays one setup without creating credit or duplicate audit' asserts saved operation JSON lacks cardNumber/last4/fingerprint. Necessary consent/status/amount audit metadata is not a stored payment credential."
+  },
+  {
+    "id": "PAY-0026",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/billing.tsx; apps/web/src/components/wallet.tsx; apps/api/src/billing.ts",
+    "tests": "apps/api/test/payment-methods.integration.test.ts; tests/e2e/marketplace.spec.ts",
+    "notes": "Master 24.6 lead-in expands to payment methods, default method, credit balance, reserved balance, history and receipts. All six are present in Billing/WalletContent and backed by APIs. Named API receipt/consent/default tests pass, and a wallet browser test exists. Complete rendered add/default/remove/receipt browser flow with real hosted Stripe was not run; source-confirmed UI, not whole-list TESTED."
+  },
+  {
+    "id": "PAY-0027",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/billing/src/stripe.ts; apps/api/src/billing.ts; apps/web/src/components/selling.tsx",
+    "tests": "apps/api/test/billing.integration.test.ts",
+    "notes": "Master 24.7 returning from Connect is not readiness. Onboard route writes IN_PROGRESS; query parameters in the return URL never set READY. Signed account.updated evaluates capabilities and payouts. 'never restores Connect readiness from an older or ambiguously ordered event' tests ordering, not an explicit forged-return-URL attempt. Actual hosted onboarding remains unrun."
+  },
+  {
+    "id": "PAY-0028",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/worker.ts; apps/api/src/catalog.ts; apps/web/src/components/selling.tsx",
+    "tests": "apps/api/test/protocol.integration.test.ts; apps/api/test/catalog.integration.test.ts",
+    "notes": "Master 24.7 allows worker setup before Connect while gating paid publishing. Pairing/configuration routes are independent of Connect; catalog publication/activation checks payment readiness in Stripe mode. Acceptance and rollback gate tests exist. A combined test pairing an unonboarded seller then rejecting paid publication was not found."
+  },
+  {
+    "id": "PAY-0029",
+    "status": "TESTED",
+    "implementation": "apps/api/src/billing.ts; packages/billing/src/stripe.ts; packages/database/prisma/schema.prisma; apps/web/src/components/seller-payouts.tsx; apps/web/src/components/selling.tsx",
+    "tests": "apps/api/test/payouts.integration.test.ts; packages/billing/src/stripe-payouts.test.ts; apps/web/tests/payouts.test.ts",
+    "notes": "Master 24.8 completion/transfer is not bank payout. 'persists created/in-transit/paid/failed/canceled states and never double-counts a ledger/transfer withdrawal' explicitly compares earned 9000, transferred 6000 and paid-out 1234 only when canonical status is paid; failed resets paid-out without ledger mutation. UI labels account-wide payouts separately. Synthetic provider states prove this distinction; no actual bank outcome is claimed."
+  },
+  {
+    "id": "PAY-0030",
+    "status": "TESTED",
+    "implementation": "packages/database/prisma/schema.prisma; apps/api/src/jobs.ts; apps/api/src/worker.ts; packages/billing/src/ledger.ts",
+    "tests": "apps/api/test/billing-containment.integration.test.ts; tests/integration/ledger.test.ts; apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 24.9 separate coordinated execution/payment states. Tests assert PAUSED+RESERVED for damaged jobs, CANCELLED+RELEASED for healthy jobs, and SUCCEEDED/SETTLED on validated delivery; premature settlement returns false. Job.state and paymentState are separate durable fields, with SellerTransfer/PayoutRecord distinct. Example names AUTHORIZED/CAPTURE_PENDING are not falsely claimed implemented."
+  },
+  {
+    "id": "PAY-0031",
+    "status": "TESTED",
+    "implementation": "packages/database/prisma/schema.prisma; packages/billing/src/ledger.ts; apps/api/src/billing.ts",
+    "tests": "apps/api/test/billing-containment.integration.test.ts; apps/api/test/payouts.integration.test.ts",
+    "notes": "Master 24.9 do not overload one status. Damaged execution and payment states remain independently visible in containment assertions; payout integration distinguishes canonical bank state from unchanged jobs, transfers and ledger. The literal separation is verified; the entire illustrative direct-card state machine is not."
+  },
+  {
+    "id": "PAY-0032",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/worker.ts; packages/contracts/src/index.ts; apps/api/src/assets.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts; packages/contracts/src/contracts.test.ts; scripts/e2e-media-fixture.ts",
+    "notes": "Master 24.10 'This must be deterministic' refers to all five delivery conditions. Worker result handling checks current execution, validates normalized output/owned assets and settles with durable output. Named required-file and schema tests plus actual PNG fixture prove selected paths. Complete safety/size/storage-failure acceptance for every output form and production scanner configuration is not established."
+  },
+  {
+    "id": "PAY-0033",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/worker.ts; apps/api/src/asset-uploads.ts; packages/billing/src/ledger.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts; packages/contracts/src/contracts.test.ts; scripts/e2e-media-fixture.ts",
+    "notes": "Master 24.10 MVP lead-in expands to Worker success, declared schema, uploaded required files, safety/size checks, and durable buyer availability. All have implementation paths; source-selected tests exercise only subsets. Local deterministic Docker/Blender PNG delivery is not all-format, production-AV or provider acceptance. No section-wide delivery promotion."
+  },
+  {
+    "id": "PAY-0034",
+    "status": "TESTED",
+    "implementation": "apps/api/src/worker.ts; apps/api/src/asset-uploads.ts; packages/contracts/src/index.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts; packages/contracts/src/contracts.test.ts; scripts/e2e-media-fixture.ts",
+    "notes": "Master 24.10 required output files uploaded before settlement. 'requires named file outputs to resolve to actual delivered assets even when the envelope is optional' rejects unresolved references; protocol 'withholds buyer payload until acceptance, blocks replay, validates files and settles once' uploads then validates/settles. Actual media fixture downloads the resulting PNG and verifies file/pixel hashes plus one capture. Narrow required-file condition, not complete section 24.10."
+  },
+  {
+    "id": "PAY-0035",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/worker.ts; packages/billing/src/ledger.ts; apps/api/src/assets.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts; scripts/e2e-media-fixture.ts",
+    "notes": "Master 24.10 buyer need not be online. Worker result transaction and settleJob never depend on buyer session presence or a browser acknowledgement; output is stored for later authenticated retrieval. Fixtures submit no buyer acceptance during settlement. No explicit test removing/disconnecting every buyer session before completion was found, so this remains source-confirmed."
+  },
+  {
+    "id": "PAY-0036",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/background.ts; apps/api/src/jobs.ts; packages/billing/src/ledger.ts",
+    "tests": "apps/api/test/background.integration.test.ts; apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 24.11 specific offline-before-acceptance row. Recovery requeues expired offers with the same reservation and ultimately releases on wait deadline; it does not necessarily release at the first offline observation. 'releases pre-execution cancellation and recovers an expired offer without another charge' proves no extra reserve, while background tests prove eventual deadline release. Exact immediate-versus-retry policy and its Terms/UI disclosure remain incomplete."
+  },
+  {
+    "id": "PAY-0037",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/billing/src/ledger.ts; packages/billing/src/stripe.ts; apps/api/src/billing.ts; apps/api/src/background.ts",
+    "tests": "apps/api/test/ledger-provenance.integration.test.ts; apps/api/test/billing-containment.integration.test.ts; apps/api/test/billing.integration.test.ts; apps/api/test/payment-methods.integration.test.ts; apps/api/test/payouts.integration.test.ts; tests/integration/ledger.test.ts",
+    "notes": "Master 24.12 every financial mutation idempotent is universal. R08 tests exact per-job history, concurrent reserve/settle/release/refund, and 'collects recurring 499 debt with monotonic identities, restart and concurrent replay (%s)' in single/partial/legacy modes. Debt keys use cumulative immutable collection progress, not recurring outstanding balances; legacy history is retained. Earlier method/payout/transfer tests remain bounded synthetic-provider evidence. Actual Stripe retry acceptance and the universal mutation surface are not fully proved; no blanket promotion from 139 tests."
+  },
+  {
+    "id": "PAY-0038",
+    "status": "TESTED",
+    "implementation": "packages/database/prisma/schema.prisma; packages/billing/src/ledger.ts; packages/database/prisma/migrations/20261006000100_invariants/migration.sql",
+    "tests": "tests/integration/ledger.test.ts; apps/api/test/ledger-provenance.integration.test.ts; apps/api/test/billing-containment.integration.test.ts",
+    "notes": "Master 24.12 database constraints prevent duplicate ledger effects. LedgerEntry.operationKey remains unique. 'preserves exact-once reserve, settle and refund under concurrent retries' verifies one seven-entry reserve/settlement/refund history and one transfer reversal intent. Recurring 499-debt tests prove new legitimate progress gets distinct monotonic identities without duplicate recovery or deleting legacy keys; SQLSTATE 40001 tests prove one committed effect set after retry. Real PostgreSQL, no Stripe acceptance claim."
+  },
+  {
+    "id": "PAY-0039",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/worker.ts; packages/billing/src/ledger.ts; packages/billing/src/stripe.ts; apps/api/src/background.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts; apps/api/test/billing.integration.test.ts; tests/integration/ledger.test.ts",
+    "notes": "Master 24.12 duplicated completion must never pay seller twice. Protocol repeats result submission and asserts one SELLER_EARNING; ledger concurrency and transfer stable-key/lost-response recovery are covered. The internal entitlement is tested, but this sidecar conservatively leaves the combined actual-provider payment guarantee partial until real Connect transfer retry/replay acceptance."
+  },
+  {
+    "id": "PAY-0040",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/billing.ts; packages/billing/src/stripe.ts; apps/web/src/components/wallet.tsx; apps/web/src/components/selling.tsx",
+    "tests": "apps/api/test/payment-methods.integration.test.ts; apps/api/test/billing.integration.test.ts",
+    "notes": "Master 24.13 browser redirects are not authority. Only signed verified Checkout events credit Stripe-mode wallets; returned setup is audit-only, and onboarding return never establishes READY. 'handles signed setup completion idempotently without entering the topup credit branch' verifies no credit and rejects a forged webhook. No explicit browser success-query spoof test was found."
+  },
+  {
+    "id": "PAY-0041",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/billing/src/stripe.ts; apps/api/src/billing.ts; apps/api/src/disputes.ts; docs/BILLING-STATUS.md",
+    "tests": "apps/api/test/billing.integration.test.ts; apps/api/test/disputes.integration.test.ts; apps/api/test/payouts.integration.test.ts; apps/api/test/payment-methods.integration.test.ts",
+    "notes": "Master 24.13 explicitly calls for selecting relevant events from the pinned API, not implementing every example category unconditionally. StripeBilling pins 2025-03-31.basil. Current handlers: paid/setup Checkout completion and async success, charge.refunded, account.updated, five dispute types, and created/updated/paid/failed/canceled connected payouts. Unsupported events get durable UNHANDLED evidence. The direct-job PaymentIntent event lifecycle belongs to later 24.25 P5/24.27 work and is not a current-beta mandate. Transfer notifications are absent; existing transfer reconciliation and its actual missed-event coverage must be evaluated under 24.14."
+  },
+  {
+    "id": "PAY-0042",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/payment-reconciliation.ts; apps/api/src/background.ts; apps/api/src/billing.ts; apps/api/src/disputes.ts; packages/billing/src/reconciliation.ts; packages/billing/src/stripe.ts",
+    "tests": "apps/api/test/payment-reconciliation.integration.test.ts; apps/api/test/billing.integration.test.ts; apps/api/test/payouts.integration.test.ts",
+    "notes": "Master 24.14 periodic provider/ledger comparison. R01-F1 adds reconcilePayments to maintenance: leased/fair/paginated Checkout discovery, canonical customer/intent/charge/refund/dispute reads, and already-TRANSFERRED/REVERSED comparison, alongside existing intent/payout recovery. The 29 new real-SDK loopback HTTP/PostgreSQL tests passed in the final 155-test receipt. Named cases cover lost Checkout/create IDs, lost refunds, dispute chronology, post-commit restart, twenty-row fairness, three-second timeout, malformed/cursor-loss pages and stale valid/invalid transfer responses. No new provider writes or invented capture/reinstatement; ambiguity holds are sticky and need operator review. IMPLEMENTED is conservative for actual Stripe-account scheduled operational acceptance, which was not run; the former missing recovery families are no longer absent."
+  },
+  {
+    "id": "PAY-0043",
+    "status": "TESTED",
+    "implementation": "packages/billing/src/ledger.ts; packages/database/prisma/schema.prisma; apps/api/src/billing.ts",
+    "tests": "apps/api/test/ledger-provenance.integration.test.ts; apps/api/test/billing-containment.integration.test.ts; apps/api/test/billing.integration.test.ts; tests/integration/ledger.test.ts",
+    "notes": "Master 24.15 balances are not calculated only from mutable Job rows. R08 validates exact immutable reserve history before release/settlement and one balanced reserve/capture/earning/fee history before refund. Tests reject missing, wrongly bound, malformed and already-consumed evidence without changing pooled wallets, and preserve healthy jobs in both orderings/concurrency. Refund-debt keys derive from immutable collections. The 139-test receipt includes these assertions; dashboard Job aggregates are not substituted for financial provenance."
+  },
+  {
+    "id": "PAY-0044",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/billing/src/stripe.ts; apps/web/src/components/selling.tsx",
+    "tests": "packages/contracts/src/contracts.test.ts",
+    "notes": "Master 24.16 no globally fixed Stripe processing fee. The shared table describes marketplace commission only; no Stripe processing percentage is hardcoded in checkout/transfer calculation. Seller UI names Marketplace fees and external operating costs. A final explicit processing-fee allocation policy and end-to-end economic presentation remain separate gaps; no dedicated no-fixed-processing-fee assertion exists."
+  },
+  {
+    "id": "PAY-0045",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/selling.tsx; apps/web/src/components/seller-payouts.tsx; apps/api/src/billing.ts",
+    "tests": "apps/web/tests/payouts.test.ts; apps/api/test/payouts.integration.test.ts",
+    "notes": "Master 24.16 understandable seller economics. UI separates gross sales, marketplace fee, earnings, pending, transferred and account-wide bank payouts; helper tests distinguish stale/incomplete totals. No estimated provider cost or explicit allocation of Stripe processing charges is shown, and a complete economic-model UI acceptance was not run."
+  },
+  {
+    "id": "PAY-0046",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/selling.tsx; apps/web/src/components/seller-payouts.tsx; packages/billing/src/ledger.ts; apps/api/src/disputes.ts",
+    "tests": "apps/api/test/payouts.integration.test.ts; apps/api/test/disputes.integration.test.ts; apps/api/test/billing.integration.test.ts",
+    "notes": "Master 24.17 no promise of irrevocable earnings at completion. UI distinguishes transfer/bank payout; refundJob appends earning/fee reversals and payout paid-to-failed updates remain possible. Named payout-state and lost-transfer/refund tests support reversibility. No exhaustive published-copy assertion or final risk-policy review is available."
+  },
+  {
+    "id": "PAY-0047",
+    "status": "BLOCKED",
+    "implementation": "apps/api/src/account-terms.ts; docs/BILLING-STATUS.md",
+    "tests": "",
+    "notes": "Master 24.17 Terms must define chargeback/fraud-risk allocation. The configurable versioned terms mechanism exists, but the bundled text is explicitly preliminary development terms and does not allocate commercial chargeback liability. Operator/legal-approved final terms are an explicit external prerequisite. Terms acceptance infrastructure is not substantive legal approval."
+  },
+  {
+    "id": "PAY-0048",
+    "status": "TESTED",
+    "implementation": "packages/database/prisma/schema.prisma; packages/contracts/src/index.ts; packages/billing/src/stripe.ts",
+    "tests": "tests/integration/financial-currency.test.ts; apps/api/test/payouts.integration.test.ts; packages/contracts/src/contracts.test.ts",
+    "notes": "Master 24.19 currency alongside persisted marketplace amounts. Parent migration 019 adds explicit USD to Wallet, Topup, SellerTransfer, Job and AbuseBucket, with USD checks; LedgerEntry, priceSnapshot and PaymentDispute already carry currency. 'stores USD alongside all marketplace amounts without changing their values' and five non-USD rejection cases passed in the 139-test receipt. 'preserves provider-reported non-USD payout amounts without silently converting them' preserves CHF PayoutRecord. Schema/test implementation belongs to parent; no live currency conversion or multi-currency checkout claim."
+  },
+  {
+    "id": "PAY-0049",
+    "status": "TESTED",
+    "implementation": "packages/billing/src/ledger.ts; packages/contracts/src/index.ts; packages/database/prisma/schema.prisma; packages/billing/src/stripe.ts",
+    "tests": "packages/billing/src/ledger.test.ts; packages/contracts/src/contracts.test.ts; apps/api/test/billing-containment.integration.test.ts",
+    "notes": "Master 24.19 integer minor units, no fractional money arithmetic. 'rejects fractional, nonfinite, negative and unsafe money' validates bounded integers; canonical tier triples are explicit, not floating commission calculations. Containment rejects fractional/noninteger cumulative refunds before mutation and checks balanced integer ledger effects. Provider payout projection also validates integer ranges; displayed decimal formatting is not financial arithmetic."
+  },
+  {
+    "id": "PAY-0050",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/config.ts; apps/api/src/app.ts; packages/billing/src/stripe.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/api/test/config.test.ts; scripts/e2e-media-fixture.ts",
+    "notes": "Master 24.21 Stripe secret server-side only. API config constructs StripeBilling; public config and Worker offers omit the key, and runtime has no Stripe dependency. Configuration tests reject dangerous development keys without echoing them. No complete sentinel-secret HTTP/Worker artifact leakage test was found; static architecture is confirmed."
+  },
+  {
+    "id": "PAY-0051",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/config.ts; packages/billing/src/stripe.ts; apps/api/src/billing.ts; apps/api/src/app.ts",
+    "tests": "packages/billing/src/stripe-payouts.test.ts; apps/api/test/payouts.integration.test.ts",
+    "notes": "Master 24.21 webhook signing secret server-side only. Secrets enter StripeBilling privately and public/Worker DTOs do not include them. Separate Connect-secret tests verify scope. These verify signature behavior, not exhaustive process/log/bundle secrecy, so no whole-clause TESTED claim."
+  },
+  {
+    "id": "PAY-0052",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/config.ts; apps/api/src/worker.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts; packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Master 24.21 never ship payment secret keys to Worker. jobOffer/jobPayload assemble explicit execution fields without Stripe configuration; Docker arguments exclude host env injection. Protocol tests inspect withheld/private payload and sandbox tests check no host secret mounts. No Stripe-specific sentinel scan across every transport, log and distribution artifact exists."
+  },
+  {
+    "id": "PAY-0053",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/worker.ts; apps/api/src/billing.ts; packages/billing/src/stripe.ts; packages/billing/src/ledger.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts; apps/api/test/payouts.integration.test.ts",
+    "notes": "Master 24.21 seller machine cannot declare itself paid. Worker result/events have no payout/settlement-status write authority; backend validates delivery and Stripe payout handlers verify signature/account/current provider object. Protocol/payout adversarial cases exist, but no named full signed-Worker attempt to forge paid-out state was found."
+  },
+  {
+    "id": "PAY-0054",
+    "status": "TESTED",
+    "implementation": "apps/api/src/billing.ts; packages/billing/src/stripe.ts; apps/api/src/jobs.ts; apps/api/src/config.ts",
+    "tests": "apps/api/test/payment-methods.integration.test.ts; apps/api/test/payouts.integration.test.ts; apps/api/test/security.test.ts",
+    "notes": "Master 24.21 buyer browser cannot declare payment successful. 'handles signed setup completion idempotently without entering the topup credit branch' rejects invalid webhook signature and produces no credit from setup; 'does not allow connected Checkout events to credit platform buyer topups' rejects wrong scope. Backend is the authority; explicitly gated fake development credits are not claimed as Stripe payments."
+  },
+  {
+    "id": "PAY-0055",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/worker.ts; apps/api/src/billing.ts; packages/billing/src/ledger.ts; apps/api/src/auth.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts; apps/api/test/payouts.integration.test.ts",
+    "notes": "Master 24.21 backend-only settlement mutations. Worker result handlers call settleJob after authoritative validation; administrative refund/restoration requires backend authorization and bank payout state is reconciled server-side. No client-supplied paymentState setter exists. Full authorization-surface coverage for every mutation is not established by the named protocol/payout tests."
+  },
+  {
+    "id": "PAY-0056",
+    "status": "TESTED",
+    "implementation": "packages/billing/src/stripe.ts; apps/api/src/billing.ts",
+    "tests": "apps/api/test/payment-methods.integration.test.ts; apps/api/test/payouts.integration.test.ts; packages/billing/src/stripe-payouts.test.ts",
+    "notes": "Master 24.21 webhook signature verification. All billing webhook branches call verifyWebhook on raw bytes before dispatch; named 'ignores platform/unknown account events and rejects bad signatures or cross-mode objects' rejects unsigned payloads with no provider read/record. 'accepts the separate Connect destination secret only for account-scoped, correct-mode events' verifies secondary-secret restrictions. No real webhook delivery claim."
+  },
+  {
+    "id": "PAY-0057",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/billing.ts; packages/billing/src/stripe.ts; apps/api/src/app.ts",
+    "tests": "apps/api/test/payment-methods.integration.test.ts; apps/api/test/payouts.integration.test.ts",
+    "notes": "Master 24.21 log object IDs, not sensitive card details. Durable method/payout audit fields are selected IDs/status/consent, card collection is hosted, and API error logging emits safe codes rather than provider bodies. Tests assert saved method operation JSON excludes card fields and private provider errors are not returned. Exhaustive captured-log PAN/CVC leakage testing is absent."
+  },
+  {
+    "id": "PAY-0058",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/worker.ts; packages/contracts/src/index.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 24.21 Worker financial knowledge lead-in means jobId, display metadata and paymentSecured, not provider secrets. Explicit JobOffer construction includes paymentSecured=true and execution data, no payment credentials or provider settlement authority. Protocol validates signed offers and private-payload boundaries; exhaustive financial-field allowlist negative assertions are not present."
+  },
+  {
+    "id": "PAY-0059",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/runtime.ts; apps/api/src/worker.ts; scripts/e2e-media-fixture.ts",
+    "tests": "scripts/e2e-media-fixture.ts",
+    "notes": "Master 24.21 Worker should not require Stripe credentials. Runtime uses the signed Kivro transport and host inference/resources, not Stripe. Actual deterministic local media execution completed with fresh synthetic Worker state and no Stripe credentials. No dedicated payment-credential absence assertion in a real Stripe-funded job was run; no provider acceptance is inferred."
+  },
+  {
+    "id": "PAY-0060",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/worker.ts; packages/billing/src/ledger.ts; packages/billing/src/stripe.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts; tests/integration/ledger.test.ts",
+    "notes": "Master 24.22 secured-payment invariant has prepaid and direct examples. Prepaid reservation commits before dispatch; protocol tests now pair session/API-key balances 0/98 against a 99-cent job, asserting 402, no reserve/job/offer and unchanged capacity, followed by funded signed offers. The direct authorization alternative is explicitly later work in 24.25 P5/24.27, not a current-beta blocker. Aggregate status is conservative; current-flow negative tests must not be presented as direct-card acceptance."
+  },
+  {
+    "id": "PAY-0061",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/worker.ts; apps/api/src/jobs.ts; packages/billing/src/ledger.ts; packages/contracts/src/index.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 24.22 seller never relies on buyer UI claim. Backend signs job notices after database reservation; Worker acceptance verifies exact attempt and RESERVED state, with no browser payment flag accepted. Protocol checks platform signature, acceptance and replay. No dedicated test forging buyer payment evidence to trigger unsecured execution was found."
+  },
+  {
+    "id": "PAY-0062",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/worker.ts; packages/contracts/src/index.ts; apps/api/src/assets.ts; apps/api/src/asset-uploads.ts; packages/billing/src/ledger.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts; packages/contracts/src/contracts.test.ts; scripts/e2e-media-fixture.ts",
+    "notes": "Master 24.23 entire completion-validation pipeline. Result handler reconstructs trusted asset metadata, checks current execution and output schema before atomic output/ledger settlement. Required-file/signed-result replay and actual media hashes are verified. Full malicious-result/safety/storage-failure matrix and production malware-scanner acceptance remain partial; Worker COMPLETED alone is not sufficient in source."
+  },
+  {
+    "id": "PAY-0063",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/billing/src/ledger.ts; apps/api/src/jobs.ts; packages/billing/src/stripe.ts",
+    "tests": "tests/integration/ledger.test.ts; apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 24.24 reversal before capture is implemented for the selected prepaid flow: 'releases cancellation once and refuses settlement before validation' and R08 provenance tests require this job's exact unconsumed reserve. Provider uncaptured direct PaymentIntent cancellation is absent, but is part of explicitly later 24.25 P5/24.27 work, not a missing current-beta prerequisite. Aggregate IN_PROGRESS does not erase tested prepaid release or certify future card cancellation."
+  },
+  {
+    "id": "PAY-0064",
+    "status": "TESTED",
+    "implementation": "packages/billing/src/ledger.ts; apps/api/src/billing.ts",
+    "tests": "tests/integration/ledger.test.ts; apps/api/test/billing.integration.test.ts; apps/api/test/billing-containment.integration.test.ts",
+    "notes": "Master 24.24 refunds create new ledger entries. refundJob appends REFUND/SELLER_EARNING_REVERSAL/PLATFORM_FEE_REVERSAL; cumulative card refunds append TOPUP_REFUND/EXTERNAL_REFUND/REFUND_RECEIVABLE and later recovery entries. 'suspends a spent-credit refund shortfall with balanced compensating entries' and real-trigger containment tests verify balanced, exactly-once appended effects."
+  },
+  {
+    "id": "PAY-0065",
+    "status": "TESTED",
+    "implementation": "packages/billing/src/ledger.ts; packages/database/prisma/migrations/20261006000100_invariants/migration.sql",
+    "tests": "tests/integration/ledger.test.ts; apps/api/test/billing-containment.integration.test.ts",
+    "notes": "Master 24.24 original charge/earning history is not deleted or rewritten. Ledger append-only triggers reject UPDATE and DELETE in 'enforces append-only financial records at the database boundary'; refunds use new operation keys. Containment replay tests assert one original refund and separate debt collections. Historical financial records remain intact."
+  },
+  {
+    "id": "PAY-0066",
+    "status": "TESTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/worker.ts; packages/billing/src/ledger.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 24.25 P3 prepaid dispatch only after reservation. Protocol 'rejects $identity purchases with $balanceMinor cents without dispatch or financial side effects, then reserves 99 cents once funded' asserts empty Worker offers, no job/attempt/reserve or capacity change for insufficient session/API-key purchases, then one exact reserve and signed paymentSecured offer after real ledger funding. Current private-beta flow tested in the 139-test receipt."
+  },
+  {
+    "id": "PAY-0067",
+    "status": "TESTED",
+    "implementation": "apps/api/src/jobs.ts; packages/billing/src/ledger.ts; apps/api/src/app.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 24.26 acceptance item 1. The four protocol 'rejects $identity purchases with $balanceMinor cents without dispatch or financial side effects, then reserves 99 cents once funded' cases test session/API-key balances 0/98 against price 99, structured 402 INSUFFICIENT_FUNDS and no wallet, ledger, job, offer, idempotency, quota or capacity effects. Reusing the same key succeeds once funded through creditWallet. These tests passed in the later 139-test receipt, not the original 53."
+  },
+  {
+    "id": "PAY-0068",
+    "status": "TESTED",
+    "implementation": "apps/api/src/jobs.ts; packages/billing/src/ledger.ts; packages/database/prisma/schema.prisma",
+    "tests": "apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 24.26 acceptance item 3, no duplicate reservation. 'withholds buyer payload until acceptance, blocks replay, validates files and settles once' repeats the same purchase key and gets the same job; 'releases pre-execution cancellation and recovers an expired offer without another charge' asserts exactly one JOB_RESERVE after offer reissue. Unique operationKey and serialized purchase key support the assertion."
+  },
+  {
+    "id": "PAY-0069",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/worker.ts; packages/billing/src/ledger.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 24.26 acceptance item 4, Worker cannot receive unsecured work. Offer query filters paymentState=RESERVED and executionRevokedAt=null; payload access rechecks payment/current accepted attempt. Tests prove successful offers and blocked pre-acceptance/stale access but do not explicitly seed a non-RESERVED queued job and assert zero offers. Whole acceptance item remains unverified."
+  },
+  {
+    "id": "PAY-0070",
+    "status": "TESTED",
+    "implementation": "apps/api/src/catalog.ts; apps/api/src/worker.ts; apps/api/src/billing.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts; apps/api/test/catalog.integration.test.ts; apps/api/test/billing.integration.test.ts",
+    "notes": "Master 24.26 acceptance item 10, invalid Connect blocks paid work. 'rechecks current Connect status and the exact validated binding at acceptance' changes current readiness and rejects acceptance; catalog rollback checks SELLER_PAYMENT_NOT_READY. Signed stale/same-second account events cannot incorrectly restore READY. Synthetic state gate tested, not actual Stripe onboarding."
+  },
+  {
+    "id": "PAY-0071",
+    "status": "TESTED",
+    "implementation": "packages/billing/src/stripe.ts; apps/api/src/billing.ts; apps/api/src/config.ts",
+    "tests": "apps/api/test/payment-methods.integration.test.ts; apps/api/test/payouts.integration.test.ts; apps/api/test/security.test.ts",
+    "notes": "Master 24.26 acceptance item 15, buyer cannot spoof provider payment status. Invalid signatures are rejected before mutation; signed connected-account Checkout is ignored and leaves the platform topup PENDING with no ledger entry. Setup completion cannot credit funds. The production-only backend authority is tested with SDK-signed synthetic objects, not real provider settlement."
+  },
+  {
+    "id": "PAY-0072",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/worker.ts; apps/api/src/billing.ts; packages/billing/src/stripe.ts",
+    "tests": "apps/api/test/payouts.integration.test.ts; apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 24.26 acceptance item 16, seller Worker cannot spoof payout. No payout mutation field/route exists in Worker protocol; payout handling requires Stripe signature, bound connected account and canonical read. Existing tests reject unsigned/unknown-account events but do not submit a valid Worker-signed forged payout payload. Source confirmed; that exact negative assertion remains missing."
+  },
+  {
+    "id": "PAY-0073",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/config.ts; packages/billing/src/stripe.ts; apps/api/src/billing.ts; packages/database/prisma/schema.prisma",
+    "tests": "apps/api/test/config.test.ts; apps/api/test/billing.integration.test.ts; apps/api/test/payouts.integration.test.ts; packages/billing/src/stripe-payouts.test.ts; packages/billing/src/stripe-methods.test.ts",
+    "notes": "Master 24.26 acceptance item 17 across all test/live objects. Config rejects non-test keys in development/test; verifyWebhook rejects event/object mismatch, and saved-method/receipt/payout ownership reads validate mode. Named cross-mode cases pass. Topup is mode-bound, but wallet/transfer/customer migrations across environments and every provider write response are not exhaustively tested; do not claim universal mixing prevention."
+  },
+  {
+    "id": "PAY-0074",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/selling.tsx; apps/web/src/components/seller-payouts.tsx; apps/api/src/billing.ts",
+    "tests": "apps/api/test/payouts.integration.test.ts; apps/web/tests/payouts.test.ts",
+    "notes": "SECTION PARTIAL, Master 87. Gross sales, fees, marketplace earnings, pending, transferred and separately canonical paid-out values are implemented. Jobs today/total, estimated provider costs with estimate labels, failure rate and average runtime are missing from the earnings page. Payout/API tests do not prove the full dashboard or rendered visual acceptance."
+  },
+  {
+    "id": "PAY-0075",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/marketplace-agent/src/orchestration.ts; apps/api/src/agent.ts; apps/api/src/jobs.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts; packages/marketplace-agent/test/execution-security.test.ts; packages/marketplace-agent/test/repair.test.ts; apps/api/test/protocol.integration.test.ts",
+    "notes": "SECTION PARTIAL, Master 142. Approved plans bind quote/version/expiry and zero price-change tolerance; downstream drift moves to AWAITING_APPROVAL, and repaired plans require fresh revision-bound approval. Named unit tests prove no downstream purchase; API tests guard old revisions. Full changed-price browser reapproval and all concurrent quote-expiry/publication paths are not jointly certified."
+  },
+  {
+    "id": "PAY-0076",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/marketplace-agent/test/execution-security.test.ts; packages/marketplace-agent/test/orchestration.test.ts",
+    "notes": "Master 142 lead-in expands to pause orchestration and request buyer approval when price exceeds tolerance. Zero tolerance is enforced. 'stops before downstream purchase when the approved downstream price changes' asserts AWAITING_APPROVAL, erased old approval and no second purchase; 'revalidates authoritative availability and price before any purchase' throws QUOTE_REQUIRES_APPROVAL with no executor call. Bounded orchestration-unit clause proof."
+  },
+  {
+    "id": "PAY-0077",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/orchestration.ts; apps/api/src/agent.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts; packages/marketplace-agent/test/execution-security.test.ts; packages/marketplace-agent/test/repair.test.ts",
+    "notes": "Master 142 no silent approved-budget exceedance. 'applies total budget across branches before approval', 'stops before downstream purchase when the approved downstream price changes', and 'recalculates the lifetime estimate including already spent budget, not just remaining jobs' assert aggregate ceilings and preservation of spent cost. Fresh approval cannot be inferred from repair; actual provider pricing is not part of marketplace job budget."
+  },
+  {
+    "id": "PAY-0078",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; apps/api/src/jobs.ts; packages/billing/src/ledger.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/billing/src/ledger.test.ts",
+    "notes": "SECTION 232 fixed contract-aware MVP pricing. CapabilityVersion selects a single shared price tier; createJob freezes that tier regardless of image count/video duration/size. Contract dimensions remain validation limits, not add-on pricing. Optional later dimensions are not claimed. Source confirms the fixed-price choice; no dedicated varied-input/equal-price end-to-end assertion was found."
+  },
+  {
+    "id": "PAY-0079",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; apps/api/src/jobs.ts; packages/billing/src/ledger.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/billing/src/ledger.test.ts",
+    "notes": "Master 232 MVP lead-in resolves to fixed price per capability/job. The code uses version.priceTierId once on admission and ledger snapshot amounts later. Canonical-table/equation tests are supporting evidence, not a direct test comparing different allowed contracts/inputs under one fixed capability price."
+  },
+  {
+    "id": "PAY-0080",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; apps/api/src/jobs.ts",
+    "tests": "packages/contracts/src/contracts.test.ts",
+    "notes": "Master 232 avoid delaying the first marketplace with pricing complexity. Implemented architecture is one canonical fixed tier per job, with no seller add-on pricing engine. This is a source-confirmed design choice, not a measurable automatic test of project scheduling or future product delivery."
+  },
+  {
+    "id": "PAY-0084",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/database/prisma/schema.prisma; packages/billing/src/stripe.ts; packages/contracts/src/index.ts; apps/web/src/components/capability-detail.tsx",
+    "tests": "packages/contracts/src/contracts.test.ts; apps/api/test/billing.integration.test.ts",
+    "notes": "SECTION PARTIAL, Master 288. Current marketplace is integer USD fixed-tier pricing. It has no explicit tax amount, tax-inclusive buyer total, payment-processing-fee breakdown or Stripe Tax calculation/collection integration. Optional buyerTotalMinor in a web type does not implement tax. Final jurisdictional requirements also need external review; code is incomplete independently."
+  },
+  {
+    "id": "PAY-0085",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/database/prisma/schema.prisma; packages/contracts/src/index.ts; packages/billing/src/stripe.ts",
+    "tests": "packages/contracts/src/contracts.test.ts",
+    "notes": "Master 288 taxes distinct from commission. Canonical platformFeeMinor is explicit, but tax and buyer-total accounting fields are not modeled or populated. Tests validate marketplace fee arithmetic only. The absence of a tax field cannot be represented as tested tax/commission separation."
+  },
+  {
+    "id": "PAY-0086",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/capability-detail.tsx; apps/web/src/components/wallet.tsx; apps/api/src/account-terms.ts; packages/billing/src/stripe.ts",
+    "tests": "",
+    "notes": "Master 288 legally adapted displayed price policy. UI displays USD tier/credit amounts; no jurisdiction-aware inclusive/exclusive tax disclosure or calculation policy exists. Legal requirements have not been approved. Both source work and external policy review remain; this is not BLOCKED solely by Stripe credentials."
+  },
+  {
+    "id": "PAY-0087",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/billing/src/ledger.ts; packages/billing/src/stripe.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/billing/src/ledger.test.ts",
+    "notes": "Master 288 do not alter the commercial split ad hoc to add tax. Shared buyer/fee/seller triples are explicit and source contains no tax-based rewrite of the split. Canonical equation tests support the current no-tax model. Future tax integration is absent and must preserve this boundary; no dedicated tax-path assertion exists."
+  },
+  {
+    "id": "PAY-0088",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/billing/src/stripe.ts; packages/database/prisma/schema.prisma; docs/BILLING-STATUS.md",
+    "tests": "",
+    "notes": "Master 288 conditional compliant tax mechanism. Stripe Tax or equivalent is not integrated. Whether it is required depends on final legal structure, which also lacks signoff. Do not mark this implemented by installing Stripe SDK, or external-only blocked while tax calculation/data-model code is absent."
+  },
+  {
+    "id": "PAY-0089",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; packages/billing/src/ledger.ts; packages/database/prisma/schema.prisma; packages/database/prisma/migrations/20261006001300_reports_and_retention/migration.sql",
+    "tests": "apps/api/test/catalog.integration.test.ts; apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 289 immutable financial snapshot. Job stores priceSnapshot plus integer buyer/fee/seller amounts; the database trigger rejects later changes and settleJob reads the job. Historical version/price pin tests exist. Full tier-economics-change regression and explicit taxMinor/buyerTotalMinor snapshot semantics are not proved; tax remains a separate actual gap."
+  },
+  {
+    "id": "PAY-0090",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; packages/database/prisma/schema.prisma; packages/database/prisma/migrations/20261006001300_reports_and_retention/migration.sql",
+    "tests": "apps/api/test/catalog.integration.test.ts; apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 289 immutable snapshot literal. The trigger covers priceSnapshot, buyerPriceMinor, sellerNetMinor and platformFeeMinor. 'protects executed contracts and prices while restricting reviews to settled buyers' actually attempts input/contract changes, not every price column. Catalog tests keep old job price pins. This sidecar conservatively requests explicit price-field mutation assertions rather than promoting based on the test title alone."
+  },
+  {
+    "id": "PAY-0091",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/billing/src/ledger.ts; apps/api/src/jobs.ts",
+    "tests": "apps/api/test/catalog.integration.test.ts; tests/integration/ledger.test.ts",
+    "notes": "Master 289 no current-tier lookup when settling an old job. settleJob validates/sums persisted job amounts; it does not import getPriceTier. Catalog 'rechecks exact worker proof before rollback and preserves queued job version/price pins' settles an older 299-price job after current version returns to 99. It does not explicitly assert all resulting ledger amounts under a changed canonical tier table; source confirmed."
+  },
+  {
+    "id": "PAY-0092",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/catalog.ts; apps/api/src/jobs.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "apps/api/test/catalog.integration.test.ts; apps/api/test/protocol.integration.test.ts; packages/marketplace-agent/test/orchestration.test.ts",
+    "notes": "SECTION PARTIAL, Master 290. Editing price creates a new draft version, publication changes currentVersion, new purchases use it, and old job/quote/plan snapshots are guarded. Catalog rollback tests demonstrate old/new version pins. Complete price-change discovery, quote expiry, reviewed orchestration reapproval and publication-validation acceptance together remain incomplete."
+  },
+  {
+    "id": "PAY-0093",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/catalog.ts; apps/api/src/jobs.ts; packages/billing/src/ledger.ts",
+    "tests": "apps/api/test/catalog.integration.test.ts",
+    "notes": "Master 290 future jobs only. Named 'rechecks exact worker proof before rollback and preserves queued job version/price pins' checks new job 99 against queued old job 299 and later settlement; source keeps existing version/price data immutable. This audit source-inspected that database test, but did not rerun it; no new whole-clause TESTED promotion is requested."
+  },
+  {
+    "id": "PAY-0094",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/catalog.ts",
+    "tests": "apps/api/test/catalog.integration.test.ts",
+    "notes": "Master 290 discovery updates after price publication. publish sets currentVersionId and public capability projection uses currentVersion.priceTierId; search filters/sorts resolve that tier. Lifecycle and discovery tests exist separately. No named assertion specifically republishes a changed price then checks public price/search ordering was found."
+  },
+  {
+    "id": "PAY-0095",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/catalog.ts; apps/api/src/jobs.ts; packages/database/prisma/schema.prisma",
+    "tests": "apps/api/test/catalog.integration.test.ts; apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 290 implementation choice with immutable exact job price. Commercial edits create new CapabilityVersion records; jobs pin version and amounts under DB triggers. Historical-price tests exist, but explicit mutation assertions for each financial snapshot field and full repricing acceptance were not rerun here. Do not infer tests from a descriptive title alone."
+  },
+  {
+    "id": "PAY-0096",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/billing/src/ledger.ts; apps/api/src/jobs.ts; apps/api/src/billing.ts",
+    "tests": "tests/integration/ledger.test.ts; scripts/e2e-fixture.ts",
+    "notes": "SECTION 293 full job refund/release has deterministic buyer restoration, seller earning reversal and platform-fee reversal; partial job refunds are not offered. 'reserves, settles and refunds exactly once, preserving fee reversal' checks restored wallet and zero seller earnings but does not explicitly sum fee-reversal entries after refund. Deterministic pre-settlement failure fixtures assert zero capture/earning/fee. Full section-specific post-transfer fee acceptance remains unverified."
+  },
+  {
+    "id": "PAY-0097",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/billing/src/ledger.ts; apps/api/src/billing.ts; apps/api/src/jobs.ts",
+    "tests": "tests/integration/ledger.test.ts; apps/api/test/billing.integration.test.ts",
+    "notes": "Master 293 MVP lead-in resolves to avoid partial job refunds and support full refund/release first. Admin job refund and release operate on the complete persisted price; cumulative partial card-topup refunds are a different operation. Existing tests exercise full refunds. No dedicated API rejection of a partial-job-refund request was identified."
+  },
+  {
+    "id": "PAY-0098",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts; apps/api/src/jobs.ts; packages/billing/src/ledger.ts; packages/billing/src/stripe.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; apps/api/test/catalog.integration.test.ts",
+    "notes": "SECTION PARTIAL, Master 296. Shared immutable tier table and per-job snapshots avoid independent hardcoding and retroactive fee calculation. The section's future-evolution promise is not fully proved: Stripe credit/transfer paths and several records are USD-specific. Administrative tier editing is not claimed, but this section does not require building that UI today. Do not turn optional future features into new MVP scope or claim all extensibility from current fixed tiers."
+  },
+  {
+    "id": "PAY-0099",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; apps/api/src/jobs.ts; packages/billing/src/ledger.ts; apps/web/src/components/provider.tsx",
+    "tests": "packages/contracts/src/contracts.test.ts",
+    "notes": "Master 296 one shared tier configuration. API publishes PRICE_TIERS and job admission imports getPriceTier; frontend consumes server tiers and settlement consumes persisted amounts. Canonical-table unit test passes. A repository-wide automated prohibition on duplicate tier tables was not run. PAY-0081-0083 remain unchanged in coverage-shared.json."
+  },
+  {
+    "id": "PAY-0100",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts; packages/billing/src/stripe.ts; apps/api/src/jobs.ts; packages/database/prisma/schema.prisma",
+    "tests": "packages/contracts/src/contracts.test.ts",
+    "notes": "Master 296 lead-in describes later enable/disable/add/retire tiers, split changes, currencies and experiments without rewriting payment logic. Current configuration includes enabled and sortOrder and snapshots protect old jobs. Currency is hardcoded to USD in important payment paths, so the entire future-architecture promise is not verified. This is not a demand for present-day multi-currency checkout or a new tier-management UI."
+  },
+  {
+    "id": "PAY-0101",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/billing/src/ledger.ts; apps/api/src/jobs.ts; packages/database/prisma/schema.prisma",
+    "tests": "apps/api/test/catalog.integration.test.ts; packages/contracts/src/contracts.test.ts",
+    "notes": "Master 296 future tier change must not alter historical seller earnings. Ledger entries are immutable; settlement uses job.sellerNetMinor, not today's tier. Catalog historical-version pins and append-only tests support the design. A regression altering canonical commercial economics then settling/refunding old jobs was not found."
+  },
+  {
+    "id": "PAY-0102",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/auth.ts; packages/billing/src/ledger.ts; apps/api/src/app.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts",
+    "notes": "SECTION 324 aggregate API payment behavior. Session and scoped API-key purchases share createJob and conditional wallet reservation. New four-case protocol matrix now tests actual insufficient-funds purchases, structured 402, no effects/offers, same-key funded success and one release; it passed in the 139-test receipt. This closes the previously identified specific missing test. Aggregate IMPLEMENTED remains conservative for the full API behavior section, not an assertion that its insufficient-funds coverage is missing."
+  },
+  {
+    "id": "PAY-0103",
+    "status": "TESTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/auth.ts; apps/api/src/worker.ts; packages/billing/src/ledger.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 324 identical UI/API secured-payment invariant. Protocol 'rejects $identity purchases with $balanceMinor cents without dispatch or financial side effects, then reserves 99 cents once funded' pairs real sessions and jobs:create API keys with balances 0/98. Both reject with 402 and no offers/effects, then reserve exactly 99 and expose a signed paymentSecured offer after real ledger funding. All four cases passed in the 139-test receipt."
+  },
+  {
+    "id": "PAY-0104",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; packages/billing/src/ledger.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 324 API reserves required credits. requireIdentity accepts the scoped caller and createJob invokes reserveJob with persisted tier amounts before dispatch. The observed protocol purchase helper uses a session cookie, while API-key tests focus on seller-authority and rate limits. No explicit successful API-key purchase/reservation assertion is claimed."
+  },
+  {
+    "id": "PAY-0105",
+    "status": "TESTED",
+    "implementation": "packages/billing/src/ledger.ts; apps/api/src/jobs.ts; apps/api/src/auth.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 324 no API-key purchase debt. New protocol API-key cases for balances 0/98 reject price 99 with structured 402 and unchanged wallet/ledger/quota, no job or offers, before real creditWallet funding enables one 99-cent reserve. The paired session controls behave identically. Passed in the 139-test receipt. Provider-refund receivables remain a distinct compensating liability, not API purchase credit."
+  },
+  {
+    "id": "PAY-0106",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; packages/billing/src/ledger.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts",
+    "notes": "SECTION 345 race-safe capacity and payment. createJob locks capacity and commits admission plus reservation together; 'atomically admits only available capacity and promotes scheduled jobs after eligibility' covers contention. The new four-case insufficient-funds protocol matrix now verifies unchanged capacity/availability/quota on 402, then one occupied slot after real funding. Both passed in the 139-test receipt. Aggregate rating remains conservative for the full scheduling section, not an assertion that rollback testing is missing."
+  },
+  {
+    "id": "PAY-0107",
+    "status": "TESTED",
+    "implementation": "apps/api/src/jobs.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 345 availability race safety. 'atomically admits only available capacity and promotes scheduled jobs after eligibility' issues concurrent purchases and verifies admitted capacity rather than overselling the same slot. Advisory capacity lock plus serializable transaction supports the tested race. This does not also certify payment-failure rollback, a separate clause."
+  },
+  {
+    "id": "PAY-0108",
+    "status": "TESTED",
+    "implementation": "apps/api/src/jobs.ts; packages/billing/src/ledger.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts",
+    "notes": "Master 345 if slot cannot be reserved, do not charge. In 'atomically admits only available capacity and promotes scheduled jobs after eligibility', three concurrent purchases produce one 201 and two 409 responses while the wallet decreases by exactly 99, the single admitted price. createJob checks capacity before reserveJob in one transaction. This is internal credit reservation evidence, not direct-card authorization."
+  },
+  {
+    "id": "PAY-0109",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/web/src/components/capability-detail.tsx; packages/billing/src/ledger.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts; apps/web/tests/checkout.test.ts",
+    "notes": "SECTION 460 scheduled payment. SCHEDULED jobs reserve prepaid credits at creation, carry bounded deadlines and later execute when eligible. Checkout explicitly says credits are reserved now and settled after successful delivery, with earliest eligibility not guaranteed start. Scheduled protocol/helper tests exist, but no complete rendered scheduled-payment disclosure and ledger timing acceptance was run."
+  },
+  {
+    "id": "PAY-0110",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-detail.tsx",
+    "tests": "apps/web/tests/checkout.test.ts",
+    "notes": "Master 460 UI must make immediate payment security explicit. Review screen renders 'Credits are reserved now and settled after successful delivery' plus scheduled timing/cancellation disclosure and Total reserved. The helper test 'permits immediate and explicitly schedulable jobs independently' does not render or assert that payment sentence. Source-confirmed UI, not browser TESTED."
+  },
+  {
+    "id": "PAY-0111",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/selling.tsx; apps/web/src/components/wallet.tsx; apps/web/src/components/capability-detail.tsx; apps/web/src/components/capability-detail.tsx",
+    "tests": "tests/e2e/marketplace.spec.ts; apps/web/tests/checkout.test.ts",
+    "notes": "SECTION PARTIAL, Master 540 information density. Views expose price, availability, timing, permission review, ratings, queue/version/Worker details and core earnings with expandable advanced content. Full operational-information clarity/low-noise acceptance across mobile/desktop is outside this billing audit; section 87 economics metrics are still missing. Existing browser/helper tests do not certify the whole design clause."
+  },
+  {
+    "id": "PAY-0112",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/selling.tsx; apps/web/src/components/wallet.tsx; apps/web/src/components/capability-detail.tsx",
+    "tests": "tests/e2e/marketplace.spec.ts",
+    "notes": "Master 540 no empty minimalism. Inspected financial views show balances, reserved totals, history, settlement/transfer/payout distinctions, timing and explicit purchase consent rather than hiding them. This is source/UX-structure confirmation only; no comprehensive visual density/progressive-disclosure evaluation was conducted."
+  }
+]

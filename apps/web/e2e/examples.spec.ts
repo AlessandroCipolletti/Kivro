@@ -1,0 +1,158 @@
+import { test, expect } from "@playwright/test";
+import { JobDTOSchema, PRICE_TIERS, type AssetDTO, type CapabilityDTO, type IOContract } from "@kivro/contracts";
+import { defaultWorkerPermissions } from "../src/lib/worker-policy";
+import type { CapabilityVersionDetail, CapabilityVersionHistory } from "../src/lib/types";
+import { register } from "./auth";
+import { noOverflow, uiFixtureSession } from "./ui-fixtures";
+
+const fileLimits = { allowedExtensions: [".txt"], allowedMimeTypes: ["text/plain"], maxFiles: 1, maxFileSizeBytes: 2048, maxTotalSizeBytes: 2048 };
+function exampleContract(): IOContract {
+  return { schemaVersion: 1, inputs: [{ key: "title", label: "Brief", type: "SHORT_TEXT", required: true, order: 0 }, { key: "source", label: "Source file", type: "FILE", required: true, order: 1, constraints: fileLimits }], output: { type: "FILES", description: "A document and a typed explanation", required: true, files: { allowedExtensions: [".txt"], allowedMimeTypes: ["text/plain"], maxFiles: 1, maxTotalSizeBytes: 2048 }, fields: [{ key: "document", label: "Result file", type: "FILE", required: true, order: 0, constraints: fileLimits }, { key: "notes", label: "Result notes", type: "MARKDOWN", required: true, order: 1 }] } };
+}
+function fixtureCapability(): CapabilityDTO {
+  const permissions = defaultWorkerPermissions(); permissions.inference.model = "fixture-model";
+  return { id: crypto.randomUUID(), slug: "example-boundary", title: "Example file boundary", summary: "Synthetic consent and rendering verification.", description: "UI response fixture, not an actual executed service.", category: "Writing & documents", tags: [], seller: { id: crypto.randomUUID(), name: "Synthetic seller" }, visibility: "PUBLIC", version: 1, versionId: crypto.randomUUID(), priceTierId: PRICE_TIERS[0].id, ioContract: exampleContract(), permissions, dependencies: [], availability: { status: "OFFLINE", canRunNow: false, nextAvailableAt: null, reason: "Fixture has no executable worker" }, estimatedDurationSeconds: 60, successRate: null, completedJobs: 0, rating: null, reviewCount: 0, examples: [] };
+}
+function asset(filename: string): AssetDTO { return { id: crypto.randomUUID(), filename, mimeType: "text/plain", sizeBytes: 8, sha256: "a".repeat(64) }; }
+
+test("real direct uploads become explicitly approved immutable example copies, then revoke", async ({ page }, info) => {
+  const account = await register(page, "examples");
+  const config = await (await page.request.get("/api/config")).json();
+  const permissions = defaultWorkerPermissions(); permissions.inference.model = "synthetic-never-executed";
+  const response = await page.request.post("/api/seller/capabilities", { headers: account.headers, data: { title: "Private example acceptance", summary: "Unpublished synthetic file example acceptance draft.", description: "No execution or public listing authorized.", category: config.categories[0], tags: [], priceTierId: config.priceTiers[0].id, internalInstructions: "Synthetic unpublished draft. Do not execute.", permissions, ioContract: exampleContract(), dependencies: [], examples: [], estimatedDurationSeconds: 60, schedule: { mode: "ALWAYS", timezone: "UTC", windows: [], overrides: [] } } });
+  expect(response.status(), await response.text()).toBe(200);
+  const cap = await response.json();
+  await page.goto(`/selling/capabilities/${cap.id}/versions`);
+  await page.getByRole("button", { name: "Create curated example" }).click();
+  const dialog = page.getByRole("dialog");
+  await dialog.getByLabel("Example title", { exact: true }).fill("Explicit document example");
+  await dialog.getByLabel("Brief", { exact: false }).fill("Summarize this synthetic public-safe note.");
+  await dialog.getByLabel("Source file", { exact: false }).setInputFiles({ name: "example-input.txt", mimeType: "text/plain", buffer: Buffer.from("Public-safe synthetic source.\n") });
+  await expect(dialog.getByText("example-input.txt", { exact: true })).toBeVisible();
+  await dialog.getByLabel("Result file", { exact: false }).setInputFiles({ name: "example-output.txt", mimeType: "text/plain", buffer: Buffer.from("Public-safe synthetic result.\n") });
+  await expect(dialog.getByText("example-output.txt", { exact: true })).toBeVisible();
+  await dialog.getByLabel("Result notes", { exact: false }).fill("**Representative**, not a guarantee.");
+  await dialog.getByRole("button", { name: "Review public content" }).click();
+  const downloadReady = page.waitForEvent("download");
+  await dialog.getByRole("link", { name: "Download example-output.txt", exact: true }).click();
+  const download = await downloadReady;
+  expect(download.suggestedFilename()).toBe("example-output.txt");
+  expect(await download.failure()).toBeNull();
+  const stream = await download.createReadStream(), chunks: Buffer[] = [];
+  for await (const chunk of stream!) chunks.push(chunk as Buffer);
+  expect(Buffer.concat(chunks).toString()).toBe("Public-safe synthetic result.\n");
+  const create = dialog.getByRole("button", { name: "Create reviewed draft" });
+  await expect(create).toBeDisabled();
+  const rights = dialog.getByLabel(/I own or have the rights/);
+  await expect(rights).not.toBeChecked();
+  await dialog.getByLabel("Approve public example copy of example-input.txt", { exact: true }).check();
+  await dialog.getByLabel("Allow buyers to copy example-input.txt as a reusable input template", { exact: true }).check();
+  await rights.check();
+  await expect(create).toBeDisabled();
+  await dialog.getByLabel("Approve public example copy of example-output.txt", { exact: true }).check();
+  await expect(rights).not.toBeChecked();
+  await rights.check();
+  const promoted = page.waitForResponse(result => result.request().method() === "POST" && result.url().endsWith(`/versions/${cap.versionId}/examples`));
+  await create.click();
+  const promotedResponse = await promoted;
+  expect(promotedResponse.status(), await promotedResponse.text()).toBe(200);
+  const history = await promotedResponse.json() as CapabilityVersionHistory;
+  expect(history.draftVersionId).not.toBe(cap.versionId);
+  expect(promotedResponse.request().postDataJSON().approvedAssetIds).toHaveLength(2);
+  const detail = await (await page.request.get(`/api/seller/capabilities/${cap.id}/versions/${history.draftVersionId}`)).json() as CapabilityVersionDetail;
+  expect(detail.examples[0].inputAssets![0].reusableTemplate).toBe(true);
+  expect(detail.examples[0].inputAssets![0].downloadUrl).toBeUndefined();
+  expect(detail.examples[0].inputAssets![0].id).not.toBe(promotedResponse.request().postDataJSON().approvedAssetIds[0]);
+  await expect(page.getByRole("dialog")).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Explicit document example", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Make version 2 active" })).toBeDisabled();
+  await noOverflow(page);
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+  await page.screenshot({ path: `apps/web/verification/examples-draft-${info.project.name}.png`, fullPage: true });
+  await page.getByRole("button", { name: "Revoke public file", exact: true }).first().click();
+  await dialog.getByLabel("Revocation reason").fill("Retire the synthetic example copy after acceptance.");
+  await dialog.getByRole("button", { name: "Revoke public file", exact: true }).click();
+  await expect(dialog).toHaveCount(0);
+  await expect(page.getByText(/Public file access revoked/)).toBeVisible();
+});
+
+test("public examples render typed files and require selected reusable-copy consent without purchasing", async ({ page }, info) => {
+  await uiFixtureSession(page);
+  const cap = fixtureCapability(), input = asset("reusable-input.txt"), output = asset("representative-result.txt"), copied = { ...input, id: crypto.randomUUID(), expiresAt: new Date(Date.now() + 86400000).toISOString() };
+  const exampleId = "example / one", base = `/api/capabilities/${cap.id}/examples/${encodeURIComponent(exampleId)}`;
+  cap.examples = [{ id: exampleId, title: "Representative document", input: { title: "Buyer-editable example", source: input.id }, output: "", source: "SELLER_CURATED", inputAssets: [{ ...input, reusableTemplate: true, downloadUrl: `${base}/assets/${input.id}` }], outputAssets: [{ ...output, reusableTemplate: false, downloadUrl: `${base}/assets/${output.id}` }], outputValue: { assets: [output], fields: { document: output.id, notes: "**Typed explanation**" } } }];
+  await page.route(`**/api/capabilities/${cap.id}`, route => route.fulfill({ json: cap }));
+  await page.route(`**/api/capabilities/${cap.id}/reviews`, route => route.fulfill({ json: [] }));
+  let copies = 0, stale = false;
+  await page.route(`**${base}/template`, route => { copies++; expect(route.request().postDataJSON()).toEqual({ capabilityVersionId: cap.versionId, assetIds: [input.id], confirmCopy: true }); return stale ? route.fulfill({ status: 409, json: { error: { code: "EXAMPLE_VERSION_CHANGED", message: "The public example version changed." } } }) : route.fulfill({ json: { capabilityId: cap.id, capabilityVersionId: cap.versionId, input: { title: "Buyer-editable example", source: copied.id }, assets: [copied] } }); });
+  await page.goto(`/capabilities/${cap.id}`);
+  await page.getByRole("tab", { name: "Examples", exact: true }).click();
+  const example = page.locator(".example");
+  await example.getByText("Example result", { exact: true }).click();
+  await expect(example.locator(".result-markdown strong")).toHaveText("Typed explanation");
+  await expect(example.getByRole("link", { name: `Download ${output.filename}` })).toHaveAttribute("href", `${base}/assets/${output.id}`);
+  // Native downloads bypass the page's response fixture in Chrome. Actual bytes
+  // are checked above against an authenticated file created through real storage.
+  await expect(example.getByRole("link", { name: `Download ${output.filename}` })).toHaveAttribute("download", output.filename);
+  await page.getByRole("button", { name: "Use as template" }).click();
+  const dialog = page.getByRole("dialog");
+  const reusable = dialog.getByRole("checkbox", { name: /^reusable-input\.txt/ });
+  const consent = dialog.getByRole("checkbox", { name: /^I approve copying/ });
+  await expect(reusable).not.toBeChecked();
+  await expect(consent).toHaveCount(0);
+  await reusable.check();
+  const submit = dialog.getByRole("button", { name: "Copy selected files & apply" });
+  await expect(submit).toBeDisabled(); expect(copies).toBe(0);
+  await expect(consent).not.toBeChecked();
+  await consent.check();
+  await submit.click();
+  await expect(dialog).toHaveCount(0);
+  await expect(page.locator(".checkout").getByLabel("Brief", { exact: false })).toHaveValue("Buyer-editable example");
+  await expect(page.locator(".checkout").getByText(input.filename, { exact: true })).toBeVisible();
+  expect(copies).toBe(1);
+  await noOverflow(page);
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+  await page.screenshot({ path: `apps/web/verification/examples-public-fixture-${info.project.name}.png`, fullPage: true });
+  stale = true;
+  await page.getByRole("button", { name: "Use as template" }).click();
+  await expect(reusable).not.toBeChecked();
+  await reusable.check(); await consent.check();
+  await dialog.getByRole("button", { name: "Copy selected files & apply" }).click();
+  await expect(dialog.getByRole("button", { name: "Reload current examples" })).toBeVisible();
+  await expect(dialog.getByRole("button", { name: "Copy selected files & apply" })).toBeDisabled();
+});
+
+test("successful self-owned job promotion requires a reviewed preview and explicit rights", async ({ page }, info) => {
+  const user = await uiFixtureSession(page), cap = fixtureCapability(), now = new Date().toISOString(), input = asset("test-source.txt"), output = asset("test-result.txt"), jobId = crypto.randomUUID();
+  const summary: CapabilityVersionHistory["versions"][number] = { id: cap.versionId, version: cap.version, title: cap.title, priceTierId: cap.priceTierId, state: "DRAFT", isActive: false, isDraft: true, createdAt: now, publishedAt: null, retiredAt: null, testPassedAt: null, consentAt: null, manifestHash: "c".repeat(64), readiness: { ready: false, reasons: ["TEST_REQUIRED"] }, exampleIssues: [] };
+  const version: CapabilityVersionDetail = { ...summary, capabilityId: cap.id, summary: cap.summary, description: cap.description, category: cap.category, tags: cap.tags, ioContract: cap.ioContract, permissions: cap.permissions, dependencies: cap.dependencies, estimatedDurationSeconds: cap.estimatedDurationSeconds, examples: [], internalInstructions: "Synthetic fixture", currentVersionId: null, draftVersionId: cap.versionId, lifecycleRevision: 2 };
+  const history: CapabilityVersionHistory = { capabilityId: cap.id, currentVersionId: null, draftVersionId: version.id, lifecycleRevision: 2, visibility: "DRAFT", versions: [summary], nextCursor: null };
+  const path = `/api/seller/capabilities/${cap.id}/versions`;
+  await page.route(`**${path}`, route => route.fulfill({ json: history }));
+  await page.route(`**${path}/${version.id}`, route => route.fulfill({ json: version }));
+  await page.route(`**${path}/${version.id}/diff`, route => route.fulfill({ json: { lifecycleRevision: 2, fromVersionId: null, toVersionId: version.id, diffHash: "d".repeat(64), changes: [], warnings: [], permissionExpansion: false } }));
+  const completedJob = JobDTOSchema.parse({ id: jobId, capabilityId: cap.id, capabilityVersionId: cap.versionId, capabilityTitle: cap.title, buyerId: user.id, sellerId: user.id, state: "SUCCEEDED", paymentState: "SETTLED", input: {}, output: { assets: [output] }, priceSnapshot: PRICE_TIERS[0], createdAt: now, updatedAt: now, scheduledAt: null, startedAt: now, completedAt: now, error: null, events: [] });
+  await page.route("**/api/seller/jobs", route => route.fulfill({ json: [completedJob, { ...completedJob, id: crypto.randomUUID(), buyerId: crypto.randomUUID() }] }));
+  await page.route(`**${path}/${version.id}/examples/from-job/${jobId}`, route => route.fulfill({ json: { jobId, capabilityVersionId: version.id, targetVersionId: version.id, input: { title: "Self-owned source", source: input.id }, outputValue: { assets: [output], fields: { document: output.id, notes: "**Retained test output**" } }, inputAssets: [input], outputAssets: [output] } }));
+  let requests = 0;
+  await page.route(`**${path}/${version.id}/examples/from-job`, route => { requests++; expect(route.request().postDataJSON()).toMatchObject({ expectedRevision: 2, jobId, confirmPublic: true, approvedAssetIds: [input.id, output.id], reusableInputAssetIds: [] }); return route.fulfill({ status: 409, json: { error: { code: "VERSION_CONFLICT", message: "Refresh version history before retrying." } } }); });
+  await page.goto(`/selling/capabilities/${cap.id}/versions`);
+  await page.getByRole("button", { name: "Use successful test job" }).click();
+  const dialog = page.getByRole("dialog");
+  await dialog.getByLabel("Example title", { exact: true }).fill("Reviewed test example");
+  await expect(dialog.getByLabel("Completed self-owned test").locator("option")).toHaveCount(2);
+  await dialog.getByLabel("Completed self-owned test").selectOption(jobId);
+  await dialog.getByRole("button", { name: "Load test preview" }).click();
+  await expect(dialog.getByText(/Eligible self-owned test loaded/)).toBeVisible();
+  await dialog.getByRole("button", { name: "Review public content" }).click();
+  await expect(dialog.getByRole("button", { name: "Create reviewed draft" })).toBeDisabled();
+  await dialog.getByLabel(`Approve public example copy of ${input.filename}`, { exact: true }).check();
+  await dialog.getByLabel(`Approve public example copy of ${output.filename}`, { exact: true }).check();
+  await dialog.getByLabel(/I own or have the rights/).check();
+  await dialog.getByRole("button", { name: "Create reviewed draft" }).scrollIntoViewIfNeeded();
+  await noOverflow(page);
+  await page.screenshot({ path: `apps/web/verification/example-consent-fixture-${info.project.name}.png` });
+  await dialog.getByRole("button", { name: "Create reviewed draft" }).click();
+  await expect(dialog.getByRole("alert")).toContainText("Refresh version history");
+  expect(requests).toBe(1);
+});

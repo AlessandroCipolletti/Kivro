@@ -1,0 +1,9 @@
+{
+  "identities": [
+    {
+      "name": "kivro-development",
+      "credentials": [{ "accessKey": "kivro_local", "secretKey": "kivro_local_storage_only" }],
+      "actions": ["Admin", "Read", "List", "Tagging", "Write"]
+    }
+  ]
+}

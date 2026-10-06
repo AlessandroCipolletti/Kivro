@@ -1,0 +1,35 @@
+import { test, expect } from "@playwright/test";
+import { register } from "./auth";
+import { noOverflow } from "./ui-fixtures";
+
+test("real capability report appears in the reporter's account without buying a job", async ({ page }, info) => {
+  const account = await register(page, "report");
+  const catalogResponse = await page.request.get("/api/capabilities");
+  expect(catalogResponse.ok()).toBe(true);
+  const catalog = await catalogResponse.json() as { id: string }[];
+  test.skip(!catalog.length, "An accessible public capability is required for a real report.");
+  let purchases = 0;
+  page.on("request", request => { if (request.url().endsWith("/api/jobs") && request.method() === "POST") purchases++; });
+  await page.goto(`/capabilities/${catalog[0].id}`);
+  await page.getByRole("button", { name: "Report a problem" }).click();
+  const dialog = page.getByRole("dialog");
+  await dialog.getByLabel("Problem category").selectOption("OTHER");
+  const description = `Synthetic browser acceptance report ${crypto.randomUUID()}. No real issue alleged; safe to dismiss.`;
+  await dialog.getByLabel("What happened?").fill(description);
+  const submitted = page.waitForResponse(response => response.url().endsWith("/api/reports") && response.request().method() === "POST");
+  await dialog.getByRole("button", { name: "Submit report" }).click();
+  const response = await submitted;
+  expect(response.status(), await response.text()).toBe(201);
+  const report = await response.json();
+  expect(report).toMatchObject({ reporterId: account.user.id, capabilityId: catalog[0].id, category: "OTHER", description, status: "OPEN" });
+  expect(response.request().postDataJSON()).not.toHaveProperty("jobId");
+  await dialog.getByRole("link", { name: "View my reports" }).click();
+  await expect(page.locator("#reports")).toContainText(description);
+  const ownReports = await (await page.request.get("/api/reports")).json() as { reporterId: string; id: string }[];
+  expect(ownReports.every(item => item.reporterId === account.user.id)).toBe(true);
+  expect(ownReports.some(item => item.id === report.id)).toBe(true);
+  expect(purchases).toBe(0);
+  await noOverflow(page);
+  await page.locator("#reports").scrollIntoViewIfNeeded();
+  await page.screenshot({ path: `apps/web/verification/reports-${info.project.name}.png`, fullPage: true });
+});

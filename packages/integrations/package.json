@@ -1,0 +1,9 @@
+{
+  "name": "@kivro/integrations",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": { "test": "vitest run", "typecheck": "tsc --noEmit" },
+  "dependencies": { "@kivro/research-broker": "workspace:*", "zod": "^3.25.0" }
+}

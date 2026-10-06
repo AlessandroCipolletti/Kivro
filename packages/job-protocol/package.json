@@ -1,0 +1,6 @@
+{
+  "name": "@kivro/job-protocol", "version": "0.1.0", "private": true, "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": { "typecheck": "tsc --noEmit" },
+  "dependencies": { "@kivro/contracts": "workspace:*", "@kivro/crypto": "workspace:*", "zod": "^3.25.76" }
+}

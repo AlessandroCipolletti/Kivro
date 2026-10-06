@@ -1,0 +1,422 @@
+[
+  {
+    "id": "WRK-0001",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts; packages/resource-broker/src/index.ts; packages/openclaw-adapter/src/index.ts; apps/api/src/catalog.ts",
+    "tests": "packages/resource-broker/test/postgres.integration.test.ts; scripts/e2e-media-fixture.ts",
+    "notes": "Full section 2: runtime-neutral contracts, private read-only resources and fixed software tools implement several differentiated supply mechanisms. Actual PostgreSQL proof was rerun (19/19); the Blender fullstack fixture is inspected/historical evidence, not rerun here. Buyer willingness to pay, primary supply mix, proprietary knowledge and track record are product acceptance questions not established by these package tests. Specialized hardware is explicitly later."
+  },
+  {
+    "id": "WRK-0002",
+    "status": "TESTED",
+    "implementation": "packages/resource-broker/src/index.ts; apps/worker/src/resource-config.ts",
+    "tests": "packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "Section 2 private read-only database mechanism, not entire marketplace thesis. Actual local PostgreSQL 19/19 at 14:13:43 CEST: 'reads table A through named prepared queries with private taint and no host metadata', actual role denial of table B/DML/DDL/server files/COPY even with default read-only disabled, independent READ ONLY transaction rejection, revoked SELECT/password health failures. Synthetic private fixture, not a real seller database acceptance."
+  },
+  {
+    "id": "WRK-0003",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/resource-broker/src/index.ts; apps/worker/src/resource-config.ts",
+    "tests": "packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "Read in full section 2: 'buyer does not possess the required data' is an example value proposition, not a requirement to inventory buyer possessions. Seller-private named DB queries provide a concrete implementation. The rerun proves access boundaries and private taint, not economic demand or that a real buyer lacked equivalent data."
+  },
+  {
+    "id": "WRK-0004",
+    "status": "IMPLEMENTED",
+    "implementation": "security/sandbox/runner.mjs; packages/openclaw-adapter/src/policy.ts; apps/worker/src/tools.ts",
+    "tests": "scripts/e2e-media-fixture.ts; packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Section 2 example value proposition: fixed Blender/FFmpeg wrappers make seller-side software usable through capabilities. Adapter security tests reran; prior real Blender fixture evidence is historical, not rerun in this trace. No test establishes what software a real buyer owns or buyer willingness to pay."
+  },
+  {
+    "id": "WRK-0005",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/catalog.ts; apps/worker/src/imports.ts; packages/resource-broker/src/index.ts",
+    "tests": "apps/worker/src/imports.test.ts; packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "Together with WRK-0006 this is one section 2 supply-positioning sentence, not a technical ban on prompt-only capabilities. Private data/tool supply is supported and verified in bounded tests; primary marketplace supply targeting and real supply composition are not established by source or fixtures."
+  },
+  {
+    "id": "WRK-0006",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/catalog.ts; apps/worker/src/imports.ts; packages/resource-broker/src/index.ts",
+    "tests": "apps/worker/src/imports.test.ts; packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "Same full section 2 sentence as WRK-0005. The existence of resource/tool imports does not prove the marketplace primarily targets differentiated rather than prompt-only supply. Product/supply acceptance remains open; no invented rejection rule or blanket section completion."
+  },
+  {
+    "id": "WRK-0007",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/index.ts; packages/openclaw-adapter/src/policy.ts; security/sandbox/runner.mjs",
+    "tests": "security/sandbox/smoke.ts; scripts/e2e-fixture.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "notes": "Section 2 explicitly chooses the OpenClaw ecosystem for MVP. Production adapter launches the pinned real headless runtime inside the approved Docker sandbox; the fixture uses that runtime, not a fabricated OpenClaw result. This trace reran unit/HTTP/DB tests, not Docker or final provider acceptance."
+  },
+  {
+    "id": "WRK-0008",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/job-protocol/src/index.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Full section 2 qualifier 'where possible' retained: capability/job/I/O/permission/price contracts are runtime-neutral and native configuration/parsing is isolated in the adapter. Worker deployment, version readiness and owned sandbox plugin intentionally know OpenClaw. No second runtime or automated architecture-boundary test was verified."
+  },
+  {
+    "id": "WRK-0009",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; packages/database/prisma/schema.prisma; packages/job-protocol/src/index.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; packages/policy-engine/src/policy.test.ts",
+    "notes": "Section 2 full entity list is represented through WorkerDevice, Capability/Version, Job/Attempt, I/O contracts, resources, tools/network permission manifests, price/runtime limits and seller identity. Schema/source mapping confirmed; protocol and policy tests are partial evidence, not a complete cross-entity persistence contract proof."
+  },
+  {
+    "id": "WRK-0010",
+    "status": "IN_PROGRESS",
+    "implementation": "package.json; pnpm-workspace.yaml; apps/api/src/app.ts; apps/worker/src/state.ts; apps/worker/src/secrets.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/inference.test.ts; docs/WORKER-RELEASE.md",
+    "notes": "Full section 6 is a suggested stack, not an exact dependency mandate. TypeScript/Node/Next, dedicated API, PostgreSQL/Prisma, S3, Stripe, SQLite, cryptographic Worker identity and Docker exist. Secrets use explicit worker storage (Keychain branch mocked in this run); installer/login-service/platform/production transport acceptance is not proven. Desktop app is explicitly later; conceptual CLI names are not required verbatim."
+  },
+  {
+    "id": "WRK-0019",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/index.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts",
+    "notes": "Section 7 import UI has five distinctions: discovered, selected, unsupported, dangerous, dedicated credential. Discovery defaults selected:false, exposes support/review/credential states and rejects unsafe dependencies; CLI preview/approval is real. Rerun 22 discovery + 8 import tests prove data/consent boundaries, not a rendered import interface clearly presenting all five states. Dangerous items currently use rejection/review reasons rather than a dedicated UI group."
+  },
+  {
+    "id": "WRK-0021",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/imports.ts; apps/worker/src/resource-config.ts; packages/resource-broker/src/index.ts",
+    "tests": "apps/worker/src/imports.test.ts; packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "Section 7 example 'Company DB Tool SELECTED - dedicated credential required' belongs to import presentation. Explicit selected dependency closure, credential reference, immutable resource approval and real read-only health are implemented and tested. An equivalent rendered selected-DB/dedicated-credential UX was not verified; secret values must never be copied from personal OpenClaw configuration."
+  },
+  {
+    "id": "WRK-0038",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; apps/worker/src/tools.ts; packages/policy-engine/src/index.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; packages/policy-engine/src/policy.test.ts",
+    "notes": "Full section 15 sentence: OpenClaw exposing a tool does not authorize it. Rerun assertions 'rejects permissions the runtime cannot enforce', 'never accepts model-selected providers, arbitrary tools, redirects or budget overruns', and 'requires exact permission grants and an approved supported transitive graph' verify the implemented deny-by-default policy. This atomic policy result is not a universal sandbox-escape certificate."
+  },
+  {
+    "id": "WRK-0039",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; security/sandbox/runner.mjs; apps/worker/src/tools.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts",
+    "notes": "Full section 15 sentence warns that disabling write/edit tools does not make shell execution read-only. Production denies generic exec/process/shell and permits fixed wrappers within the outer sandbox. Rerun policy tests plus inspected real-runtime smoke support this design; no new real shell-isolation run in this trace."
+  },
+  {
+    "id": "WRK-0042",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/docker.ts; security/sandbox/runner.mjs",
+    "tests": "security/sandbox/smoke.ts; packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Section 15 conditional internal-testing exec must stay sandboxed with no host mounts and restricted network. Public generic exec remains denied; owned internal wrapper processes run in network-none Docker. Adapter stages approved input/config files via explicit read-only host mounts, so this trace does not claim literal zero host mounts for every internal experiment. No general internal-exec acceptance procedure or new Docker probe verified."
+  },
+  {
+    "id": "PAY-0021",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/billing/src/stripe.ts; apps/api/src/billing.ts; packages/billing/src/ledger.ts",
+    "tests": "docs/BILLING-STATUS.md; apps/api/test/payment-reconciliation.integration.test.ts",
+    "notes": "Full section 24.5 describes direct per-job authorization/manual capture, but 24.25 phase 5 says after credits work and 24.27 explicitly sequences direct payment after private-beta prepaid credits. Current implementation is prepaid credits, not per-job PaymentIntent authorization/capture/expiry. Record future architecture work honestly without inventing a present private-beta mandate or deferring all section 24. Canonical reconciliation tests concern credits; no Stripe calls were made in this trace."
+  },
+  {
+    "id": "WRK-0048",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/readiness.ts; apps/worker/src/imports.ts; apps/api/src/catalog.ts",
+    "tests": "apps/worker/src/imports.test.ts; apps/worker/src/diagnostics.test.ts; packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "Full section 27: readiness, read-only discovery, selected imports, credentials, manifest approval, local capability test and publication gates exist. Rerun import/diagnostic/DB tests establish bounded backend behavior. Complete ordered seller wizard, all safe/review/blocked visual categories, human CAN/CANNOT preview and all platform adversarial checks as one onboarding workflow are not demonstrated."
+  },
+  {
+    "id": "WRK-0049",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/resource-config.ts; apps/worker/src/capability-health.ts; apps/worker/src/imports.ts",
+    "tests": "packages/resource-broker/test/postgres.integration.test.ts; apps/worker/src/imports.test.ts",
+    "notes": "Section 27 security preview example explicitly permits Company DB through a read-only credential. Actual ACL/transaction/health proof exists (19 PostgreSQL tests rerun); source requires scoped immutable approvals. This does not prove the literal human-readable setup preview communicates the permission in the complete wizard."
+  },
+  {
+    "id": "WRK-0050",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; apps/worker/src/imports.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts",
+    "notes": "Section 27 full CANNOT list includes personal workspace, Documents, browser cookies, arbitrary internet, host shell and other agents. Allowlisted config/mount/tool/network boundaries and personal-file nonmutation tests cover mechanisms. The complete human-readable negative-permission preview and a single real-runtime assertion of every listed denial were not verified here."
+  },
+  {
+    "id": "WRK-0051",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/catalog.ts; apps/worker/src/capability-health.ts; apps/worker/src/readiness.ts",
+    "tests": "apps/worker/src/imports.test.ts; packages/resource-broker/test/postgres.integration.test.ts; apps/api/test/protocol.integration.test.ts",
+    "notes": "Section 27 publication is gated by owner, seller payment readiness in Stripe mode, supported permissions/I/O, exact manifest, fresh PASSED healthy binding and ready unrevoked Worker; versionReadiness adds publication checks. Local consent/resources are rechecked. Source confirmed; this run did not execute every publication rejection or prove the whole platform adversarial suite is a per-publication gate."
+  },
+  {
+    "id": "WRK-0052",
+    "status": "IN_PROGRESS",
+    "implementation": "package.json; .github/workflows/ci.yml; security/sandbox/smoke.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; packages/resource-broker/test/postgres.integration.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Full section 34 requires unit, integration and extensive adversarial coverage plus pre-public-beta red teaming. This trace ran 464 tests with real local HTTP/PG where specified; Docker smoke/security and browser/paid staging suites were not rerun. Existing test breadth does not prove every escape/fork-bomb/injection/replay/forgery scenario or external review. Previously identified security gaps retain their separate owners and receipts."
+  },
+  {
+    "id": "WRK-0053",
+    "status": "IMPLEMENTED",
+    "implementation": "pnpm-workspace.yaml; packages/contracts/package.json; packages/job-protocol/package.json; packages/policy-engine/package.json; packages/openclaw-adapter/package.json",
+    "tests": "packages/job-protocol/src/protocol.test.ts; packages/policy-engine/src/policy.test.ts; packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Section 40 is a suggested repository structure. Independent workspace packages for contracts/protocol/policy/adapter exist and their tests ran separately; apps and test/security directories supply the service boundary. Not every suggested directory name needs duplication. Source layout verified, not a complete automated dependency-architecture policy."
+  },
+  {
+    "id": "WRK-0054",
+    "status": "IN_PROGRESS",
+    "implementation": "package.json; apps/worker/src/index.ts; packages/openclaw-adapter/src/index.ts; apps/api/src/app.ts",
+    "tests": "security/sandbox/smoke.ts; scripts/e2e-fixture.ts; docs/LOCAL-VERIFICATION.md",
+    "notes": "Full section 49 includes a recommended 25-step build order and central hostile-buyer isolation proof. Most concrete components exist and bounded tests run, but current source cannot establish historical order. No new complete remote-buyer/real-provider run or broad red-team proof in this trace; do not infer chronology from current feature presence."
+  },
+  {
+    "id": "WRK-0055",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/policy-engine/src/index.ts; apps/worker/src/tools.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; packages/policy-engine/src/policy.test.ts; apps/worker/src/security.test.ts",
+    "notes": "Section 49 atomic action 'write security invariant tests': existing tests were rerun, including 'never exposes host paths, secrets, Docker sockets or privileged execution', exact transitive grant requirements, and private-job network denial. Establishes that meaningful invariant tests exist and pass, not every section 34/91 security invariant or the historical build order."
+  },
+  {
+    "id": "WRK-0056",
+    "status": "IN_PROGRESS",
+    "implementation": "package.json; apps/worker/src/index.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "docs/LOCAL-VERIFICATION.md; security/sandbox/smoke.ts",
+    "notes": "Section 49 says not to build marketplace polish before steps 1-16 work. Current implementation/test receipts can demonstrate components now, not their construction order relative to UI work. Historical process evidence remains unverified; no source patch can retroactively prove it and no blanket deferral is asserted."
+  },
+  {
+    "id": "WRK-0057",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; packages/openclaw-adapter/src/docker.ts; apps/worker/src/tools.ts",
+    "tests": "scripts/e2e-fixture.ts; scripts/e2e-media-fixture.ts; security/sandbox/smoke.ts",
+    "notes": "Together with WRK-0058 read the full section 49 central proof: hostile remote buyer gets useful execution only within published capability and cannot turn seller into unrestricted proxy. Real Docker/OpenClaw fixture source and prior receipts exist; this run's unit/HTTP/PG proofs are narrower. No universal personal-host isolation or real-provider end-to-end claim."
+  },
+  {
+    "id": "WRK-0058",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/research-broker/src/connectors.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "packages/research-broker/test/egress.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts",
+    "notes": "Continuation of WRK-0057, not an independent smaller acceptance test. Rerun egress/private-data and immutable grant tests verify bounded proxy/tool restrictions; real sandbox acceptance is historical and ongoing owner work is not certified. Complete useful hostile-buyer execution proof remains broader than this trace."
+  },
+  {
+    "id": "WRK-0059",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; apps/api/src/catalog.ts; apps/api/src/jobs.ts; apps/api/src/billing.ts",
+    "tests": "scripts/e2e-fixture.ts; scripts/e2e-media-fixture.ts; scripts/e2e-local.ts",
+    "notes": "Full section 50 MVP is paid published capability execution beside personal OpenClaw without exposing personal environment, not general remote agent. Production paths and synthetic actual-runtime fixtures exist, but real Stripe/test-provider paid staging acceptance was not performed. Long-term idle-compute marketplace is explicitly future, not grounds to defer present isolation/payment requirements."
+  },
+  {
+    "id": "WRK-0060",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; apps/api/src/catalog.ts; apps/api/src/jobs.ts",
+    "tests": "scripts/e2e-local.ts; docs/FULLSTACK-FIXTURE.md; docs/WORKER-RELEASE.md",
+    "notes": "The section 50 'one sentence' must be read with its complete installation/publishing/payment/isolated-execution meaning. CLI/local runtime and real sandbox fixture cover parts; complete distinct-user paid provider acceptance remains absent. Merely repeating the product sentence is not implementation proof."
+  },
+  {
+    "id": "WRK-0061",
+    "status": "IN_PROGRESS",
+    "implementation": "pnpm-workspace.yaml; packages/contracts/src/index.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Full section 52 recommended package boundaries mostly exist. Native runtime integration goes through the adapter, but Worker-specific readiness/config/owned sandbox code intentionally knows the pinned OpenClaw runtime. No enforced import-boundary test or alternative-runtime portability verification; do not equate matching package names with full architectural acceptance."
+  },
+  {
+    "id": "WRK-0062",
+    "status": "IMPLEMENTED",
+    "implementation": "pnpm-workspace.yaml; apps/web/package.json; apps/api/package.json; apps/worker/package.json; packages/openclaw-adapter/package.json",
+    "tests": "packages/job-protocol/src/protocol.test.ts; packages/policy-engine/src/policy.test.ts",
+    "notes": "Section 52 recommended concrete structure is implemented by workspace apps and independently testable packages; source layout verified. Cryptography, observability and policy functionality need not all occupy exactly the suggested folders. This row does not assert all dependency directions are automatically enforced."
+  },
+  {
+    "id": "WRK-0063",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/index.ts; packages/openclaw-adapter/src/policy.ts; packages/contracts/src/index.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Section 52 native config/discovery/result types and actual execution are isolated behind the adapter; marketplace entities are neutral. Worker deployment/readiness and owned sandbox plugin are necessarily runtime-specific integration code. Source inspection confirms this boundary in reviewed paths, not an exhaustive import-leak rule or tested second runtime."
+  },
+  {
+    "id": "WRK-0078",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; apps/worker/src/readiness.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; security/sandbox/smoke.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "notes": "Full section 59 seven checks: generated effective config, mode all, approved isolation backend, explicit workspace, disabled elevated host execution, preflight policy and pinned compatibility integration. Implemented outer network-none Docker uses an owned internal SSH sandbox, not seller host SSH. Unit checks reran; current real-image/backend execution and every supported-version integration were not rerun, so not whole-clause TESTED."
+  },
+  {
+    "id": "WRK-0082",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/auth.ts; apps/api/src/worker.ts; apps/api/src/jobs.ts; apps/api/src/assets.ts; apps/api/src/asset-uploads.ts; apps/api/src/billing.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts; apps/api/test/worker-responses.integration.test.ts; apps/api/test/worker-warnings.integration.test.ts",
+    "notes": "Full section 66 owner/scoped API-key/device/live-attempt checks exist across resources; this run verified worker warning/history owner isolation. Full buyer/seller/worker cross-resource and settlement denial matrix was inspected but not executed together. No claim that owner-history tests prove every endpoint or private manifest/output restriction."
+  },
+  {
+    "id": "WRK-0089",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/app.ts; apps/api/src/auth.ts; apps/api/src/billing.ts; apps/api/src/worker.ts",
+    "tests": "apps/api/test/protocol.integration.test.ts; apps/api/test/worker-responses.integration.test.ts",
+    "notes": "Section 66 WorkerDevice cannot call Stripe settlement APIs: worker signatures authenticate only worker routes; billing mutations require user/admin identity or verified canonical Stripe webhook, never a WorkerDevice identity. Worker completion invokes server-owned settlement after validation. No dedicated valid-signed-device-to-every-billing-route denial test rerun/located; source-confirmed boundary, not whole payment authorization matrix TESTED."
+  },
+  {
+    "id": "API-0001",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/inference.ts; apps/worker/src/secrets.ts; packages/openclaw-adapter/src/policy.ts; apps/worker/src/state.ts",
+    "tests": "apps/worker/src/inference.test.ts; apps/worker/src/usage.test.ts; security/sandbox/smoke.ts",
+    "notes": "Full section 73 host inference broker injects stored seller credentials, fixes provider/model, bounds requests/tokens/spend and attributes durable usage to attempts. Sandbox receives only a dummy broker token and frame bridge. Actual synthetic HTTP tests reran; native Keychain and actual commercial-provider credentials/cost limits remain unverified. No conditional raw-key fallback is implemented or needed."
+  },
+  {
+    "id": "API-0002",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; security/sandbox/runner.mjs; apps/worker/src/inference.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/inference.test.ts; security/sandbox/smoke.ts",
+    "notes": "Section 73 preferred no-long-lived-key design is implemented: sandbox config has fixed dummy broker key, host injects actual credential after scoped validation, network-none sandbox uses framed requests. Rerun tests prove generated config and real synthetic upstream auth/reflection denial; no new real-image environment/process inspection in this trace."
+  },
+  {
+    "id": "API-0003",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/inference.ts; packages/openclaw-adapter/src/policy.ts; apps/worker/src/secrets.ts",
+    "tests": "apps/worker/src/inference.test.ts; packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Preserve section 73 IF: dedicated key passed into sandbox is an interim fallback only if needed. Production instead uses the preferred host broker and dummy sandbox token; fallback is not active. Do not claim provider-side account limits were configured/tested or manufacture a raw-key delivery requirement. Any future fallback requires dedicated limits and explicit risk treatment."
+  },
+  {
+    "id": "API-0004",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/inference.ts; apps/worker/src/imports.ts; packages/openclaw-adapter/src/policy.ts; security/sandbox/runner.mjs",
+    "tests": "apps/worker/src/inference.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts",
+    "notes": "Section 73 secret delivery is explicitly designed, not inherited from native skill environment. Named rerun 'uses explicit seller secret storage, never env provider keys, and invalidates rotated proof (mock Keychain only)' plus import adaptation/no-secret-copy tests exercise host lookup. Actual runtime bridge fixture is inspected/historical; no live provider or real Keychain assertion claimed."
+  },
+  {
+    "id": "WRK-0093",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/app.ts; apps/api/src/config.ts; apps/worker/src/state.ts; apps/worker/src/inference.ts; packages/job-protocol/src/index.ts",
+    "tests": "apps/worker/src/usage.test.ts; packages/marketplace-agent/test/inference-debug.test.ts; docs/PLATFORM-REVIEW.md",
+    "notes": "Confirmed PR-01 code gap in full section 83: request ID exists at API error logging and job/attempt IDs link subsets, but no single persisted correlation ID is propagated through HTTP, Job, JobAttempt, Worker message, OpenClaw invocation, output asset and settlement. Redaction tests do not satisfy this propagation requirement. Requires coordinated API/DB/protocol/Worker work; no source edits in this trace."
+  },
+  {
+    "id": "WRK-0095",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/app.ts; apps/worker/src/state.ts; apps/worker/src/inference.ts; apps/worker/src/usage.ts; packages/research-broker/src/index.ts",
+    "tests": "apps/worker/src/usage.test.ts; packages/research-broker/test/broker.test.ts; apps/api/test/operations-policy.integration.test.ts",
+    "notes": "Section 83 sensitive buyer content is excluded from operational usage/audit events, API request logging is disabled and auth/cookies are redacted. Rerun 'records admitted attempts ... never prompts, keys or endpoints', 'audits blocked private egress without retaining the query', and sanitized health history prove named paths only. No exhaustive all-log-sinks/customer-debug-export audit, so not blanket TESTED."
+  },
+  {
+    "id": "WRK-0096",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; apps/worker/src/state.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts",
+    "tests": "apps/worker/src/usage.test.ts; apps/worker/src/diagnostics.test.ts; apps/worker/src/inference.test.ts",
+    "notes": "Section 83 source uses limited structured events, fixed diagnostic codes, silent sandbox console/error logging and narrow local audit columns instead of log-everything debugging. Rerun secret-reflection/diagnostic/usage assertions support reviewed paths. Human future debugging practices and every native runtime error log were not exhaustively verified."
+  },
+  {
+    "id": "TST-0006",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/readiness.ts; apps/api/src/catalog.ts; packages/openclaw-adapter/src/docker.ts; docs/WORKER-RELEASE.md",
+    "tests": "security/sandbox/smoke.ts; docs/SECURITY-REVIEW.md; docs/LOCAL-VERIFICATION.md",
+    "notes": "Full section 91 public seller onboarding gate has a complete security checklist plus external review OR explicit accepted private-beta risk. Runtime/publication gates and many tests exist; this trace does not establish every checklist proof or owner sign-off. Neither an unsigned private-beta artifact nor unit test count is explicit risk acceptance. No new external review or public-release certificate."
+  },
+  {
+    "id": "TST-0007",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/catalog.ts; apps/worker/src/readiness.ts; docs/CLOUD-RELEASE.md; docs/WORKER-RELEASE.md",
+    "tests": "security/sandbox/smoke.ts; docs/SECURITY-REVIEW.md; docs/LOCAL-VERIFICATION.md",
+    "notes": "Section 91 'Do not open public seller onboarding until' includes ALL listed escape/network/secret/protocol/payment/fixture proofs and external review or explicit private-beta risk acceptance. Some proofs/owner work and release authorization remain outstanding; not merely externally BLOCKED and not fulfilled by one route readiness check. This review does not assert onboarding has been publicly opened."
+  },
+  {
+    "id": "TST-0009",
+    "status": "BLOCKED",
+    "implementation": "apps/api/src/billing.ts; packages/billing/src/stripe.ts; scripts/e2e-local.ts",
+    "tests": "docs/BILLING-STATUS.md; docs/FULLSTACK-FIXTURE.md; scripts/e2e-fixture.ts",
+    "notes": "Section 92 requires a real end-to-end paid test between distinct users, real OpenClaw and text/file delivery/earnings. Blocked for final external acceptance: authorized Stripe TEST account/keys/webhook/Connect setup and provider test environment/staging operator run have not been supplied/executed. Synthetic fixture uses real runtime but deterministic inference and development credits; it is not paid-provider acceptance. No charged or live calls made."
+  },
+  {
+    "id": "TST-0010",
+    "status": "IMPLEMENTED",
+    "implementation": "scripts/e2e-local.ts; scripts/e2e-fixture.ts; scripts/e2e-media-fixture.ts; security/sandbox/runner.mjs",
+    "tests": "docs/FULLSTACK-FIXTURE.md; docs/LOCAL-VERIFICATION.md; docs/OPENCLAW_COMPATIBILITY.md",
+    "notes": "Section 92 explicitly rejects mocked OpenClaw as final acceptance. Inspected fixtures invoke actual Docker/OpenClaw with production validation/protocol and label deterministic provider scope. Historical actual-runtime receipts support that distinction, but this trace did not rerun OpenClaw and does not promote the complete final paid staging gate."
+  },
+  {
+    "id": "TST-0011",
+    "status": "BLOCKED",
+    "implementation": "packages/billing/src/stripe.ts; apps/api/src/billing.ts",
+    "tests": "docs/BILLING-STATUS.md; apps/api/test/payment-reconciliation.integration.test.ts",
+    "notes": "Section 92 explicitly rejects mocked Stripe as final payment acceptance. Production SDK/canonical verification exists; isolated PostgreSQL plus HTTP synthetic Stripe SDK tests are explicitly non-provider evidence. Actual authorized Stripe TEST Checkout/Connect/refund/dispute/payout lifecycle acceptance requires operator keys/account setup and was not run. Billing remains source-frozen."
+  },
+  {
+    "id": "TST-0012",
+    "status": "BLOCKED",
+    "implementation": "scripts/e2e-local.ts; packages/billing/src/stripe.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "docs/BILLING-STATUS.md; docs/FULLSTACK-FIXTURE.md; docs/OPENCLAW_COMPATIBILITY.md",
+    "notes": "Full section 92 final staging combines provider test/sandbox environments with real local OpenClaw. Local deterministic-provider/runtime fixtures do not meet the commercial-provider/Stripe part. External credentials/account setup and an authorized staging run remain required; no invented passed proof, no live/paid calls, and no claim that current local Docker receipt alone completes the clause."
+  },
+  {
+    "id": "TST-0013",
+    "status": "IN_PROGRESS",
+    "implementation": "tsconfig.base.json; .github/workflows/ci.yml; .env.example; pnpm-lock.yaml; apps/api/src/app.ts; packages/database/prisma/schema.prisma",
+    "tests": "tests/coverage-model.test.ts; apps/api/test/operations-policy.integration.test.ts; docs/LOCAL-VERIFICATION.md",
+    "notes": "Full section 94 spans strict typing, validation, DB constraints, typed errors, safe logging, state/payment/security tests, environment documentation, no committed secrets, committed lockfile and CI. API typecheck and 464 targeted tests passed in this review. No whole-repo lint/build/remote-CI/secret-history audit or exhaustive unexplained-any review here; existing files alone do not prove full DoD or lockfile commit provenance."
+  },
+  {
+    "id": "TST-0014",
+    "status": "IMPLEMENTED",
+    "implementation": ".env.example; apps/api/src/config.ts",
+    "tests": "apps/api/test/config.test.ts; docs/PLATFORM-REVIEW.md",
+    "notes": "Section 94 template inspection found provider/Stripe secret fields blank and named, plus explicit synthetic loopback PG/S3 credentials and a replace-me session placeholder. These are local fixture values, not supplied personal/live secrets; do not describe the file as names-only/entirely blank. No repository-history secret scan or proof of all contributors' secrets performed; config tests are existing evidence not rerun here."
+  },
+  {
+    "id": "TST-0015",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/billing/src/ledger.ts; apps/api/src/auth.ts; apps/worker/src/tools.ts; packages/resource-broker/src/index.ts",
+    "tests": "apps/worker/src/security.test.ts; packages/resource-broker/test/postgres.integration.test.ts; docs/PLATFORM-REVIEW.md",
+    "notes": "Section 94 qualitative explicitness-over-abstraction: reviewed paths use explicit owner/grant/ACL/history/budget checks with bounded typed entry points. Security/DB tests ran, but stylistic clarity has no single complete behavioral assertion; no automatic whole-repo security-code certification or billing edits."
+  },
+  {
+    "id": "TST-0017",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/agent.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/marketplace-agent/test/agent.test.ts; packages/marketplace-agent/test/execution-security.test.ts",
+    "notes": "Section 189 model cannot alter authoritative buyer spend authority. Rerun 'never lets model-extracted constraints raise the buyer max-jobs or per-job ceiling' injects larger limits, observes buyer ceilings preserved and no quote/purchase; orchestration enforces approved constraints independently. Model suggestions may tighten discovery constraints, not raise the authorized budget. Synthetic inference tests, not real provider acceptance."
+  },
+  {
+    "id": "TST-0018",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/agent.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/marketplace-agent/test/recommendations.test.ts; packages/marketplace-agent/test/execution-security.test.ts",
+    "notes": "Section 189 nonexistent capability cannot be purchased from model output. Recommendations 18/18 at 14:18:43: 'rejects model unknown-id without copying fabricated facts or creating purchases' asserts FAILED inference, catalog-only fallback, zero createJob calls and zero plans. Source separately checks missing/mismatched canonical IDs before orchestration. This is the platform-inference atomic assertion, not every external API route's negative matrix."
+  },
+  {
+    "id": "TST-0019",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/storage/src/validation.ts; packages/storage/src/media.ts; apps/api/src/jobs.ts; apps/api/src/disputes.ts; apps/api/src/catalog.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; docs/SECURITY-REVIEW.md; docs/LOCAL-VERIFICATION.md",
+    "notes": "Full section 231 distinguishes structural validity from semantic quality: schema/required files/MIME/size/hash/path/parsability checks gate delivery, while tests/reviews/ratings/refund-dispute flows address quality. No claim that valid output is correct or useful. Complete buyer quality/review/refund experience not verified by this trace; automated quality evaluators are explicitly future, not a current missing MVP gate."
+  },
+  {
+    "id": "API-0006",
+    "status": "TESTED",
+    "implementation": "packages/research-broker/src/index.ts; packages/research-broker/src/connectors.ts; apps/worker/src/tools.ts",
+    "tests": "packages/research-broker/test/broker.test.ts; packages/research-broker/test/egress.test.ts; apps/worker/src/security.test.ts",
+    "notes": "Section 263 arbitrary POST remains denied. Rerun 'rejects arbitrary POST and body fields, even when content requests exfiltration', 'does not expose endpoint/method/header overrides in a typed connector', plus credentialed-POST redirect/egress checks. Pure Worker config reproduction additionally rejected model endpoint override. This security assertion does not imply configured read-only POST connectors are production-usable (PR-02)."
+  },
+  {
+    "id": "API-0007",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/connectors.ts; apps/worker/src/tools.ts; packages/research-broker/src/connectors.ts",
+    "tests": "apps/worker/src/connectors.test.ts; packages/research-broker/test/broker.test.ts; packages/research-broker/test/egress.test.ts; docs/PLATFORM-REVIEW.md",
+    "notes": "Original PR-02 reproduction is preserved in PLATFORM-REVIEW. Parent-authorized fix adds optional immutable GET|POST without normalizing omitted legacy GET consent hashes, typed POST JSON capped at 256000 bytes before credential/network work, and transactional connector consent. Actual 32 Worker connector + 77 broker/egress tests passed within the final 205-test regression at 14:32:10, including production JobToolBroker.create selection/accounting with synthetic HTTP transport, overrides, taint, budget and legacy-hash cases. No real external read-only provider/TLS or Docker job acceptance run; section 263 remains source-confirmed with bounded tests rather than blanket end-to-end TESTED."
+  },
+  {
+    "id": "API-0009",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/settings.tsx; apps/api/src/auth.ts",
+    "tests": "tests/e2e/marketplace.spec.ts",
+    "notes": "Full section 319 settings path creates scoped optional-expiry API key, displays secret once, persists only a hash/prefix, lists safe metadata and revokes owned keys. Source projections inspected, not inferred from separate integrations helper. Existing browser assertion 'offline service details stay unpurchasable and API keys can be revoked' was not rerun in this trace; no rendered UI or one-time-secret E2E claim."
+  },
+  {
+    "id": "WRK-0105",
+    "status": "TESTED",
+    "implementation": "apps/api/src/worker-health.ts; packages/policy-engine/src/index.ts; apps/api/src/catalog.ts",
+    "tests": "apps/api/test/operations-policy.integration.test.ts; packages/policy-engine/src/policy.test.ts",
+    "notes": "Full section 374 conditional local process alive but cloud contact unavailable must be marketplace OFFLINE. Actual isolated-PG 'retains sanitized health transitions once and detects heartbeat expiry without receiving another heartbeat' asserts READY to OFFLINE; policy 'never turns a sleeping or insecure worker online because its schedule is open' preserves offline precedence for dispatch eligibility. Does not certify all desktop heartbeat/reconnect UI."
+  },
+  {
+    "id": "WRK-0110",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/worker-health.ts; apps/api/src/worker.ts",
+    "tests": "apps/api/test/operations-policy.integration.test.ts; apps/api/test/worker-warnings.integration.test.ts",
+    "notes": "Full section 381 safe transition codes and first-detected warning snapshots explain offline/dispatch-disabled/warning/recovery history, deduplicate repeated observation and are seller-owned. Actual 22 tests reran including READY to OFFLINE without heartbeat, warning episodes after authoritative recovery and foreign-owner denial. No single whole four-event narrative/rendered reconnect-history workflow verified, so conservative source-confirmed rather than full clause TESTED."
+  },
+  {
+    "id": "WRK-0111",
+    "status": "TESTED",
+    "implementation": "apps/api/src/worker-health.ts; apps/api/src/background.ts; apps/api/src/config.ts",
+    "tests": "apps/api/test/worker-warnings.integration.test.ts; apps/api/test/operations-policy.integration.test.ts",
+    "notes": "Section 381 cloud low-level telemetry retention is bounded: periodic retention removes old health/warning/download operational audit events and stores sanitized summaries rather than raw diagnostics. Actual isolated-PG test 'retains fresh critical warnings while applying the existing 90-day history retention' verifies old event deletion without clearing active warnings; health test proves private telemetry exclusion and duplicate suppression. Not a claim about all financial/content retention policies."
+  }
+]

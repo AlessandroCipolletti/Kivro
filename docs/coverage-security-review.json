@@ -1,0 +1,898 @@
+[
+  {
+    "id": "IO-0002",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts; packages/storage/src/index.ts; packages/openclaw-adapter/src/files.ts",
+    "tests": "packages/storage/src/storage.test.ts; packages/storage/src/media.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 12. A closed format allowlist and file limits exist; run A verifies executable disguises, MIME mismatches and bounded Office archives. SR-01's original MP4 false acceptance was fixed in the authorized follow-up: shared movie structure validation, required video track and full-file input sniffing pass 78 focused tests plus 14 real-codec cases. Full file-safety intent remains partial; production malware-scanner acceptance was not run."
+  },
+  {
+    "id": "IO-0005",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/docker.ts; apps/worker/src/tools.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; security/sandbox/self-test.mjs",
+    "notes": "Master section 12. Buyer input is downloaded under generated asset names and bound read-only to the per-job input directory. Docker argument assertions ran in A; the actual mount write-denial self-test was source-reviewed, not rerun here. This is not fresh Docker isolation proof."
+  },
+  {
+    "id": "IO-0006",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/files.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Master section 12. Run A: 'collects only regular files below the result root and rejects links' uses real temporary filesystem files, symlinks and hardlinks; dangerous-path cases reject outside references. This atomic result-root collection invariant is tested; file content validity and full delivery are separate, not certified."
+  },
+  {
+    "id": "SEC-0002",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/secrets.ts; apps/worker/src/index.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts",
+    "notes": "Master section 13. Full sentence requires dedicated Worker credentials, not blind personal-secret copying. Discovery projects references without values and Worker credentials are separately enrolled into scoped encrypted storage. Synthetic discovery/import assertions ran in A; complete interactive credential setup on each supported OS was not verified."
+  },
+  {
+    "id": "SEC-0003",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/secrets.ts; apps/worker/src/index.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts",
+    "notes": "Master section 13. Full sentence requires dedicated Worker credentials, not blind personal-secret copying. Discovery projects references without values and Worker credentials are separately enrolled into scoped encrypted storage. Synthetic discovery/import assertions ran in A; complete interactive credential setup on each supported OS was not verified."
+  },
+  {
+    "id": "SEC-0010",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/resource-broker/src/policy.ts; packages/resource-broker/src/postgres.ts; apps/worker/src/tools.ts",
+    "tests": "packages/resource-broker/test/broker.test.ts; packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "Master section 14. Private-database risk is addressed with named parameterized queries, role/ACL checks, READ ONLY transactions, immutable grants and bounded output. Run A executes 37 package authorization/filesystem tests. The separate 19 real PostgreSQL tests have a historical receipt in RESOURCE-BROKER.md, not a rerun in this review; deployment provisioning and full private-data job acceptance remain outside this receipt."
+  },
+  {
+    "id": "SEC-0014",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/resource-broker/src/index.ts; packages/resource-broker/src/postgres.ts; apps/worker/src/tools.ts",
+    "tests": "packages/resource-broker/test/broker.test.ts; packages/resource-broker/test/postgres.integration.test.ts; docs/RESOURCE-BROKER.md",
+    "notes": "Master section 14. The full conditional sentence permits direct access only as a private-beta interim and targets narrow brokerage. Current production path already uses a host broker, not direct sandbox database networking. Approval/configuration/query bounds were exercised in A; real DB ACL and transport evidence is historical, not independently rerun here."
+  },
+  {
+    "id": "SEC-0015",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/resource-broker/src/index.ts; packages/resource-broker/src/postgres.ts; apps/worker/src/tools.ts",
+    "tests": "packages/resource-broker/test/broker.test.ts; packages/resource-broker/test/postgres.integration.test.ts; docs/RESOURCE-BROKER.md",
+    "notes": "Master section 14. The full conditional sentence permits direct access only as a private-beta interim and targets narrow brokerage. Current production path already uses a host broker, not direct sandbox database networking. Approval/configuration/query bounds were exercised in A; real DB ACL and transport evidence is historical, not independently rerun here."
+  },
+  {
+    "id": "SEC-0017",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/research-broker/src/egress.ts; packages/research-broker/src/broker.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "packages/research-broker/test/egress.test.ts; packages/research-broker/test/broker.test.ts; apps/worker/src/research.test.ts",
+    "notes": "Master section 16. Third-party proxy abuse is addressed below prompts through public-destination checks, fixed primitives, quotas and network-none Docker. Run A checks DNS/redirect/IP/connector policy with intercepted transport, not real malicious external endpoints; it does not prove impossibility of every semantic abuse category."
+  },
+  {
+    "id": "SEC-0019",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/docker.ts; apps/worker/src/tools.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; security/sandbox/self-test.mjs",
+    "notes": "Master section 16. All jobs retain outer Docker network=none; necessary host inference/control-plane and approved brokers use framed stdio rather than opening sandbox networking. Configuration/tool denials pass A. Actual packet/socket isolation is implemented but the Docker self-test was not executed in this batch."
+  },
+  {
+    "id": "SEC-0022",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; apps/worker/src/tools.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "notes": "Master section 17. Current-MVP arbitrary browser denial exists in the supported-tool/configuration allowlist; run A 'rejects permissions the runtime cannot enforce' checks unsupported tool grants. Remaining browser-service design is explicitly conditional future scope in the full section, not an unimplemented current-MVP browser mandate."
+  },
+  {
+    "id": "SEC-0024",
+    "status": "DEFERRED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 17. Explicit future clause: 'If browser capabilities are introduced later'. Marketplace-controlled browser service/session/domain/action/audit/kill-switch requirements are not claimed implemented. Current MVP fails closed for browser tools; deferral does not cover current sandbox or network protections."
+  },
+  {
+    "id": "SEC-0025",
+    "status": "DEFERRED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 17. Explicit future clause: 'If browser capabilities are introduced later'. Marketplace-controlled browser service/session/domain/action/audit/kill-switch requirements are not claimed implemented. Current MVP fails closed for browser tools; deferral does not cover current sandbox or network protections."
+  },
+  {
+    "id": "SEC-0027",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; security/sandbox/self-test.mjs",
+    "notes": "Master section 20. Layered controls include generated policy, reviewed plugin, no-network outer container, host-side broker authorization and resource limits. Documentation records residual sandbox limitations. Configuration assertions passed A; no claim that Docker provides a perfect security boundary or that this run demonstrated host isolation."
+  },
+  {
+    "id": "SEC-0028",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; security/sandbox/runner.mjs; apps/worker/src/tools.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; security/sandbox/self-test.mjs",
+    "notes": "Master section 20. Tool allowlists, wrapper-specific inputs, no arbitrary exec/plugin import, immutable grants and isolated execution exist. A tests denial of unsupported permissions/model-selected tools/providers and quotas. Real wrapper/Docker adversarial acceptance was not rerun, so broad hardening is not promoted to universal TESTED."
+  },
+  {
+    "id": "SEC-0030",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Master section 20. Run A: 'never exposes host paths, secrets, Docker sockets or privileged execution' checks generated mandatory policy and Docker arguments; 'rejects permissions the runtime cannot enforce' denies incompatible grants. Seller configuration cannot weaken the generated baseline through this adapter. These are policy-generation assertions, not a live container escape test."
+  },
+  {
+    "id": "SEC-0033",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/policy-engine/src/index.ts; apps/api/src/security-policy.ts; packages/research-broker/src/broker.ts; apps/worker/src/tools.ts",
+    "tests": "packages/policy-engine/src/policy.test.ts; apps/api/test/security-policy.test.ts; packages/research-broker/test/broker.test.ts; apps/api/test/operations-policy.integration.test.ts",
+    "notes": "Master section 30. Deterministic permissions, spend/frequency/concurrency limits, suspension and dispatch gates exist independently of model moderation. Run A verifies unit policy and broker denials. Full section-30 account/reporting/dispatch behavior and the real DB concurrent controls are not rerun here; no universal claim that all abuse classes are impossible."
+  },
+  {
+    "id": "SEC-0034",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/policy-engine/src/index.ts; apps/api/src/security-policy.ts; packages/research-broker/src/broker.ts; apps/worker/src/tools.ts",
+    "tests": "packages/policy-engine/src/policy.test.ts; apps/api/test/security-policy.test.ts; packages/research-broker/test/broker.test.ts; apps/api/test/operations-policy.integration.test.ts",
+    "notes": "Master section 30. Deterministic permissions, spend/frequency/concurrency limits, suspension and dispatch gates exist independently of model moderation. Run A verifies unit policy and broker denials. Full section-30 account/reporting/dispatch behavior and the real DB concurrent controls are not rerun here; no universal claim that all abuse classes are impossible."
+  },
+  {
+    "id": "IO-0007",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/storage/src/index.ts; packages/openclaw-adapter/src/files.ts; apps/web/src/components/job-result.tsx; apps/api/src/assets.ts",
+    "tests": "packages/storage/src/storage.test.ts; apps/web/tests/result-rendering.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 31. A verifies file/encoding/archive limits; B renders Markdown with raw HTML, active links and tracking images blocked. Authenticated attachment downloads and scanner hook are implemented. The authorized SR-01 follow-up rejects header-only/no-track/missing-mdat MP4 at storage and Worker boundaries, with real FFmpeg acceptance. Live malware-scanner/S3/authorization and whole result-safety acceptance were not rerun."
+  },
+  {
+    "id": "SEC-0036",
+    "status": "IN_PROGRESS",
+    "implementation": "docs/OPENCLAW_COMPATIBILITY.md; packages/openclaw-adapter/src/policy.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Master section 43. Pinned official OpenClaw compatibility notes and executable adapter checks cover CLI/discovery/isolation. This review did not freshly inspect every external documentation topic listed by section 43; documentation-study process and complete integration behavior are not established by unit-test presence."
+  },
+  {
+    "id": "SEC-0037",
+    "status": "IMPLEMENTED",
+    "implementation": "docs/OPENCLAW_COMPATIBILITY.md; packages/openclaw-adapter/src/policy.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Master section 43. The adapter records a concrete official CLI/version/commit baseline and rejects incompatible execution settings. This demonstrates maintained compatibility code and notes, not a fresh verification of every current upstream OpenClaw page in this review."
+  },
+  {
+    "id": "SEC-0038",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; packages/openclaw-adapter/src/docker.ts; scripts/e2e-fixture.ts; scripts/e2e-media-fixture.ts; packages/resource-broker/test/fixture.sql",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; security/sandbox/self-test.mjs; packages/resource-broker/test/postgres.integration.test.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Master section 44. Discovery and local filesystem experiments pass A, while actual sandbox/private-DB/full-stack experiments have existing scripts and historical receipts. Those integration experiments were not rerun here. All experiments A-E and their complete acceptance intent are not newly certified."
+  },
+  {
+    "id": "SEC-0039",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/index.ts; packages/openclaw-adapter/src/policy.ts; apps/worker/src/imports.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; scripts/e2e-fixture.ts",
+    "notes": "Master section 44. Run A synthetic personal-config discovery/import tests prove no values or unselected files are copied and personal content/metadata are unchanged; generated runtime state is separate. End-to-end execution that proves no personal OpenClaw access was not rerun, so experiment A's full execution claim remains unverified by this batch."
+  },
+  {
+    "id": "SEC-0040",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/docker.ts; security/sandbox/self-test.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; security/sandbox/self-test.mjs; docs/WORKER-STATUS.md",
+    "notes": "Master section 44. Concrete hostile filesystem/network/socket probes exist and policy arguments passed A. Full section-44 isolation experiment requires actual Docker self-test evidence; this review did not execute it or certify host Documents/keys/config/LAN isolation from unit mocks."
+  },
+  {
+    "id": "SEC-0042",
+    "status": "IN_PROGRESS",
+    "implementation": "README.md; docs/ARCHITECTURE.md; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/imports.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 48. README/architecture document the core baseline, scoped import, versioned consent and isolated execution; A exercises several invariants. Not every one of the 15 principles is explicitly enumerated in README/architecture, and the full cross-system principle set is not established by these tests. This is documentation/aggregate trace incompleteness, not evidence of an isolation exploit."
+  },
+  {
+    "id": "SEC-0043",
+    "status": "IN_PROGRESS",
+    "implementation": "README.md; docs/ARCHITECTURE.md; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/imports.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 48. README/architecture document the core baseline, scoped import, versioned consent and isolated execution; A exercises several invariants. Not every one of the 15 principles is explicitly enumerated in README/architecture, and the full cross-system principle set is not established by these tests. This is documentation/aggregate trace incompleteness, not evidence of an isolation exploit."
+  },
+  {
+    "id": "SEC-0044",
+    "status": "IN_PROGRESS",
+    "implementation": "docs/implementation-status.md; docs/OPENCLAW_COMPATIBILITY.md; packages/openclaw-adapter/src/policy.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 51. Source and status notes follow hard-boundary/adapter precedence and disclose incomplete acceptance. Section 51 also covers all money/state transitions and milestone conduct; a current source/test review cannot prove the complete historical implementation process or all invariants."
+  },
+  {
+    "id": "SEC-0045",
+    "status": "IN_PROGRESS",
+    "implementation": "docs/implementation-status.md; docs/OPENCLAW_COMPATIBILITY.md; packages/openclaw-adapter/src/policy.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 51. Source and status notes follow hard-boundary/adapter precedence and disclose incomplete acceptance. Section 51 also covers all money/state transitions and milestone conduct; a current source/test review cannot prove the complete historical implementation process or all invariants."
+  },
+  {
+    "id": "SEC-0046",
+    "status": "IMPLEMENTED",
+    "implementation": "docs/OPENCLAW_COMPATIBILITY.md; packages/openclaw-adapter/src/index.ts; packages/openclaw-adapter/src/policy.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Master section 51. Pinned OpenClaw CLI/result-manifest/child-sandbox differences are documented and adapted without host fallback. Existing summary/config assertions ran in A. The universal future-change documentation process is not empirically proved."
+  },
+  {
+    "id": "SEC-0047",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/docker.ts; packages/resource-broker/src/index.ts; packages/research-broker/src/egress.ts; apps/worker/src/tools.ts",
+    "tests": "packages/resource-broker/test/broker.test.ts; packages/research-broker/test/egress.test.ts; apps/worker/src/security.test.ts",
+    "notes": "Master section 51. A verifies hard host-side authorization and policy/transport checks independent of model instructions. The 'never replace a required boundary' clause spans the system; no actual Docker/production-network proof in this batch, and source-wide universal completeness is not inferred from package tests."
+  },
+  {
+    "id": "SEC-0048",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/docker.ts; apps/worker/src/readiness.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/runtime.test.ts; security/sandbox/self-test.mjs",
+    "notes": "Master section 51. Only Docker-backed job execution exists; missing readiness prevents acceptance and does not launch a host job. A checks argument hardening and no-start/error branches using mocked process/Docker boundaries. Actual missing-Docker/host-process acceptance was not rerun."
+  },
+  {
+    "id": "SEC-0049",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/imports.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/self-test.mjs",
+    "notes": "Master section 51. Synthetic filesystem discovery/import assertions passed A and generated execution config contains only approved snapshots. Full buyer-job non-access to personal sessions/workspace depends on actual sandbox isolation, not rerun in this batch."
+  },
+  {
+    "id": "SEC-0050",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/imports.ts; apps/worker/src/tools.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/worker/src/imports.test.ts; apps/worker/src/security.test.ts; apps/worker/src/runtime.test.ts",
+    "notes": "Master section 51. Run A: 'requires stored capability-scoped resource grants and detects changed snapshots', credential-rotation/reapproval import tests, and 'does not substitute a newly approved manifest for the accepted paused attempt' verify rejection rather than silent broadening at import/execute/resume boundaries. Package assertions, not a blanket proof for every future integration. Complete cloud seller-permission-expansion and real sandbox execution acceptance were not rerun; this broad invariant is partial evidence, not full-system TESTED."
+  },
+  {
+    "id": "SEC-0051",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/billing/src/ledger.ts; apps/api/src/billing.ts; apps/api/src/payment-reconciliation.ts",
+    "tests": "docs/BILLING-STATUS.md; apps/api/test/payment-reconciliation.integration.test.ts",
+    "notes": "Master section 51. Frozen financial implementation has separate receipts, including parent-independent 29 canonical reconciliation cases at 13:24. No financial/DB/live-Stripe tests ran in this review. All money-moving operations and real-provider acceptance cannot be promoted from the IO/SEC unit receipt."
+  },
+  {
+    "id": "SEC-0052",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/api/src/jobs.ts; apps/api/src/job-containment.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/runtime.test.ts; apps/api/test/protocol.integration.test.ts",
+    "notes": "Master section 51. A verifies SQLite persistence/replay/lease and runtime timeout/recovery paths, including 'recovers an expired unfinished attempt as timeout without executing it again'. Full cloud transaction, cancellation, financial and every state-transition restart matrix is not rerun here."
+  },
+  {
+    "id": "SEC-0053",
+    "status": "IMPLEMENTED",
+    "implementation": "docs/implementation-status.md; docs/WORKER-STATUS.md; docs/BILLING-STATUS.md",
+    "tests": "docs/SECURITY-REVIEW.md",
+    "notes": "Master section 51. Status documents exist with executed receipts and explicit limitations. Their current presence can be inspected; this review cannot verify that every historical milestone ended with all required process updates."
+  },
+  {
+    "id": "SEC-0054",
+    "status": "IN_PROGRESS",
+    "implementation": "docs/implementation-status.md; docs/OPENCLAW_COMPATIBILITY.md; docs/BILLING-STATUS.md",
+    "tests": "docs/SECURITY-REVIEW.md",
+    "notes": "Master section 51. Current status documents retain external/partial boundaries rather than claiming production completion. SR-01 and SR-02 show why existence and aggregate passing counts cannot establish all required checks. A universal no-overclaim historical/process guarantee is not testable from this batch."
+  },
+  {
+    "id": "IO-0010",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts; packages/job-protocol/src/index.ts; apps/web/src/lib/api.ts; apps/api/src/app.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/marketplace-agent/test/inference.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 53. Shared contract/offer/provider schemas are implemented and exact assertions pass A. SR-02 confirms the literal universal boundary requirement remains incomplete: generic browser REST returns 'body as T', and several API response projections lack runtime output schemas; there is no global response-schema hook. Not an auth bypass claim."
+  },
+  {
+    "id": "IO-0012",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts; packages/job-protocol/src/index.ts; apps/web/src/lib/api.ts; apps/api/src/app.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/marketplace-agent/test/inference.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 53. Shared contract/offer/provider schemas are implemented and exact assertions pass A. SR-02 confirms the literal universal boundary requirement remains incomplete: generic browser REST returns 'body as T', and several API response projections lack runtime output schemas; there is no global response-schema hook. Not an auth bypass claim."
+  },
+  {
+    "id": "IO-0022",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/index.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; security/sandbox/self-test.mjs",
+    "notes": "Master section 61. Writable job work/output and bounded temporary scratch mounts are generated; root/input mounts are read-only and no seller host write locations are exposed. Configuration tests pass A. Actual filesystem write isolation inside Docker was not rerun."
+  },
+  {
+    "id": "IO-0024",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts",
+    "notes": "Master section 61. A executes '/etc/passwd' and traversal rejection plus 'collects only regular files below the result root and rejects links' on real temporary files. Canonical output collection refuses symlink/hardlink escape rather than uploading arbitrary model-selected host paths."
+  },
+  {
+    "id": "SEC-0057",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/docker.ts; apps/worker/src/tools.ts; packages/research-broker/src/egress.ts; security/sandbox/plugin/bridge.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; security/sandbox/bridge.test.ts",
+    "notes": "Master section 72. Network-none outer Docker plus framed host inference/resource/research brokers implements the refined architecture. A/B test policy, frame limits and broker authorization; actual container-network and real-provider egress acceptance not run here."
+  },
+  {
+    "id": "SEC-0058",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/policy.ts; apps/worker/src/tools.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; security/sandbox/bridge.test.ts",
+    "notes": "Master section 72. No unrestricted sandbox Internet is enabled: generated outer container uses network none/read-only/capability drop/resource limits and only typed stdio host operations. A/B verify generation/frame/tool bounds; Docker enforcement and real-provider transport remain outside this batch."
+  },
+  {
+    "id": "SEC-0059",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/policy.ts; apps/worker/src/tools.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; security/sandbox/bridge.test.ts",
+    "notes": "Master section 72. No unrestricted sandbox Internet is enabled: generated outer container uses network none/read-only/capability drop/resource limits and only typed stdio host operations. A/B verify generation/frame/tool bounds; Docker enforcement and real-provider transport remain outside this batch."
+  },
+  {
+    "id": "SEC-0060",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/docker.ts; packages/openclaw-adapter/src/policy.ts; apps/worker/src/tools.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; security/sandbox/bridge.test.ts",
+    "notes": "Master section 72. No unrestricted sandbox Internet is enabled: generated outer container uses network none/read-only/capability drop/resource limits and only typed stdio host operations. A/B verify generation/frame/tool bounds; Docker enforcement and real-provider transport remain outside this batch."
+  },
+  {
+    "id": "SEC-0061",
+    "status": "IMPLEMENTED",
+    "implementation": "docs/OPENCLAW_COMPATIBILITY.md; packages/openclaw-adapter/src/docker.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 72. No permissive Internet fallback was found; pinned adapter compatibility/limits are documented and unsupported settings reject. The hypothetical private-spike exception is not used as production authorization. This review did not repeat the original spike or real-provider acceptance."
+  },
+  {
+    "id": "SEC-0062",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/catalog.ts; apps/worker/src/imports.ts; apps/web/src/lib/dependencies.ts",
+    "tests": "apps/api/test/catalog.integration.test.ts; apps/web/tests/dependencies.test.ts; apps/worker/src/imports.test.ts",
+    "notes": "Master section 75. Versioned runtime edits, permission diff/explicit review and stale-evidence invalidation exist. A/B prove dependency-snapshot and consent changes; complete seller API/UI edit/publish/history behavior and marketing-only exceptions need the existing DB/browser suites, not run here."
+  },
+  {
+    "id": "IO-0035",
+    "status": "IN_PROGRESS",
+    "implementation": "scripts/e2e-fixture.ts; scripts/e2e-media-fixture.ts; apps/api/src/jobs.ts; apps/worker/src/runtime.ts",
+    "tests": "docs/FULLSTACK-FIXTURE.md; docs/FULLSTACK-MEDIA-FIXTURE.md; scripts/e2e-fixture.ts",
+    "notes": "Master section 88. The concrete API/storage/Worker/OpenClaw/Docker path is traceable through existing deterministic local fixtures and historical hash/settlement receipts. This batch did not run them; test-fixture inference is explicitly not paid real-provider acceptance. Full section-88 onboarding-to-delivery sequence remains aggregate partial here."
+  },
+  {
+    "id": "IO-0036",
+    "status": "IN_PROGRESS",
+    "implementation": "scripts/e2e-fixture.ts; scripts/e2e-media-fixture.ts; apps/api/src/jobs.ts; apps/worker/src/runtime.ts",
+    "tests": "docs/FULLSTACK-FIXTURE.md; docs/FULLSTACK-MEDIA-FIXTURE.md; scripts/e2e-fixture.ts",
+    "notes": "Master section 88. The concrete API/storage/Worker/OpenClaw/Docker path is traceable through existing deterministic local fixtures and historical hash/settlement receipts. This batch did not run them; test-fixture inference is explicitly not paid real-provider acceptance. Full section-88 onboarding-to-delivery sequence remains aggregate partial here."
+  },
+  {
+    "id": "IO-0038",
+    "status": "IN_PROGRESS",
+    "implementation": "docs/implementation-status.md; packages/contracts/src/index.ts; packages/openclaw-adapter/src/discovery.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/openclaw-adapter/src/discovery.test.ts; security/sandbox/self-test.mjs; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 93. Shared contracts/discovery/isolated execution and adversarial scripts exist; A verifies contracts and synthetic discovery. Section 93 includes milestone ordering, host/network experiments, cloud sequencing and repeated documentation/review obligations. Historical process/order and actual Docker experiments are not proved by current unit tests."
+  },
+  {
+    "id": "IO-0039",
+    "status": "IN_PROGRESS",
+    "implementation": "docs/implementation-status.md; packages/contracts/src/index.ts; packages/openclaw-adapter/src/discovery.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/openclaw-adapter/src/discovery.test.ts; security/sandbox/self-test.mjs; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 93. Shared contracts/discovery/isolated execution and adversarial scripts exist; A verifies contracts and synthetic discovery. Section 93 includes milestone ordering, host/network experiments, cloud sequencing and repeated documentation/review obligations. Historical process/order and actual Docker experiments are not proved by current unit tests."
+  },
+  {
+    "id": "IO-0040",
+    "status": "IN_PROGRESS",
+    "implementation": "docs/implementation-status.md; packages/contracts/src/index.ts; packages/openclaw-adapter/src/discovery.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/openclaw-adapter/src/discovery.test.ts; security/sandbox/self-test.mjs; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 93. Shared contracts/discovery/isolated execution and adversarial scripts exist; A verifies contracts and synthetic discovery. Section 93 includes milestone ordering, host/network experiments, cloud sequencing and repeated documentation/review obligations. Historical process/order and actual Docker experiments are not proved by current unit tests."
+  },
+  {
+    "id": "IO-0041",
+    "status": "IN_PROGRESS",
+    "implementation": "docs/implementation-status.md; packages/contracts/src/index.ts; packages/openclaw-adapter/src/discovery.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/openclaw-adapter/src/discovery.test.ts; security/sandbox/self-test.mjs; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 93. Shared contracts/discovery/isolated execution and adversarial scripts exist; A verifies contracts and synthetic discovery. Section 93 includes milestone ordering, host/network experiments, cloud sequencing and repeated documentation/review obligations. Historical process/order and actual Docker experiments are not proved by current unit tests."
+  },
+  {
+    "id": "SEC-0065",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/selling.tsx; apps/api/src/worker-health.ts; apps/worker/src/capability-health.ts; packages/resource-broker/src/index.ts",
+    "tests": "apps/web/tests/worker-health.test.ts; apps/web/tests/dependencies.test.ts; packages/resource-broker/test/postgres.integration.test.ts",
+    "notes": "Master section 115. Dependency/readiness displays, immutable consent checks and bounded resource-health probes exist. B verifies no invented health and security precedence. No fresh real DB/credential health failure or complete dashboard/inference-cost/last-success acceptance; warning-object gaps SR-04 remain."
+  },
+  {
+    "id": "IO-0043",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/orchestration.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "packages/marketplace-agent/test/execution-security.test.ts; packages/marketplace-agent/test/orchestration.test.ts",
+    "notes": "Master section 139. A 'resolves a named asset by field order, not aggregate asset order, and grants only that asset' and 'maps an upstream result after success and never before' use IDs/grants for file chaining. File transfer is not delegated to LLM prompt copying. Actual storage transfer acceptance is a separate boundary."
+  },
+  {
+    "id": "IO-0044",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/agent.ts; apps/api/src/jobs.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/marketplace-agent/test/execution-security.test.ts; apps/api/test/protocol.integration.test.ts",
+    "notes": "Master section 139. Cloud authorization restricts asset grants to the buyer-owned successful source job and selected output, with private delivery to the downstream job. A verifies package grant selection; actual API/DB/S3 ownership and expiry integration was not rerun."
+  },
+  {
+    "id": "IO-0045",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/marketplace-agent/src/policy.ts; packages/marketplace-agent/src/agent.ts",
+    "tests": "packages/marketplace-agent/test/recommendations.test.ts; packages/marketplace-agent/test/agent.test.ts",
+    "notes": "Master section 157. A verifies deterministic price/availability/output constraints, public facts and no hallucinated purchase authority. No measured full recommendation-evaluation corpus with real inference, repeatability/quality targets and all section-157 intents was executed."
+  },
+  {
+    "id": "IO-0046",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/marketplace-agent/src/orchestration.ts; packages/contracts/src/index.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 158. A verifies preapproval MIME/extension/size/count/requiredness/type compatibility, DAG and budget guards. Whole compatibility intent is partial: declared file semantic roles are ignored (SR-03); no invisible file conversion is introduced. Real cloud orchestration acceptance not rerun."
+  },
+  {
+    "id": "IO-0047",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/marketplace-agent/src/orchestration.ts; packages/contracts/src/index.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 158. A verifies preapproval MIME/extension/size/count/requiredness/type compatibility, DAG and budget guards. Whole compatibility intent is partial: declared file semantic roles are ignored (SR-03); no invisible file conversion is introduced. Real cloud orchestration acceptance not rerun."
+  },
+  {
+    "id": "IO-0048",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts",
+    "notes": "Master section 158. A 'A13: rejects PNG output to PDF input before any approval or purchase' asserts no quote, job purchase or saved plan; 'rejects extension, size, minimum-count and unguaranteed-index mismatches' checks deterministic refusal. The concrete incompatible-chain/no-silent-conversion clause is tested, not every semantic compatibility rule."
+  },
+  {
+    "id": "IO-0049",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts",
+    "notes": "Master section 158. A 'A13: rejects PNG output to PDF input before any approval or purchase' asserts no quote, job purchase or saved plan; 'rejects extension, size, minimum-count and unguaranteed-index mismatches' checks deterministic refusal. The concrete incompatible-chain/no-silent-conversion clause is tested, not every semantic compatibility rule."
+  },
+  {
+    "id": "SEC-0067",
+    "status": "BLOCKED",
+    "implementation": "apps/api/src/config.ts; docs/implementation-status.md",
+    "tests": "docs/SECURITY-REVIEW.md",
+    "notes": "Master section 166. Production secret-manager deployment, IAM policy, encryption/rotation and staging/production credential separation require operator cloud provisioning and acceptance evidence. Env-injected server configuration is implemented but is not proof of an actual managed-secret deployment. No production credentials read or requested in this review."
+  },
+  {
+    "id": "SEC-0068",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/config.ts; packages/marketplace-agent/src/inference.ts; apps/web/src/lib/api.ts",
+    "tests": "packages/marketplace-agent/test/agent.test.ts; packages/marketplace-agent/test/inference.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 166. Platform inference credentials are supplied server-side and public candidate projections omit secrets; A checks whitelisted records and sanitized provider failures. No fresh production client-bundle/image/secret-manager audit proving all secrets stay server-side was performed."
+  },
+  {
+    "id": "SEC-0069",
+    "status": "IN_PROGRESS",
+    "implementation": ".env.example; docs/implementation-status.md",
+    "tests": "docs/SECURITY-REVIEW.md",
+    "notes": "Master section 166. Template contains intentional nonsecret local-service defaults, not literally variable names only. Section 554 also calls for working local development defaults. No real credential identified in the template review, but no full git-history secret scan was run; parent must preserve this literal documentation/default distinction instead of marking section 166 complete."
+  },
+  {
+    "id": "IO-0051",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/inference.ts; packages/marketplace-agent/src/agent.ts",
+    "tests": "packages/marketplace-agent/test/inference.test.ts; packages/marketplace-agent/test/agent.test.ts",
+    "notes": "Master section 172. For section-172 platform AI business-logic responses, A 'validates structured output and records usage separately from purchases', 'blocks invented tools and malformed parameters before any executor', and 'bounds malformed JSON retries and charges uncertain attempts' verify schema validation and bounded failure. Provider fixtures are synthetic, not a live model quality/compatibility acceptance."
+  },
+  {
+    "id": "IO-0052",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/agent.ts; packages/marketplace-agent/src/inference.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/marketplace-agent/test/agent.test.ts; packages/marketplace-agent/test/inference.test.ts",
+    "notes": "Master section 172. A 'provider failure and invalid plans have zero purchase side effects' and 'authorizes the entire tool batch before invoking any tool' verify malformed model output cannot bypass deterministic validation into a financial/job instruction. In-memory executor assertions, not live billing."
+  },
+  {
+    "id": "IO-0054",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/inference.ts",
+    "tests": "packages/marketplace-agent/test/inference.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 183. A 'uses OpenAI Responses, normalized function calls, store:false and native JSON schema' verifies the concrete wire adapter against a synthetic provider. Official OpenAI Responses migration documentation was checked in this review and still recommends Responses for new projects. No credentialed provider call or broad model acceptance claim."
+  },
+  {
+    "id": "IO-0055",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/marketplace-agent/src/inference.ts; docs/AGENT-STATUS.md",
+    "tests": "packages/marketplace-agent/test/inference.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 183. The adapter uses Responses and current documented text.format/function-call behavior rather than a plan-frozen historical endpoint. Wire fixtures pass A and current official documentation was checked; future API/model evolution is a maintenance obligation, not a permanently tested invariant."
+  },
+  {
+    "id": "IO-0056",
+    "status": "TESTED",
+    "implementation": "packages/marketplace-agent/src/inference.ts; docs/SECURITY-REVIEW.md",
+    "tests": "docs/SECURITY-REVIEW.md",
+    "notes": "Master section 183. Explicit reproducible review evidence: the official OpenAI migrate-to-Responses page was opened and checked for /v1/responses, text.format and store:false during this review (2026-10-06). This tests the narrow documentation-check obligation, not provider runtime acceptance."
+  },
+  {
+    "id": "IO-0057",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts; apps/web/src/components/contract-builder.tsx; apps/api/src/jobs.ts; apps/worker/src/tools.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; apps/web/tests/forms.test.ts; packages/marketplace-agent/test/orchestration.test.ts",
+    "notes": "Master section 192. Versioned shared input/output definitions drive seller forms, buyer forms, API job validation, Worker result validation and chaining. A/B verify requiredness, typed values, file metadata and frozen snapshots. Whole I/O-contract acceptance includes cross-service publication/delivery not run here and compatibility gap SR-03."
+  },
+  {
+    "id": "IO-0059",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; apps/web/src/lib/forms.ts; apps/api/src/jobs.ts; apps/worker/src/tools.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; apps/web/tests/forms.test.ts; packages/marketplace-agent/test/execution-security.test.ts",
+    "notes": "Master section 192. Source consumers use the same versioned IOContract rather than separately hand-maintained field definitions. A/B exercise shared buyer validation and frozen orchestration snapshots. The full seller-to-API-to-Worker-to-preview lifecycle was not rerun; capability DTO interfaces do not replace runtime response validation (SR-02)."
+  },
+  {
+    "id": "IO-0060",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; apps/web/src/lib/forms.ts; apps/api/src/jobs.ts; apps/worker/src/tools.ts; packages/marketplace-agent/src/orchestration.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; apps/web/tests/forms.test.ts; packages/marketplace-agent/test/execution-security.test.ts",
+    "notes": "Master section 192. Source consumers use the same versioned IOContract rather than separately hand-maintained field definitions. A/B exercise shared buyer validation and frozen orchestration snapshots. The full seller-to-API-to-Worker-to-preview lifecycle was not rerun; capability DTO interfaces do not replace runtime response validation (SR-02)."
+  },
+  {
+    "id": "IO-0061",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts; apps/web/src/components/contract-builder.tsx; packages/openclaw-adapter/src/policy.ts; packages/storage/src/index.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/storage/src/media.test.ts; packages/openclaw-adapter/src/media.test.ts; apps/worker/src/security.test.ts",
+    "notes": "Master section 193. Scalar/JSON/choice/file inputs and a closed set of image/video/audio/PDF/CSV/3D/Blender formats exist; A verifies supported-format and adversarial parsing cases. Section 198 makes DOCX/XLSX/GLB/GLTF and archives conditional: unsupported Worker formats fail closed, not an unconditional absent-MVP-format finding. SR-01 structural MP4 fix passed 14 real FFmpeg/Blender boundary cases; complete buyer-job/all-format acceptance is not claimed."
+  },
+  {
+    "id": "IO-0062",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/index.ts; apps/web/src/components/contract-builder.tsx; packages/openclaw-adapter/src/policy.ts; packages/storage/src/index.ts",
+    "tests": "packages/contracts/src/contracts.test.ts; packages/storage/src/media.test.ts; packages/openclaw-adapter/src/media.test.ts; apps/worker/src/security.test.ts",
+    "notes": "Master section 193. Scalar/JSON/choice/file inputs and a closed set of image/video/audio/PDF/CSV/3D/Blender formats exist; A verifies supported-format and adversarial parsing cases. Section 198 makes DOCX/XLSX/GLB/GLTF and archives conditional: unsupported Worker formats fail closed, not an unconditional absent-MVP-format finding. SR-01 structural MP4 fix passed 14 real FFmpeg/Blender boundary cases; complete buyer-job/all-format acceptance is not claimed."
+  },
+  {
+    "id": "IO-0071",
+    "status": "IN_PROGRESS",
+    "implementation": "scripts/e2e-media-fixture.ts; apps/web/src/components/contract-builder.tsx; packages/contracts/src/index.ts; security/sandbox/runner.mjs",
+    "tests": "docs/FULLSTACK-MEDIA-FIXTURE.md; packages/contracts/src/contracts.test.ts; packages/openclaw-adapter/src/media.test.ts",
+    "notes": "Master section 199. Existing deterministic full-stack Blender fixture consumes a synthetic scene and hashes PNG delivery with one capture; this review did not rerun it. The section's 500 MB/4K values are illustrative, not required defaults. Current adapter has finite 16 MiB aggregate/8 MiB per-file limits; no arbitrary-size/media acceptance claim."
+  },
+  {
+    "id": "IO-0072",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; apps/web/src/components/contract-builder.tsx; apps/web/src/components/contract-form.tsx",
+    "tests": "apps/web/e2e/flows.spec.ts; apps/web/tests/contract-definition.test.ts",
+    "notes": "Master section 201. Contract group metadata, ordered seller controls and grouped buyer rendering exist. B verifies surrounding contract definitions, not rendered grouping/reordering across desktop/mobile. Existing browser flow tests were inspected but not run."
+  },
+  {
+    "id": "IO-0074",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/contracts/src/index.ts; apps/web/src/lib/forms.ts; apps/web/src/components/contract-form.tsx",
+    "tests": "packages/contracts/src/contracts.test.ts; apps/web/tests/contract-definition.test.ts; apps/web/tests/forms.test.ts",
+    "notes": "Master section 202. A 'enforces required conditional input regardless of display order' and B 'prunes a nested field when its controller is itself hidden' prove equality-based conditional validation, hidden-field removal and cycle constraints. Full seller condition editing and browser display acceptance was not rerun, so section-level status is IMPLEMENTED, not TESTED."
+  },
+  {
+    "id": "IO-0079",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/imports.ts; packages/openclaw-adapter/src/discovery.ts; apps/web/src/components/contract-builder.tsx",
+    "tests": "apps/worker/src/imports.test.ts; packages/openclaw-adapter/src/discovery.test.ts",
+    "notes": "Master section 205. Explicit import selection and seller-authored contract review exist; A proves no automatic local-resource exposure. The section says suggestions 'may' be derived. A generalized import-to-contract suggestion feature was not found; optional suggestion absence is not treated as a missing mandatory MVP feature. Full suggested-contract acceptance is not exercised."
+  },
+  {
+    "id": "IO-0080",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/imports.ts; apps/web/src/components/contract-builder.tsx; apps/api/src/catalog.ts",
+    "tests": "apps/worker/src/imports.test.ts; apps/api/test/catalog.integration.test.ts",
+    "notes": "Master section 205. Nothing auto-publishes a suggested interface: seller explicitly supplies/reviews the contract and capability version. Synthetic import consent tests pass A; actual suggestion-edit-confirm-publication flow was not run and generalized automatic suggestions are optional."
+  },
+  {
+    "id": "IO-0081",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; packages/resource-broker/src/policy.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; packages/resource-broker/test/broker.test.ts",
+    "notes": "Master section 205. A discovery test 'discovers references without selecting, exposing secrets, running tools, or modifying personal files/metadata' and broker 'requires an explicit permission resource and approved credential closure' prove detected resources do not silently become buyer-controlled inputs/grants. Scope is the discovery/import/broker boundary."
+  },
+  {
+    "id": "IO-0089",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/index.ts; packages/openclaw-adapter/src/files.ts; security/sandbox/runner.mjs; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts",
+    "notes": "Master section 212. The recommended conceptual result.json mapping is implemented as pinned OpenClaw workspace result/kivro-result.json projected into /job/output, validated and replaced with asset IDs. This documented adapter difference preserves canonical collection, not literal filename identity. A checks path/field projection; full manifest/upload/finalize execution not rerun."
+  },
+  {
+    "id": "IO-0093",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/index.ts; security/sandbox/runner.mjs; packages/openclaw-adapter/src/files.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "notes": "Master section 213. Platform-controlled instructions use the pinned nested workspace result directory; runner maps approved results into /job/output and collector forbids outside references. A verifies canonical path/link rejection. This is a documented path adaptation to the conceptual instructions, not proof from instructions alone or a rerun of actual OpenClaw generation."
+  },
+  {
+    "id": "IO-0094",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/index.ts; security/sandbox/runner.mjs; packages/openclaw-adapter/src/files.ts",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "notes": "Master section 213. Platform-controlled instructions use the pinned nested workspace result directory; runner maps approved results into /job/output and collector forbids outside references. A verifies canonical path/link rejection. This is a documented path adaptation to the conceptual instructions, not proof from instructions alone or a rerun of actual OpenClaw generation."
+  },
+  {
+    "id": "IO-0095",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/index.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/policy.ts",
+    "tests": "apps/worker/src/security.test.ts; packages/openclaw-adapter/src/security.test.ts; scripts/e2e-media-fixture.ts",
+    "notes": "Master section 214. Input binaries are downloaded as assets and prompts reference safe sandbox paths, with processing through approved tools/skills. A verifies required file selections and supported-format gates; actual Blender/vision/media processing and every contract-to-dependency path were not rerun. Source-only assertion about prompt construction is not whole-section end-to-end proof."
+  },
+  {
+    "id": "IO-0097",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/capabilities.ts; packages/openclaw-adapter/src/policy.ts; apps/worker/src/validation.ts",
+    "tests": "apps/worker/src/security.test.ts; apps/worker/src/imports.test.ts",
+    "notes": "Master section 214. Contract admission is connected to supported tools and immutable dependency closure; capability validation requires actual approved inputs/resources. A tests missing selection/grant/changed snapshot rejection. The SR-01 follow-up fixes the MP4 structural validation branch with real FFmpeg boundary tests; full declared-tool processing and publication acceptance for every supported format were not rerun."
+  },
+  {
+    "id": "IO-0100",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/storage/src/index.ts; packages/storage/src/media.ts; apps/worker/src/validation.ts",
+    "tests": "packages/storage/src/media.test.ts; packages/openclaw-adapter/src/media.test.ts; packages/openclaw-adapter/src/media.integration.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 215. Original SR-01 24-byte ftyp-only false acceptance is preserved as history in SECURITY-REVIEW.md. FIXED BOUNDED SCOPE: MP4 now shares the MOV/M4A bounded atom/reference/offset/sample checks and requires a video track; signature fallback removed. Executed 'rejects %s MP4 before storage acceptance', 'rejects %s MP4 at input, result projection and directory collection boundaries', and 14 real FFmpeg/Blender cases cover ordinary/fast-start valid MP4 plus ftyp-only/no-tracks/missing-mdat corruption. 78 focused tests and both package typechecks also passed. Whole literal capability-publication acceptance remains IN_PROGRESS: no full OpenClaw/API job/settlement rerun or universal codec-decoder correctness claim."
+  },
+  {
+    "id": "IO-0101",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/storage/src/index.ts; packages/storage/src/media.ts; apps/worker/src/validation.ts",
+    "tests": "packages/storage/src/media.test.ts; packages/openclaw-adapter/src/media.test.ts; packages/openclaw-adapter/src/media.integration.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 215. Original SR-01 24-byte ftyp-only false acceptance is preserved as history in SECURITY-REVIEW.md. FIXED BOUNDED SCOPE: MP4 now shares the MOV/M4A bounded atom/reference/offset/sample checks and requires a video track; signature fallback removed. Executed 'rejects %s MP4 before storage acceptance', 'rejects %s MP4 at input, result projection and directory collection boundaries', and 14 real FFmpeg/Blender cases cover ordinary/fast-start valid MP4 plus ftyp-only/no-tracks/missing-mdat corruption. 78 focused tests and both package typechecks also passed. Whole literal capability-publication acceptance remains IN_PROGRESS: no full OpenClaw/API job/settlement rerun or universal codec-decoder correctness claim."
+  },
+  {
+    "id": "IO-0108",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/asset-uploads.ts; packages/storage/src/index.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/files.ts; packages/storage/src/media.ts",
+    "tests": "apps/web/tests/uploads.test.ts; apps/api/test/asset-uploads.integration.test.ts; docs/FULLSTACK-MEDIA-FIXTURE.md",
+    "notes": "Master section 218. Direct signed object uploads and bounded streams avoid unnecessary API proxying, but adapter frames still base64-buffer finite results (16 MiB aggregate/8 MiB per output) and media structural sniffing buffers the approved full file under the configured <=100 MiB cap. Explicitly not constant-memory or unrestricted large-file support. Real S3/CORS/large-file acceptance not run here."
+  },
+  {
+    "id": "IO-0111",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/operations.ts; packages/database/prisma/schema.prisma; apps/api/src/assets.ts",
+    "tests": "apps/api/test/operations.test.ts; apps/api/test/operations-policy.integration.test.ts",
+    "notes": "Master section 220. Run A covers honest uploaded/retained/granted-byte operations counters; asset lifecycle timestamps and expiry are stored. No complete measured byte-time storage-duration or actual egress/provider-cost billing telemetry: presigned download grants are not observed bytes transferred. Null/unmeasured cost is retained rather than fabricated zero; real S3 metering remains outside this receipt."
+  },
+  {
+    "id": "IO-0112",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/operations.ts; packages/database/prisma/schema.prisma; apps/api/src/assets.ts",
+    "tests": "apps/api/test/operations.test.ts; apps/api/test/operations-policy.integration.test.ts",
+    "notes": "Master section 220. Run A covers honest uploaded/retained/granted-byte operations counters; asset lifecycle timestamps and expiry are stored. No complete measured byte-time storage-duration or actual egress/provider-cost billing telemetry: presigned download grants are not observed bytes transferred. Null/unmeasured cost is retained rather than fabricated zero; real S3 metering remains outside this receipt."
+  },
+  {
+    "id": "IO-0117",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/marketplace-agent/src/orchestration.ts; packages/contracts/src/index.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 223. Run A proves MIME/extension/cardinality/size/named-field requiredness compatibility. SR-03 actual read-only reproduction accepts source product_image into target reference_image even though both semanticType tags are declared; checkAssetMapping never reads semanticType. The Master asks to compare semantic role where available, not to reject every unequal label without a compatibility policy."
+  },
+  {
+    "id": "IO-0124",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/marketplace-agent/src/orchestration.ts; apps/api/src/agent.ts; apps/api/src/jobs.ts",
+    "tests": "packages/marketplace-agent/test/execution-security.test.ts; apps/api/test/protocol.integration.test.ts",
+    "notes": "Master section 226. Read in its full sentence: Seller B must not gain other Job A outputs/metadata/buyer files unless the downstream contract needs them. A 'resolves a named asset by field order, not aggregate asset order, and grants only that asset' verifies selection. Actual persisted cross-job grant ownership/expiry and Worker disclosure were not rerun."
+  },
+  {
+    "id": "IO-0125",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/jobs.ts; apps/api/src/background.ts; apps/web/src/components/jobs.tsx; apps/web/src/components/data-processing.tsx",
+    "tests": "apps/api/test/operations-policy.integration.test.ts; apps/web/e2e/results-ui.spec.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 228. Cloud expiry/deletion fields, fixed automatic retention, buyer job-page notice and local-workspace cleanup exist. The Master explicitly permits fixed platform retention for MVP; buyer-selectable delete-after-success is a possible future option, not a missing current feature. Actual object deletion, temporary Worker cleanup and rendered notice were not exercised here, so whole-section TESTED is not claimed."
+  },
+  {
+    "id": "IO-0126",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/jobs.tsx; apps/web/src/components/data-processing.tsx; apps/api/src/jobs.ts",
+    "tests": "apps/web/e2e/results-ui.spec.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 228. Source shows job retention/expiry and cloud-content deletion notices and distinguishes cloud cleanup from local processing. Rendered buyer-job retention display was not verified in this batch; source existence alone does not justify TESTED."
+  },
+  {
+    "id": "IO-0130",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/marketplace.tsx; apps/web/src/components/contract-form.tsx",
+    "tests": "apps/web/e2e/flows.spec.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 234. Public cards expose compact input/output contract summaries. Section wording is 'where useful'; not every card must display every illustrative badge. Source inspected, but desktop/mobile card rendering and all file-label combinations were not rerun."
+  },
+  {
+    "id": "IO-0131",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/contract-builder.tsx; apps/web/src/components/contract-form.tsx; packages/contracts/src/index.ts; apps/api/src/catalog.ts",
+    "tests": "apps/web/tests/contract-definition.test.ts; apps/web/tests/forms.test.ts; packages/contracts/src/contracts.test.ts; apps/web/e2e/flows.spec.ts",
+    "notes": "Master section 235. A/B validate schema/defaults/required conditional inputs/file metadata and seller builder source covers typed fields/order/groups/constraints. Authorized SR-01 MP4 structural repair passed 78 focused and 14 real-codec boundary tests. Whole checklist also requires rendered seller editing, buyer form, saved API versions, Worker validation and full Blender job acceptance; that browser/DB/full-stack checklist was not rerun."
+  },
+  {
+    "id": "IO-0132",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/contract-builder.tsx; packages/contracts/src/index.ts",
+    "tests": "apps/web/e2e/flows.spec.ts; packages/contracts/src/contracts.test.ts",
+    "notes": "Master section 235. Seller builder includes required/optional field controls and shared schema enforces requiredness. A verifies contract semantics, but does not interact with the seller control itself; actual required/optional UI configuration assertion was not rerun, hence IMPLEMENTED."
+  },
+  {
+    "id": "SEC-0074",
+    "status": "TESTED",
+    "implementation": "packages/research-broker/src/egress.ts",
+    "tests": "packages/research-broker/test/egress.test.ts",
+    "notes": "Master section 243. Run A includes nonpublic/special IPv4/IPv6 and URL-encoding cases, 'rejects mixed public/private DNS answers before opening any socket', 're-resolves redirects, blocking rebinding to private DNS' and 'denies redirect to cloud metadata without connecting'. Tests intercept node HTTP transport/resolver, proving validation logic beyond URL strings, not live SSRF network acceptance."
+  },
+  {
+    "id": "SEC-0075",
+    "status": "TESTED",
+    "implementation": "packages/research-broker/src/egress.ts",
+    "tests": "packages/research-broker/test/egress.test.ts",
+    "notes": "Master section 243. Run A includes nonpublic/special IPv4/IPv6 and URL-encoding cases, 'rejects mixed public/private DNS answers before opening any socket', 're-resolves redirects, blocking rebinding to private DNS' and 'denies redirect to cloud metadata without connecting'. Tests intercept node HTTP transport/resolver, proving validation logic beyond URL strings, not live SSRF network acceptance."
+  },
+  {
+    "id": "SEC-0077",
+    "status": "TESTED",
+    "implementation": "packages/research-broker/src/broker.ts; packages/research-broker/src/public-requests.ts",
+    "tests": "packages/research-broker/test/broker.test.ts; packages/research-broker/test/public-requests.test.ts",
+    "notes": "Master section 248. Run A: 'rejects arbitrary POST and body fields, even when content requests exfiltration', 'requires approved connector, exact domain, strict arguments and explicit private-data grant' and 'does not expose endpoint/method/header overrides in a typed connector'. Research permission alone cannot grant state mutation through these broker APIs."
+  },
+  {
+    "id": "IO-0134",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/research-broker/src/broker.ts; packages/research-broker/src/egress.ts; apps/worker/src/tools.ts",
+    "tests": "packages/research-broker/test/egress.test.ts; packages/research-broker/test/broker.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 250. Text/HTML research downloads use bounded transport, MIME/timeout/hash/provenance and untrusted-data conversion, tested in A. General public image/PDF/CSV ingestion into safe job files with applicable malware scanning is not implemented by this text-oriented broker; binary/executable content is denied. Fail-closed restriction is not whole section-250 download-pipeline completion. The Master introduces public asset downloads conditionally ('may require'); absence of a general binary importer is a supported-scope boundary, not by itself proof that every research capability must implement that feature."
+  },
+  {
+    "id": "IO-0135",
+    "status": "TESTED",
+    "implementation": "packages/research-broker/src/broker.ts; packages/research-broker/src/egress.ts; packages/openclaw-adapter/src/policy.ts",
+    "tests": "packages/research-broker/test/broker.test.ts; packages/research-broker/test/egress.test.ts",
+    "notes": "Master section 250. Run A 'returns readable untrusted data and provenance without executable markup' and 'blocks compressed bombs and executable content types' verify research content is data, not automatic executable installation. This tests the currently supported text-download boundary; generic binary job-file downloads are not implemented (IO-0134)."
+  },
+  {
+    "id": "SEC-0079",
+    "status": "TESTED",
+    "implementation": "packages/research-broker/src/broker.ts",
+    "tests": "packages/research-broker/test/broker.test.ts; packages/research-broker/test/inference-bridge.test.ts",
+    "notes": "Master section 252. A 'returns readable untrusted data and provenance without executable markup' and 'does not hide prompt injection as trusted instructions' verify retrieved content stays explicitly untrusted with provenance. The invariant concerns labeling/boundary handling; it is not a claim of perfect model-level prompt-injection resistance."
+  },
+  {
+    "id": "SEC-0080",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/resource-broker/src/index.ts; packages/resource-broker/src/policy.ts; packages/resource-broker/src/files.ts; apps/worker/src/tools.ts",
+    "tests": "packages/resource-broker/test/broker.test.ts; apps/worker/src/security.test.ts",
+    "notes": "Master section 252. A 'requires an operation grant even when the named operation exists', 'requires an explicit permission resource and approved credential closure', arbitrary-path rejection and 'requires stored capability-scoped resource grants and detects changed snapshots' prove narrow host broker authorization. Actual sandbox non-access and real DB ACL tests are separate, not rerun. The complete 'only' exposure invariant additionally depends on real sandbox isolation, unverified in this batch."
+  },
+  {
+    "id": "SEC-0081",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/research-broker/src/broker.ts; packages/resource-broker/src/index.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "packages/research-broker/test/broker.test.ts; packages/research-broker/test/public-requests.test.ts; packages/resource-broker/test/broker.test.ts",
+    "notes": "Master section 252. A proves fixed prefetch/cache-only access after private input, private-taint denial, strict connector schema and immutable resource grants independent of prompts. Complete section-252 private-data/tool/sandbox enforcement also needs actual Docker/runtime acceptance, not rerun; no universal semantic prompt-injection guarantee."
+  },
+  {
+    "id": "SEC-0083",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/research-broker/src/egress.ts; packages/research-broker/src/broker.ts; packages/research-broker/src/public-requests.ts",
+    "tests": "packages/research-broker/test/egress.test.ts; packages/research-broker/test/broker.test.ts; packages/research-broker/test/public-requests.test.ts",
+    "notes": "Master section 266. A covers port/private-network/metadata/proxy-argument denial, fixed request counts/bytes/time and no arbitrary message methods. Every listed semantic abuse category, including phishing/credential attacks hidden within otherwise public reads, is not exhaustively classified or empirically blocked. No complete anti-abuse certification from primitive tests."
+  },
+  {
+    "id": "SEC-0084",
+    "status": "TESTED",
+    "implementation": "packages/research-broker/src/broker.ts; packages/research-broker/src/public-requests.ts",
+    "tests": "packages/research-broker/test/broker.test.ts; packages/research-broker/test/public-requests.test.ts",
+    "notes": "Master section 266. A rejects model-injected query/url/method/headers/body/proof/limits, uses fixed reviewed public source selectors and denies arbitrary POST irrespective of natural-language intent. This directly verifies the narrow-primitives-first approach, not perfect natural-language abuse detection."
+  },
+  {
+    "id": "SEC-0086",
+    "status": "TESTED",
+    "implementation": "packages/research-broker/src/egress.ts",
+    "tests": "packages/research-broker/test/egress.test.ts",
+    "notes": "Master section 268. A 'pins one validated DNS answer while preserving hostname and disables socket pooling', 'checks the connected peer against the pin', redirect rebinding and IPv6 cases exercise validation in the actual connection-opening component. Transport is intercepted by the unit harness: logical connection-boundary enforcement tested, not a live external-network penetration test."
+  },
+  {
+    "id": "SEC-0087",
+    "status": "TESTED",
+    "implementation": "packages/research-broker/src/egress.ts",
+    "tests": "packages/research-broker/test/egress.test.ts",
+    "notes": "Master section 268. A 'pins one validated DNS answer while preserving hostname and disables socket pooling', 'checks the connected peer against the pin', redirect rebinding and IPv6 cases exercise validation in the actual connection-opening component. Transport is intercepted by the unit harness: logical connection-boundary enforcement tested, not a live external-network penetration test."
+  },
+  {
+    "id": "SEC-0091",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/research-broker/src/public-requests.ts; packages/research-broker/src/broker.ts; apps/worker/src/tools.ts",
+    "tests": "packages/research-broker/test/public-requests.test.ts; packages/research-broker/test/broker.test.ts; apps/worker/src/security.test.ts",
+    "notes": "Master section 277. A 'intersects flags/domains/types, clamps numeric limits and cannot change network mode', no raw request overrides, explicit typed connector grants and 'denies network egress for private jobs and refuses paused tools' verify minimum approved broker primitives. Network=NONE does not imply local inference; host provider processing is separate. Actual sandbox/network/provider execution for all advertised primitives was not rerun; the complete capability-level claim remains unverified."
+  },
+  {
+    "id": "SEC-0092",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/catalog.ts; apps/web/src/components/permissions.tsx; packages/contracts/src/index.ts",
+    "tests": "apps/api/test/catalog.integration.test.ts; apps/web/tests/dependencies.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 299. Public capability projection and UI render platform-derived Internet, seller-resource count/read-only, buyer-file and shell facts rather than a raw internal config. Full readable manifest is incomplete: database versus selected local files/private APIs and external-side-effect/browser indicators are not separately represented. Actual publish-to-buyer display/redaction integration not rerun."
+  },
+  {
+    "id": "SEC-0093",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/catalog.ts; apps/web/src/components/permissions.tsx; packages/contracts/src/index.ts",
+    "tests": "apps/api/test/catalog.integration.test.ts; apps/web/tests/dependencies.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 299. Public capability projection and UI render platform-derived Internet, seller-resource count/read-only, buyer-file and shell facts rather than a raw internal config. Full readable manifest is incomplete: database versus selected local files/private APIs and external-side-effect/browser indicators are not separately represented. Actual publish-to-buyer display/redaction integration not rerun."
+  },
+  {
+    "id": "SEC-0094",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/permissions.tsx; packages/resource-broker/src/policy.ts; packages/resource-broker/src/files.ts",
+    "tests": "packages/resource-broker/test/broker.test.ts; apps/api/test/catalog.integration.test.ts",
+    "notes": "Master section 299. Broker enforces read-only database operations and exact immutable selected files; A proves selected-file/path denial and no arbitrary SQL configuration. Buyer UI aggregates 'Seller resources: N approved, read-only' rather than distinct database and selected-dataset indicators. Enforcement does not by itself satisfy the public-manifest display clause."
+  },
+  {
+    "id": "SEC-0095",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/permissions.tsx; packages/resource-broker/src/policy.ts; packages/resource-broker/src/files.ts",
+    "tests": "packages/resource-broker/test/broker.test.ts; apps/api/test/catalog.integration.test.ts",
+    "notes": "Master section 299. Broker enforces read-only database operations and exact immutable selected files; A proves selected-file/path denial and no arbitrary SQL configuration. Buyer UI aggregates 'Seller resources: N approved, read-only' rather than distinct database and selected-dataset indicators. Enforcement does not by itself satisfy the public-manifest display clause."
+  },
+  {
+    "id": "SEC-0096",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/permissions.tsx; packages/marketplace-agent/src/policy.ts",
+    "tests": "apps/web/tests/agent-recommendations.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 299. Human-readable permission summary and recommendation facts exist. Complete understandable powers by category are not represented (SEC-0094/0095), and no usability study proves recognizability or buyer understanding. Counts/source existence are not evidence of the full trust-primitive intent."
+  },
+  {
+    "id": "SEC-0097",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/web/src/components/permissions.tsx; packages/marketplace-agent/src/policy.ts",
+    "tests": "apps/web/tests/agent-recommendations.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 299. Human-readable permission summary and recommendation facts exist. Complete understandable powers by category are not represented (SEC-0094/0095), and no usability study proves recognizability or buyer understanding. Counts/source existence are not evidence of the full trust-primitive intent."
+  },
+  {
+    "id": "SEC-0099",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/api/src/catalog.ts; apps/web/src/components/permissions.tsx; apps/worker/src/capabilities.ts; packages/contracts/src/index.ts",
+    "tests": "apps/api/test/catalog.integration.test.ts; apps/web/tests/dependencies.test.ts; packages/contracts/src/contracts.test.ts",
+    "notes": "Master section 302. Permission facts are derived from immutable capability permissions/dependencies and rendered without seller-authored security claims; hashes/consent bind snapshots. A/B verify hashing, provenance and dependency change invalidation. Full API immutable-version/public-manifest DB assertions were not rerun, and display-category completeness is tracked separately."
+  },
+  {
+    "id": "SEC-0105",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/marketplace-agent/src/types.ts; packages/marketplace-agent/src/policy.ts; packages/marketplace-agent/src/agent.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts; packages/marketplace-agent/test/agent.test.ts",
+    "notes": "Master section 304. A verifies structured noNetwork filtering over actual permission mode rather than descriptive claims. Browser tools are globally unsupported in the current MVP; there is no general buyer forbidden-tool/category constraint. Thus current no-network behavior is tested, not every future permission-filter example or whole section."
+  },
+  {
+    "id": "SEC-0106",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/marketplace-agent/src/types.ts; packages/marketplace-agent/src/policy.ts",
+    "tests": "packages/marketplace-agent/test/orchestration.test.ts; packages/marketplace-agent/test/agent.test.ts",
+    "notes": "Master section 304. A 'never trades permission, rating or price constraints for availability' proves noNetwork is a hard structured filter. The full surrounding clause also discusses avoiding browser access: presently achieved by globally denying unsupported browser tools, not a distinct structured buyer browser constraint. Do not claim a general arbitrary-permission constraint mechanism."
+  },
+  {
+    "id": "IO-0138",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-examples.tsx; apps/web/src/components/job-result.tsx; apps/web/src/lib/examples.ts",
+    "tests": "apps/web/tests/examples.test.ts; apps/web/tests/result-rendering.test.ts; apps/web/e2e/examples.spec.ts",
+    "notes": "Master section 361. B verifies safe current public example assets, typed Markdown/JSON rendering, no private-job URL fallback and contract validation. Source renders curated examples through the same typed result surface. All visual example types/desktop/mobile and real public publication/download were not rerun, so full display section is not TESTED."
+  },
+  {
+    "id": "IO-0140",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/web/src/components/capability-examples.tsx; apps/web/src/components/contract-form.tsx; packages/contracts/src/index.ts",
+    "tests": "apps/web/tests/examples.test.ts; packages/contracts/src/contracts.test.ts; apps/web/e2e/examples.spec.ts",
+    "notes": "Master section 364. Example UI states that examples illustrate results while the contract defines requirements; shared validation remains contract-driven. A/B verify required outputs and example-contract validation, but the actual buyer-facing disclaimer rendering/context was not rerun."
+  },
+  {
+    "id": "SEC-0109",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/readiness.ts; apps/worker/src/runtime.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/security.test.ts; apps/worker/src/runtime.test.ts; security/sandbox/self-test.mjs",
+    "notes": "Master section 373. Missing/invalid sandbox blocks readiness and acceptance rather than host fallback. A verifies startup blockers, immutable consent, acceptance rejection and no-Docker-start timing paths with mocked Docker. Actual unavailable-Docker startup and isolation tests were not executed here."
+  },
+  {
+    "id": "SEC-0111",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/api/src/worker-health.ts; apps/worker/src/readiness.ts; apps/web/src/lib/worker-health.ts; apps/web/src/components/worker-health-history.tsx",
+    "tests": "apps/web/tests/worker-health.test.ts; apps/worker/src/diagnostics.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 377. Health state/reason codes, history and diagnostics exist and B tests security precedence/no invented telemetry. SR-04: section-377 first-class warnings with all severity/title/description/affected entity/detectedAt/required action/blocking fields and all listed categories are not present as a complete dashboard contract. Protection code exists independently."
+  },
+  {
+    "id": "SEC-0112",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/imports.ts; apps/worker/src/capability-health.ts; apps/web/src/lib/worker-health.ts",
+    "tests": "apps/worker/src/imports.test.ts; apps/web/tests/worker-health.test.ts",
+    "notes": "Master section 377. A verifies credential/dependency changes invalidate proof and require reconsent/new version; B preserves health reason codes. Full first-class 'capability requires revalidation' warning object/display is not separately exercised, so behavior is source-confirmed but not whole warning-UX TESTED."
+  },
+  {
+    "id": "SEC-0113",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; apps/api/src/worker-health.ts; apps/web/src/lib/worker-health.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/web/tests/worker-health.test.ts; docs/SECURITY-REVIEW.md",
+    "notes": "Master section 378. Automatic security blocking is implemented and A/B cover security precedence/no override. Complete INFO/WARNING/CRITICAL structured warning details and dashboard action/history presentation remain partial (SR-04); actual critical runtime stop/remote propagation on real Docker not rerun."
+  },
+  {
+    "id": "SEC-0114",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/readiness.ts; apps/api/src/security-policy.ts; apps/api/src/job-containment.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/web/tests/worker-health.test.ts; apps/api/test/containment.integration.test.ts",
+    "notes": "Master section 378. Protection does not wait for seller dashboard attention: security/readiness loss prevents new work, cancels affected work and blocks resume; A/B test security-block override and late-readiness refusal. Full critical-condition matrix and actual cloud/DB/Docker stop/containment were not rerun, so the universal critical-condition clause is not marked TESTED."
+  },
+  {
+    "id": "SEC-0115",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/readiness.ts; apps/api/src/security-policy.ts; apps/api/src/job-containment.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/web/tests/worker-health.test.ts; apps/api/test/containment.integration.test.ts",
+    "notes": "Master section 378. Protection does not wait for seller dashboard attention: security/readiness loss prevents new work, cancels affected work and blocks resume; A/B test security-block override and late-readiness refusal. Full critical-condition matrix and actual cloud/DB/Docker stop/containment were not rerun, so the universal critical-condition clause is not marked TESTED."
+  },
+  {
+    "id": "SEC-0116",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/api/src/security-policy.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/runtime.test.ts; apps/api/test/containment.integration.test.ts",
+    "notes": "Master section 393. Durable SECURITY pause cannot be cleared by ordinary resume; A 'never lets the confirmed per-job override bypass a security block' and changed-consent resume tests verify the Worker control invariant. All listed trigger conditions, cloud synchronization and real Docker stop behavior were not rerun; no section-level TESTED promotion."
+  }
+]

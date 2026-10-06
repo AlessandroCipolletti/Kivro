@@ -1,0 +1,1556 @@
+[
+  {
+    "id": "WRK-0011",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 7. Real OpenClaw plus selected dependency-bearing skill import is verified. Native metadata and reviewed broker references have explicit closure/consent. Complete agent/workspace inventory, graphical import and observed-dependency recommendations remain incomplete."
+  },
+  {
+    "id": "WRK-0012",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; packages/openclaw-adapter/src/index.ts; security/sandbox/runner.mjs; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW RUNTIME: the Dockerfile installs the published OpenClaw npm release, without a fork or source patch. Actual image build, CLI/config probes and headless smoke passed on 2026-10-06."
+  },
+  {
+    "id": "WRK-0013",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; packages/openclaw-adapter/src/index.ts; security/sandbox/runner.mjs; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Documented CLI/config interfaces are isolated behind the adapter and container runner. Only the reviewed Kivro plugin uses the installed plugin interface; this is not a cross-version compatibility guarantee."
+  },
+  {
+    "id": "WRK-0014",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; packages/openclaw-adapter/src/index.ts; security/sandbox/runner.mjs; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "detectRuntime locates the CLI through OPENCLAW_BIN/PATH and requires the exact supported version/commit. Actual host detection and container version/config checks passed; other versions are rejected, not claimed supported."
+  },
+  {
+    "id": "WRK-0015",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW READ-ONLY DISCOVERY: synthetic personal configuration, auth/session decoys and skill files retain content, inode, mode, mtime and ctime across scan/import. Only --version executes on host. Access-time changes caused by reads are not forbidden or claimed absent."
+  },
+  {
+    "id": "WRK-0016",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW PERSONAL-STATE PRESERVATION: source configuration/skills are not modified; adaptation produces a separate private snapshot. Tests compare synthetic personal file content/metadata; real CLI/import smoke also preserves its synthetic SKILL source. Not a live-provider personal-profile acceptance claim."
+  },
+  {
+    "id": "WRK-0017",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Normalized discovery now includes declared tool/resource/inference/domain/skill references, native env/bin requirements and unsupported causes. Full agent/workspace/local-model/service inventory remains incomplete."
+  },
+  {
+    "id": "WRK-0018",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Personal auth/session/provider values are not copied; adversarial decoy secrets stay absent from discovery/import output. Local source paths are not placed in canonical SKILL provenance. Exhaustive cloud/UI metadata leakage coverage remains outside this narrow batch."
+  },
+  {
+    "id": "WRK-0020",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Native environment requirements require explicit mapping to separately stored dedicated Worker credential references and a reviewed instruction adaptation. Missing secrets or fresh inference proof blocks import. No personal credential copying or environment injection is permitted."
+  },
+  {
+    "id": "WRK-0022",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Native plugin selections, arbitrary binaries/installers, personal configuration/platform requirements and unsupported command dispatch are rejected by focused discovery/closure tests. Reviewed Kivro tools run only in the outer Docker boundary."
+  },
+  {
+    "id": "WRK-0023",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Every discovery item starts selected:false. Explicit selectedIds, all required children, typed target bindings and a content-bound review approval are required; no clone-all or silent leaf authorization. This is CLI/backend evidence, not completed import UI acceptance."
+  },
+  {
+    "id": "WRK-0024",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; packages/openclaw-adapter/src/index.ts; security/sandbox/runner.mjs; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW EXECUTION: actual OpenClaw smoke uses per-attempt container /job/work/state and explicit config. Only approved per-attempt input/config mounts are supplied; personal state is not reused."
+  },
+  {
+    "id": "WRK-0025",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; packages/openclaw-adapter/src/index.ts; security/sandbox/runner.mjs; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW EXECUTION: real smoke creates fresh ephemeral OpenClaw state; no personal conversation/session directory is mounted or imported. This does not establish arbitrary future plugin behavior."
+  },
+  {
+    "id": "WRK-0026",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Personal bootstrap/workspace files are not automatically imported. Only explicitly selected SKILL.md instructions and reviewed adapted snapshots enter job input; neither native scripts nor sibling assets/installers are copied."
+  },
+  {
+    "id": "WRK-0027",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; packages/openclaw-adapter/src/index.ts; security/sandbox/runner.mjs; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Real supported openclaw agent exec invocation, explicit config/message-file/cwd/state-dir and JSON result parsing passed in the container. Inference was a deterministic test provider, not real-provider acceptance."
+  },
+  {
+    "id": "WRK-0028",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; packages/openclaw-adapter/src/index.ts; security/sandbox/runner.mjs; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Execution only uses inspected immutable-image Docker with network none. No alternate host executor exists. Callback-denial/no-spawn regression and actual isolation probes passed."
+  },
+  {
+    "id": "WRK-0029",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; packages/openclaw-adapter/src/index.ts; security/sandbox/runner.mjs; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Actual paired demo Worker remained NOT_READY/paused with missing dedicated inference despite successful OpenClaw and sandbox checks. Starting OpenClaw alone never established readiness."
+  },
+  {
+    "id": "WRK-0030",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; packages/openclaw-adapter/src/index.ts; security/sandbox/runner.mjs; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Worker gates image approval, isolation proof, credentials, inference and per-capability consent/health/test proofs. Full readiness combinations and all supported dependency-type failure transitions are not exhaustively tested."
+  },
+  {
+    "id": "WRK-0031",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/transport.ts; apps/worker/src/runtime.ts; apps/worker/src/secrets.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "SECTION PARTIAL, section 10. Outbound signed polling, one-time pairing and heartbeat work in the real local fixture. Extended disconnect/reconnect, rotation and production TLS operational acceptance remain incomplete."
+  },
+  {
+    "id": "WRK-0032",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/transport.ts; apps/worker/src/runtime.ts; apps/worker/src/secrets.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "NARROW CONNECTIVITY: the actual full-stack fixture pairs and dispatches through outbound Worker HTTP requests. No inbound Worker listener, public seller address or firewall change is required. Loopback development is explicitly gated."
+  },
+  {
+    "id": "WRK-0033",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/transport.ts; apps/worker/src/runtime.ts; apps/worker/src/secrets.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "The daemon stores an encrypted device private key and dedicated credential references, not the seller login password. Pairing exchanges a one-time code and public key."
+  },
+  {
+    "id": "WRK-0034",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/transport.ts; apps/worker/src/runtime.ts; apps/worker/src/secrets.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Heartbeat is explicitly constructed from version, readiness, capability/job IDs, pause, capacity and command acknowledgements. It does not serialize local state, input data or environment wholesale."
+  },
+  {
+    "id": "WRK-0035",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/transport.ts; apps/worker/src/runtime.ts; apps/worker/src/secrets.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Explicit heartbeat fields and sanitized diagnostics omit secrets and paths. Current tests do not prove absence of all sensitive content across every cloud transport and error path."
+  },
+  {
+    "id": "WRK-0091",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/transport.ts; apps/worker/src/runtime.ts; apps/worker/src/secrets.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "SECTION PARTIAL, section 67. Local Ed25519 generation, encrypted storage, pairing, signed requests and revoked-device API enforcement exist. Operator credential rotation/lost-device recovery and short-lived sessions are not complete."
+  },
+  {
+    "id": "WRK-0092",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/transport.ts; apps/worker/src/runtime.ts; apps/worker/src/secrets.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Transport signs individual requests with timestamp and nonce using the device key. It does not currently implement the preferred short-lived server-issued session credential flow."
+  },
+  {
+    "id": "WRK-0099",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/transport.ts; apps/worker/src/runtime.ts; apps/worker/src/secrets.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "SECTION PARTIAL, section 346. Real signed heartbeats carry readiness/pause/capacity and current job/version IDs. Exhaustive liveness transitions and production disconnect acceptance are not established."
+  },
+  {
+    "id": "WRK-0100",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/transport.ts; apps/worker/src/runtime.ts; apps/worker/src/secrets.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Heartbeat construction excludes secrets, local resource paths and environment values. This source-level claim is limited to the Worker heartbeat DTO, not every diagnostics or cloud feature."
+  },
+  {
+    "id": "WRK-0036",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; security/sandbox/runner.mjs; security/sandbox/plugin/index.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 15. Shared supported tool names map to exact allowlists and reviewed wrappers. Real empty-tool and resource/write workflows passed; every supported tool combination has not been exercised end to end."
+  },
+  {
+    "id": "WRK-0037",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; security/sandbox/runner.mjs; security/sandbox/plugin/index.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW POLICY: generic process is denied and rejected by permission validation. No-tools real OpenClaw smoke verified that even the implicit session-status tool is unavailable."
+  },
+  {
+    "id": "WRK-0040",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; security/sandbox/runner.mjs; security/sandbox/plugin/index.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW POLICY: generic exec/shell are rejected by adapter permission tests and absent from the actual smoke provider tool list. No host execution fallback is supplied."
+  },
+  {
+    "id": "WRK-0041",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; security/sandbox/runner.mjs; security/sandbox/plugin/index.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW WRAPPERS: fixed Blender Workbench and ffmpeg presets execute only inside Docker on declared asset IDs. Actual synthetic render/transcode probes passed; this is not paid media-capability or adversarial decoder acceptance."
+  },
+  {
+    "id": "WRK-0043",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; security/sandbox/runner.mjs; security/sandbox/plugin/index.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 21. Approved architecture uses outer hardened Docker and OpenClaw SSH backend on container loopback, not nested Docker or host fallback. Exact pinned config passed official validation; full future-version security assurance is not claimed."
+  },
+  {
+    "id": "WRK-0044",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; security/sandbox/runner.mjs; security/sandbox/plugin/index.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Actual pinned OpenClaw config validation and runtime plugin inspection passed in final image sha256:96dd4f5334bf57fea81af17192864ae57e0f520aa492afb8591ad7fd7077ae52. This is specific to OpenClaw 2026.8.2 (0965053)."
+  },
+  {
+    "id": "WRK-0045",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; security/sandbox/runner.mjs; security/sandbox/plugin/index.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "The sandbox config probe invokes official config validate and plugins inspect rather than trusting the conceptual spec example. The inspected image and actual headless smoke passed."
+  },
+  {
+    "id": "WRK-0046",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; security/sandbox/runner.mjs; security/sandbox/plugin/index.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 22. Exact version/commit policy and remediation are documented and tested locally. Only one OpenClaw release is supported; a broader release/CI compatibility matrix is not complete."
+  },
+  {
+    "id": "WRK-0047",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; security/sandbox/runner.mjs; security/sandbox/plugin/index.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "The adapter pins the release and validates frame/result JSON shapes with explicit schemas instead of accepting arbitrary CLI output. Additional-version evolution tests are not present."
+  },
+  {
+    "id": "WRK-0074",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; security/sandbox/runner.mjs; security/sandbox/plugin/index.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 58. Runtime operations are encapsulated by OpenClawAdapter/DockerSandbox and discovery helpers. The example interface is distributed across these modules; full lifecycle/diagnostic conformance is not claimed."
+  },
+  {
+    "id": "WRK-0075",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; security/sandbox/runner.mjs; security/sandbox/plugin/index.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Worker execution and validation both call OpenClawAdapter; DockerSandbox handles owned containers. This is one concrete supported adapter, not a completed pluggable multi-runtime abstraction."
+  },
+  {
+    "id": "WRK-0076",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; security/sandbox/runner.mjs; security/sandbox/plugin/index.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Job CLI invocation lives in the reviewed sandbox runner and discovery version query lives in the adapter package. Cloud/business modules do not directly execute host OpenClaw jobs."
+  },
+  {
+    "id": "WRK-0077",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; security/sandbox/runner.mjs; security/sandbox/plugin/index.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 59. Explicit generated config, image inspection, mandatory sandbox and pre-start acknowledgement are implemented. Pinned runtime smoke passed; exhaustive effective-policy tampering/failure cases remain incomplete."
+  },
+  {
+    "id": "WRK-0079",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; security/sandbox/runner.mjs; security/sandbox/plugin/index.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Both Docker and adapter callback-failure regressions prove an async rejected cloud-start acknowledgement removes the created container without spawning execution. Production full-stack fixture also exercised the successful path."
+  },
+  {
+    "id": "WRK-0080",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; security/sandbox/runner.mjs; security/sandbox/plugin/index.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Real headless jobs use explicit config/state/workspace and mandatory sandbox.mode=all inside network-none Docker. No default personal config or unsandboxed execution path is used."
+  },
+  {
+    "id": "WRK-0081",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; security/sandbox/runner.mjs; security/sandbox/plugin/index.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW VERSION SUPPORT: OpenClaw 2026.8.2 (0965053) is the only accepted release and has actual image/config/SSH/plugin/headless evidence. Deterministic inference is explicitly a test fixture."
+  },
+  {
+    "id": "WRK-0064",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/worker/src/state.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "SECTION PARTIAL, section 55. SQLite stores attempts, replay IDs, pause, outbox, lease and consent. Reopen/lease tests and normal fixture cleanup pass; OS reboot, power loss, Docker crash and reconnect matrix are not comprehensively exercised."
+  },
+  {
+    "id": "WRK-0065",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/worker/src/state.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Restart recovery reaps owned containers and fails ambiguous attempts without repeating inference. Full OS/network/OpenClaw/Docker crash survival acceptance is not established by the two local-state tests."
+  },
+  {
+    "id": "WRK-0066",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/worker/src/state.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "NARROW DURABILITY: actual SQLite close/reopen preserves pause and pending transition outbox, and duplicate attempts are refused. This does not prove every crash window or filesystem power-loss guarantee."
+  },
+  {
+    "id": "WRK-0067",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/worker/src/state.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Recovery never blindly reruns inference: it removes interrupted owned containers, preserves durable completed result retries and fails ambiguous attempts using existing job/attempt IDs. Crash-injection integration coverage remains missing."
+  },
+  {
+    "id": "WRK-0097",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/worker/src/state.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "SECTION PARTIAL, section 89. Failure paths queue terminal events, cancel brokers and clean owned containers. Happy-path/replay/cancellation subsystem evidence is not the complete payment/upload/outage failure matrix."
+  },
+  {
+    "id": "WRK-0098",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts",
+    "tests": "apps/worker/src/state.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Normal fixture completion and cleanup need no DB edits; the runtime has durable terminal-event retry. Every normal failure/recovery branch has not been tested without manual intervention."
+  },
+  {
+    "id": "WRK-0068",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/service.ts; apps/worker/src/index.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "apps/worker/src/service.test.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 56. Explicit per-user LaunchAgent lifecycle and documented private-beta source/dependency installation exist. Actual service installation/login-cycle acceptance was not authorized/run. Signed public release/update/rollback remains a separate public-launch gate; desktop wrapper is explicitly later."
+  },
+  {
+    "id": "WRK-0069",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/service.ts; apps/worker/src/index.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "apps/worker/src/service.test.ts; docs/WORKER-STATUS.md",
+    "notes": "Workspace and parent-reported unsigned isolated source/dependency artifact provide a private-beta install path. Worker service uses absolute Node/tsx/entry paths and Keychain; moving artifact requires reinstall. Public signed distribution and reproducibly locked image rebuilds are not claimed."
+  },
+  {
+    "id": "WRK-0070",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/service.ts; apps/worker/src/index.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "apps/worker/src/service.test.ts; docs/WORKER-STATUS.md",
+    "notes": "Background-after-login LaunchAgent with explicit install/status/restart/uninstall is implemented. Five lifecycle/security tests use real plutil and mocked launchctl; NO actual service was installed. Terminal-independent login/reboot acceptance remains unverified pending parent approval."
+  },
+  {
+    "id": "WRK-0071",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/readiness.ts; apps/worker/src/diagnostics.ts; apps/worker/src/transport.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "apps/worker/src/security.test.ts; apps/worker/src/diagnostics.test.ts; docs/WORKER-STATUS.md; docs/LOCAL-VERIFICATION.md",
+    "notes": "SECTION PARTIAL, section 57. Named prerequisites include Node/SQLite, actual config readability, transactional DB writes, signed device/version/revocation/clock and sandbox proof. 42 diagnostics tests include initialization/read-only DB failure, V2-only-404 fallback, server environment labels, revoked identity and pre-heartbeat mirror. Public clock never establishes identity. Exhaustive fresh-host OS/Docker/storage fault matrix and login/reboot remain unverified."
+  },
+  {
+    "id": "WRK-0072",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/readiness.ts; apps/worker/src/diagnostics.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "apps/worker/src/security.test.ts; apps/worker/src/diagnostics.test.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW SUPPORT COMMAND: structured PASS/WARN/FAIL with safe remediation, separate from cached health. Diagnostics tests verify stable redacted network/API errors and actionable clock/version failures. Complete section 57 checklist remains IN_PROGRESS."
+  },
+  {
+    "id": "WRK-0073",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/readiness.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "apps/worker/src/security.test.ts; apps/worker/src/diagnostics.test.ts; docs/WORKER-STATUS.md; docs/LOCAL-VERIFICATION.md",
+    "notes": "NARROW FAIL-CLOSED GATE: missing image approval/inference, authenticated local-version revocation, malformed/missing policy lists or invalid device cannot establish readiness. Denied pre-start callback executes nothing. Public clock is not a fallback credential check. Not every live security-fault transition has an integration test."
+  },
+  {
+    "id": "WRK-0101",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/readiness.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "apps/worker/src/security.test.ts; docs/WORKER-STATUS.md; docs/LOCAL-VERIFICATION.md",
+    "notes": "SECTION PARTIAL, section 370. Real health/readiness, pause and job state are exposed. Complete failure-rate, runtime, last-success and queue metric dashboard acceptance is outside this implementation."
+  },
+  {
+    "id": "WRK-0102",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/readiness.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "apps/worker/src/security.test.ts; docs/WORKER-STATUS.md; docs/LOCAL-VERIFICATION.md",
+    "notes": "NARROW LOCAL STATUS: startup summary derives from actual readiness/state and sanitizes blocker codes; regression verifies missing inference is not presented as ready. Complete web telemetry rendering is not tested here."
+  },
+  {
+    "id": "WRK-0103",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/readiness.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "apps/worker/src/security.test.ts; docs/WORKER-STATUS.md; docs/LOCAL-VERIFICATION.md",
+    "notes": "SECTION PARTIAL, section 372. Exact host/container version and compatibility status are exposed with remediation. Complete seller UI version-status states are not covered by Worker tests."
+  },
+  {
+    "id": "WRK-0104",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/readiness.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "apps/worker/src/security.test.ts; docs/WORKER-STATUS.md; docs/LOCAL-VERIFICATION.md",
+    "notes": "SECTION PARTIAL, section 374. Last successful heartbeat and disconnect state are persisted. Reconnect reporting and web/local disagreement scenarios need broader integration/UI evidence."
+  },
+  {
+    "id": "WRK-0106",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/readiness.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "apps/worker/src/security.test.ts; docs/WORKER-STATUS.md; docs/LOCAL-VERIFICATION.md",
+    "notes": "SECTION PARTIAL, section 379. health returns structured observed readiness, pause, heartbeat and active attempts. Proposed queued/last-success metrics and the complete summary are not implemented."
+  },
+  {
+    "id": "WRK-0107",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/readiness.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "apps/worker/src/security.test.ts; docs/WORKER-STATUS.md; docs/LOCAL-VERIFICATION.md",
+    "notes": "NARROW CLI: health and doctor emit JSON; --json is accepted. Actual parent health observation and CLI checks are recorded. No secret-bearing provider diagnostics are printed in startup summaries."
+  },
+  {
+    "id": "WRK-0108",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/readiness.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "apps/worker/src/security.test.ts; docs/WORKER-STATUS.md; docs/LOCAL-VERIFICATION.md",
+    "notes": "SECTION PARTIAL, section 380. Active doctor versus cached health distinction and sanitized startup errors are implemented. Exhaustive diagnostics redaction and all prerequisite checks are not yet verified."
+  },
+  {
+    "id": "WRK-0109",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/readiness.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "apps/worker/src/security.test.ts; docs/WORKER-STATUS.md; docs/LOCAL-VERIFICATION.md",
+    "notes": "SECTION PARTIAL, section 381. Local sanitized audit records and last heartbeat exist. Complete cloud health history, reconnection explanations and telemetry retention policy are not implemented by this Worker scope."
+  },
+  {
+    "id": "SEC-0001",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/secrets.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/crypto/src/index.ts",
+    "tests": "packages/crypto/src/crypto.test.ts; apps/worker/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 13. Dedicated encrypted credentials and host-only brokers are implemented. macOS Keychain was observed; Linux fallback uses an operator key, and Windows/keyring/rotation/exhaustive leakage acceptance remain incomplete."
+  },
+  {
+    "id": "SEC-0006",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/secrets.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/crypto/src/index.ts",
+    "tests": "packages/crypto/src/crypto.test.ts; apps/worker/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW STORAGE: AES-256-GCM authentication/context binding tests pass; actual macOS dedicated Keychain-backed Worker setup passed. Linux explicit wrapping-key and every platform failure scenario are not independently certified."
+  },
+  {
+    "id": "SEC-0007",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/secrets.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/crypto/src/index.ts",
+    "tests": "packages/crypto/src/crypto.test.ts; apps/worker/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Only selected credentials are resolved by host inference/resource/connector brokers; container config has an opaque non-provider token. Tests do not establish absence of every transformed secret across all external tool/provider behavior."
+  },
+  {
+    "id": "SEC-0008",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/secrets.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/crypto/src/index.ts",
+    "tests": "packages/crypto/src/crypto.test.ts; apps/worker/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Explicit transport fields, sanitized errors and direct credential-echo rejection reduce leakage. No complete adversarial proof exists for all prompts, logs, results and encodings across every resource/provider."
+  },
+  {
+    "id": "SEC-0013",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/secrets.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/crypto/src/index.ts",
+    "tests": "packages/crypto/src/crypto.test.ts; apps/worker/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Resource queries route over the reviewed frame bridge to LocalResourceBroker; host pg alone receives the selected password. Actual signedAPI/Docker/Postgres purchased job2ae0efd6 passed2026-10-06T11:41:22.732Z via scripts/e2e-research-fixture.ts, including host-metadata exclusion from tool reply and sanitized receipt. Dedicated synthetic reader/data and deterministic inference; exhaustive transformed-secret leakage audit remains unproven."
+  },
+  {
+    "id": "SEC-0055",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/secrets.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/crypto/src/index.ts",
+    "tests": "packages/crypto/src/crypto.test.ts; apps/worker/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL71. Reviewed resource_read/resource_query use capability-scoped approved grants and bounded health checks. Real signedAPI/OpenClaw restricted Postgres named-query purchased flow passed in scripts/e2e-research-fixture.ts, receipt9fd39cfc: reviewed public prefetch before private query, cache afterward, no private-derived egress, exact one-settlement/replay, unchanged source rows/cleanup. Synthetic reader/data, deterministic inference/fake payments; every operation/failure lifecycle remains broader."
+  },
+  {
+    "id": "SEC-0056",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/secrets.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/crypto/src/index.ts",
+    "tests": "packages/crypto/src/crypto.test.ts; apps/worker/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Resource credentials stay in the host resolver/broker, not tool arguments, container environment or raw resource mounts. This is architecture/source evidence, supplemented by package tests, not universal non-exfiltration proof."
+  },
+  {
+    "id": "SEC-0016",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; apps/worker/src/tools.ts; apps/worker/src/http.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; apps/worker/src/http.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 16. Network-none containers, host brokers, public-address pinning, fixed endpoints and private-data egress denial exist. All SSRF/provider/research/connector adversarial paths and public egress operations are not fully acceptance-tested."
+  },
+  {
+    "id": "SEC-0018",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; apps/worker/src/tools.ts; apps/worker/src/http.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; apps/worker/src/http.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Actual final-image probes verify read-only root/mounts, known readable canaries with EROFS/EACCES/EPERM write denial, nonroot UID, zero capabilities, no-new-privileges, seccomp and absent network route. ENOENT is not accepted as read-only evidence."
+  },
+  {
+    "id": "SEC-0020",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; apps/worker/src/tools.ts; apps/worker/src/http.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; apps/worker/src/http.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Sandbox networking remains none even when using inference/resource tools. Real frame-bridged inference/file-resource smoke passed; no host networking is enabled to reach a provider."
+  },
+  {
+    "id": "SEC-0021",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; apps/worker/src/tools.ts; apps/worker/src/http.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; apps/worker/src/http.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Policy is enforced by Docker, schema/permission checks and host brokers rather than prompts alone. This does not certify the full adversarial research/public-egress threat model or container/kernel security."
+  },
+  {
+    "id": "SEC-0023",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; apps/worker/src/tools.ts; apps/worker/src/http.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; apps/worker/src/http.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Generic browser is rejected by adapter permission tests and disabled in generated config. No personal browser session/profile is mounted or supported."
+  },
+  {
+    "id": "SEC-0026",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; apps/worker/src/tools.ts; apps/worker/src/http.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; apps/worker/src/http.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 20. Approved outer Docker boundary isolates the reviewed plugin and uses generated policy. The supported inner SSH backend is loopback-only; sandboxing is not claimed to provide perfect security."
+  },
+  {
+    "id": "SEC-0029",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Generated config and input use explicit manifests and consent-bound reviewed skill snapshots. Native loader/env/config gates are removed only from a new explicitly reviewed instruction adaptation, never personal source. Personal plugins/environment/sandbox settings are not inherited."
+  },
+  {
+    "id": "SEC-0031",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; apps/worker/src/tools.ts; apps/worker/src/http.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; apps/worker/src/http.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW CONFIG: unsafe tools/resource limits are rejected, and execution requires fixed Docker flags/inspected image plus mandatory generated OpenClaw policy. This does not protect against a malicious host administrator or kernel compromise."
+  },
+  {
+    "id": "SEC-0035",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; apps/worker/src/tools.ts; apps/worker/src/http.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; apps/worker/src/http.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 33. Native seller plugins are unsupported; the Kivro-owned reviewed plugin executes inside Docker only. This is not a general plugin review/import system."
+  },
+  {
+    "id": "SEC-0070",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; apps/worker/src/tools.ts; apps/worker/src/http.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; apps/worker/src/http.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 239. Network-none Docker plus narrow broker routing is implemented and probed. Complete production research-egress proxy/abuse handling acceptance remains beyond this narrow runtime evidence."
+  },
+  {
+    "id": "SEC-0071",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; apps/worker/src/tools.ts; apps/worker/src/http.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; apps/worker/src/http.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW BOUNDARY: enabling reviewed research/resource/inference tools does not add unrestricted Docker networking. Arguments and actual probe retain network none and no host socket/port mounts."
+  },
+  {
+    "id": "SEC-0072",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; apps/worker/src/tools.ts; apps/worker/src/http.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; apps/worker/src/http.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Network policy is generated and inspected outside the agent; the container cannot choose a host/public network backend. Actual immutable-image isolation probes passed."
+  },
+  {
+    "id": "SEC-0089",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; apps/worker/src/tools.ts; apps/worker/src/http.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; apps/worker/src/http.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW PERMISSION REFUSAL: undeclared inference tool names, unsupported permissions and private-job public egress are rejected in focused tests. No auto-expansion path is provided."
+  },
+  {
+    "id": "SEC-0108",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; apps/worker/src/tools.ts; apps/worker/src/http.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; apps/worker/src/http.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 373. Fresh image-specific sandbox proof gates readiness and is generated by actual probes. Complete health dashboard display and every Docker-failure transition are not verified here."
+  },
+  {
+    "id": "SEC-0110",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; apps/worker/src/tools.ts; apps/worker/src/http.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; apps/worker/src/http.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW FAIL-CLOSED: adapter has no host execution fallback. Missing approval made doctor unready, and actual runtime probes plus pre-start failure regression enforce the only execution path."
+  },
+  {
+    "id": "JOB-0005",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/job-protocol/src/index.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; packages/openclaw-adapter/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "SECTION PARTIAL, section 11. Content-free signed notice, durable acceptance, signed payload commitment and subsequent asset download work in real local fixture. Complete outage/race/retry dispatch acceptance remains incomplete."
+  },
+  {
+    "id": "JOB-0006",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/job-protocol/src/index.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; packages/openclaw-adapter/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Real API protocol tests deny pre-acceptance payload access; notice excludes input/instructions/assets and commits payloadHash. Worker stores notice/attempt, flushes ACCEPTED, then verifies full signature/hash before data download. Two protocol integration tests passed."
+  },
+  {
+    "id": "JOB-0008",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/job-protocol/src/index.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; packages/openclaw-adapter/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "SECTION PARTIAL, section 19. Focused policy/protocol/path/budget tests and real isolation probes cover selected invariants. They do not prove every listed invariant across all failure modes and release/update paths."
+  },
+  {
+    "id": "JOB-0010",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/job-protocol/src/index.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; packages/openclaw-adapter/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "NARROW PINNED RUNTIME: actual smoke and fixture execute within fresh per-attempt Docker state/workspace. No personal OpenClaw workspace is mounted or used."
+  },
+  {
+    "id": "JOB-0012",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/job-protocol/src/index.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; packages/openclaw-adapter/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Fixed readonly input/config mounts, result path checks and approved resource selections constrain host access. Tests cover traversal/links and known denied paths, not every possible filesystem/kernel attack."
+  },
+  {
+    "id": "JOB-0015",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/job-protocol/src/index.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; packages/openclaw-adapter/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Exact shared tool allowlists and broker validation reject unsupported/undeclared tools. Real empty-tool smoke exposes no tools; positive smoke exposes only declared write/resource operations."
+  },
+  {
+    "id": "JOB-0017",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/job-protocol/src/index.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; packages/openclaw-adapter/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Container network is disabled and brokers constrain destinations, pin DNS and reject private-data public egress. All declared-destination and real external research/connector adversarial cases are not tested end to end."
+  },
+  {
+    "id": "JOB-0018",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/job-protocol/src/index.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; packages/openclaw-adapter/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Readonly generated config, host-side manifest binding and brokers prevent direct policy modification. Full adversarial agent/plugin/runtime compromise testing has not established this invariant universally."
+  },
+  {
+    "id": "JOB-0019",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/job-protocol/src/index.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; packages/openclaw-adapter/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "NARROW CONFIG: generated sandbox mode all, denied elevated/exec/process routes and restrictive Docker flags are checked. Actual supported runtime smoke runs only inside the approved outer container."
+  },
+  {
+    "id": "JOB-0020",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/job-protocol/src/index.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; packages/openclaw-adapter/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Signed executionManifestHash binds internal instructions with IO, permissions and dependencies. Focused verifier tests reject changed instructions/dependencies; accepted payload substitutions are rejected."
+  },
+  {
+    "id": "JOB-0022",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/job-protocol/src/index.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; packages/openclaw-adapter/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Durable conservative inference reservations, call/byte/time caps and Docker CPU/memory/PID limits exist. Budget rejection tests and bounded smoke pass; complete load/resource exhaustion and real provider billing bounds are not verified."
+  },
+  {
+    "id": "JOB-0024",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/job-protocol/src/index.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; packages/openclaw-adapter/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Runtime/config/skill/dependency hashes and explicit image reapproval prevent ordinary drift. Signed Worker distribution, forced minimum-version updates and full upgrade permission-regression testing are not implemented."
+  },
+  {
+    "id": "JOB-0025",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/job-protocol/src/index.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; packages/openclaw-adapter/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Readiness/approval/pre-start failures refuse execution and unsupported IO is rejected. Focused tests cover selected gates, not the exhaustive invariant-failure matrix."
+  },
+  {
+    "id": "CAP-0010",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/job-protocol/src/index.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; packages/openclaw-adapter/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "SECTION PARTIAL, section 68. Ed25519 requests/notices/payloads, nonce/skew checks and durable replay identities have actual unit/API evidence. Broad crash/concurrency/finalization permutations still require more coverage."
+  },
+  {
+    "id": "CAP-0011",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/job-protocol/src/index.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; packages/openclaw-adapter/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Signed notice/offer schemas require job, attempt, worker, version, expiry, nonce and protocol identifiers plus canonical dependency-bound hash. Actual server-signature interoperability tests passed."
+  },
+  {
+    "id": "CAP-0012",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/job-protocol/src/index.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; packages/openclaw-adapter/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "NARROW PROTOCOL: focused tests reject wrong worker, expired/tampered offers, wrong local manifest/dependencies, invalid inputs and duplicate consumed attempts. This does not establish every distributed failure/retry scenario."
+  },
+  {
+    "id": "CAP-0013",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/job-protocol/src/index.ts; packages/openclaw-adapter/src/index.ts",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; tests/integration/worker-protocol.test.ts; packages/openclaw-adapter/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "ATTRIBUTED REAL LOCAL FIXTURE: signed duplicate result replay left exactly one capture, earning and fee and one successful attempt. Payments were local fake development payments; live Stripe idempotency is not claimed."
+  },
+  {
+    "id": "IO-0001",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 12. Readonly UUID-named inputs, narrow signatures/formats, limits and safe selection checks are implemented. Production malware scanning, broad Office/media support and large-file handling are not established."
+  },
+  {
+    "id": "IO-0003",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Actual Docker probe reads known input canary then requires write denial; full-stack fixture uses an actual buyer file through the same readonly input mount. Missing directories cannot count as success."
+  },
+  {
+    "id": "IO-0004",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Docker arguments permit only explicit per-attempt input/config binds and no Downloads/Documents/Desktop mounts. Actual isolation probes and normal fixture inspect the approved container boundary."
+  },
+  {
+    "id": "JOB-0032",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 60. Unique attempts, readonly binds, writable bounded tmpfs, fixed result collection and cleanup exist. Comprehensive interrupted cleanup and retention acceptance are not complete."
+  },
+  {
+    "id": "JOB-0036",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW MOUNTS: only per-attempt input/config are bound; parent Worker DB, secrets, metadata and runtime directory are not mounted. Docker policy tests and actual self-test passed."
+  },
+  {
+    "id": "IO-0013",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 61. Real API/Worker/Docker/S3 deterministic fixture consumed required file bytes and delivered a verified file with one settlement. Real-provider acceptance, live payments, production malware scanning and the full failure matrix remain unverified."
+  },
+  {
+    "id": "IO-0018",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Actual full-stack input download uses the authenticated same-origin Worker endpoint; transport refuses foreign origins, query/fragment credentials and noncanonical routes. No arbitrary presigned URL is followed."
+  },
+  {
+    "id": "IO-0019",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Inputs are written as readonly snapshots and mounted readonly. Known-canary write-denial self-test and actual required-file consumption passed; this does not imply confidential computing on a seller-controlled machine."
+  },
+  {
+    "id": "IO-0020",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Input paths use validated asset UUIDs rather than buyer filenames. The actual fixture read input/<asset-id>; filename metadata does not become a host filesystem path."
+  },
+  {
+    "id": "IO-0023",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Collection uses only the fixed SSH workspace result subtree and fixed wrapper outputs. Real unique-marker output passed; traversal, symlink, hardlink, alias and size regressions reject unsafe artifacts."
+  },
+  {
+    "id": "IO-0025",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW COLLECTOR: canonical result-root containment and regular single-link files are enforced. Actual output and filesystem adversarial regressions passed; arbitrary text cannot select host upload paths."
+  },
+  {
+    "id": "IO-0033",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 63. Adapter enforces 16 MiB aggregate, 8 MiB generated file and 20 files, narrower than platform storage. Larger specified examples are not supported; local publication compatibility refuses unsupported formats."
+  },
+  {
+    "id": "IO-0034",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "No archive extraction path or archive format is accepted by this adapter. Unsupported ZIP/Office containers fail compatibility/content validation rather than receiving an unchecked signature exception."
+  },
+  {
+    "id": "IO-0037",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 90. Actual deterministic required-text-file fixture and real file-resource smoke pass. The complete canonical Document Analyzer/private-DB and real-provider paid fixtures are not established."
+  },
+  {
+    "id": "IO-0084",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 211. Shared output validation and named scalar/JSON/file mapping exist. Focused named TEXT/JSON and real named-file cases pass; all output types/combinations and seller UI are not fully tested here."
+  },
+  {
+    "id": "IO-0087",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW OUTPUT GATE: required named fields fail when missing; strict output is validated before upload and again with final asset IDs. Worker success follows API acceptance, not raw model completion."
+  },
+  {
+    "id": "IO-0088",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 212. Strict JSON final envelope or result metadata maps only collected file paths to uploaded IDs. Real scalar/file cases pass; every output type/path/mapping combination is not acceptance-tested."
+  },
+  {
+    "id": "IO-0090",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Model text is never interpreted as a host path. Only exact relative paths matching previously collected artifacts can map to asset IDs; missing/fenced/prefixed named envelopes and unsafe file paths are rejected."
+  },
+  {
+    "id": "IO-0091",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 213. Adapter generates trusted output instructions and delimits buyer JSON; named no-write responses have a strict final-envelope path. Exhaustive prompt-injection resistance is not established."
+  },
+  {
+    "id": "IO-0092",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Contract-derived prompt describes actual readonly input assets, fixed result subtree, named fields and final response constraints. Buyer values cannot modify the adapter-generated config or manifest."
+  },
+  {
+    "id": "IO-0096",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW DATA PATH: initial prompt carries asset metadata/UUID paths, not raw file bytes. The full-stack fixture marker was absent from initial prompt and had to be consumed through the real read tool."
+  },
+  {
+    "id": "IO-0098",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 215. Shared format compatibility, permission/dependency closure and real output validation gate approval/testing. Complete semantic tool-to-format inference and all missing-dependency contradictions are not implemented."
+  },
+  {
+    "id": "IO-0099",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW FORMAT GATE: approval, test preflight, recurring consent/health and adapter setup reject advertised DOCX/XLSX/WebP/WebM/MP3/GLB; supported PDF alone cannot validate a broader incompatible contract. Semantic compatibility remains separate."
+  },
+  {
+    "id": "IO-0102",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 216. Worker sniffs supported signatures/UTF-8 formats and checks declared extension/MIME/hash/size. This is neither malware analysis nor proof of decoder safety or Office support."
+  },
+  {
+    "id": "IO-0107",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/file-transfer.ts; apps/worker/src/transport.ts; apps/worker/src/http.ts; apps/worker/src/runtime.ts; packages/openclaw-adapter/src/files.ts",
+    "tests": "apps/worker/src/transport.test.ts; scripts/e2e-fixture.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 218. Network transfers now stream: authenticated input to exclusive disk with incremental hash/size and direct presigned PUT/finalize from private spool. Limits remain 16 MiB aggregate and 8 MiB generated frames; unrestricted large-media/multipart/result-frame streaming is not implemented. Actual Worker-owner deterministic full-stack direct-transfer rerun passed 2026-10-06 09:04:38 UTC, job 29a75d3a-bb5d-44e9-9b3a-9286feb4154a: streamed input, real SeaweedFS PUT/finalize, 112-byte integrity-verified delivery, exactly-one balanced fake-payment settlement and cleanup. Not live inference/payment/scanner or large-file acceptance."
+  },
+  {
+    "id": "IO-0110",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/file-transfer.ts; apps/worker/src/transport.ts; apps/worker/src/http.ts; apps/worker/src/runtime.ts; packages/openclaw-adapter/src/files.ts",
+    "tests": "apps/worker/src/transport.test.ts; scripts/e2e-fixture.ts; docs/WORKER-STATUS.md",
+    "notes": "Network download/PUT streaming is implemented and eight focused tests cover integrity, redirects, exact Content-Length, no Worker auth at storage, partial cleanup, unsafe paths/endpoints and text boundaries. Container collection still buffers <=8 MiB/file and JSON validation keeps a bounded parse buffer, so full memory-independent result streaming is not claimed. Actual Worker-owner deterministic full-stack direct-transfer rerun passed 2026-10-06 09:04:38 UTC, job 29a75d3a-bb5d-44e9-9b3a-9286feb4154a: streamed input, real SeaweedFS PUT/finalize, 112-byte integrity-verified delivery, exactly-one balanced fake-payment settlement and cleanup. Not live inference/payment/scanner or large-file acceptance."
+  },
+  {
+    "id": "IO-0127",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Normal finalization/cancellation removes per-attempt files; full-stack fixture verified temporary-state cleanup. Complete crash/orphan/retention sweeps and SSD secure deletion are not established or claimed."
+  },
+  {
+    "id": "IO-0128",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 230. Explicit seller CLI fixtures support structured inputs and selected local FILE/FILES with actual descriptors. Persistent test-case management, UI previews and real-provider evaluation remain incomplete."
+  },
+  {
+    "id": "IO-0129",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/files.ts; packages/openclaw-adapter/src/index.ts; apps/worker/src/validation.ts; apps/worker/src/results.ts; apps/worker/src/transport.ts; security/sandbox/runner.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/security.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW CLI TESTING: required FILE/FILES selection, missing/hash/duplicate/symlink/content rejection regressions pass. Actual testCapability ran through approval, sandbox, inference and signed validation using deterministic test inference, not a live provider."
+  },
+  {
+    "id": "CAP-0018",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 102. Safe selected closure now supports reviewed tool/inference/resource/connector references, credential revision nodes and transitive skills. Canonical graph/hash and immutable capability checks work. Full multi-source dependency discovery and UI closure remain incomplete."
+  },
+  {
+    "id": "CAP-0020",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Selecting a root while omitting a declared required child, unknown dependency or cycle is rejected before import. Capability approval requires every imported SKILL and exact graph. This proves declared reviewed closure, not infallible detection of every implied instruction dependency."
+  },
+  {
+    "id": "CAP-0033",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 110. Immutable dependency snapshots and new-version/revalidation checks are covered for skill, credential and broker-policy changes. Full UI/cloud history and every rollback scenario remain incomplete."
+  },
+  {
+    "id": "CAP-0034",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Canonical execution hash binds full imported dependency graph including source/compiled skill hashes, tool/runtime policy, inference config, encrypted credential revisions and resource config. Immutable capability version rejects replacement graphs."
+  },
+  {
+    "id": "CAP-0036",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW LOCAL ACCEPTANCE GATE: readyCapabilityIds rechecks current import consent before offering eligibility. Focused consent tests reject configuration/credential/graph/revocation changes and clear proofs. Exhaustive multi-process race acceptance is not claimed."
+  },
+  {
+    "id": "CAP-0043",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 112. Durable content-bound import consent includes actor/device, timestamp, explicit selections/bindings, compiled instructions, graph, permissions and image. Local revoke/revalidation audited; complete cloud/UI history is not covered."
+  },
+  {
+    "id": "CAP-0044",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/resource-config.ts; packages/openclaw-adapter/src/discovery.ts",
+    "tests": "apps/worker/src/security.test.ts; packages/job-protocol/src/protocol.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "SECTION PARTIAL, section 113. Undeclared tools/resources/egress fail host authorization and cannot auto-add grants. Comprehensive resource-specific violation reporting and security-pausing behavior require further tests."
+  },
+  {
+    "id": "CAP-0045",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/resource-config.ts; packages/openclaw-adapter/src/discovery.ts",
+    "tests": "apps/worker/src/security.test.ts; packages/job-protocol/src/protocol.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "NARROW HOST BROKER: undeclared tools/resources and private egress are rejected by focused tests; no automatic permission mutation occurs. This does not certify every possible third-party plugin behavior."
+  },
+  {
+    "id": "CAP-0046",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/resource-config.ts; packages/openclaw-adapter/src/discovery.ts",
+    "tests": "apps/worker/src/security.test.ts; packages/job-protocol/src/protocol.test.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Immutable signed manifest/dependency binding and deterministic broker permissions are independent of buyer values. Tampered dependency/input tests and undeclared-tool refusal pass; general model instruction-following is not the security boundary."
+  },
+  {
+    "id": "AGT-0005",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/inference.ts; apps/worker/src/anthropic.ts; apps/worker/src/inference-protocol.ts; apps/worker/src/http.ts; apps/worker/src/readiness.ts; apps/worker/src/capability-health.ts",
+    "tests": "apps/worker/src/inference.test.ts; apps/worker/src/http.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md; scripts/e2e-fixture.ts",
+    "notes": "SECTION PARTIAL, section 98. OpenAI-compatible and native Anthropic Messages are implemented; exact provider/model/ref approval is mandatory. Native text/client-tool thinking-disabled bridge passed real pinned OpenClaw/Docker with deterministic provider, 4 calls/62664 reserved tokens. Both providers lack live seller credentials, so real cost/quality/account acceptance is unverified."
+  },
+  {
+    "id": "AGT-0007",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/inference.ts; apps/worker/src/http.ts; apps/worker/src/readiness.ts; apps/worker/src/tools.ts; apps/worker/src/capability-health.ts",
+    "tests": "apps/worker/src/http.test.ts; apps/worker/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "NARROW READINESS: actual demo Worker remained unready when dedicated inference was absent. Full-stack test fixture obtained genuine inference/config/capability proofs rather than writing fake pass records."
+  },
+  {
+    "id": "AGT-0009",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/inference.ts; apps/worker/src/http.ts; apps/worker/src/readiness.ts; apps/worker/src/tools.ts; apps/worker/src/capability-health.ts",
+    "tests": "apps/worker/src/http.test.ts; apps/worker/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "SECTION PARTIAL, section 99. Dedicated credential consent/store is implemented and personal secret reuse is not automatic. Full onboarding UI and explicit alternate reuse policy are not implemented in Worker scope."
+  },
+  {
+    "id": "AGT-0010",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/inference.ts; apps/worker/src/http.ts; apps/worker/src/readiness.ts; apps/worker/src/tools.ts; apps/worker/src/capability-health.ts",
+    "tests": "apps/worker/src/inference.test.ts; apps/worker/src/imports.test.ts; packages/openclaw-adapter/src/discovery.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW EXPLICIT CONSENT: mock-Keychain test supplies both environment provider keys, verifies neither silently configures seller inference, and requires explicit encrypted put/config; rotation invalidates proof. No real personal credential imported, no actual seller Keychain credential supplied. Discovery keeps references only and synthetic personal metadata remains unchanged."
+  },
+  {
+    "id": "AGT-0015",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/inference.ts; apps/worker/src/http.ts; apps/worker/src/readiness.ts; apps/worker/src/tools.ts; apps/worker/src/capability-health.ts",
+    "tests": "apps/worker/src/http.test.ts; apps/worker/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "SECTION PARTIAL, section 100. Explicit numeric-loopback OpenAI-compatible transport is supported and exercised with a test-only HTTP provider. No real isolated local model was installed/tested and automatic local inference discovery is incomplete."
+  },
+  {
+    "id": "AGT-0028",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/inference.ts; apps/worker/src/http.ts; apps/worker/src/readiness.ts; apps/worker/src/tools.ts; apps/worker/src/capability-health.ts",
+    "tests": "apps/worker/src/http.test.ts; apps/worker/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "SECTION PARTIAL, section 109. Recurring capability consent/resource health invokes LocalResourceBroker.checkHealth over stored grants; inference/image proofs have bounded freshness. All dependency types and cloud failure transitions are not exhaustively covered."
+  },
+  {
+    "id": "AGT-0033",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/inference.ts; apps/worker/src/anthropic.ts; apps/worker/src/http.ts; apps/worker/src/readiness.ts; apps/worker/src/capability-health.ts",
+    "tests": "apps/worker/src/inference.test.ts; apps/worker/src/http.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 117. Native synthetic tests cover auth/billing/quota/missing-model/overload, strict tool errors, refusal/truncation, cached-token overruns, persisted no-refund reservations, cancellation and redaction. Unavailable inference invalidates proof; no automatic retry or provider response logs. Real provider errors and resulting buyer refund lifecycle remain unverified."
+  },
+  {
+    "id": "JOB-0050",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/inference.ts; apps/worker/src/http.ts; apps/worker/src/readiness.ts; apps/worker/src/tools.ts; apps/worker/src/capability-health.ts",
+    "tests": "apps/worker/src/http.test.ts; apps/worker/src/security.test.ts; security/sandbox/self-test.mjs; security/sandbox/media-self-test.mjs; security/sandbox/smoke.ts; docs/WORKER-STATUS.md; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "SECTION PARTIAL, section 116. Acceptance requires current local consent, matching ready proof and scoped resource health before buyer payload. Deterministic full-stack success is not exhaustive dependency failure/race acceptance."
+  },
+  {
+    "id": "JOB-0042",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 69. Cancellation aborts brokers and stops/removes the owned whole container. Actual Docker cancellation/removal passed; buyer/cloud cancel races, upload cancellation and financial policy are not completely covered."
+  },
+  {
+    "id": "JOB-0044",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL70. Active acceptance/download/execution/upload budget enforced; confirmed pause excluded durably, timeout removes owned container despite stuck frame. Signed cumulative policy immutable; legacy fallback only after verification. Actual75s pause with90s budget resumed pinned OpenClaw below30s active;2s expiry/cancel removed containers without delivery. Runtime/state tests cover remaining budget, drain cost, cumulative expiry, duplicate idempotence and acknowledgement ordering. Feynman API receipt293229d6 proves one-settlement longpause and zero-earning expiry/cancel. Parent corrected independent3/3PASS; exact4cf5 promoted13:44CEST. Broader phase/orphan stress remains separate."
+  },
+  {
+    "id": "JOB-0047",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Timeout abort stops new broker calls and removes execution containers. No actual remote provider billing/uncancellable-request timeout acceptance has been run; already billed remote work cannot be guaranteed undone."
+  },
+  {
+    "id": "JOB-0094",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 382. Persistent CLI pause/new-job refusal exists. Complete one-click graphical experience and cloud/marketplace/agent propagation acceptance are owned elsewhere and not established here."
+  },
+  {
+    "id": "JOB-0097",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW LOCAL CONTROL: SQLite pause persists without any cloud call; close/reopen and remote-resume-refusal tests pass. This is not a full disconnected web/queue integration scenario."
+  },
+  {
+    "id": "JOB-0098",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 384. Local pause is authoritative and survives DB reopen. OS reboot and complete reconnect/marketplace synchronization matrix are not tested."
+  },
+  {
+    "id": "JOB-0099",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW REOPEN: state.test closes/reopens SQLite and confirms local pause remains active and remote resume cannot clear it. Actual OS reboot is not claimed."
+  },
+  {
+    "id": "JOB-0100",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Explicit local resume is required to clear local pause; remote resume is refused and security pause blocks local resume. Focused persisted-state regression passed."
+  },
+  {
+    "id": "JOB-0105",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 387. Local pause is independent of HTTP and later heartbeats carry the persisted value. End-to-end cloud-outage/reconnect synchronization races remain unverified."
+  },
+  {
+    "id": "JOB-0106",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 388. Global pause stops new work without intentionally cancelling active jobs; stop --all is separate. Full strong-confirmation UX and financial effects are not implemented/tested by this CLI scope."
+  },
+  {
+    "id": "JOB-0107",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Global pause writes refusal state and reports continuing job count; it does not issue per-job cancellation. Actual mixed active/new-job pause scheduling acceptance is not covered by the state-only regression."
+  },
+  {
+    "id": "JOB-0108",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "stop requires explicit --all, persists pause and cancels owned active containers. Additional strong confirmation and buyer financial consequences need broader acceptance evidence."
+  },
+  {
+    "id": "JOB-0139",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 428. Worker pauses actual Docker and drains brokers before persisting/acknowledging PAUSED. Actual container smoke passes; complete web-command/cloud-state/in-flight-provider flow remains unverified."
+  },
+  {
+    "id": "JOB-0142",
+    "status": "IMPLEMENTED",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "controlJob waits for Docker pause inspection and bounded broker drain before transitioning PAUSED. This ordering is source-reviewed; exhaustive cloud acknowledgement timing tests are not present."
+  },
+  {
+    "id": "JOB-0146",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 430. Independent local command loop/persistent queue do not wait for heartbeat. Local graphical controls and full cloud-outage per-job integration are not completed."
+  },
+  {
+    "id": "JOB-0149",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 431. Whole-container pause/resume and removal passed on the pinned image. CPU-heavy descendants, arbitrary provider activity and all process-tree races are not exhaustively tested."
+  },
+  {
+    "id": "JOB-0152",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW PINNED MECHANISM: actual final-image Docker/OpenClaw smoke pauses, inspects paused state, resumes, aborts and verifies removal. This verifies container suspension, not all GPU/remote billing semantics."
+  },
+  {
+    "id": "JOB-0155",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 432. Brokers reject new calls while paused/cancelled and drain or abort bounded active requests. Real provider cancellation, already-billed work and all pause races remain unverified."
+  },
+  {
+    "id": "JOB-0156",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW BROKER STATE: focused tests reject calls after pause/cancel, with DNS cancellation/deadline regressions preventing late sockets. Complete user-click-to-cloud-to-provider timing is not established."
+  },
+  {
+    "id": "JOB-0159",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 433. Docker pause suspends local container processes. GPU resource-release behavior and advertised capability-specific pause support levels are not implemented/tested."
+  },
+  {
+    "id": "JOB-0163",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "R21 PARTIAL: host excludes confirmed pause; timing-v2 pinned CLI/config/runner/bridge allow finite active+signed cumulative budget containment. Actual75s pause of30s job with90s budget delivered real file; old image failed. Policy configurable1s..15min cumulative; legacy signatures preserved. Actual2s expiry/cancel pass. Feynman signedAPI receipt293229d6 adds76.446spause with24.147sactive, S3 result, one settlement, cumulative expiry/cancel releasesonce without earning. Parent independent3/3PASS; exact4cf5 now default. Capability-level FULL_RESUME communication and broad recovery remain separate."
+  },
+  {
+    "id": "JOB-0164",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 434. Live Docker suspension supports resume; durable RESTART_STEP/checkpoint semantics and explicit per-capability pause-level communication are not implemented."
+  },
+  {
+    "id": "JOB-0179",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL440. Resume rechecks security/readiness, accepted manifest hash, image pin, consent and resource health; awaits cloud RUNNING acknowledgement before thaw. Global new-job pause requires explicit one-job resumeWhilePaused confirmation and remains set. Focused regressions deny stale image/manifest, expired pause/late health, failed acknowledgement and newly raised securityBlock. Candidate4cf5 longpause passed both isolated synthetic-cloud test and attributed Feynman signedAPI receipt293229d6 with actual reservation/one settlement. Exhaustive dependency/security changes during pause remain broader than this acceptance."
+  },
+  {
+    "id": "JOB-0174",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; packages/job-protocol/src/index.ts; packages/openclaw-adapter/src/timing.ts; security/sandbox/timing.mjs",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/state.test.ts; packages/job-protocol/src/protocol.test.ts; apps/worker/src/pause.integration.test.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL438. Approved cumulative per-job signed budget1s..15min; immutable SQLite storage, legacy migration, duplicate accounting and finite host/container ceilings. Actual candidate lower-budget75s resume and2s expiry pass. Attributed Feynman signedAPI receipt293229d6 at2026-10-06T11:33:10.930Z proves90s cumulative expiry56227+33773ms,127msovershoot, reserve/releaseonce and0capture/earning; longpause success settlesonce. Default rollout and broader compensation/provider cases remain separate."
+  },
+  {
+    "id": "JOB-0175",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts; packages/openclaw-adapter/src/timing.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/pause.integration.test.ts; docs/WORKER-STATUS.md",
+    "notes": "ATOMIC LOCAL EXPIRY: finite cumulative pause budget enforced without cloud connectivity. Actual candidate4cf5 budget2000ms job19d88d58-f75a-4cbf-a273-370992c43012 became TIMED_OUT and removed at2153ms including cleanup; no result or resume. Repeated-pause/duplicate boundary unit test uses5001ms across two pauses. No15-minute real-time wait or settlement claim."
+  },
+  {
+    "id": "JOB-0176",
+    "status": "TESTED",
+    "implementation": "packages/job-protocol/src/index.ts; apps/worker/src/state.ts; packages/openclaw-adapter/src/timing.ts; packages/openclaw-adapter/src/index.ts; security/sandbox/timing.mjs",
+    "tests": "packages/job-protocol/src/protocol.test.ts; apps/worker/src/state.test.ts; packages/openclaw-adapter/src/security.test.ts; apps/worker/src/pause.integration.test.ts",
+    "notes": "ATOMIC WORKER CONFIG CONSUMPTION: signed maxPauseMs is not defaulted before verification, must agree in notice/payload, is stored immutably, passed readonly to runner and used by exact-ms accounting. Tests use1000/1501/2000/5001/90000/900000 bounds; runner fixed900000 is supported upper bound, not configured job duration. Parent owns API configuration and immutable job snapshot."
+  },
+  {
+    "id": "JOB-0184",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/index.ts; packages/job-protocol/src/index.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/cli-controls.test.ts; packages/job-protocol/src/protocol.test.ts",
+    "notes": "SECTION PARTIAL442. Explicit scoped resumeWhilePaused command/local --confirm-global-pause enables one existing job, leaves local/remote pause set and new acceptance blocked; no auto-resume. SecurityBlock cannot be overridden, including after asynchronous RUNNING acknowledgement. Worker tests pass; full seller confirmation UI/cloud acceptance belongs to parent and is not claimed here."
+  },
+  {
+    "id": "JOB-0186",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; packages/job-protocol/src/index.ts",
+    "tests": "apps/worker/src/cli-controls.test.ts; apps/worker/src/runtime.test.ts; packages/job-protocol/src/protocol.test.ts",
+    "notes": "Local CLI requires explicit --confirm-global-pause restricted to exactly one job resume. Remote true flag is schema-bound to identified RESUME_JOB; absent confirmation rejects while globally paused. Focused test leaves both global flags set and records job-specific audit. Clear seller graphical confirmation and actual remote command acceptance remain outside this narrow evidence."
+  },
+  {
+    "id": "JOB-0197",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/runtime.ts; apps/worker/src/state.ts",
+    "tests": "apps/worker/src/runtime.test.ts; apps/worker/src/state.test.ts",
+    "notes": "SECTION PARTIAL446. Repeated pause while PAUSED and resume while RUNNING are local no-ops; no second Docker operation, state/deadline reset or pause-budget replenishment. Durable command IDs deduplicate queue insertion. Parent owns API idempotence; full remote retry/lost-ack matrix is not established by Worker tests."
+  },
+  {
+    "id": "JOB-0203",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/state.ts; apps/worker/src/runtime.ts; apps/worker/src/index.ts; apps/worker/src/inference.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/docker.ts",
+    "tests": "apps/worker/src/state.test.ts; apps/worker/src/security.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 449. State, broker and real Docker suspension/cancellation tests cover selected primitives. The complete GUI/offline/security/provider/financial per-job pause acceptance matrix is not run."
+  },
+  {
+    "id": "DEV-LOCAL-005",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/readiness.ts; packages/openclaw-adapter/src/docker.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "docs/LOCAL-VERIFICATION.md; docs/WORKER-STATUS.md; security/sandbox/smoke.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Actual host-native pnpm worker:dev pairing/Keychain/heartbeat/paused health was observed by parent. Startup now emits sanitized ready/paused/inference diagnostics. This does not claim background installer support."
+  },
+  {
+    "id": "DEV-LOCAL-006",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/readiness.ts; packages/openclaw-adapter/src/docker.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "docs/LOCAL-VERIFICATION.md; docs/WORKER-STATUS.md; security/sandbox/smoke.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "ATOMIC REAL-RUNTIME CLAUSE: actual installed OpenClaw2026.8.2 executes in Docker in generic/research smoke and full-stack fixtures, never an OpenClaw mock. Deterministic provider responses do not invalidate Master557/570 runtime evidence. Paid external LLM acceptance belongs separately to section92, not this clause."
+  },
+  {
+    "id": "DEV-LOCAL-007",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/readiness.ts; packages/openclaw-adapter/src/docker.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "docs/LOCAL-VERIFICATION.md; docs/WORKER-STATUS.md; security/sandbox/smoke.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "NARROW EXECUTION LOCATION: actual purchased development fixture used production WorkerRuntime and the inspected network-none Docker image; it never invoked a buyer job on host OpenClaw. Test inference/payment do not alter the sandbox boundary."
+  },
+  {
+    "id": "DEV-LOCAL-008",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/readiness.ts; packages/openclaw-adapter/src/docker.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "docs/LOCAL-VERIFICATION.md; docs/WORKER-STATUS.md; security/sandbox/smoke.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "No host fallback exists. Observed missing image approval made doctor unready; callback-denial/no-execution regression and actual mandatory isolation probes passed."
+  },
+  {
+    "id": "DEV-LOCAL-014",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/readiness.ts; packages/openclaw-adapter/src/docker.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "docs/LOCAL-VERIFICATION.md; docs/WORKER-STATUS.md; security/sandbox/smoke.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "ATTRIBUTED FIXTURE PASS, 2026-10-06 01:07:05 UTC: job d09ba72a-fc2b-461e-afc3-5883c0f61612 used real API/DB/S3/Worker/OpenClaw, nine deterministic inference calls and one successful attempt. Required input consumed; 112-byte output SHA-256 c15e195dcb1f629854d8c87b4d6f171a29e4a3d5c265ec49202695afbc4feb5c; replay preserved one capture/earning/fee. Persisted cleanup passed. Not real-provider/live-Stripe acceptance; reconciler disabled."
+  },
+  {
+    "id": "DEV-LOCAL-020",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/readiness.ts; packages/openclaw-adapter/src/docker.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "docs/LOCAL-VERIFICATION.md; docs/WORKER-STATUS.md; security/sandbox/smoke.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Worker exposes actual local readiness with actionable missing-inference/image diagnostics, distinct from cached health. Complete all-service/fresh-machine readiness belongs to the broader local stack and is not completed by Worker evidence."
+  },
+  {
+    "id": "DEV-LOCAL-023",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/readiness.ts; packages/openclaw-adapter/src/docker.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "docs/LOCAL-VERIFICATION.md; docs/WORKER-STATUS.md; security/sandbox/smoke.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Actual node --import tsx scripts/e2e-fixture.ts --run passed real runtime/API/storage/settlement with deterministic inference/local payments. Whole canonical command, fresh-clone setup and public browser-flow acceptance remain separately tracked. Paid external inference is section92 evidence, not a prerequisite for the atomic real-runtime section557/570 clauses."
+  },
+  {
+    "id": "DEV-LOCAL-024",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/readiness.ts; packages/openclaw-adapter/src/docker.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "docs/LOCAL-VERIFICATION.md; docs/WORKER-STATUS.md; security/sandbox/smoke.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "ATOMIC FAULT CLAUSE: attributed Feynman actual API/Docker seven-case matrix PASS2026-10-06T10:10:01.331Z, fixture73969acc-3ec3-41ff-8c5e-b954bf544cfa. Insufficient balance/offline/missing image rejected; before-start and running cancellations, invalid output and timeout released exactly once with no capture. Timeout30.091s; clean containers; deterministic provider/local payment. Not whole local E2E or pause-budget acceptance."
+  },
+  {
+    "id": "DEV-LOCAL-026",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/readiness.ts; packages/openclaw-adapter/src/docker.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "docs/LOCAL-VERIFICATION.md; docs/WORKER-STATUS.md; security/sandbox/smoke.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Doctor detects unsupported/missing OpenClaw, unavailable/unapproved sandbox and missing dedicated inference with documented remediation. Complete fresh-clone/bootstrap prerequisite detection and clock/reachability checks remain incomplete."
+  },
+  {
+    "id": "DEV-LOCAL-027",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/readiness.ts; packages/openclaw-adapter/src/docker.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "docs/LOCAL-VERIFICATION.md; docs/WORKER-STATUS.md; security/sandbox/smoke.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "Real local fixture preserves signed identity/acceptance, result paths and network-none isolation. HTTP broker public-DNS pinning was exercised against credential-free official Node documentation. Full production security equivalence/adversarial coverage is not claimed."
+  },
+  {
+    "id": "DEV-LOCAL-029",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/index.ts; apps/worker/src/runtime.ts; apps/worker/src/readiness.ts; packages/openclaw-adapter/src/docker.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "docs/LOCAL-VERIFICATION.md; docs/WORKER-STATUS.md; security/sandbox/smoke.ts; scripts/e2e-fixture.ts; docs/FULLSTACK-FIXTURE.md",
+    "notes": "SECTION PARTIAL, section573. Image probes, deterministic real-runtime full-stack, seven-fault matrix and attributed Feynman cumulative-pause signedAPI receipt293229d6 are evidence. Default image rollout remains coordinated. Complete fresh-machine/public browser evidence is maintained by parent; remaining broad clauses prevent a whole local Definition of Done claim here. Paid external-provider acceptance is separately required by section92, not fabricated here or imposed on atomic local-runtime clauses."
+  },
+  {
+    "id": "CAP-0019",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW WORKER GRAPH: imported SKILL nodes bind compiled contentHash, original-source provenance and complete approved children; returned dependencies participate in shared executionManifestHash. Actual CLI import and Docker resource-read/write smoke passed with deterministic inference."
+  },
+  {
+    "id": "CAP-0021",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 103. Reviewed tools, inference, credential references, file/prepared-DB resources, connectors, domains and skills are typed. Native plugins/arbitrary executables are unsupported; full dependency taxonomy inventory is not implemented."
+  },
+  {
+    "id": "AGT-0020",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/usage.ts; apps/worker/src/inference.ts; apps/worker/src/state.ts; apps/worker/src/runtime.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "apps/worker/src/usage.test.ts; apps/worker/src/inference.test.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 101. Bounded signed receipts distinguish successful reported tokens/configured-rate estimates from reservations and unknown failed calls. Decimal microUSD accounting, restart recovery, after-terminal ordering and independent retry behavior have 11 focused tests. Cost is explicitly not an invoice. Live-provider reconciliation, receipt full-stack acceptance and seller economics UI are not claimed by Worker evidence."
+  },
+  {
+    "id": "AGT-0022",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/inference.ts; apps/worker/src/usage.ts; apps/worker/src/index.ts",
+    "tests": "apps/worker/src/inference.test.ts; apps/worker/src/usage.test.ts; apps/worker/src/security.test.ts",
+    "notes": "NARROW WORKER LIMITS: explicit approved config controls per-job calls/tokens/cost and daily tokens/cost. Atomic pre-transport persisted reservations use upward-rounded microUSD, reject over-budget requests before transport, survive failed calls, and preserve per-attempt pricing. This is the local configured-rate spending bound, not a guarantee about external provider invoices or full publishing UI."
+  },
+  {
+    "id": "AGT-0023",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/observations.ts; apps/worker/src/validation.ts; apps/worker/src/tools.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; apps/worker/src/observations.test.ts; security/sandbox/research-smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section104. Safe config agent/tool/MCP/workspace-reference/env-name metadata plus skill manifests, explicit mappings and actual seller-test reports now exist. CLI toolSummary and direct restricted-plugin completions distinguish OBSERVED from known outcomes. Reports include host-confirmed resources/network/inference and refuse undeclared bindings. Exact skill invocation remains LOADED_NOT_PROVEN_INVOKED; complete graphical review is not established. Final Docker research/file-resource observation smoke passed image4b2874."
+  },
+  {
+    "id": "AGT-0024",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/observations.ts; apps/worker/src/validation.ts; apps/worker/src/tools.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; apps/worker/src/observations.test.ts; security/sandbox/research-smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW MULTI-SOURCE CLAUSE: configuration metadata, skill manifests, explicit broker mappings and actual CLI/runtime resource/network/inference evidence are combined. 22 adapter discovery tests,8 import tests,6 observation tests and final Docker research observation/review smoke. Synthetic personal files retain contents/inode/mode/mtime/ctime; no workspace include/MCP execution or values copied. This does not prove skill invocation or broad native dependency inference."
+  },
+  {
+    "id": "CAP-0025",
+    "status": "IMPLEMENTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Metadata references remain DECLARED; file/runtime detection is DETECTED. No inferred complete graph or observed-use confidence is fabricated. Unsupported/unknown children block selection and the docs state static discovery limits."
+  },
+  {
+    "id": "PRD-0074",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 96. Explicit CLI selection, content-bound preview/consent and per-sensitive-reference targets are implemented and tested. End-to-end graphical onboarding remains a separate owner acceptance."
+  },
+  {
+    "id": "PRD-0076",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Discovery never authorizes references: all discovered items start unselected and missing explicit bindings/targets/approval hash fail. Preview does not persist imported skills."
+  },
+  {
+    "id": "PRD-0077",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "NARROW LOCAL CONSENT: approved permission manifest, every target and credential/resource dependency, image ID and compiled instructions are in the review hash. Resource probes do not copy credentials; inferred changes cannot silently authorize execution."
+  },
+  {
+    "id": "PRD-0078",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Scanner marks every item selected:false, even when the personal runtime already uses a model or plugin. Explicit closure selection and review remain mandatory."
+  },
+  {
+    "id": "CAP-0035",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "Credential rotation/reimport/revoke removes affected local capability proofs and writes revalidationRequired; configuration/graph/image/permission mismatches fail readiness consent. New immutable version plus fresh approval/test is required when the graph changes."
+  },
+  {
+    "id": "CAP-0037",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 111. CLI read-only scan, complete reviewed closure, explicit adaptation/consent and sandbox validation exist. Graphical wizard, full inventory and observed-dependency recommendations are not complete."
+  },
+  {
+    "id": "CAP-0049",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 118. 24 focused discovery/import tests cover selected closure, unsafe metadata/files, content/consent changes, dedicated references, resource health, immutable versions and proof invalidation; real CLI/Docker smoke uses deterministic inference. Full fifteen-case product/UI/runtime acceptance and real provider failure cases are not all established."
+  },
+  {
+    "id": "PRD-0067",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/transport.ts; apps/worker/src/diagnostics.ts; apps/worker/src/readiness.ts; apps/worker/src/index.ts",
+    "tests": "apps/worker/src/diagnostics.test.ts; apps/worker/src/security.test.ts",
+    "notes": "ATOMIC WORKER DISPLAY: doctor, cached health, startup and pairing expose paired API origin plus authenticated V2 server deployment label. Tests cover production/staging/preview/development/test/unknown despite conflicting local env, identity/origin binding and legacy unknown. Only404 permits legacy fallback; malformed/auth/5xx never downgrade. Labels are not inferred from hostname or local keys. Broader environment isolation belongs to section81."
+  },
+  {
+    "id": "AGT-0027",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/observations.ts; apps/worker/src/validation.ts; apps/worker/src/capability-health.ts",
+    "tests": "apps/worker/src/observations.test.ts; security/sandbox/research-smoke.ts",
+    "notes": "NARROW LOCAL VALIDATION GATE: actual observed tools/resource/domain/inference usage must match approved healthy supported dependency grants before a passing validation proof is posted. Explicit exact-hash report review never mutates permissions; changed manifest/image invalidates review. New dependencies require a new reviewed manifest/version. Exact skill invocation is not fabricated from loaded skill files."
+  },
+  {
+    "id": "PRD-0233",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/research-usage.ts; apps/worker/src/tools.ts; apps/worker/src/observations.ts",
+    "tests": "apps/worker/src/research.test.ts; security/sandbox/research-smoke.ts",
+    "notes": "SECTION PARTIAL254: durable local host/operation/status/type/measured-success-bytes/hash/source/timestamp telemetry, query hashes where supplied and unknown failed traffic. No raw query/URL/body/row copied. Exactly-one unannotated FETCH receipt matching prevents repeated-fetch misassociation. Complete cloud audit/UI and explicit HTTP-method field coverage remain outside this batch."
+  },
+  {
+    "id": "PRD-0234",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/research-usage.ts; apps/worker/src/tools.ts",
+    "tests": "apps/worker/src/research.test.ts; security/sandbox/research-smoke.ts",
+    "notes": "ATOMIC RETENTION: local research receipts store sanitized metadata and body digest, not full fetched content. Reviewed cache is in-memory for the attempt; report/receipt tests exclude raw public content, private canary, URL and scripts. This does not imply no content is sent to the explicitly approved inference provider."
+  },
+  {
+    "id": "PRD-0235",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/research-config.ts; apps/worker/src/research-usage.ts; apps/worker/src/tools.ts; packages/research-broker/src/egress.ts",
+    "tests": "apps/worker/src/research.test.ts; packages/research-broker/test/egress.test.ts; security/sandbox/research-smoke.ts",
+    "notes": "SECTION PARTIAL255: signed per-job narrowing intersects versioned ceilings5queries/5pages/500000response/5000000total/60000ms and reviewed-plan limits. Durable reservations survive attempts, cannot reset deadline, retain uncertain costs; trusted abort interrupts active DNS/HTTP on effective deadline. Focused tests and actual public prefetch passed. Full live-provider/rate-exhaustion load acceptance and operator policy rollout not established."
+  },
+  {
+    "id": "PRD-0240",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/research-usage.ts; apps/worker/src/tools.ts",
+    "tests": "apps/worker/src/research.test.ts; security/sandbox/research-smoke.ts",
+    "notes": "SECTION PARTIAL259: fetched public content returns source URL/type/access time/hash and untrusted marker; durable local metadata binds hash to unique reservation. Final actual HTTPS577-byte receipt verified. Contract-selected buyer source fields and full UI provenance remain a separate workflow; no invented sources/output fields."
+  },
+  {
+    "id": "PRD-0245",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/research-config.ts; apps/worker/src/tools.ts; apps/worker/src/runtime.ts; apps/worker/src/validation.ts; packages/openclaw-adapter/src/policy.ts; security/sandbox/plugin/index.mjs",
+    "tests": "apps/worker/src/research.test.ts; security/sandbox/research-smoke.ts; scripts/e2e-research-fixture.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL261. Actual signedAPI/Docker/OpenClaw/readonlyPostgres + reviewed public HTTPS fixture9fd39cfc PASS2026-10-06T11:41:22.732Z on4cf5image. Paidjob2ae0efd6 has one577B prefetched response before inference/private query, cache afterward, injected private-row/buyer URL denied, zero post-private requests, sanitized unchanged receipt. ExactTEXT result replay and one balanced local settlement/source-row+runtimecleanup verified. No real-provider/search-key/real-seller-DB or broad cloud-egress acceptance claim."
+  },
+  {
+    "id": "PRD-0247",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/research-config.ts; apps/worker/src/tools.ts; security/sandbox/plugin/index.mjs",
+    "tests": "apps/worker/src/research.test.ts; security/sandbox/research-smoke.ts; packages/research-broker/test/public-requests.test.ts; scripts/e2e-research-fixture.ts",
+    "notes": "NARROW PRIVATE-EGRESS GATE: reviewed literals prefetched before private use; model selects immutable cache IDs only. Unit URL/query/body injection, changed consent and missing seller fail closed. Actual signedAPI/OpenClaw/readonly synthetic Postgres fixture9fd39cfc proves private query then cache lookup; URL containing row/buyer data denied without a new request or receipt mutation. Real publicHTTPS, deterministic inference; not an exhaustive general non-exfiltration or paid-provider claim."
+  },
+  {
+    "id": "PRD-0248",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/research-config.ts; apps/worker/src/tools.ts; packages/research-broker/src/public-requests.ts",
+    "tests": "apps/worker/src/research.test.ts; packages/research-broker/test/public-requests.test.ts; security/sandbox/research-smoke.ts",
+    "notes": "SECTION PARTIAL262: full private labels remain; fixed reviewed prelude is capability-bound trusted public authority, not a relabeling of arbitrary model text. PUBLIC-only unconstrained research is separate. Complete product data-flow taxonomy/multistep UI acceptance remains broader than this bounded Worker gate."
+  },
+  {
+    "id": "PRD-0259",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/tools.ts; apps/worker/src/research-usage.ts",
+    "tests": "apps/worker/src/research.test.ts; security/sandbox/research-smoke.ts",
+    "notes": "ATOMIC WORKER REQUEST BOUND: one broker action at a time, fixed prefetch order, durable maximum10reservations/job and narrower query/page ceilings,500/day and30/host/min. Cache lookups create no new requests; retry cannot reset job counters. This is not distributed platform-wide rate-limit/load testing."
+  },
+  {
+    "id": "PRD-0260",
+    "status": "IN_PROGRESS",
+    "implementation": "apps/worker/src/tools.ts; packages/research-broker/src/egress.ts; docs/OPENCLAW_COMPATIBILITY.md",
+    "tests": "security/sandbox/research-smoke.ts; packages/research-broker/test/egress.test.ts",
+    "notes": "SECTION PARTIAL269: hardened seller-host broker is actual private-beta implementation, with explicit origin/cost disclosure and transport abstraction. Cloud/platform research egress remains preferred and unimplemented here; local spike is not claimed as final production placement."
+  },
+  {
+    "id": "PRD-0265",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/tools.ts; apps/worker/src/secrets.ts; security/sandbox/runner.mjs; security/sandbox/plugin/index.mjs",
+    "tests": "apps/worker/src/research.test.ts; packages/research-broker/test/broker.test.ts; security/sandbox/research-smoke.ts",
+    "notes": "ATOMIC CREDENTIAL BOUNDARY: approved dedicated search credential resolves only on host; no provider key enters generated OpenClaw config or tool response. Actual fetch fixture is credential-free; no live paid Brave test has occurred. Personal credentials are never imported."
+  },
+  {
+    "id": "PRD-0080",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/openclaw-adapter/src/discovery.ts; apps/worker/src/imports.ts; apps/worker/src/capabilities.ts; apps/worker/src/capability-health.ts; apps/worker/src/secrets.ts; apps/worker/src/runtime.ts",
+    "tests": "packages/openclaw-adapter/src/discovery.test.ts; apps/worker/src/imports.test.ts; security/sandbox/smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL, section 119. Imported skill now carries reviewed executable broker closure, not a bare copied skill. Broad discovery, graphical onboarding, real seller inference and complete acceptance remain open."
+  },
+  {
+    "id": "IO-0133",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/contracts/src/research-downloads.ts; packages/research-broker/src/broker.ts; packages/research-broker/src/egress.ts; apps/worker/src/research-files.ts; apps/worker/src/research-scanner.ts; apps/worker/src/tools.ts; security/sandbox/runner.mjs; security/sandbox/plugin/index.mjs",
+    "tests": "apps/worker/src/research-downloads.test.ts; packages/research-broker/test/download-egress.test.ts; packages/storage/src/scanner.test.ts; security/sandbox/download-smoke.ts; docs/WORKER-STATUS.md",
+    "notes": "SECTION PARTIAL250. Distinct versioned download grant, fixed reviewed HTTPS sources, shared lifetime budgets, streamed quarantine/hash/type validation and mandatory ClamAV before readonly job admission. Actual Docker/OpenClaw + public CSV/PDF/PNG + ClamAV clean/EICAR smoke passed2026-10-06, private resource then cache-only lookup, source-write denied and one generated result. Synthetic seller/provider; no new-download signedAPI settlement or UI-consent acceptance. Default4cf5 lacks download attestation; separate candidate promotion remains explicit."
+  },
+  {
+    "id": "IO-0134",
+    "status": "TESTED",
+    "implementation": "packages/contracts/src/research-downloads.ts; packages/research-broker/src/egress.ts; packages/research-broker/src/broker.ts; packages/storage/src/scanner.ts; packages/openclaw-adapter/src/research-files.ts; apps/worker/src/research-files.ts",
+    "tests": "apps/worker/src/research-downloads.test.ts; packages/research-broker/test/download-egress.test.ts; packages/storage/src/scanner.test.ts; security/sandbox/download-smoke.ts",
+    "notes": "ATOMIC BROKER ADMISSION: size/type/time/hash/scan/generated-name/jobworkspace requirements verified for approved PNG/JPEG/WebP/PDF/CSV boundary. Actual HTTPS CSV328B/PDF13264B/PNG1848B scanned by actual ClamAV and staged with unchanged hashes. Unit caps, private redirect/peer, malformed MIME/compression, formula/script, infected scanner, cancellation, backpressure and absolute post-response sink timeout fail closed. Scanner fixture signatures2026-09-28; no sanitization or fresh-database claim."
+  },
+  {
+    "id": "IO-0135",
+    "status": "TESTED",
+    "implementation": "apps/worker/src/research-files.ts; packages/openclaw-adapter/src/research-files.ts; packages/openclaw-adapter/src/policy.ts; security/sandbox/runner.mjs; security/sandbox/plugin/index.mjs",
+    "tests": "apps/worker/src/research-downloads.test.ts; packages/openclaw-adapter/src/security.test.ts; security/sandbox/download-smoke.ts",
+    "notes": "ATOMIC UNTRUSTED-DATA BOUNDARY: generated protected data paths contain no SKILL.md/executable names and carry untrusted marker; only readonly snapshots admitted after scan. No exec/install permission is inferred. Actual OpenClaw read downloadedCSV, denied write to sameprotectedpath, produced separate result, unchanged canonical inputs verified. Shell-script/formula/binary download fixtures rejected. This is not a claim that antivirus removes prompt injection or sanitizes PDF."
+  },
+  {
+    "id": "PRD-0228",
+    "status": "IN_PROGRESS",
+    "implementation": "packages/research-broker/src/requests.ts; apps/worker/src/tools.ts; packages/openclaw-adapter/src/policy.ts; security/sandbox/plugin/index.mjs; security/sandbox/runner.mjs",
+    "tests": "apps/worker/src/research-downloads.test.ts; packages/openclaw-adapter/src/security.test.ts; security/sandbox/download-smoke.ts",
+    "notes": "SECTION PARTIAL251. No generic executable download/chmod/run/install operation; fixed source download returns untrusted cache descriptor in supported readonly namespace. Actual download/data-read/write-denial boundary passed. Broader all-tool composition/adversarial runtime installation acceptance is not inferred from this narrow fixture."
+  },
+  {
+    "id": "PRD-0229",
+    "status": "TESTED",
+    "implementation": "packages/research-broker/src/requests.ts; packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/research-files.ts; security/sandbox/plugin/index.mjs",
+    "tests": "apps/worker/src/research-downloads.test.ts; packages/openclaw-adapter/src/security.test.ts; packages/contracts/src/research-downloads.test.ts; security/sandbox/download-smoke.ts",
+    "notes": "ATOMIC TOOL SURFACE: download accepts reviewedSourceId only; schema/MIME allowlist excludes executable/package types and no chmod/execute tool exists in the supported permission set. Script bytes under allowed filename fail content validation. Actual source read/write-denial verified. No separate executable dependency installation workflow is authorized by this grant."
+  },
+  {
+    "id": "PRD-0230",
+    "status": "TESTED",
+    "implementation": "packages/openclaw-adapter/src/policy.ts; packages/openclaw-adapter/src/docker.ts; apps/worker/src/tools.ts; security/sandbox/runner.mjs; security/sandbox/plugin/index.mjs",
+    "tests": "packages/openclaw-adapter/src/security.test.ts; apps/worker/src/research-downloads.test.ts; security/sandbox/download-smoke.ts; security/sandbox/smoke.ts",
+    "notes": "ATOMIC AUTHORITY: buyer/model input cannot add tools, select download URLs or install packages. Real outer network-none container and explicit narrow tool allowlist remain enforced; download transport runs before model/private execution under immutable reviewed literals. Shell/install/browser/nativeplugin routes remain denied. Narrow authority tests and real boundary smoke, not exhaustive prompt-injection testing."
+  }
+]
